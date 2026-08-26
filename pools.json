@@ -1,0 +1,7962 @@
+{
+ "snapshot_date": "2026-08-24",
+ "source": "LCSD Swimming.do pages + data.gov.hk facility-swimming-pools.json",
+ "season": {
+  "summer": "April - October",
+  "note": "Heated pools operate in winter with reduced facilities"
+ },
+ "fees": {
+  "standard_weekday": 17,
+  "standard_weekend": 19,
+  "concession_weekday": 8,
+  "concession_weekend": 9,
+  "monthly": 300
+ },
+ "weather_rules": {
+  "thunderstorm": "Outdoor facilities close on HKO thunderstorm warning for the affected region; otherwise if lightning is reported within 10km, Amber rainstorm or above is in force, or lightning/thunder is observed on site.",
+  "reopen": "Outdoor facilities reopen when none of the above apply."
+ },
+ "pools": [
+  {
+   "swp_id": 1,
+   "name": "Pao Yue Kong Swimming Pool",
+   "district": "Southern",
+   "region": "Hong Kong Island",
+   "lat": 22.24575485,
+   "lon": 114.16525073,
+   "phone": "2553 3617",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 1,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 21m, 1.4-1.9m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 21m, 1.1-1.4m",
+     "kind": "secondary",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 9m, 0.9-1.2m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "18m x 12m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "18m x 12m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "11.7m x 11m, 4.5m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "children-s-pool",
+     "name": "Children's pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=1",
+   "id": "pao-yue-kong-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 2,
+   "name": "Kennedy Town Swimming Pool",
+   "district": "Central & Western",
+   "region": "Hong Kong Island",
+   "lat": 22.28575468,
+   "lon": 114.13131283,
+   "phone": "2817 7973",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 2,
+   "cleansing_note": "Thursday if public holiday",
+   "facilities": [
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 15m, 1.2-1.4m",
+     "kind": "secondary",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 12.5m, 0.9-1.2m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "jacuzzi",
+     "name": "Jacuzzi",
+     "spec": "0.85m",
+     "kind": "jacuzzi",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "outdoor-secondary-pool",
+     "name": "Outdoor secondary pool",
+     "spec": "50m x 25m, 1.1-1.4m",
+     "kind": "secondary",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool",
+     "name": "Leisure pool",
+     "spec": "0-0.85m",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Indoor pools: 11 September - 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "jacuzzi",
+      "secondary-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "label": "Outdoor pools: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool",
+      "outdoor-secondary-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-11T06:30",
+     "end": "2026-08-11T09:00",
+     "facilities": "Leisure Pool, Jacuzzi",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "jacuzzi",
+      "leisure-pool"
+     ]
+    },
+    {
+     "start": "2026-08-11T13:00",
+     "end": "2026-08-11T15:00",
+     "facilities": "Leisure Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "leisure-pool"
+     ]
+    },
+    {
+     "start": "2026-08-11T18:00",
+     "end": "2026-08-11T22:00",
+     "facilities": "Leisure Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "leisure-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=2",
+   "id": "kennedy-town-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 3,
+   "name": "Wan Chai Swimming Pool",
+   "district": "Wan Chai",
+   "region": "Hong Kong Island",
+   "lat": 22.28121414,
+   "lon": 114.17688502,
+   "phone": "2827 5240",
+   "type": "indoor",
+   "sessions": [
+    [
+     "07:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 4,
+   "cleansing_note": "Cleansing 10:00-16:00",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m, 2m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": false,
+     "access_note": "Only for group training purpose — not open for general public swimming",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 December - 20 January",
+     "range": [
+      [
+       12,
+       1
+      ],
+      [
+       1,
+       20
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=3",
+   "id": "wan-chai-swimming-pool",
+   "session_days": null,
+   "cleansing_window": [
+    "10:00",
+    "16:00"
+   ],
+   "public": false,
+   "access_note": "Only for group training purpose — not open for general public swimming",
+   "amenities": [
+    "Spectator stand",
+    "Babycare room"
+   ]
+  },
+  {
+   "swp_id": 4,
+   "name": "Morrison Hill Swimming Pool",
+   "district": "Wan Chai",
+   "region": "Hong Kong Island",
+   "lat": 22.27638996,
+   "lon": 114.17900415,
+   "phone": "2575 3028",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 2,
+   "cleansing_note": "Tuesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 21m, 1.4-1.9m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 12m, 0.84-1.07m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool",
+     "name": "Teaching pool",
+     "spec": "18m x 12m, 0.8-1.4m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "18m x 6m, 0.46m",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Indoor pools: 11 May - 30 June",
+     "range": [
+      [
+       5,
+       11
+      ],
+      [
+       6,
+       30
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "label": "Outdoor pools: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "teaching-pool",
+      "toddlers-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-05-11T06:30",
+     "end": "2026-06-30T22:00",
+     "facilities": "All indoor facilities",
+     "reason": "Annual maintenance",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=4",
+   "id": "morrison-hill-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 5,
+   "name": "Victoria Park Swimming Pool",
+   "district": "Wan Chai",
+   "region": "Hong Kong Island",
+   "lat": 22.28333576,
+   "lon": 114.19047571,
+   "phone": "2570 8347",
+   "type": "indoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 0,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m, 1.2-2m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "multi-purpose-pool",
+     "name": "Multi-purpose pool",
+     "spec": "33m x 25m, 1.2m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "20 February - 21 April",
+     "range": [
+      [
+       2,
+       20
+      ],
+      [
+       4,
+       21
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-24T18:00",
+     "end": "2026-08-24T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-08-26T18:00",
+     "end": "2026-08-26T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-08-31T18:00",
+     "end": "2026-08-31T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=5",
+   "id": "victoria-park-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 6,
+   "name": "Island East Swimming Pool",
+   "district": "Eastern",
+   "region": "Hong Kong Island",
+   "lat": 22.2847541,
+   "lon": 114.2222929,
+   "phone": "2151 4082",
+   "type": "indoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 2,
+   "cleansing_note": "Friday if public holiday",
+   "facilities": [
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 10m, 0.9-1.2m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool",
+     "name": "Leisure pool",
+     "spec": "",
+     "kind": "leisure",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "11 September - 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=6",
+   "id": "island-east-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 7,
+   "name": "Chai Wan Swimming Pool",
+   "district": "Eastern",
+   "region": "Hong Kong Island",
+   "lat": 22.26450345,
+   "lon": 114.24625267,
+   "phone": "2558 3538",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 1,
+   "cleansing_note": "Wednesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 21m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 21m",
+     "kind": "secondary",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "4.4-4.6m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-1",
+     "name": "Leisure pool 1",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-2",
+     "name": "Leisure pool 2",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-3",
+     "name": "Leisure pool 3",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-07-20T06:30",
+     "end": null,
+     "facilities": "Not applicable",
+     "reason": "Others",
+     "targets": null
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=7",
+   "id": "chai-wan-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 8,
+   "name": "Lai Chi Kok Park Swimming Pool",
+   "district": "Sham Shui Po",
+   "region": "Kowloon",
+   "lat": 22.34032545,
+   "lon": 114.1372749,
+   "phone": "2745 5234",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 2,
+   "cleansing_note": "Tuesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "4.4-4.6m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 21m",
+     "kind": "secondary",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1-15 April",
+     "range": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    },
+    {
+     "label": "16 April - 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-06-06T06:30",
+     "end": null,
+     "facilities": "Teaching Pool 1, Diving Pool, Toddlers' Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "diving-pool",
+      "teaching-pool-1",
+      "toddlers-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=8",
+   "id": "lai-chi-kok-park-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 9,
+   "name": "Sham Shui Po Park Swimming Pool",
+   "district": "Sham Shui Po",
+   "region": "Kowloon",
+   "lat": 22.33113839,
+   "lon": 114.15499722,
+   "phone": "2360 2329",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 4,
+   "cleansing_note": "Tuesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "6 lanes reserved for eligible groups only, Mon-Fri 5:00-6:00pm (trial scheme)",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 21m",
+     "kind": "secondary",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "children-s-pool",
+     "name": "Children's pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Whole complex: 24 February - 15 April",
+     "range": [
+      [
+       2,
+       24
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    },
+    {
+     "label": "Pools other than main: 1 November - 23 February",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       2,
+       23
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-06-06T06:30",
+     "end": null,
+     "facilities": "Various",
+     "reason": "Insufficient lifeguard (trial scheme)",
+     "targets": null
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=9",
+   "id": "sham-shui-po-park-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 10,
+   "name": "Lei Cheng Uk Swimming Pool",
+   "district": "Sham Shui Po",
+   "region": "Kowloon",
+   "lat": 22.33882331,
+   "lon": 114.16212313,
+   "phone": "2387 4224",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 3,
+   "cleansing_note": "Tuesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 21m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": [
+      [
+       "06:30",
+       "12:00"
+      ],
+      [
+       "19:00",
+       "22:00"
+      ]
+     ],
+     "session_days": {
+      "1": [
+       5
+      ]
+     },
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "3rd session on Saturdays only",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 20m",
+     "kind": "secondary",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": [
+      [
+       "06:30",
+       "12:00"
+      ],
+      [
+       "13:00",
+       "18:00"
+      ],
+      [
+       "19:00",
+       "22:00"
+      ]
+     ],
+     "session_days": {
+      "2": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       6
+      ]
+     },
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "3rd session Mon-Fri, Sun & public holidays",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": [
+      [
+       "13:00",
+       "18:00"
+      ],
+      [
+       "19:00",
+       "22:00"
+      ]
+     ],
+     "session_days": {
+      "1": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5
+      ]
+     },
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "Opens from the 2nd session",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": [
+      [
+       "13:00",
+       "18:00"
+      ],
+      [
+       "19:00",
+       "22:00"
+      ]
+     ],
+     "session_days": {
+      "1": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5
+      ]
+     },
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "Opens from the 2nd session",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-3",
+     "name": "Teaching pool 3",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": [
+      [
+       "13:00",
+       "18:00"
+      ],
+      [
+       "19:00",
+       "22:00"
+      ]
+     ],
+     "session_days": {
+      "1": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5
+      ]
+     },
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "Opens from the 2nd session",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "3.5-3.61m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "children-s-pool",
+     "name": "Children's pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": [
+      [
+       "19:00",
+       "22:00"
+      ]
+     ],
+     "session_days": {
+      "0": [
+       6
+      ]
+     },
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "3rd session on Sundays & public holidays only",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-06-06T06:30",
+     "end": null,
+     "facilities": "Multiple facilities",
+     "reason": "Insufficient lifeguard",
+     "targets": null
+    },
+    {
+     "start": "2026-06-06T06:30",
+     "end": null,
+     "facilities": "Diving Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "diving-pool"
+     ]
+    },
+    {
+     "start": "2026-08-21T08:00",
+     "end": "2026-08-21T12:00",
+     "facilities": "Main Pool",
+     "reason": "Swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=10",
+   "id": "lei-cheng-uk-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 11,
+   "name": "Kowloon Park Swimming Pool",
+   "district": "Yau Tsim Mong",
+   "region": "Kowloon",
+   "lat": 22.30187157,
+   "lon": 114.17038187,
+   "phone": "2724 3577",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 1,
+   "cleansing_note": "Thursday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m, 1.2-2.5m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "indoor-l1-training-pool",
+     "name": "Indoor L1 training pool",
+     "spec": "25m x 10m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "indoor-l2-training-pool",
+     "name": "Indoor L2 training pool",
+     "spec": "25m x 12.5m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "21m x 15m, 5m",
+     "kind": "diving",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-1",
+     "name": "Leisure pool 1",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-2",
+     "name": "Leisure pool 2",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-3",
+     "name": "Leisure pool 3",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Indoor pools: 16 April - 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool",
+      "indoor-l1-training-pool",
+      "indoor-l2-training-pool",
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Outdoor pools: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-1",
+      "leisure-pool-2",
+      "leisure-pool-3",
+      "toddlers-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-09-05T12:00",
+     "end": "2026-09-05T22:00",
+     "facilities": "Main, Diving, L1 pools",
+     "reason": "Division I LC Competition",
+     "targets": [
+      "diving-pool",
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-06T08:00",
+     "end": "2026-09-06T22:00",
+     "facilities": "Main, Diving, L1 pools",
+     "reason": "Division I LC Competition",
+     "targets": [
+      "diving-pool",
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-09T08:00",
+     "end": "2026-09-09T19:00",
+     "facilities": "Main, Diving, L1 pools",
+     "reason": "Pui Ching Middle School gala",
+     "targets": [
+      "diving-pool",
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-16T08:00",
+     "end": "2026-09-16T19:00",
+     "facilities": "Main, Diving, L1 pools",
+     "reason": "King George V School gala",
+     "targets": [
+      "diving-pool",
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-23T08:00",
+     "end": "2026-09-23T16:00",
+     "facilities": "Main, Diving, L1 pools",
+     "reason": "Good Hope School gala",
+     "targets": [
+      "diving-pool",
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-28T08:00",
+     "end": "2026-09-28T20:00",
+     "facilities": "Main, Diving, L1 pools",
+     "reason": "HK & KLN Secondary School Competition",
+     "targets": [
+      "diving-pool",
+      "main-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=11",
+   "id": "kowloon-park-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": [
+    "Spectator stand"
+   ]
+  },
+  {
+   "swp_id": 12,
+   "name": "Tai Wan Shan Swimming Pool",
+   "district": "Kowloon City",
+   "region": "Kowloon",
+   "lat": 22.30510662,
+   "lon": 114.19230722,
+   "phone": "2333 1335",
+   "type": "indoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 3,
+   "cleansing_note": "Friday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 21m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 21m",
+     "kind": "secondary",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "",
+     "kind": "teaching",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "",
+     "kind": "teaching",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-3",
+     "name": "Teaching pool 3",
+     "spec": "",
+     "kind": "teaching",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "4.38-4.5m",
+     "kind": "diving",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-1",
+     "name": "Leisure pool 1",
+     "spec": "",
+     "kind": "leisure",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pools-2-3",
+     "name": "Leisure pools 2 & 3",
+     "spec": "",
+     "kind": "leisure",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-04-01T06:30",
+     "end": null,
+     "facilities": "Diving Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "diving-pool"
+     ]
+    },
+    {
+     "start": "2026-04-01T06:30",
+     "end": null,
+     "facilities": "Secondary Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "secondary-pool"
+     ]
+    },
+    {
+     "start": "2026-06-06T06:30",
+     "end": null,
+     "facilities": "Multiple facilities",
+     "reason": "Insufficient lifeguards",
+     "targets": null
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=12",
+   "id": "tai-wan-shan-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 13,
+   "name": "Ho Man Tin Swimming Pool",
+   "district": "Kowloon City",
+   "region": "Kowloon",
+   "lat": 22.31226858,
+   "lon": 114.18103704,
+   "phone": "2715 0139",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 2,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "leisure-pool-1",
+     "name": "Leisure pool 1",
+     "spec": "0.9-1.2m",
+     "kind": "leisure",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-2",
+     "name": "Leisure pool 2",
+     "spec": "0.38m",
+     "kind": "leisure",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-3",
+     "name": "Leisure pool 3",
+     "spec": "0.9-1.2m",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-4",
+     "name": "Leisure pool 4",
+     "spec": "0.38m",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Indoor pools: 11 September - 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-1",
+      "leisure-pool-2"
+     ]
+    },
+    {
+     "label": "Outdoor pools: 11 September - 15 April",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-3",
+      "leisure-pool-4"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-20T18:00",
+     "end": "2026-08-20T22:00",
+     "facilities": "Leisure Pool 3",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "leisure-pool-3"
+     ]
+    },
+    {
+     "start": "2026-08-20T19:30",
+     "end": "2026-08-20T22:00",
+     "facilities": "Leisure Pool 2",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "leisure-pool-2"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=13",
+   "id": "ho-man-tin-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 14,
+   "name": "Kowloon Tsai Swimming Pool",
+   "district": "Kowloon City",
+   "region": "Kowloon",
+   "lat": 22.33312911,
+   "lon": 114.18461757,
+   "phone": "2336 5817",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 0,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m, 1.4-1.9m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 25m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool",
+     "name": "Leisure pool",
+     "spec": "0.4m",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Indoor main pool: 16 April - 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Outdoor pools: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool",
+      "training-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-20T14:15",
+     "end": "2026-08-20T22:00",
+     "facilities": "Training Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-08-20T18:00",
+     "end": "2026-08-20T22:00",
+     "facilities": "Leisure Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "leisure-pool"
+     ]
+    },
+    {
+     "start": "2026-08-23T07:30",
+     "end": "2026-08-23T20:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "Swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-11T07:30",
+     "end": "2026-09-11T16:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-15T07:30",
+     "end": "2026-09-15T18:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-20T07:30",
+     "end": "2026-09-20T22:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "Competition",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-23T07:30",
+     "end": "2026-09-23T15:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-25T07:30",
+     "end": "2026-09-25T16:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-29T07:30",
+     "end": "2026-09-29T16:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-03T07:30",
+     "end": "2026-10-03T22:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "Swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=14",
+   "id": "kowloon-tsai-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 15,
+   "name": "Morse Park Swimming Pool",
+   "district": "Wong Tai Sin",
+   "region": "Kowloon",
+   "lat": 22.34089591,
+   "lon": 114.19056091,
+   "phone": "2320 2023",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 4,
+   "cleansing_note": "Wednesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 21m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 21m",
+     "kind": "secondary",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-3",
+     "name": "Teaching pool 3",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "children-s-pool",
+     "name": "Children's pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "3.5-3.61m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": false,
+     "access_note": "Only for group training purpose",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Outdoor pools: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "children-s-pool",
+      "diving-pool",
+      "main-pool",
+      "teaching-pool-1",
+      "teaching-pool-2",
+      "teaching-pool-3"
+     ]
+    },
+    {
+     "label": "Indoor secondary pool: 16 April - 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "secondary-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-09-17T06:30",
+     "end": "2026-09-17T15:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-27T06:30",
+     "end": "2026-09-27T22:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "Competition",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-04T06:30",
+     "end": "2026-10-04T22:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "Competition",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=15",
+   "id": "morse-park-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 16,
+   "name": "Hammer Hill Road Swimming Pool",
+   "district": "Wong Tai Sin",
+   "region": "Kowloon",
+   "lat": 22.33756151,
+   "lon": 114.20645519,
+   "phone": "2350 6173",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 0,
+   "cleansing_note": "Tuesday if public holiday",
+   "facilities": [
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11m, 1-1.4m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-1",
+     "name": "Leisure pool 1",
+     "spec": "",
+     "kind": "leisure",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-2",
+     "name": "Leisure pool 2",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-3",
+     "name": "Leisure pool 3",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "participatory-fountain",
+     "name": "Participatory fountain",
+     "spec": "",
+     "kind": "slides",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Outdoor pools: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-2",
+      "leisure-pool-3",
+      "participatory-fountain",
+      "toddlers-pool"
+     ]
+    },
+    {
+     "label": "Indoor pools: 11 May - 30 June",
+     "range": [
+      [
+       5,
+       11
+      ],
+      [
+       6,
+       30
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-1",
+      "training-pool"
+     ]
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=16",
+   "id": "hammer-hill-road-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 17,
+   "name": "Jordan Valley Swimming Pool",
+   "district": "Kwun Tong",
+   "region": "Kowloon",
+   "lat": 22.32359402,
+   "lon": 114.21828126,
+   "phone": "2305 5919",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 1,
+   "cleansing_note": "Thursday if public holiday",
+   "facilities": [
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11m, 1-1.4m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-1",
+     "name": "Leisure pool 1",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pools-2-3",
+     "name": "Leisure pools 2 & 3",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-4",
+     "name": "Leisure pool 4",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-09-01T06:30",
+     "end": "2026-09-01T12:00",
+     "facilities": "Leisure Pool 2&3",
+     "reason": "Insufficient lifeguards",
+     "targets": [
+      "leisure-pools-2-3"
+     ]
+    },
+    {
+     "start": "2026-09-01T13:00",
+     "end": "2026-09-01T18:00",
+     "facilities": "Training Pool, Leisure Pool 2&3",
+     "reason": "Insufficient lifeguards",
+     "targets": [
+      "leisure-pools-2-3",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-09-01T19:00",
+     "end": "2026-09-01T22:00",
+     "facilities": "Leisure Pool 2&3",
+     "reason": "Insufficient lifeguards",
+     "targets": [
+      "leisure-pools-2-3"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=17",
+   "id": "jordan-valley-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 18,
+   "name": "Kwun Tong Swimming Pool",
+   "district": "Kwun Tong",
+   "region": "Kowloon",
+   "lat": 22.31079517,
+   "lon": 114.22994334,
+   "phone": "2717 9022",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 2,
+   "cleansing_note": "Friday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 30m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 21m",
+     "kind": "secondary",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pools-1-2",
+     "name": "Teaching pools 1 & 2",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Outdoor pools: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "secondary-pool",
+      "teaching-pools-1-2"
+     ]
+    },
+    {
+     "label": "Indoor pools: 2 January - 21 February",
+     "range": [
+      [
+       1,
+       2
+      ],
+      [
+       2,
+       21
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-29T07:30",
+     "end": "2026-08-29T21:00",
+     "facilities": "Main Pool",
+     "reason": "Competition",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-11T07:30",
+     "end": "2026-09-11T16:00",
+     "facilities": "Main Pool",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-12T07:30",
+     "end": "2026-09-12T15:00",
+     "facilities": "Main Pool",
+     "reason": "Competition",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-15T07:30",
+     "end": "2026-09-15T15:00",
+     "facilities": "Main Pool",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-18T07:30",
+     "end": "2026-09-18T15:00",
+     "facilities": "Main Pool",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-19T07:30",
+     "end": "2026-09-19T15:00",
+     "facilities": "Main Pool",
+     "reason": "Competition",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-22T07:30",
+     "end": "2026-09-22T15:00",
+     "facilities": "Main Pool",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-25T07:30",
+     "end": "2026-09-25T16:00",
+     "facilities": "Main Pool",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-28T07:30",
+     "end": "2026-09-28T16:00",
+     "facilities": "Main Pool",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-29T07:30",
+     "end": "2026-09-29T14:00",
+     "facilities": "Main Pool",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=18",
+   "id": "kwun-tong-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 19,
+   "name": "Mui Wo Swimming Pool",
+   "district": "Islands",
+   "region": "New Territories",
+   "lat": 22.26640705,
+   "lon": 113.99596529,
+   "phone": "2984 2496",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "08:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 4,
+   "cleansing_note": "3rd session Fridays only",
+   "facilities": [
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11m, 0.93-1.25m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=19",
+   "id": "mui-wo-swimming-pool",
+   "session_days": {
+    "0": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6
+    ],
+    "1": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6
+    ],
+    "2": [
+     4
+    ]
+   },
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 20,
+   "name": "Tuen Mun Swimming Pool",
+   "district": "Tuen Mun",
+   "region": "New Territories",
+   "lat": 22.38428745,
+   "lon": 113.96965341,
+   "phone": "2404 1918",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 3,
+   "cleansing_note": "Friday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 15m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "outdoor-training-pool-2",
+     "name": "Outdoor training pool 2",
+     "spec": "25m x 30m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool",
+     "name": "Teaching pool",
+     "spec": "25m x 12.5m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool",
+     "name": "Leisure pool",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "4.4-4.6m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Outdoor pools: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool",
+      "leisure-pool",
+      "outdoor-training-pool-2",
+      "teaching-pool"
+     ]
+    },
+    {
+     "label": "Indoor pools: 16 April - 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-17T21:00",
+     "end": null,
+     "facilities": "Diving Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "diving-pool"
+     ]
+    },
+    {
+     "start": "2026-08-19T19:00",
+     "end": null,
+     "facilities": "Teaching Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "teaching-pool"
+     ]
+    },
+    {
+     "start": "2026-08-29T06:30",
+     "end": "2026-08-29T22:00",
+     "facilities": "Main Pool",
+     "reason": "Competition",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-08-30T06:30",
+     "end": "2026-08-30T22:00",
+     "facilities": "Main Pool",
+     "reason": "Competition",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-15T07:30",
+     "end": "2026-09-15T18:00",
+     "facilities": "Main Pool",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-28T06:30",
+     "end": "2026-09-28T18:00",
+     "facilities": "Main Pool",
+     "reason": "Competition",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-29T06:30",
+     "end": "2026-09-29T18:00",
+     "facilities": "Main Pool",
+     "reason": "Competition",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=20",
+   "id": "tuen-mun-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 21,
+   "name": "The Jockey Club Yan Oi Tong Swimming Pool",
+   "district": "Tuen Mun",
+   "region": "New Territories",
+   "lat": 22.4021932,
+   "lon": 113.974035,
+   "phone": "2464 7149",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 1,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "leisure-pool-1",
+     "name": "Leisure pool 1",
+     "spec": "0.8m",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-2",
+     "name": "Leisure pool 2",
+     "spec": "0-1.3m",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=21",
+   "id": "the-jockey-club-yan-oi-tong-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 22,
+   "name": "Yuen Long Swimming Pool",
+   "district": "Yuen Long",
+   "region": "New Territories",
+   "lat": 22.44134664,
+   "lon": 114.02138633,
+   "phone": "2475 0184",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 2,
+   "cleansing_note": "Tuesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 21m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": true,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 21m",
+     "kind": "secondary",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "4.5-4.6m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "June-August",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Secondary/Training/Diving/Toddlers': 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool",
+      "secondary-pool",
+      "toddlers-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "label": "Main pool: 16 April - 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-20T13:00",
+     "end": "2026-08-20T22:00",
+     "facilities": "Toddlers' Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "toddlers-pool"
+     ]
+    },
+    {
+     "start": "2026-08-20T17:00",
+     "end": "2026-08-20T18:00",
+     "facilities": "Diving Pool",
+     "reason": "Training lesson",
+     "targets": [
+      "diving-pool"
+     ]
+    },
+    {
+     "start": "2026-08-20T19:00",
+     "end": "2026-08-20T22:00",
+     "facilities": "Training Pool, Diving Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "diving-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-08-21T17:00",
+     "end": "2026-08-21T19:00",
+     "facilities": "Diving Pool",
+     "reason": "Training lesson",
+     "targets": [
+      "diving-pool"
+     ]
+    },
+    {
+     "start": "2026-08-22T10:00",
+     "end": "2026-08-22T13:00",
+     "facilities": "Diving Pool",
+     "reason": "Training lesson",
+     "targets": [
+      "diving-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=22",
+   "id": "yuen-long-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 23,
+   "name": "Tin Shui Wai Swimming Pool",
+   "district": "Yuen Long",
+   "region": "New Territories",
+   "lat": 22.45617355,
+   "lon": 114.00691421,
+   "phone": "2446 9057",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 3,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 22m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool",
+     "name": "Teaching pool",
+     "spec": "20m x 12m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool",
+     "name": "Leisure pool",
+     "spec": "0.43-1.1m",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "giant-water-slides",
+     "name": "Giant water slides",
+     "spec": "",
+     "kind": "slides",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=23",
+   "id": "tin-shui-wai-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 24,
+   "name": "Tsuen King Circuit Wu Chung Swimming Pool",
+   "district": "Tsuen Wan",
+   "region": "New Territories",
+   "lat": 22.37797589,
+   "lon": 114.10420456,
+   "phone": "2413 5523",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 1,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11.6m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "children-s-pool",
+     "name": "Children's pool",
+     "spec": "0.47m",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool",
+     "name": "Leisure pool",
+     "spec": "1-1.2m",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=24",
+   "id": "tsuen-king-circuit-wu-chung-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 25,
+   "name": "Shing Mun Valley Swimming Pool",
+   "district": "Tsuen Wan",
+   "region": "New Territories",
+   "lat": 22.37317736,
+   "lon": 114.12351962,
+   "phone": "2416 0522",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 0,
+   "cleansing_note": "Wednesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "23.5m x 25m, 1.2m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "main-pool-2",
+     "name": "Main pool",
+     "spec": "25m x 25m, 2m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 7.8m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool",
+     "name": "Teaching pool",
+     "spec": "20m x 13.5m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-1",
+     "name": "Leisure pool 1",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-2",
+     "name": "Leisure pool 2",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-3",
+     "name": "Leisure pool 3",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Outdoor training/teaching/leisure: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-1"
+     ]
+    },
+    {
+     "label": "Indoor main pool: 1 May - 30 June",
+     "range": [
+      [
+       5,
+       1
+      ],
+      [
+       6,
+       30
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-20T15:00",
+     "end": null,
+     "facilities": "Landing Pool with water slides",
+     "reason": "Insufficient lifeguard",
+     "targets": null
+    },
+    {
+     "start": "2026-09-10T07:30",
+     "end": "2026-09-10T16:00",
+     "facilities": "All indoor facilities",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
+    },
+    {
+     "start": "2026-09-13T07:30",
+     "end": "2026-09-13T22:00",
+     "facilities": "All indoor facilities",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
+    },
+    {
+     "start": "2026-09-17T07:30",
+     "end": "2026-09-17T16:00",
+     "facilities": "All indoor facilities",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
+    },
+    {
+     "start": "2026-09-22T07:30",
+     "end": "2026-09-22T16:00",
+     "facilities": "All indoor facilities",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=25",
+   "id": "shing-mun-valley-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 26,
+   "name": "Kwai Shing Swimming Pool",
+   "district": "Kwai Tsing",
+   "region": "New Territories",
+   "lat": 22.35930271,
+   "lon": 114.12313752,
+   "phone": "2426 2081",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 4,
+   "cleansing_note": "Tuesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 21m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 21m",
+     "kind": "secondary",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-3",
+     "name": "Teaching pool 3",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "3.5m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "children-s-pool",
+     "name": "Children's pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool-1",
+     "name": "Toddlers' pool 1",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool-2",
+     "name": "Toddlers' pool 2",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-06-01T06:30",
+     "end": null,
+     "facilities": "Toddlers' Pool 1, Toddlers' Pool 2",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "toddlers-pool-1",
+      "toddlers-pool-2"
+     ]
+    },
+    {
+     "start": "2026-08-20T14:15",
+     "end": "2026-08-20T22:00",
+     "facilities": "Main Pool, Teaching Pools 1-3, Diving Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "diving-pool",
+      "main-pool",
+      "teaching-pool-1",
+      "teaching-pool-3"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=26",
+   "id": "kwai-shing-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 27,
+   "name": "North Kwai Chung Jockey Club Swimming Pool",
+   "district": "Kwai Tsing",
+   "region": "New Territories",
+   "lat": 22.37265109,
+   "lon": 114.13678224,
+   "phone": "2422 1779",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 2,
+   "cleansing_note": "Tuesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "25m x 11m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "12m x 9m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "4.4-4.6m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-20T14:15",
+     "end": "2026-08-20T18:00",
+     "facilities": "Diving Pool, Toddlers' Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "diving-pool",
+      "toddlers-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=27",
+   "id": "north-kwai-chung-jockey-club-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 28,
+   "name": "Tsing Yi Swimming Pool",
+   "district": "Kwai Tsing",
+   "region": "New Territories",
+   "lat": 22.35755407,
+   "lon": 114.1079617,
+   "phone": "2435 6407",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 3,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool",
+     "name": "Teaching pool",
+     "spec": "20m x 12m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-1",
+     "name": "Leisure pool 1",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-2",
+     "name": "Leisure pool 2",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "giant-water-slides",
+     "name": "Giant water slides",
+     "spec": "",
+     "kind": "slides",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-20T19:00",
+     "end": "2026-08-20T22:00",
+     "facilities": "Toddlers' Pool, Leisure Pool 2, Giant Water Slides",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "giant-water-slides",
+      "leisure-pool-2",
+      "toddlers-pool"
+     ]
+    },
+    {
+     "start": "2026-09-06T06:30",
+     "end": "2026-09-06T21:00",
+     "facilities": "Main Pool, Teaching Pool",
+     "reason": "Swimming gala",
+     "targets": [
+      "main-pool",
+      "teaching-pool"
+     ]
+    },
+    {
+     "start": "2026-10-02T07:00",
+     "end": "2026-10-02T14:00",
+     "facilities": "Main Pool",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-05T07:00",
+     "end": "2026-10-05T17:00",
+     "facilities": "Main Pool",
+     "reason": "Swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-06T09:00",
+     "end": "2026-10-06T17:00",
+     "facilities": "Main Pool",
+     "reason": "Swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-16T07:00",
+     "end": "2026-10-16T15:00",
+     "facilities": "Main Pool",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-25T06:30",
+     "end": "2026-10-25T21:00",
+     "facilities": "Main Pool, Teaching Pool",
+     "reason": "Swimming gala",
+     "targets": [
+      "main-pool",
+      "teaching-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=28",
+   "id": "tsing-yi-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 29,
+   "name": "Fanling Swimming Pool",
+   "district": "North",
+   "region": "New Territories",
+   "lat": 22.49490626,
+   "lon": 114.1360931,
+   "phone": "2675 6951",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 1,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": true,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 21m",
+     "kind": "secondary",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Main pool: 16 April - 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Secondary/Training/Toddlers': 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "secondary-pool",
+      "toddlers-pool",
+      "training-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-04-16T06:30",
+     "end": null,
+     "facilities": "Toddlers' Pool",
+     "reason": "Urgent repairs",
+     "targets": [
+      "toddlers-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=29",
+   "id": "fanling-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 30,
+   "name": "Sheung Shui Swimming Pool",
+   "district": "North",
+   "region": "New Territories",
+   "lat": 22.50619027,
+   "lon": 114.13134014,
+   "phone": "2679 4844",
+   "type": "indoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 3,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "leisure-pool",
+     "name": "Leisure pool",
+     "spec": "0.1-1.6m",
+     "kind": "leisure",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "jacuzzi",
+     "name": "Jacuzzi",
+     "spec": "0.4-0.45m",
+     "kind": "jacuzzi",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-21T06:30",
+     "end": "2026-08-21T07:00",
+     "facilities": "Landing Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": null
+    },
+    {
+     "start": "2026-08-21T13:00",
+     "end": "2026-08-21T15:00",
+     "facilities": "Landing Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": null
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=30",
+   "id": "sheung-shui-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 31,
+   "name": "Tai Po Swimming Pool",
+   "district": "Tai Po",
+   "region": "New Territories",
+   "lat": 22.45559058,
+   "lon": 114.16325435,
+   "phone": "2661 2244",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 0,
+   "cleansing_note": "Wednesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "20m x 12m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "20m x 12m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "4.5m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "children-s-pool",
+     "name": "Children's pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-1",
+     "name": "Leisure pool 1",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-2",
+     "name": "Leisure pool 2",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-06-05T06:30",
+     "end": null,
+     "facilities": "Diving Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "diving-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=31",
+   "id": "tai-po-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 32,
+   "name": "Sha Tin Jockey Club Swimming Pool",
+   "district": "Sha Tin",
+   "region": "New Territories",
+   "lat": 22.38410766,
+   "lon": 114.19389874,
+   "phone": "2693 6613",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 4,
+   "cleansing_note": "Wednesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": true,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "secondary-pool",
+     "name": "Secondary pool",
+     "spec": "50m x 21m",
+     "kind": "secondary",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "4.4m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "children-s-pool",
+     "name": "Children's pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Main pool: 16 April - 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Secondary/Children's/Toddlers'/Training/Teaching: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "teaching-pool-1"
+     ]
+    },
+    {
+     "label": "Diving pool: 1 November - 5 June",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-06-01T06:30",
+     "end": "2026-08-31T22:00",
+     "facilities": "Toddlers' Pool",
+     "reason": "Urgent repairs",
+     "targets": [
+      "toddlers-pool"
+     ]
+    },
+    {
+     "start": "2026-09-05T07:00",
+     "end": "2026-09-05T19:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "Swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-13T07:00",
+     "end": "2026-09-13T22:00",
+     "facilities": "Main Pool, Training Pool, Spectator Stand",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-09-27T08:00",
+     "end": "2026-09-27T19:00",
+     "facilities": "Main Pool, Training Pool, Spectator Stand",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-09-30T07:00",
+     "end": "2026-09-30T15:00",
+     "facilities": "Main Pool, Training Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-10-04T09:00",
+     "end": "2026-10-04T20:00",
+     "facilities": "Main Pool, Diving Pool, Spectator Stand",
+     "reason": "Competition",
+     "targets": [
+      "diving-pool",
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-07T07:00",
+     "end": "2026-10-07T16:00",
+     "facilities": "Main Pool, Training Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-10-08T07:00",
+     "end": "2026-10-08T13:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=32",
+   "id": "sha-tin-jockey-club-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 33,
+   "name": "Hin Tin Swimming Pool",
+   "district": "Sha Tin",
+   "region": "New Territories",
+   "lat": 22.36726478,
+   "lon": 114.17326835,
+   "phone": "2607 3423",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 3,
+   "cleansing_note": "Wednesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m, 1.4-2m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "jacuzzi",
+     "name": "Jacuzzi",
+     "spec": "0.85m",
+     "kind": "jacuzzi",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-shallow",
+     "name": "Leisure pool shallow",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-deep",
+     "name": "Leisure pool deep",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "small-water-slides",
+     "name": "Small water slides",
+     "spec": "",
+     "kind": "slides",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "giant-water-slides",
+     "name": "Giant water slides",
+     "spec": "",
+     "kind": "slides",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-zone",
+     "name": "Toddlers' zone",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Indoor pools: 11 September - 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "jacuzzi",
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Outdoor pools: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "giant-water-slides",
+      "leisure-pool-deep",
+      "leisure-pool-shallow",
+      "small-water-slides",
+      "toddlers-zone",
+      "training-pool"
+     ]
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=33",
+   "id": "hin-tin-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 34,
+   "name": "Ma On Shan Swimming Pool",
+   "district": "Sha Tin",
+   "region": "New Territories",
+   "lat": 22.42720069,
+   "lon": 114.22964948,
+   "phone": "2641 0776",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 1,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m, 2m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 11m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "20m x 12m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "20m x 12m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "giant-water-slides",
+     "name": "Giant water slides",
+     "spec": "",
+     "kind": "slides",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": [
+      [
+       "13:00",
+       "18:00"
+      ]
+     ],
+     "session_days": null,
+     "days": [
+      5,
+      6
+     ],
+     "months": null,
+     "weekday_sessions": null,
+     "note": "Saturdays, Sundays & public holidays only; closed Mon-Fri",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "round-stepping-pool",
+     "name": "Round stepping pool",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-01T06:30",
+     "end": null,
+     "facilities": "Training Pool, Round Stepping Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "round-stepping-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-08-01T06:30",
+     "end": null,
+     "facilities": "Giant Water Slides",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "giant-water-slides"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=34",
+   "id": "ma-on-shan-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 35,
+   "name": "Tseung Kwan O Swimming Pool",
+   "district": "Sai Kung",
+   "region": "New Territories",
+   "lat": 22.31795552,
+   "lon": 114.26005267,
+   "phone": "2706 7646",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 0,
+   "cleansing_note": "Tuesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m, 2-2.2m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": true,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 12m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-1",
+     "name": "Teaching pool 1",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool-2",
+     "name": "Teaching pool 2",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "4.4-4.5m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "",
+     "kind": "toddlers",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-1",
+     "name": "Leisure pool 1",
+     "spec": "",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool-2-with-water-slides",
+     "name": "Leisure pool 2 with water slides",
+     "spec": "",
+     "kind": "slides",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Main pool: 4 May - 23 June",
+     "range": [
+      [
+       5,
+       4
+      ],
+      [
+       6,
+       23
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Training/Teaching/Diving/Toddlers'/Leisure: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-1",
+      "teaching-pool-1"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-20T14:15",
+     "end": "2026-08-20T22:00",
+     "facilities": "Diving Pool, Toddlers' Pool, Leisure Pool 1",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "diving-pool",
+      "leisure-pool-1",
+      "toddlers-pool"
+     ]
+    },
+    {
+     "start": "2026-09-18T07:30",
+     "end": "2026-09-18T17:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-20T08:00",
+     "end": "2026-09-20T20:00",
+     "facilities": "Main Pool, Teaching Pool 1, Diving Pool",
+     "reason": "Competition",
+     "targets": [
+      "diving-pool",
+      "main-pool",
+      "teaching-pool-1"
+     ]
+    },
+    {
+     "start": "2026-09-25T07:30",
+     "end": "2026-09-25T15:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-27T08:00",
+     "end": "2026-09-27T20:00",
+     "facilities": "Main Pool, Teaching Pool 1, Diving Pool",
+     "reason": "Competition",
+     "targets": [
+      "diving-pool",
+      "main-pool",
+      "teaching-pool-1"
+     ]
+    },
+    {
+     "start": "2026-09-30T07:30",
+     "end": "2026-09-30T15:00",
+     "facilities": "Main Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=35",
+   "id": "tseung-kwan-o-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 36,
+   "name": "Sai Kung Swimming Pool",
+   "district": "Sai Kung",
+   "region": "New Territories",
+   "lat": 22.38346624,
+   "lon": 114.27545149,
+   "phone": "2792 7285",
+   "type": "outdoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 2,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 15m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool",
+     "name": "Teaching pool",
+     "spec": "20m x 13.5m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool",
+     "name": "Leisure pool",
+     "spec": "0.1-1.1m",
+     "kind": "leisure",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "1 November - 31 March",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=36",
+   "id": "sai-kung-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 37,
+   "name": "Tai Kok Tsui Swimming Pool",
+   "district": "Yau Tsim Mong",
+   "region": "Kowloon",
+   "lat": 22.32203372,
+   "lon": 114.16287227,
+   "phone": "2393 1237",
+   "type": "indoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 0,
+   "cleansing_note": "Wednesday if public holiday",
+   "facilities": [
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 14m, 1.2-1.5m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool",
+     "name": "Leisure pool",
+     "spec": "0.4m",
+     "kind": "leisure",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "11 September - 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=37",
+   "id": "tai-kok-tsui-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 38,
+   "name": "Tung Chung Swimming Pool",
+   "district": "Islands",
+   "region": "New Territories",
+   "lat": 22.2893242,
+   "lon": 113.93811062,
+   "phone": "2109 9107",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 1,
+   "cleansing_note": "Wednesday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 25m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Main pool: 11 September - 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Training pool: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "training-pool"
+     ]
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=38",
+   "id": "tung-chung-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 39,
+   "name": "Siu Sai Wan Swimming Pool",
+   "district": "Eastern",
+   "region": "Hong Kong Island",
+   "lat": 22.26357455,
+   "lon": 114.24955287,
+   "phone": "3427 3341",
+   "type": "indoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 3,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "training-pool-1",
+     "name": "Training pool 1",
+     "spec": "25m x 25m, 1.4m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool-2",
+     "name": "Training pool 2",
+     "spec": "25m x 10m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "2 May - 26 July",
+     "range": [
+      [
+       5,
+       2
+      ],
+      [
+       7,
+       26
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=39",
+   "id": "siu-sai-wan-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 40,
+   "name": "Sun Yat Sen Memorial Park Swimming Pool",
+   "district": "Central & Western",
+   "region": "Hong Kong Island",
+   "lat": 22.28998144,
+   "lon": 114.14435355,
+   "phone": "2540 6708",
+   "type": "indoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 1,
+   "cleansing_note": "Friday if public holiday",
+   "facilities": [
+    {
+     "id": "main-pool",
+     "name": "Main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": {
+      "days": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ],
+      "sessions": [
+       [
+        "06:30",
+        "12:00"
+       ],
+       [
+        "13:00",
+        "17:00"
+       ],
+       [
+        "19:00",
+        "22:00"
+       ]
+      ]
+     },
+     "note": "2nd session break extended to 5:00-7:00pm Mon-Fri (except public holidays) under the trial scheme",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 12.5m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "16 April - 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-29T07:30",
+     "end": "2026-08-29T22:00",
+     "facilities": "Main Pool, Training Pool, Spectator Stand",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-09-11T07:30",
+     "end": "2026-09-11T16:00",
+     "facilities": "Main Pool, Training Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-09-13T07:30",
+     "end": "2026-09-13T22:00",
+     "facilities": "Main Pool, Training Pool, Spectator Stand",
+     "reason": "Swimming gala",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-09-18T07:30",
+     "end": "2026-09-18T19:00",
+     "facilities": "Main Pool, Training Pool, Spectator Stand",
+     "reason": "School swimming gala",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-09-19T07:30",
+     "end": "2026-09-19T22:00",
+     "facilities": "Main Pool, Training Pool, Spectator Stand",
+     "reason": "Swimming gala",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=40",
+   "id": "sun-yat-sen-memorial-park-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 41,
+   "name": "Ping Shan Tin Shui Wai Swimming Pool",
+   "district": "Yuen Long",
+   "region": "New Territories",
+   "lat": 22.44737013,
+   "lon": 114.00467401,
+   "phone": "2856 2244",
+   "type": "indoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 0,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "indoor-training-pool",
+     "name": "Indoor training pool",
+     "spec": "25m x 25m, 1.2m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "11 September - 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=41",
+   "id": "ping-shan-tin-shui-wai-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 42,
+   "name": "Lam Tin Swimming Pool",
+   "district": "Kwun Tong",
+   "region": "Kowloon",
+   "lat": 22.31010533,
+   "lon": 114.23739676,
+   "phone": "2205 6535",
+   "type": "indoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 3,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "25m x 25m, 1.2-1.4m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool",
+     "name": "Teaching pool",
+     "spec": "25m x 10m",
+     "kind": "teaching",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "16 April - 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=42",
+   "id": "lam-tin-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 43,
+   "name": "Tuen Mun North West Swimming Pool",
+   "district": "Tuen Mun",
+   "region": "New Territories",
+   "lat": 22.40823234,
+   "lon": 113.96593219,
+   "phone": "2164 8355",
+   "type": "both",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 2,
+   "cleansing_note": "Monday if public holiday",
+   "facilities": [
+    {
+     "id": "indoor-training-pool-1",
+     "name": "Indoor training pool 1",
+     "spec": "25m x 25m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": [
+      4,
+      5
+     ],
+     "weekday_sessions": null,
+     "note": "Indoor pools open April-May only",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "leisure-pool",
+     "name": "Leisure pool",
+     "spec": "0-0.5m",
+     "kind": "leisure",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": [
+      4,
+      5
+     ],
+     "weekday_sessions": null,
+     "note": "Indoor pools open April-May only",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "jacuzzi",
+     "name": "Jacuzzi",
+     "spec": "0.85m",
+     "kind": "jacuzzi",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": [
+      4,
+      5
+     ],
+     "weekday_sessions": null,
+     "note": "Indoor pools open April-May only",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "outdoor-main-pool",
+     "name": "Outdoor main pool",
+     "spec": "50m x 25m",
+     "kind": "main",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": [
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "weekday_sessions": null,
+     "note": "Outdoor pools open June-October",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "training-pool-2",
+     "name": "Training pool 2",
+     "spec": "25m x 15m",
+     "kind": "training",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": [
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "weekday_sessions": null,
+     "note": "Outdoor pools open June-October",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool",
+     "name": "Teaching pool",
+     "spec": "25m x 12m",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": [
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "weekday_sessions": null,
+     "note": "Outdoor pools open June-October",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "Outdoor pools: 1 November - 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "outdoor-main-pool",
+      "teaching-pool",
+      "training-pool-2"
+     ]
+    },
+    {
+     "label": "Indoor pools: 1 September - 21 October",
+     "range": [
+      [
+       9,
+       1
+      ],
+      [
+       10,
+       21
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "indoor-training-pool-1",
+      "jacuzzi",
+      "leisure-pool"
+     ]
+    }
+   ],
+   "closures": [
+    {
+     "start": "2026-08-20T19:00",
+     "end": "2026-08-20T22:00",
+     "facilities": "Leisure Pool",
+     "reason": "Insufficient lifeguard",
+     "targets": [
+      "leisure-pool"
+     ]
+    }
+   ],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=43",
+   "id": "tuen-mun-north-west-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": 44,
+   "name": "Tsing Yi Southwest Swimming Pool",
+   "district": "Kwai Tsing",
+   "region": "New Territories",
+   "lat": 22.35155878,
+   "lon": 114.10206789,
+   "phone": "2715 4202",
+   "type": "indoor",
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 1,
+   "cleansing_note": "",
+   "facilities": [
+    {
+     "id": "indoor-training-pool",
+     "name": "Indoor training pool",
+     "spec": "25m x 15m, 0.9-1.2m",
+     "kind": "training",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "11 September - 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=44",
+   "id": "tsing-yi-southwest-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  },
+  {
+   "swp_id": null,
+   "name": "Tung Cheong Street Swimming Pool",
+   "district": "Tai Po",
+   "region": "New Territories",
+   "lat": 22.44978638,
+   "lon": 114.1701758,
+   "phone": "",
+   "type": "indoor",
+   "sessions": [],
+   "cleansing_weekday": null,
+   "cleansing_note": "",
+   "facilities": [],
+   "maintenance": [],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/en/beach/swim-intro/swimlocation.html",
+   "data_gap": "No LCSD detail page published for this venue yet - hours unknown.",
+   "id": "tung-cheong-street-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
+  }
+ ]
+}

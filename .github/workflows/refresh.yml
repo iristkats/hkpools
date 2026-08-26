@@ -1,0 +1,58 @@
+name: refresh pool data
+
+# 06:00 and 14:00 Hong Kong time (UTC+8). GitHub runs cron in UTC.
+on:
+  schedule:
+    - cron: "0 22 * * *"   # 06:00 HKT
+    - cron: "0 6 * * *"    # 14:00 HKT
+  workflow_dispatch:        # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests beautifulsoup4 lxml
+
+      # parser tests run with no network — catches a regex regression
+      # before a malformed pools.json can ever be published
+      - name: Test parsers
+        run: python scraper.py --selftest
+
+      - name: Scrape LCSD
+        run: |
+          python scraper.py -o pools.json --verbose
+          python enrich.py
+          python facilities.py
+
+      - name: Sanity-check the result
+        run: |
+          python - <<'PY'
+          import json, sys
+          d = json.load(open("pools.json"))
+          pools = d["pools"]
+          facs = sum(len(p["facilities"]) for p in pools)
+          print(f"{len(pools)} venues, {facs} facilities")
+          # refuse to publish an obviously broken scrape
+          if len(pools) < 40:      sys.exit(f"only {len(pools)} venues - aborting")
+          if facs < 150:           sys.exit(f"only {facs} facilities - aborting")
+          withhours = sum(1 for p in pools if p.get("sessions"))
+          if withhours < 40:       sys.exit(f"only {withhours} venues have hours - aborting")
+          PY
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "hkpools bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pools.json
+          git diff --staged --quiet && echo "no change" && exit 0
+          git commit -m "data: refresh $(date -u +%Y-%m-%d\ %H:%M)Z"
+          git push

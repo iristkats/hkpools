@@ -1,0 +1,420 @@
+#!/usr/bin/env python3
+"""
+hkpools scraper — regenerates pools.json from live LCSD sources.
+
+    pip install requests beautifulsoup4 lxml
+    python3 scraper.py            # writes pools.json
+    python3 scraper.py --selftest # runs the pure-logic tests (no network)
+
+Sources
+  1. data.gov.hk facility dataset  -> canonical name, district, lat/lon, and the
+     per-pool LCSD page URL in NSEARCH06_EN (…/Swimming.do?swpId=N)
+  2. Each Swimming.do page         -> session times, weekly cleansing day,
+     annual maintenance windows, facilities, phone, and the rolling ~29-day
+     temporary closure table
+  3. HKO warnsum API               -> live warnings (read by the frontend, not here)
+
+NOTE ON THE HTML SELECTORS: LCSD's Swimming.do markup is table-driven and has no
+stable ids or classes. The extractors below locate blocks by their heading text,
+which is the most durable handle available, and fall back to a whole-page regex
+sweep. Run with --verbose on first use and eyeball a couple of pools before
+trusting a full run.
+"""
+from __future__ import annotations
+import argparse, json, re, sys, time
+from datetime import date
+
+try:
+    import requests
+    from bs4 import BeautifulSoup
+except ImportError:
+    requests = None
+    BeautifulSoup = None
+
+DATASET = "https://www.lcsd.gov.hk/datagovhk/facility/facility-swimming-pools.json"
+POOL_PAGE = "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId={}"
+UA = {"User-Agent": "hkpools/1.0 (personal project; contact: you@example.com)"}
+THROTTLE = 1.0          # seconds between pool-page requests — be polite
+
+MONTHS = {m.lower(): i for i, m in enumerate(
+    ["January","February","March","April","May","June","July","August",
+     "September","October","November","December"], 1)}
+for _m in list(MONTHS):
+    MONTHS[_m[:3]] = MONTHS[_m]
+
+WEEKDAYS = {d.lower(): i for i, d in enumerate(
+    ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"])}
+
+REGION_BY_DISTRICT = {
+    "central and western":"Hong Kong Island","central & western":"Hong Kong Island",
+    "wan chai":"Hong Kong Island","eastern":"Hong Kong Island","southern":"Hong Kong Island",
+    "yau tsim mong":"Kowloon","sham shui po":"Kowloon","kowloon city":"Kowloon",
+    "wong tai sin":"Kowloon","kwun tong":"Kowloon",
+}
+
+# ---------------------------------------------------------------- pure logic
+TIME_RE = re.compile(r"(\d{1,2})[:.](\d{2})\s*(a\.?m\.?|p\.?m\.?|nn|noon)?", re.I)
+SESSION_RE = re.compile(
+    r"(\d{1,2}[:.]\d{2}\s*(?:a\.?m\.?|p\.?m\.?|nn|noon)?)\s*(?:-|–|—|to)\s*"
+    r"(\d{1,2}[:.]\d{2}\s*(?:a\.?m\.?|p\.?m\.?|nn|noon)?)", re.I)
+RANGE_RE = re.compile(
+    r"(\d{1,2})\s*([A-Za-z]+)?\s*(?:-|–|—|to)\s*(\d{1,2})\s+([A-Za-z]+)", re.I)
+DATE_RE = re.compile(r"(\d{4})[/-](\d{1,2})[/-](\d{1,2})")
+
+
+def to24(text: str, assume_pm_before: str | None = None) -> str | None:
+    """'6:30 a.m.' -> '06:30'; '1:00 pm' -> '13:00'; '12:00 nn' -> '12:00'."""
+    m = TIME_RE.search(text or "")
+    if not m:
+        return None
+    h, mi, suf = int(m.group(1)), int(m.group(2)), (m.group(3) or "").lower()
+    if suf.startswith("p") and h != 12:
+        h += 12
+    elif suf.startswith("a") and h == 12:
+        h = 0
+    elif not suf:
+        # No am/pm marker. LCSD sessions never start before 06:00, and any
+        # bare hour below 6 in a session context is an afternoon/evening time.
+        if h < 6:
+            h += 12
+    return f"{h:02d}:{mi:02d}"
+
+
+def parse_sessions(text: str) -> list[list[str]]:
+    out = []
+    for a, b in SESSION_RE.findall(text or ""):
+        s, e = to24(a), to24(b)
+        if s and e and s < e:
+            out.append([s, e])
+    # de-duplicate, keep order
+    seen, uniq = set(), []
+    for s in out:
+        k = tuple(s)
+        if k not in seen:
+            seen.add(k); uniq.append(s)
+    return uniq
+
+
+def parse_cleansing(text: str):
+    """Returns (weekday_index_or_None, note). 0 = Monday."""
+    if not text:
+        return None, ""
+    low = text.lower()
+    m = re.search(r"every\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)", low)
+    wd = WEEKDAYS[m.group(1)] if m else None
+    note = ""
+    alt = re.search(r"\(?\s*(monday|tuesday|wednesday|thursday|friday|saturday|sunday)"
+                    r"\s+if[^)\.]*", low)
+    if alt:
+        note = alt.group(0).strip("( ").capitalize()
+    return wd, note
+
+
+def parse_month_range(text: str):
+    """'1 November - 31 March' -> [[11,1],[3,31]]; None if unparseable."""
+    m = RANGE_RE.search(text or "")
+    if not m:
+        return None
+    d1, mon1, d2, mon2 = m.groups()
+    m2 = MONTHS.get((mon2 or "").lower())
+    m1 = MONTHS.get((mon1 or "").lower()) if mon1 else m2
+    if not m1 or not m2:
+        return None
+    return [[m1, int(d1)], [m2, int(d2)]]
+
+
+SUBSET_HINTS = ("outdoor","indoor","main pool","secondary","training","teaching",
+                "diving","toddler","children","leisure","pools other","jacuzzi")
+
+# --- access restrictions and weekday overrides -----------------------------
+GROUPS_ONLY = re.compile(r"only for group training|for group training purpose", re.I)
+EXTENDED_BREAK = re.compile(
+    r"(?:session break|break)[^.]*?extended[^.]*?(\d{1,2}[:.]\d{2}\s*(?:a\.?m\.?|p\.?m\.?)?)"
+    r"\s*(?:-|–|—|to)\s*(\d{1,2}[:.]\d{2}\s*(?:a\.?m\.?|p\.?m\.?)?)[^.]*", re.I)
+WEEKDAY_ONLY = re.compile(
+    r"(?:open(?:ed)?\s+on|available\s+on)\s+([^;.]*?(?:saturday|sunday|monday|friday)[^;.]*)", re.I)
+CLOSED_WEEKDAYS = re.compile(r"(?:temporarily\s+)?closed\s+on\s+weekdays|closed\s+(?:from\s+)?monday\s+to\s+friday", re.I)
+
+
+def parse_groups_only(text):
+    """True when a facility or venue is restricted to group training."""
+    return bool(GROUPS_ONLY.search(text or ""))
+
+
+def parse_extended_break(text):
+    """
+    'The 2nd session break of main pool will be extended from 5:00 - 7:00 pm on
+    Mon to Fri' -> {'from': '17:00', 'to': '19:00', 'days': [0,1,2,3,4]}
+    Returns None when no extended break is described.
+    """
+    m = EXTENDED_BREAK.search(text or "")
+    if not m:
+        return None
+    start, end = to24(m.group(1)), to24(m.group(2))
+    if not start or not end:
+        return None
+    span = m.group(0).lower()
+    if re.search(r"mon\w*\s*(?:to|-|–)\s*fri", span):
+        days = [0, 1, 2, 3, 4]
+    elif re.search(r"weekday", span):
+        days = [0, 1, 2, 3, 4]
+    else:
+        days = list(range(7))
+    return {"from": start, "to": end, "days": days}
+
+
+def parse_weekend_only(text):
+    """True when a facility runs on weekends/public holidays only."""
+    t = text or ""
+    return bool(CLOSED_WEEKDAYS.search(t)) and bool(
+        re.search(r"saturday|sunday|public holiday", t, re.I))
+
+
+def maintenance_scope(label: str) -> str:
+    prefix = label.lower().split(":")[0]
+    return "venue" if not any(h in prefix for h in SUBSET_HINTS) else "partial"
+
+
+def parse_closure_row(cells: list[str]) -> dict | None:
+    """LCSD closure rows are roughly: date(s) | time(s) | facilities | reason."""
+    if len(cells) < 3:
+        return None
+    raw_date, raw_time = cells[0], cells[1]
+    dates = DATE_RE.findall(raw_date) or DATE_RE.findall(raw_date + " " + raw_time)
+    if not dates:
+        return None
+    start_d = "{}-{:02d}-{:02d}".format(*map(int, dates[0]))
+    end_d = "{}-{:02d}-{:02d}".format(*map(int, dates[1])) if len(dates) > 1 else start_d
+    times = SESSION_RE.findall(raw_time) or SESSION_RE.findall(raw_date)
+    if times:
+        s, e = to24(times[0][0]), to24(times[0][1])
+    else:
+        singles = TIME_RE.findall(raw_time)
+        s = to24(raw_time) if singles else "06:30"
+        e = None
+    open_ended = bool(re.search(r"further notice", " ".join(cells), re.I))
+    return dict(
+        start=f"{start_d}T{s or '06:30'}",
+        end=None if open_ended else (f"{end_d}T{e}" if e else f"{end_d}T22:00"),
+        facilities=cells[2].strip() or "Not stated",
+        reason=(cells[3].strip() if len(cells) > 3 else "Not stated"))
+
+
+# ---------------------------------------------------------------- scraping
+def section_text(soup, *heading_keywords) -> str:
+    """Grab the text near a heading whose label contains any of the keywords."""
+    for kw in heading_keywords:
+        node = soup.find(string=re.compile(kw, re.I))
+        if not node:
+            continue
+        block = node.find_parent(["td", "th", "div", "section", "li"])
+        if not block:
+            continue
+        sib = block.find_next_sibling()
+        chunk = (sib.get_text(" ", strip=True) if sib else "")
+        parent = block.find_parent(["tr", "div", "table"])
+        if len(chunk) < 10 and parent:
+            chunk = parent.get_text(" ", strip=True)
+        if chunk:
+            return chunk
+    return ""
+
+
+def scrape_pool(swp_id: int, verbose=False) -> dict | None:
+    url = POOL_PAGE.format(swp_id)
+    r = requests.get(url, headers=UA, timeout=30)
+    if r.status_code != 200:
+        return None
+    soup = BeautifulSoup(r.text, "lxml")
+    page = soup.get_text(" ", strip=True)
+
+    name = (soup.find("h1") or soup.find("h2"))
+    name = name.get_text(strip=True) if name else f"Pool {swp_id}"
+
+    phone_m = re.search(r"\b(\d{4}\s?\d{4})\b", section_text(soup, "Enquiry", "Telephone") or page)
+
+    sessions_txt = section_text(soup, "Opening Hours", "Opening Schedule", "Session")
+    sessions = parse_sessions(sessions_txt) or parse_sessions(page)
+
+    cleansing_txt = section_text(soup, "cleansing", "cleaning")
+    cwd, cnote = parse_cleansing(cleansing_txt or page)
+
+    maint_txt = section_text(soup, "Annual Maintenance", "Maintenance Period")
+    maintenance = []
+    for part in re.split(r"[;\n]|(?<=\d)\s{2,}", maint_txt):
+        part = part.strip(" .;")
+        if len(part) > 6 and RANGE_RE.search(part):
+            maintenance.append(dict(label=part, range=parse_month_range(part),
+                                    scope=maintenance_scope(part)))
+
+    closures = []
+    for table in soup.find_all("table"):
+        head = table.get_text(" ", strip=True)[:400]
+        if not re.search(r"closure|closed", head, re.I):
+            continue
+        for tr in table.find_all("tr"):
+            cells = [td.get_text(" ", strip=True) for td in tr.find_all(["td", "th"])]
+            if not cells or re.search(r"date", cells[0], re.I):
+                continue
+            row = parse_closure_row(cells)
+            if row:
+                closures.append(row)
+
+    low = page.lower()
+    has_out = "outdoor" in low
+    has_in = "indoor" in low
+    ptype = "both" if (has_in and has_out) else ("outdoor" if has_out else "indoor")
+
+    facilities = []
+    fac_txt = section_text(soup, "Facilit")
+    for f in re.split(r"[;•]|(?<=\))\s+(?=[A-Z])", fac_txt):
+        f = f.strip(" .;")
+        if 3 < len(f) < 90 and re.search(r"pool|jacuzzi|slide|stand|fountain", f, re.I):
+            facilities.append(f)
+
+    if verbose:
+        print(f"  [{swp_id}] {name}: {len(sessions)} sessions, cleansing={cwd}, "
+              f"{len(maintenance)} maint, {len(closures)} closures, {len(facilities)} facilities")
+
+    return dict(swp_id=swp_id, name=name, phone=phone_m.group(1) if phone_m else "",
+                type=ptype, sessions=sessions, cleansing_weekday=cwd,
+                cleansing_note=cnote, facilities=facilities,
+                maintenance=maintenance, closures=closures, url=url)
+
+
+def scrape_all(verbose=False) -> dict:
+    print("fetching facility dataset…")
+    directory = requests.get(DATASET, headers=UA, timeout=30).json()
+    records = directory if isinstance(directory, list) else directory.get("features", directory)
+
+    pools, seen = [], set()
+    for rec in records:
+        props = rec.get("properties", rec)
+        link = props.get("NSEARCH06_EN") or ""
+        m = re.search(r"swpId=(\d+)", link)
+        district = (props.get("SEARCH01_EN") or "").title()
+        base = dict(
+            name=props.get("NAME_EN", "").strip(),
+            district=district,
+            region=REGION_BY_DISTRICT.get(district.lower(), "New Territories"),
+            lat=float(props.get("LATITUDE") or 0),
+            lon=float(props.get("LONGITUDE") or 0))
+
+        if not m:
+            base.update(swp_id=None, phone="", type="indoor", sessions=[],
+                        cleansing_weekday=None, cleansing_note="", facilities=[],
+                        maintenance=[], closures=[],
+                        url="https://www.lcsd.gov.hk/en/beach/swim-intro/swimlocation.html",
+                        data_gap="No LCSD detail page published for this venue yet.")
+            pools.append(base)
+            continue
+
+        swp = int(m.group(1))
+        if swp in seen:
+            continue
+        seen.add(swp)
+        try:
+            detail = scrape_pool(swp, verbose)
+        except Exception as e:                       # noqa: BLE001
+            print(f"  !! swpId={swp} failed: {e}", file=sys.stderr)
+            detail = None
+        if detail:
+            detail.pop("name", None)                 # dataset name is canonical
+            base.update(detail)
+        pools.append(base)
+        time.sleep(THROTTLE)
+
+    for p in pools:
+        p["id"] = (p["name"].lower().replace(" ", "-").replace("'", "")
+                   .replace("&", "and").replace("--", "-"))
+
+    return dict(
+        snapshot_date=date.today().isoformat(),
+        source="LCSD Swimming.do pages + data.gov.hk facility-swimming-pools.json",
+        season=dict(summer="April - October",
+                    note="Heated pools operate in winter with reduced facilities"),
+        fees=dict(standard_weekday=17, standard_weekend=19,
+                  concession_weekday=8, concession_weekend=9, monthly=300),
+        weather_rules=dict(
+            thunderstorm="Outdoor facilities close on an HKO thunderstorm warning for the "
+                         "affected region; otherwise if lightning is reported within 10km, "
+                         "Amber rainstorm or above is in force, or lightning/thunder is "
+                         "observed on site.",
+            reopen="Outdoor facilities reopen when none of the above apply."),
+        pools=pools)
+
+
+# ---------------------------------------------------------------- self-test
+def selftest():
+    assert to24("6:30 a.m.") == "06:30"
+    assert to24("1:00 p.m.") == "13:00"
+    assert to24("12:00 nn") == "12:00"
+    assert to24("10:00am") == "10:00"
+    assert to24("7:00 pm") == "19:00"
+    assert to24("12:00 a.m.") == "00:00"
+
+    assert parse_sessions("1st Session 6:30 a.m. - 12:00 nn 2nd Session 1:00 p.m. - 6:00 p.m.") \
+        == [["06:30", "12:00"], ["13:00", "18:00"]]
+    assert parse_sessions("7:00 a.m. – 10:00 p.m.") == [["07:00", "22:00"]]
+
+    assert parse_cleansing("Every Tuesday (Thursday if public holiday) 10:00am") \
+        == (1, "Thursday if public holiday")
+    assert parse_cleansing("Every Monday 10:00am to end of 2nd session")[0] == 0
+    assert parse_cleansing("")[0] is None
+
+    assert parse_month_range("1 November - 31 March") == [[11, 1], [3, 31]]
+    assert parse_month_range("16 April - 5 June") == [[4, 16], [6, 5]]
+    assert parse_month_range("1-15 April") == [[4, 1], [4, 15]]
+    assert parse_month_range("no dates here") is None
+
+    assert maintenance_scope("1 November - 31 March") == "venue"
+    assert maintenance_scope("Outdoor pools: 1 November - 15 April") == "partial"
+    assert maintenance_scope("Main pool: 16 April - 5 June") == "partial"
+
+    row = parse_closure_row(["2026/09/05", "12:00 p.m. - 10:00 p.m.", "Main Pool", "Competition"])
+    assert row["start"] == "2026-09-05T12:00" and row["end"] == "2026-09-05T22:00", row
+    row = parse_closure_row(["2026/06/06", "06:30 - Until further notice", "Diving Pool", "Lifeguard"])
+    assert row["end"] is None, row
+    row = parse_closure_row(["2026/06/01 - 2026/08/31", "06:30 - 10:00 p.m.", "Toddlers' Pool", "Repairs"])
+    assert row["start"].startswith("2026-06-01") and row["end"].startswith("2026-08-31"), row
+
+    # access restrictions
+    assert parse_groups_only("Wan Chai Swimming Pool (Only for group training purpose)")
+    assert parse_groups_only("Diving pool (Only for group training purpose)")
+    assert not parse_groups_only("Main pool (50m x 25m)")
+
+    # extended session break (Sun Yat Sen trial scheme)
+    eb = parse_extended_break(
+        "The 2nd session break of main pool will be extended from 5:00 - 7:00 pm "
+        "on Mon to Fri, except public holidays under the trial scheme.")
+    assert eb == {"from": "17:00", "to": "19:00", "days": [0, 1, 2, 3, 4]}, eb
+    assert parse_extended_break("Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm") is None
+
+    # weekend-only facility (Ma On Shan giant water slides)
+    assert parse_weekend_only(
+        "Open on Saturday, Sunday and Public Holiday, 2nd Session(1:00pm-6:00pm); "
+        "Temporarily closed on weekdays from Monday to Friday")
+    assert not parse_weekend_only("Open daily during the 2nd session")
+
+    print("all parser self-tests passed")
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--verbose", action="store_true")
+    ap.add_argument("-o", "--out", default="pools.json")
+    a = ap.parse_args()
+
+    if a.selftest:
+        selftest()
+        sys.exit(0)
+
+    if requests is None or BeautifulSoup is None:
+        sys.exit("pip install requests beautifulsoup4 lxml")
+
+    data = scrape_all(a.verbose)
+    with open(a.out, "w") as fh:
+        json.dump(data, fh, indent=1, ensure_ascii=False)
+    print(f"wrote {a.out}: {len(data['pools'])} pools, "
+          f"{sum(len(p['closures']) for p in data['pools'])} closures")
