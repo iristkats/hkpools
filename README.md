@@ -30,6 +30,7 @@ Services Department.
 | `build.py` | injects `status.js` into both consumers |
 | `src/index.html`, `src/hkpools-widget.js` | the consumers' sources |
 | `index.html`, `hkpools-widget.js` | generated; committed so they can be used without a build step. The widget ships pointed at this repo's published `pools.json` |
+| `sanity.py` | the publish gate: refuses a scrape that returns too little, or that regresses against the published data |
 | `parity.js` | proves the two generated copies answer identically |
 | `widget-preview.js` | runs the widget outside Scriptable, so you can see it without an iPhone; also checks every row was set at one font size |
 | `setup-github.sh` | publishes this folder as a repo and starts the first scrape |
@@ -43,7 +44,8 @@ node parity.js                 # 45 venues × 12 times × 2 consumers
 node widget-preview.js         # see what the widget would draw
 ```
 
-`.github/workflows/ci.yml` runs all four on every push. `build.py --check`
+`.github/workflows/ci.yml` runs all four on every push, plus the publish
+gate. `build.py --check`
 fails the build if a generated file was hand-edited or a rebuild forgotten —
 change `status.js` and `src/`, never the generated files.
 
