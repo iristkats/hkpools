@@ -116,7 +116,33 @@ def main():
         got = re.sub(r"\s+", " ", scraper.section_text(soup, *kws))
         print(f"\n  {kws}\n      -> {got[:300]!r}")
 
-    # 6. the end-to-end result
+    # 6. every table, as rows of cells — this is where the opening schedule
+    #    (a month-column grid) and the closure table actually live
+    print("\n" + "=" * 70)
+    print("EVERY TABLE, AS ROWS OF CELLS")
+    print("=" * 70)
+    for n, table in enumerate(soup.find_all("table")):
+        rows = table.find_all("tr")
+        classes = " ".join(table.get("class") or []) or "-"
+        print(f"\n  --- table {n}  class={classes}  rows={len(rows)}")
+        for r, tr in enumerate(rows[:14]):
+            cells = [re.sub(r"\s+", " ", c.get_text(" ", strip=True))[:38]
+                     for c in tr.find_all(["td", "th"])]
+            if any(cells):
+                print(f"      [{r}] {cells}")
+        if len(rows) > 14:
+            print(f"      …{len(rows) - 14} more rows")
+
+    # 7. anything naming the cleansing day, wherever it lives
+    print("\n" + "=" * 70)
+    print("MENTIONS OF CLEANSING")
+    print("=" * 70)
+    for node in soup.find_all(string=re.compile("cleansing|cleaning", re.I))[:8]:
+        holder = node.find_parent(["td", "th", "li", "p", "div"])
+        text = re.sub(r"\s+", " ", holder.get_text(" ", strip=True)) if holder else str(node)
+        print(f"\n  <{holder.name if holder else '?'}> {text[:300]!r}")
+
+    # 8. the end-to-end result
     pool = scraper.scrape_pool(int(swp), verbose=True)
     print(f"\nscrape_pool -> {len(pool['facilities']) if pool else 'None'} facilities")
     if pool:
