@@ -18,30 +18,6 @@
  },
  "pools": [
   {
-   "name": "Tung Cheong Street Swimming Pool",
-   "district": "Tai Po",
-   "region": "New Territories",
-   "lat": 22.44978638,
-   "lon": 114.1701758,
-   "swp_id": null,
-   "phone": "",
-   "type": "indoor",
-   "sessions": [],
-   "cleansing_weekday": null,
-   "cleansing_note": "",
-   "facilities": [],
-   "maintenance": [],
-   "closures": [],
-   "url": "https://www.lcsd.gov.hk/en/beach/swim-intro/swimlocation.html",
-   "data_gap": "No LCSD detail page published for this venue yet.",
-   "id": "tung-cheong-street-swimming-pool",
-   "session_days": null,
-   "cleansing_window": null,
-   "public": true,
-   "access_note": "",
-   "amenities": []
-  },
-  {
    "name": "Victoria Park Swimming Pool",
    "district": "Wan Chai",
    "region": "Hong Kong Island",
@@ -8170,6 +8146,30 @@
    "amenities": [
     "Spectator stand (600 seats), Electronic scoreboard, Family changing room"
    ]
+  },
+  {
+   "name": "Tung Cheong Street Swimming Pool",
+   "district": "Tai Po",
+   "region": "New Territories",
+   "lat": 22.44978638,
+   "lon": 114.1701758,
+   "swp_id": null,
+   "phone": "",
+   "type": "indoor",
+   "sessions": [],
+   "cleansing_weekday": null,
+   "cleansing_note": "",
+   "facilities": [],
+   "maintenance": [],
+   "closures": [],
+   "url": "https://www.lcsd.gov.hk/en/beach/swim-intro/swimlocation.html",
+   "data_gap": "No LCSD detail page published for this venue yet.",
+   "id": "tung-cheong-street-swimming-pool",
+   "session_days": null,
+   "cleansing_window": null,
+   "public": true,
+   "access_note": "",
+   "amenities": []
   }
  ]
 }
