@@ -89,7 +89,34 @@ def main():
     if not seen:
         print("  none — the facility list may be loaded separately")
 
-    # 4. the end-to-end result
+    # 4. every field row — sessions and cleansing are still wrong, and this is
+    #    the table they should be coming from
+    print("\n" + "=" * 70)
+    print("EVERY LABEL / VALUE ROW IN THE VENUE TABLES")
+    print("=" * 70)
+    for cell in soup.find_all(["td", "th"]):
+        label = cell.get_text(" ", strip=True)
+        if not label or len(label) > 40:
+            continue
+        value = cell.find_next_sibling(["td", "th"])
+        if value is None:
+            continue
+        body = re.sub(r"\s+", " ", value.get_text(" ", strip=True))
+        if body:
+            print(f"\n  {label!r}\n      -> {body[:400]!r}")
+
+    # 5. what each field's own lookup returns right now
+    print("\n" + "=" * 70)
+    print("WHAT EACH FIELD LOOKUP RETURNS")
+    print("=" * 70)
+    for kws in [("Enquiry", "Telephone"),
+                ("Opening Hours", "Opening Schedule", "Session"),
+                ("cleansing", "cleaning"),
+                ("Annual Maintenance", "Maintenance Period")]:
+        got = re.sub(r"\s+", " ", scraper.section_text(soup, *kws))
+        print(f"\n  {kws}\n      -> {got[:300]!r}")
+
+    # 6. the end-to-end result
     pool = scraper.scrape_pool(int(swp), verbose=True)
     print(f"\nscrape_pool -> {len(pool['facilities']) if pool else 'None'} facilities")
     if pool:
