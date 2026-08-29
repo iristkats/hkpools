@@ -533,6 +533,7 @@ if (typeof module !== "undefined" && module.exports)
       return false;
     if(state.region && p.region !== state.region) return false;
     if(state.out && !hasOutdoor(p)) return false;
+    if(state.lap && !hasLap(p)) return false;
     return true;
   }
 
@@ -545,16 +546,9 @@ if (typeof module !== "undefined" && module.exports)
     var base = state.pools.filter(matches).map(function(p){
       return {p:p, st:venueStatus(p, now)};
     });
-    var rows = base.filter(function(r){
-      if(state.open && r.st.openN === 0) return false;
-      // "Lap swimming" describes the venue, as "Outdoor" beside it does: a
-      // pool you can swim lengths in. It used to mean "a lap pool open this
-      // second", so at 1am it matched nothing and said nothing. Tick "Open
-      // now" as well and it tightens to exactly that, which is what asking
-      // for both plainly means.
-      if(state.lap && (state.open ? !r.st.lapOpen : !hasLap(r.p))) return false;
-      return true;
-    });
+    // "Open now" is the only chip that asks about the clock; the rest describe
+    // the venue and combine with it independently
+    var rows = base.filter(function(r){ return !(state.open && r.st.openN === 0); });
 
     var openN = rows.filter(function(r){ return r.st.openN > 0; }).length;
     $("#count").textContent = rows.length
