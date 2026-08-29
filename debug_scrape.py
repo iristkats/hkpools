@@ -126,7 +126,7 @@ def main():
         classes = " ".join(table.get("class") or []) or "-"
         print(f"\n  --- table {n}  class={classes}  rows={len(rows)}")
         for r, tr in enumerate(rows[:14]):
-            cells = [re.sub(r"\s+", " ", c.get_text(" ", strip=True))[:38]
+            cells = [re.sub(r"\s+", " ", c.get_text(" ", strip=True))[:300]
                      for c in tr.find_all(["td", "th"])]
             if any(cells):
                 print(f"      [{r}] {cells}")
