@@ -142,7 +142,24 @@ def main():
         text = re.sub(r"\s+", " ", holder.get_text(" ", strip=True)) if holder else str(node)
         print(f"\n  <{holder.name if holder else '?'}> {text[:300]!r}")
 
-    # 8. the end-to-end result
+    # 8. exactly what the session parser is handed, and what it makes of it
+    print("\n" + "=" * 70)
+    print("SCHEDULE CELL FOR TODAY")
+    print("=" * 70)
+    import datetime
+    month = datetime.date.today().month
+    for m in range(1, 13):
+        c = scraper.schedule_cell(soup, m)
+        body = re.sub(r"\s+", " ", c.get_text(" ", strip=True))[:90] if c else None
+        mark = " <- today" if m == month else ""
+        print(f"  month {m:2d}: {body!r}{mark}")
+    cell = scraper.schedule_cell(soup, month)
+    if cell is not None:
+        txt = scraper.SESSION_NOISE.sub(" ", cell.get_text(" ", strip=True))
+        print(f"\n  after removing breaks: {re.sub(r'  +', ' ', txt)[:200]!r}")
+        print(f"  parse_sessions -> {scraper.parse_sessions(txt)}")
+
+    # 9. the end-to-end result
     pool = scraper.scrape_pool(int(swp), verbose=True)
     print(f"\nscrape_pool -> {len(pool['facilities']) if pool else 'None'} facilities")
     if pool:
