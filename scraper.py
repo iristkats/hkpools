@@ -339,8 +339,13 @@ def cleansing_text(soup) -> str:
     """
     for cell in soup.find_all(["td", "th"]):
         text = re.sub(r"\s+", " ", cell.get_text(" ", strip=True))
-        if len(text) < 120 and re.search(
-                r"every\s+(mon|tues|wednes|thurs|fri|satur|sun)day", text, re.I):
+        # anchored, not merely containing: the venue's line opens with the day,
+        # while the paragraph explaining the operation and the section wrapper
+        # around it open with "The weekly cleansing…" and "Weekly Cleansing
+        # Operation". Length is no guide — some venues append a note about a
+        # cleansing day rescheduled around a public holiday.
+        if re.match(r"every\s+(mon|tues|wednes|thurs|fri|satur|sun)day",
+                    text, re.I):
             return text
     return ""
 
@@ -527,8 +532,13 @@ SCHEDULE_PAGE = """
     3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm &amp; 5:00
     - 6:00 pm) Outdoor pools only (Maintenance of indoor pools: 11.9.2026 -
     31.10.2026)</td></tr></table>
-<table class="table table-bordered"><tr><td>Every Wednesday (Thursday
-  \u203b)</td></tr></table>
+<table class="table table-bordered"><tr><td>Weekly Cleansing Operation The
+  weekly cleansing operation is carried out at public swimming pools managed by
+  the LCSD from 10:00 a.m. to the end of the second session.
+  <table class="table table-bordered"><tr><td>Every Tuesday (Monday \u203b) The
+  weekly cleansing operation on 7 April 2026 will be rescheduled and postponed
+  to 8 April 2026 (Wednesday) due to public holidays.</td></tr></table>
+  </td></tr></table>
 <table class="table table-responsive borderless"><tr><td>Note 3</td>
   <td>The weekly cleansing operation is carried out from 10:00 a.m. to the end
   of the second session. The swimming pool will reopen at the third session on
@@ -670,9 +680,12 @@ def selftest():
     assert "pools only" not in schedule_cell(sched, 8).get_text(" ", strip=True)
 
     # the venue's own line, not the paragraph explaining what cleansing is
+    # the wrapper cell opens with "Weekly Cleansing Operation" and the venue's
+    # own line is nested inside it, carrying a rescheduling sentence that put
+    # it well past any sensible length limit
     ctext = cleansing_text(sched)
-    assert ctext.startswith("Every Wednesday"), ctext
-    assert parse_cleansing(ctext) == (2, "Thursday if public holiday"), ctext
+    assert ctext.startswith("Every Tuesday"), ctext
+    assert parse_cleansing(ctext) == (1, "Monday if public holiday"), ctext
 
     # the closure table names neither "closure" nor "closed" anywhere
     table = closure_table(sched)
