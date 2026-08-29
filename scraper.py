@@ -299,7 +299,15 @@ def section_text(soup, *heading_keywords) -> str:
 
 # the schedule cell repeats the gaps between sessions, and a break is a time
 # range like any other — counting it as a session is how three became five
-SESSION_NOISE = re.compile(r"\((?:session breaks?|maintenance)[^)]*\)", re.I)
+SESSION_NOISE = re.compile(
+    # the gaps between sessions, stated in brackets after them
+    r"\((?:session breaks?|maintenance)[^)]*\)"
+    # and Sun Yat Sen's trial scheme, which describes a lengthened gap in
+    # prose: "The 2nd session break of main pool will be extended from 5:00 -
+    # 7:00 pm…". Anchored on "session break" so the session list above it,
+    # which writes "2nd Session:" with a colon, is left alone.
+    r"|\d(?:st|nd|rd|th)\s+session\s+break[^.]*",
+    re.I)
 
 
 def schedule_row(soup):
@@ -771,6 +779,21 @@ def selftest():
                                            ["18:00", "22:00"]], schedule_sessions(maint, 8)
     # a month whose own column states hours still uses that column
     assert schedule_sessions(maint, 4) == schedule_sessions(maint, 8)
+
+    # an extended break is a longer gap, not a fourth session — Sun Yat Sen
+    # published four because this sentence sits in its schedule cell
+    trial = ("1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm "
+             "3rd Session: 6:00 - 10:00 pm The 2nd session break of main pool "
+             "will be extended from 5:00 - 7:00 pm on Mon to Fri, except "
+             "public holidays under the trial scheme.")
+    assert parse_sessions(SESSION_NOISE.sub(" ", trial)) == [
+        ["06:30", "12:00"], ["13:00", "17:00"], ["18:00", "22:00"]], \
+        parse_sessions(SESSION_NOISE.sub(" ", trial))
+    # the sentence itself still parses — scrape_pool does not call this, the
+    # trial scheme reaching pools.json through facilities.py's per-venue
+    # exceptions, but stripping it for the session list must not break it
+    assert parse_extended_break(trial) == {"from": "17:00", "to": "19:00",
+                                           "days": [0, 1, 2, 3, 4]}
 
     # the venue's own line, not the paragraph explaining what cleansing is
     # the wrapper cell opens with "Weekly Cleansing Operation" and the venue's
