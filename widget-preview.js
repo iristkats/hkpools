@@ -196,8 +196,9 @@ async function main() {
     process.exit(1);
   }
   let src = fs.readFileSync(WIDGET, "utf8");
-  // the shipped widget has a placeholder DATA_URL and top-level await
-  src = src.replace('const DATA_URL = "SET_ME";',
+  // read the repo's pools.json rather than whatever the widget points at,
+  // and wrap the top-level await so a plain script can host it
+  src = src.replace(/^const DATA_URL =[\s\S]*?;$/m,
                     'const DATA_URL = "file://pools.json";');
   src = "(async () => {\n" + src + "\n})()";
 

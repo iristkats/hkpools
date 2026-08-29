@@ -29,7 +29,7 @@ Services Department.
 | `status.js` | **the** "is this pool open" implementation — the only place the logic may be edited |
 | `build.py` | injects `status.js` into both consumers |
 | `src/index.html`, `src/hkpools-widget.js` | the consumers' sources |
-| `index.html`, `hkpools-widget.js` | generated; committed so they can be used without a build step |
+| `index.html`, `hkpools-widget.js` | generated; committed so they can be used without a build step. The widget ships pointed at this repo's published `pools.json` |
 | `parity.js` | proves the two generated copies answer identically |
 | `widget-preview.js` | runs the widget outside Scriptable, so you can see it without an iPhone |
 | `setup-github.sh` | publishes this folder as a repo and starts the first scrape |

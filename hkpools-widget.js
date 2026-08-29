@@ -8,15 +8,19 @@
    Small  : one pool, large.
    Medium : up to three, one line each, plus a weather row when it matters.
 
-   Set DATA_URL below to your published pools.json, then put the pool names
-   in the widget's Parameter field, comma-separated. Partial names are fine:
-   "kowloon park" finds "Kowloon Park Swimming Pool".
+   DATA_URL below already points at this repo's published pools.json, so the
+   script works as pasted — change it only if you forked or renamed the repo.
+   Put the pool names in the widget's Parameter field, comma-separated.
+   Partial names are fine: "kowloon park" finds "Kowloon Park Swimming Pool".
 
    The status logic lives in status.js and is injected below at build time —
    the web app runs the identical code, so the two can never disagree.
    ===================================================================== */
 
-const DATA_URL = "SET_ME";   // <- your raw.githubusercontent.com pools.json
+// Where the twice-daily scrape publishes. Forked the repo? Point this at your
+// own copy: raw.githubusercontent.com/<you>/<repo>/main/pools.json
+const DATA_URL =
+  "https://raw.githubusercontent.com/iristkats/hkpools/main/pools.json";
 
 const WARN_URL =
   "https://data.weather.gov.hk/weatherAPI/opendata/weather.php?dataType=warnsum&lang=en";

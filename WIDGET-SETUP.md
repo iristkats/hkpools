@@ -63,8 +63,9 @@ Then skip to **Part 2**.
    enable workflows. Then select **refresh pool data** → **Run workflow** to do
    the first scrape immediately rather than waiting for 06:00.
 
-4. **Grab your raw URL.** Click `pools.json` → the **Raw** button → copy the
-   address bar. It looks like:
+4. **Grab your raw URL** — needed only if your repo is not `iristkats/hkpools`,
+   which the widget points at by default. Click `pools.json` → the **Raw**
+   button → copy the address bar. It looks like:
 
    ```
    https://raw.githubusercontent.com/YOURNAME/hkpools/main/pools.json
@@ -89,12 +90,15 @@ at `https://YOURNAME.github.io/hkpools/`. `setup-github.sh` prints the link.
 2. Open Scriptable → **+** (top right) → paste in all of `hkpools-widget.js`.
    Tap the settings icon and name it **HK Pools**.
 
-3. **Near the top of the script, replace the `DATA_URL` line** with your raw URL
-   from step 4 above:
+3. **Only if you forked or renamed the repo**, replace the `DATA_URL` line near
+   the top with your own raw URL from step 4 above:
 
    ```js
    const DATA_URL = "https://raw.githubusercontent.com/YOURNAME/hkpools/main/pools.json";
    ```
+
+   The shipped script already points at this repo's `main`, so if you are using
+   it as-is there is nothing to change here.
 
 4. Tap **▶︎** once inside Scriptable. You should see a widget preview. This also
    primes the offline cache.
@@ -198,7 +202,7 @@ session times stay correct — only closures could be out of date.
 
 | Symptom | Cause |
 |---|---|
-| "Set DATA_URL at the top of the script" | Step 3 not done — the URL is still the placeholder. |
+| "Set DATA_URL at the top of the script" | The `DATA_URL` line is blank or still says `SET_ME`. Paste the current `hkpools-widget.js` again, or set the line by hand. |
 | "No pool matched …" | Check the Parameter spelling. Try one word, e.g. `victoria`. |
 | "No data yet — open the script once while online" | Run the script inside Scriptable once with signal, to prime the cache. |
 | Widget stuck on old data | Check the repo's **Actions** tab for a failed run. |
