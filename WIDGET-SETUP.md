@@ -115,7 +115,17 @@ at `https://YOURNAME.github.io/hkpools/`. `setup-github.sh` prints the link.
      something else)
 
 Partial names are fine and case doesn't matter: `kowloon park` finds
-"Kowloon Park Swimming Pool".
+"Kowloon Park Swimming Pool". A single typo is forgiven too — `morrison hil`
+and `mai wo` both land. So does a district name, if you only know roughly
+where you are going.
+
+Commas are the tidy separator, but `;` `:` `/` `|` and the full-width `，`
+`、` `；` all work, since no pool name contains any of them.
+
+If one of the names matches nothing, the others still show and the bottom
+line says which was dropped, so it never silently disappears. A name too
+short to be sure about — `mai` could be Mui Wo or Ma On Shan — counts as no
+match rather than a guess, because the wrong pool's hours are worse than none.
 
 ---
 
@@ -203,7 +213,8 @@ session times stay correct — only closures could be out of date.
 | Symptom | Cause |
 |---|---|
 | "Set DATA_URL at the top of the script" | The `DATA_URL` line is blank or still says `SET_ME`. Paste the current `hkpools-widget.js` again, or set the line by hand. |
-| "No pool matched …" | Check the Parameter spelling. Try one word, e.g. `victoria`. |
+| "No pool matched …" | Nothing in the Parameter matched. Try one distinctive word, e.g. `victoria`. |
+| "⚠ no match: …" at the bottom | The other names worked; that one matched nothing, or was too short to pick between two venues. |
 | "No data yet — open the script once while online" | Run the script inside Scriptable once with signal, to prime the cache. |
 | Widget stuck on old data | Check the repo's **Actions** tab for a failed run. |
 | Everything shows CLOSED overnight | Correct — LCSD pools shut at 10pm. |

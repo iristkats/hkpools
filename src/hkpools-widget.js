@@ -119,20 +119,68 @@ function relevantWarnings(raw) {
 
 /* ---- matching ------------------------------------------------------ */
 
-/* "victoria park, morrison" -> the pools they name, in the order given.
+/* Commas are what the setup notes tell you to use, but a phone keyboard
+   offers plenty of other plausible separators — including the full-width
+   punctuation a Chinese keyboard produces. No LCSD pool name or district
+   contains any of these, so splitting on all of them is free. */
+const SEPARATORS = /[,;:/|\n\t\u3001\u3002\uFF0C\uFF1A\uFF1B\uFF5C]+/;
+
+/* "victoria park; mui wo" -> the pools they name, in the order given.
    Case-insensitive substring, so nobody has to type "Swimming Pool". */
 function pickPools(pools, param) {
   const wanted = (param || DEFAULT_POOLS)
-    .split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
+    .split(SEPARATORS).map((s) => s.trim().toLowerCase()).filter(Boolean);
   const picked = [];
   const missing = [];
   for (const w of wanted) {
-    const hit = pools.find((p) => p.name.toLowerCase().includes(w)) ||
-                pools.find((p) => (p.district || "").toLowerCase().includes(w));
-    if (hit && !picked.includes(hit)) picked.push(hit);
-    else if (!hit) missing.push(w);
+    const hit = findPool(pools, w);
+    if (!hit) missing.push(w);
+    else if (!picked.includes(hit)) picked.push(hit);
   }
   return { picked, missing };
+}
+
+function findPool(pools, term) {
+  return pools.find((p) => p.name.toLowerCase().includes(term)) ||
+         pools.find((p) => (p.district || "").toLowerCase().includes(term)) ||
+         nearest(pools, term);
+}
+
+/* A typo shouldn't cost you the widget: "mai wo" still finds Mui Wo. Every
+   word must land, and if two venues match equally well we give up rather
+   than guess — showing the wrong pool's hours is worse than saying so. */
+function nearest(pools, term) {
+  const words = term.split(/\s+/).filter(Boolean);
+  if (!words.length) return null;
+
+  // a word of one or two letters carries too little to spend a typo on, but
+  // it still has to land — it is often the half that disambiguates ("mai wo")
+  const matches = (h, w) =>
+    w.length > 2 ? h.startsWith(w) || editDistance(h, w) <= 1 : h === w;
+
+  let best = null, bestScore = 0, ties = 0;
+  for (const p of pools) {
+    const hay = (p.name + " " + (p.district || "")).toLowerCase().split(/\s+/);
+    let score = 0;
+    for (const w of words) if (hay.some((h) => matches(h, w))) score++;
+    if (score > bestScore) { bestScore = score; best = p; ties = 1; }
+    else if (score === bestScore && score > 0) ties++;
+  }
+  return bestScore === words.length && ties === 1 ? best : null;
+}
+
+/* Levenshtein, one row at a time — enough for one-character slips. */
+function editDistance(a, b) {
+  if (Math.abs(a.length - b.length) > 1) return 99;
+  let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    const row = [i];
+    for (let j = 1; j <= b.length; j++)
+      row[j] = Math.min(prev[j] + 1, row[j - 1] + 1,
+                        prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    prev = row;
+  }
+  return prev[b.length];
 }
 
 const hasOutdoor = (p) =>
@@ -258,7 +306,7 @@ function message(w, now, lines) {
 }
 
 /* One pool named: spend the whole tile on it. */
-function smallOne(w, p, st, now, stale, warnings) {
+function smallOne(w, p, st, now, stale, warnings, missing) {
   header(w, now, stale);
   w.addSpacer(6);
 
@@ -293,12 +341,12 @@ function smallOne(w, p, st, now, stale, warnings) {
   }
 
   w.addSpacer();
-  weatherRow(w, warnings, true);
+  footerRow(w, warnings, missing, true);
 }
 
 /* Two or three named: a stacked row each — name, then its line beneath, so
    the detail gets the full tile width rather than a narrow right-hand column. */
-function smallMany(w, rows, now, stale, warnings) {
+function smallMany(w, rows, now, stale, warnings, missing) {
   header(w, now, stale);
   w.addSpacer(4);
 
@@ -325,10 +373,10 @@ function smallMany(w, rows, now, stale, warnings) {
   }
 
   w.addSpacer();
-  weatherRow(w, warnings, true);
+  footerRow(w, warnings, missing, true);
 }
 
-function mediumWidget(w, rows, now, stale, warnings) {
+function mediumWidget(w, rows, now, stale, warnings, missing) {
   header(w, now, stale);
   w.addSpacer(5);
 
@@ -355,17 +403,26 @@ function mediumWidget(w, rows, now, stale, warnings) {
   }
 
   w.addSpacer();
-  weatherRow(w, warnings, false);
+  footerRow(w, warnings, missing, false);
 }
 
-/* Shown only when a signal is up and one of the chosen pools is outdoors.
-   The small tile has no room for the sentence, so it gets the name alone. */
-function weatherRow(w, warnings, tight) {
-  if (!warnings.length) return;
-  const t = w.addText(tight ? "⚠ " + warnings[0]
-                            : "⚠ " + warnings[0] + " — outdoor pools likely shut");
+/* The last line carries whichever matters more: a weather signal that could
+   shut the pools, or — failing that — a name from the Parameter that matched
+   nothing, so a silent drop doesn't look like a deliberate omission. */
+function footerRow(w, warnings, missing, tight) {
+  let text, color;
+  if (warnings.length) {
+    text = tight ? "⚠ " + warnings[0]
+                 : "⚠ " + warnings[0] + " — outdoor pools likely shut";
+    color = COLORS.part;
+  } else if (missing.length) {
+    text = "⚠ no match: " + missing.join(", ");
+    color = DIM;
+  } else return;
+
+  const t = w.addText(text);
   t.font = Font.systemFont(tight ? 9 : 10);
-  t.textColor = COLORS.part;
+  t.textColor = color;
   t.lineLimit = 1;
   t.minimumScaleFactor = 0.6;
 }
@@ -395,10 +452,10 @@ async function build() {
   // only worth a row if a warning is up AND one of these pools is outdoors
   const warnings = rows.some(({ p }) => hasOutdoor(p)) ? await loadWarnings() : [];
 
-  if (family !== "small") mediumWidget(w, rows, now, stale, warnings);
+  if (family !== "small") mediumWidget(w, rows, now, stale, warnings, missing);
   else if (rows.length === 1)
-    smallOne(w, rows[0].p, rows[0].st, now, stale, warnings);
-  else smallMany(w, rows, now, stale, warnings);
+    smallOne(w, rows[0].p, rows[0].st, now, stale, warnings, missing);
+  else smallMany(w, rows, now, stale, warnings, missing);
 
   w.refreshAfterDate = new Date(Date.now() + 15 * 60 * 1000);
   return w;
