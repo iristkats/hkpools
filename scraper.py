@@ -278,6 +278,128 @@ def facility_lines(cell) -> list[str]:
             out.append(line)
     return out
 
+def scrape_pool(swp_id: int, verbose=False) -> dict | None:
+    url = POOL_PAGE.format(swp_id)
+    r = requests.get(url, headers=UA, timeout=30)
+    if r.status_code != 200:
+        return None
+    soup = BeautifulSoup(r.text, "lxml")
+    page = soup.get_text(" ", strip=True)
+
+    name = (soup.find("h1") or soup.find("h2"))
+    name = name.get_text(strip=True) if name else f"Pool {swp_id}"
+
+    phone_m = re.search(r"\b(\d{4}\s?\d{4})\b", section_text(soup, "Enquiry", "Telephone") or page)
+
+    sessions_txt = section_text(soup, "Opening Hours", "Opening Schedule", "Session")
+    sessions = parse_sessions(sessions_txt) or parse_sessions(page)
+
+    cleansing_txt = section_text(soup, "cleansing", "cleaning")
+    cwd, cnote = parse_cleansing(cleansing_txt or page)
+
+    maint_txt = section_text(soup, "Annual Maintenance", "Maintenance Period")
+    maintenance = []
+    for part in re.split(r"[;\n]|(?<=\d)\s{2,}", maint_txt):
+        part = part.strip(" .;")
+        if len(part) > 6 and RANGE_RE.search(part):
+            maintenance.append(dict(label=part, range=parse_month_range(part),
+                                    scope=maintenance_scope(part)))
+
+    closures = []
+    for table in soup.find_all("table"):
+        head = table.get_text(" ", strip=True)[:400]
+        if not re.search(r"closure|closed", head, re.I):
+            continue
+        for tr in table.find_all("tr"):
+            cells = [td.get_text(" ", strip=True) for td in tr.find_all(["td", "th"])]
+            if not cells or re.search(r"date", cells[0], re.I):
+                continue
+            row = parse_closure_row(cells)
+            if row:
+                closures.append(row)
+
+    low = page.lower()
+    has_out = "outdoor" in low
+    has_in = "indoor" in low
+    ptype = "both" if (has_in and has_out) else ("outdoor" if has_out else "indoor")
+
+    fac_cell = labelled_cell(soup, r"^Facilities$", "Facilit")
+    facilities = facility_lines(fac_cell) if fac_cell is not None else []
+
+    if verbose:
+        print(f"  [{swp_id}] {name}: {len(sessions)} sessions, cleansing={cwd}, "
+              f"{len(maintenance)} maint, {len(closures)} closures, {len(facilities)} facilities")
+
+    return dict(swp_id=swp_id, name=name, phone=phone_m.group(1) if phone_m else "",
+                type=ptype, sessions=sessions, cleansing_weekday=cwd,
+                cleansing_note=cnote, facilities=facilities,
+                maintenance=maintenance, closures=closures, url=url)
+
+
+def scrape_all(verbose=False) -> dict:
+    print("fetching facility dataset…")
+    directory = requests.get(DATASET, headers=UA, timeout=30).json()
+    records = directory if isinstance(directory, list) else directory.get("features", directory)
+
+    pools, seen = [], set()
+    for rec in records:
+        props = rec.get("properties", rec)
+        link = props.get("NSEARCH06_EN") or ""
+        m = re.search(r"swpId=(\d+)", link)
+        district = (props.get("SEARCH01_EN") or "").title()
+        base = dict(
+            name=props.get("NAME_EN", "").strip(),
+            district=district,
+            region=REGION_BY_DISTRICT.get(district.lower(), "New Territories"),
+            lat=float(props.get("LATITUDE") or 0),
+            lon=float(props.get("LONGITUDE") or 0))
+
+        if not m:
+            base.update(swp_id=None, phone="", type="indoor", sessions=[],
+                        cleansing_weekday=None, cleansing_note="", facilities=[],
+                        maintenance=[], closures=[],
+                        url="https://www.lcsd.gov.hk/en/beach/swim-intro/swimlocation.html",
+                        data_gap="No LCSD detail page published for this venue yet.")
+            pools.append(base)
+            continue
+
+        swp = int(m.group(1))
+        if swp in seen:
+            continue
+        seen.add(swp)
+        try:
+            detail = scrape_pool(swp, verbose)
+        except Exception as e:                       # noqa: BLE001
+            print(f"  !! swpId={swp} failed: {e}", file=sys.stderr)
+            detail = None
+        if detail:
+            detail.pop("name", None)                 # dataset name is canonical
+            base.update(detail)
+        pools.append(base)
+        time.sleep(THROTTLE)
+
+    for p in pools:
+        p["id"] = (p["name"].lower().replace(" ", "-").replace("'", "")
+                   .replace("&", "and").replace("--", "-"))
+
+    return dict(
+        snapshot_date=date.today().isoformat(),
+        source="LCSD Swimming.do pages + data.gov.hk facility-swimming-pools.json",
+        season=dict(summer="April - October",
+                    note="Heated pools operate in winter with reduced facilities"),
+        fees=dict(standard_weekday=17, standard_weekend=19,
+                  concession_weekday=8, concession_weekend=9, monthly=300),
+        weather_rules=dict(
+            thunderstorm="Outdoor facilities close on an HKO thunderstorm warning for the "
+                         "affected region; otherwise if lightning is reported within 10km, "
+                         "Amber rainstorm or above is in force, or lightning/thunder is "
+                         "observed on site.",
+            reopen="Outdoor facilities reopen when none of the above apply."),
+        pools=pools)
+
+
+# ---------------------------------------------------------------- self-test
+
 # Trimmed from the live Pao Yue Kong page (swpId=1), keeping the two things
 # that matter: the navigation entry ending "…Swimming Pool Facilities", which
 # used to win the match, and the real facilities row it hid. The live page puts
