@@ -1,0 +1,39 @@
+name: checks
+
+# Everything here runs offline. The scrape lives in refresh.yml.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # a regex regression must never reach a published pools.json
+      - name: Parser self-tests
+        run: python scraper.py --selftest
+
+      # status.js is the only place the logic may be edited; this catches a
+      # hand-edit of index.html or hkpools-widget.js, or a forgotten rebuild
+      - name: Built files are current
+        run: python build.py --check
+
+      # the web app and the widget must answer identically, everywhere, always
+      - name: Status-engine parity
+        run: node parity.js
+
+      # parity covers the shared engine; this covers the widget's own code
+      - name: Widget renders
+        run: node widget-preview.js

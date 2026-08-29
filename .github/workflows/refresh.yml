@@ -20,6 +20,10 @@ jobs:
         with:
           python-version: "3.12"
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - run: pip install requests beautifulsoup4 lxml
 
       # parser tests run with no network — catches a regex regression
@@ -47,6 +51,11 @@ jobs:
           withhours = sum(1 for p in pools if p.get("sessions"))
           if withhours < 40:       sys.exit(f"only {withhours} venues have hours - aborting")
           PY
+
+      # the freshly scraped data must still drive both consumers identically,
+      # and still satisfy the engine's invariants
+      - name: Status-engine parity on the new data
+        run: node parity.js
 
       - name: Commit if changed
         run: |

@@ -212,8 +212,18 @@ def main():
         if not p["public"]:
             stats["nonpublic"] += 1
 
+        # Re-running the pipeline must be a no-op, not a crash: if this pool has
+        # already been split, rebuild the page's original strings and redo the
+        # work, so a change here applies without a fresh scrape. (cf. enrich.py)
+        raw_facilities = p["facilities"]
+        if raw_facilities and isinstance(raw_facilities[0], dict):
+            raw_facilities = [
+                f["name"] + (f" ({f['spec']})" if f.get("spec") else "")
+                for f in raw_facilities
+            ] + list(p.get("amenities") or [])
+
         facilities, amenities, used_ids, matched_keys = [], [], {}, set()
-        for raw in p["facilities"]:
+        for raw in raw_facilities:
             name, spec = split_spec(raw)
             if AMENITY.search(name):
                 amenities.append(name)

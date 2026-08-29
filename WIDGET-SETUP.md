@@ -21,9 +21,9 @@ bash setup-github.sh
 ```
 
 It checks you're in the right folder, installs/signs you into the GitHub CLI if
-needed, creates the public repo, pushes only the files the scraper needs, kicks
-off the first scrape, and prints the exact `DATA_URL` line to paste into the
-widget. It stops rather than overwriting if the repo already exists.
+needed, creates the public repo, pushes the files, kicks off the first scrape,
+and prints the exact `DATA_URL` line to paste into the widget. It stops rather
+than overwriting if the repo already exists.
 
 Then skip to **Part 2**.
 
@@ -40,13 +40,19 @@ Then skip to **Part 2**.
    which the widget can't safely hold). Create it.
 
 2. **Upload the files.** On the new repo page click **uploading an existing
-   file**, then drag in everything from the zip *except* `index.html`:
+   file**, then drag in everything from the zip:
 
    ```
-   scraper.py   enrich.py   facilities.py   build_data.py
-   status.js    pools.json
-   .github/workflows/refresh.yml
+   scraper.py   enrich.py   facilities.py   build_data.py   build.py
+   status.js    parity.js   widget-preview.js               pools.json
+   index.html   hkpools-widget.js
+   src/index.html   src/hkpools-widget.js
+   .github/workflows/refresh.yml   .github/workflows/ci.yml
    ```
+
+   > Upload `index.html` and `hkpools-widget.js` even though the widget is
+   > pasted into Scriptable rather than fetched: the refresh workflow checks
+   > them against `status.js` before it will publish new data.
 
    > If the `.github` folder doesn't appear in the drag-and-drop (macOS hides
    > dot-folders), use **Add file → Create new file**, type
@@ -68,6 +74,10 @@ Then skip to **Part 2**.
 
 From then on the scraper runs at 06:00 and 14:00 HKT and commits any change.
 If nothing changed, it commits nothing.
+
+**Bonus — the web app.** The same data drives a page listing all 45 venues.
+Repo **Settings → Pages → Deploy from branch → `main` / root**, and it appears
+at `https://YOURNAME.github.io/hkpools/`. `setup-github.sh` prints the link.
 
 ---
 
@@ -149,7 +159,11 @@ session times stay correct — only closures could be out of date.
 - **The status engine is shared.** `status.js` is injected into both the web app
   and the widget at build time by `build.py`, and `parity.js` checks all 45
   venues at 11 different times to prove they agree. Change the logic in
-  `status.js` only — never in the built files.
+  `status.js` only — never in the built files; `build.py --check` fails the
+  build if you do.
+- **You can see the widget without an iPhone.** `node widget-preview.js` draws
+  it as text, and takes `--at 2026-08-25T10:30` and `--warn` so you can look at
+  a cleansing day or a thunderstorm signal.
 
 ---
 

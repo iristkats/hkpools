@@ -1,0 +1,406 @@
+<!doctype html>
+@@BANNER@@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HK Pools — are they open?</title>
+<meta name="description" content="Live opening status for all 45 LCSD public swimming pools in Hong Kong.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8F%8A%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#f4f6f8; --card:#ffffff; --ink:#111a20; --dim:#5c6b76; --line:#e2e8ed;
+    --open:#1a8a3c; --part:#b46a00; --shut:#c2352b; --priv:#7d3fbe; --unk:#6b7680;
+    --accent:#0d6d7a; --shadow:0 1px 2px rgba(16,32,44,.06),0 4px 14px rgba(16,32,44,.05);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0c1419; --card:#141f27; --ink:#e8eef2; --dim:#93a4b0; --line:#22323d;
+      --open:#3ddc7a; --part:#ffab2e; --shut:#ff6b5e; --priv:#c88bf5; --unk:#8ba0ad;
+      --accent:#4fd0e0; --shadow:none;
+    }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:20px 16px 64px}
+
+  header h1{margin:0; font-size:22px; letter-spacing:-.02em}
+  header .sub{margin:3px 0 0; color:var(--dim); font-size:13px}
+  .clock{font-variant-numeric:tabular-nums}
+
+  .banner{
+    margin:14px 0 0; padding:10px 12px; border-radius:10px; font-size:13.5px;
+    background:color-mix(in srgb,var(--part) 14%,var(--card)); color:var(--ink);
+    border:1px solid color-mix(in srgb,var(--part) 40%,transparent);
+  }
+  .banner.err{background:color-mix(in srgb,var(--shut) 12%,var(--card));
+              border-color:color-mix(in srgb,var(--shut) 40%,transparent)}
+
+  .controls{margin:16px 0 4px; display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  input[type=search]{
+    flex:1 1 220px; min-width:0; padding:9px 12px; font-size:15px; color:var(--ink);
+    background:var(--card); border:1px solid var(--line); border-radius:9px;
+  }
+  input[type=search]:focus{outline:2px solid var(--accent); outline-offset:-1px}
+  .chips{display:flex; flex-wrap:wrap; gap:6px}
+  .chip{
+    padding:6px 11px; font-size:13px; border-radius:999px; cursor:pointer;
+    background:var(--card); color:var(--dim);
+    border:1px solid var(--line);
+  }
+  .chip[aria-pressed=true]{background:var(--accent); border-color:var(--accent); color:#fff}
+  .count{margin:12px 0 6px; color:var(--dim); font-size:13px}
+
+  .region{margin:22px 0 8px; font-size:12px; letter-spacing:.09em;
+          text-transform:uppercase; color:var(--dim)}
+
+  .pool{
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    margin-bottom:9px; box-shadow:var(--shadow); overflow:hidden;
+  }
+  .pool > summary{
+    list-style:none; cursor:pointer; padding:12px 14px;
+    display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:10px;
+    align-items:center;
+  }
+  .pool > summary::-webkit-details-marker{display:none}
+  .dot{width:10px; height:10px; border-radius:50%; background:var(--unk)}
+  .nm{font-weight:600; letter-spacing:-.01em; display:block}
+  .meta{display:block; color:var(--dim); font-size:12.5px; margin-top:1px}
+  .state{text-align:right; font-size:13px; font-weight:600; max-width:56%}
+  .state small{
+    display:block; font-weight:400; color:var(--dim); font-size:12px;
+    line-height:1.35; overflow-wrap:anywhere;
+  }
+
+  .open .dot{background:var(--open)} .open .state{color:var(--open)}
+  .part .dot{background:var(--part)} .part .state{color:var(--part)}
+  .shut .dot{background:var(--shut)} .shut .state{color:var(--shut)}
+  .priv .dot{background:var(--priv)} .priv .state{color:var(--priv)}
+  .unk  .dot{background:var(--unk)}  .unk  .state{color:var(--unk)}
+
+  .body{padding:2px 14px 14px; border-top:1px solid var(--line); margin-top:2px}
+  .facs{width:100%; border-collapse:collapse; font-size:13px; margin-top:8px}
+  .facs td{padding:5px 0; border-bottom:1px solid var(--line); vertical-align:top}
+  .facs tr:last-child td{border-bottom:none}
+  .facs .fs{text-align:right; white-space:nowrap; padding-left:10px}
+  .spec{color:var(--dim); font-size:12px}
+  .tag{
+    display:inline-block; margin-left:6px; padding:1px 6px; border-radius:5px;
+    font-size:10.5px; letter-spacing:.03em; text-transform:uppercase;
+    background:var(--bg); color:var(--dim); border:1px solid var(--line);
+  }
+  .notices{margin:9px 0 0; padding:0; list-style:none; font-size:12.5px; color:var(--dim)}
+  .notices li{padding:3px 0}
+  .links{margin-top:10px; font-size:13px; display:flex; gap:14px; flex-wrap:wrap}
+  a{color:var(--accent)}
+  footer{margin-top:34px; padding-top:16px; border-top:1px solid var(--line);
+         color:var(--dim); font-size:12.5px}
+  .empty{padding:28px 4px; color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>HK Pools</h1>
+    <p class="sub">All 45 LCSD public pools · <span class="clock" id="clock">—</span> Hong Kong</p>
+  </header>
+
+  <div id="notice"></div>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search pool or district…" autocomplete="off" aria-label="Search pool or district">
+    <div class="chips" id="chips">
+      <button class="chip" id="f-open" aria-pressed="false">Open now</button>
+      <button class="chip" id="f-lap" aria-pressed="false">Lap swimming</button>
+      <button class="chip" id="f-out" aria-pressed="false">Outdoor</button>
+    </div>
+  </div>
+  <div class="chips" id="regions"></div>
+
+  <p class="count" id="count"></p>
+  <main id="list"></main>
+
+  <footer id="foot"></footer>
+</div>
+
+<script>
+// @@STATUS_ENGINE@@
+</script>
+
+<script>
+/* =====================================================================
+   Web app — presentation only. Every "is it open" answer above this line
+   comes from the injected status engine, byte-identical to the widget's.
+   ===================================================================== */
+(function(){
+  "use strict";
+
+  var params   = new URLSearchParams(location.search);
+  var DATA_URL = params.get("data") || "pools.json";
+  var WARN_URL = "https://data.weather.gov.hk/weatherAPI/opendata/weather.php" +
+                 "?dataType=warnsum&lang=en";
+
+  var state = {pools:[], meta:null, q:"", open:false, lap:false, out:false,
+               region:null, warnings:[]};
+
+  var $  = function(s){ return document.querySelector(s); };
+  var esc = function(s){
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];
+    });
+  };
+  var shortName = function(n){ return n.replace(/\s+Swimming Pool( Complex)?$/i, ""); };
+  var hasOutdoor = function(p){
+    return p.type !== "indoor" ||
+           (p.facilities||[]).some(function(f){ return f.location === "outdoor"; });
+  };
+
+  /* ---- load ---- */
+
+  function boot(){
+    fetch(DATA_URL, {cache:"no-cache"})
+      .then(function(r){
+        if(!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(function(d){
+        state.meta = d;
+        state.pools = d.pools || [];
+        drawRegions();
+        drawFooter();
+        render();
+        setInterval(render, 30000);
+        loadWarnings();
+      })
+      .catch(function(e){
+        $("#notice").innerHTML =
+          '<div class="banner err">Couldn\'t load <code>' + esc(DATA_URL) +
+          '</code> — ' + esc(e.message) + '.</div>';
+      });
+  }
+
+  /* Best-effort: HKO may refuse the cross-origin read, in which case the
+     page simply carries no weather line rather than an error. */
+  function loadWarnings(){
+    fetch(WARN_URL).then(function(r){ return r.json(); }).then(function(raw){
+      var out = [];
+      Object.keys(raw || {}).forEach(function(k){
+        var w = raw[k];
+        if(!w || w.actionCode === "CANCEL") return;
+        var code = String(w.code || "");
+        if(k === "WTS" || code.indexOf("WRAIN") === 0 ||
+           (code.indexOf("TC") === 0 && !/TC1$/.test(code)))
+          out.push(w.type || w.name || k);
+      });
+      state.warnings = out;
+      drawNotice();
+    }).catch(function(){ /* no weather line */ });
+  }
+
+  function drawNotice(){
+    if(!state.warnings.length){ $("#notice").innerHTML = ""; return; }
+    $("#notice").innerHTML =
+      '<div class="banner">⚠ ' + esc(state.warnings.join(" · ")) +
+      ' — outdoor facilities are likely shut. Indoor pools normally stay open.</div>';
+  }
+
+  /* ---- chrome ---- */
+
+  function drawRegions(){
+    var regions = [];
+    state.pools.forEach(function(p){
+      if(regions.indexOf(p.region) < 0) regions.push(p.region);
+    });
+    var host = $("#regions");
+    host.innerHTML = "";
+    regions.forEach(function(r){
+      var b = document.createElement("button");
+      b.className = "chip";
+      b.textContent = r;
+      b.setAttribute("aria-pressed", "false");
+      b.onclick = function(){
+        state.region = state.region === r ? null : r;
+        Array.prototype.forEach.call(host.children, function(c){
+          c.setAttribute("aria-pressed", String(c.textContent === state.region));
+        });
+        render();
+      };
+      host.appendChild(b);
+    });
+  }
+
+  function drawFooter(){
+    var m = state.meta, f = m.fees || {};
+    $("#foot").innerHTML =
+      "Data scraped from LCSD venue pages and data.gov.hk, snapshot " +
+      esc(m.snapshot_date) + ", refreshed twice daily. " +
+      (f.standard_weekday ? "Adult admission $" + f.standard_weekday +
+        " weekdays, $" + f.standard_weekend + " weekends and public holidays. " : "") +
+      esc((m.season && m.season.note) || "") +
+      " Always ring the venue before travelling for a specific facility.";
+  }
+
+  /* ---- phrasing (mirrors the widget's, from the same status fields) ---- */
+
+  function stateLines(p, st){
+    if(st.code === "priv") return ["Groups only", "no public swimming"];
+    if(st.code === "unk")  return ["No hours", "not published"];
+    if(st.openN > 0){
+      var what = st.vague && st.vague.length ? "see notice"
+               : st.openN === st.total ? "all pools open"
+               : st.openN + " of " + st.total + " pools";
+      return ["Open", "until " + fmt(st.until) + " · " + what];
+    }
+    var when = st.nextRaw ? "Opens " + fmt(st.nextRaw) : "Closed";
+    var why  = st.cleansing ? "weekly cleansing" : closedReason(st);
+    return [when, why];
+  }
+
+  function closedReason(st){
+    var shut = st.facs.filter(function(x){ return x.s.code !== "priv"; });
+    if(!shut.length) return "closed";
+    var all = function(label){
+      return shut.every(function(x){ return x.s.label === label; });
+    };
+    if(all("Maintenance")) return "annual maintenance";
+    if(all("Out of season")) return "out of season";
+    // a stated closure, not a facility's standing note
+    var named = shut.filter(function(x){ return x.s.reason; });
+    return named.length === shut.length ? named[0].s.reason : "closed for the day";
+  }
+
+  /* ---- render ---- */
+
+  function matches(p){
+    var q = state.q.trim().toLowerCase();
+    if(q && (p.name + " " + p.district + " " + p.region).toLowerCase().indexOf(q) < 0)
+      return false;
+    if(state.region && p.region !== state.region) return false;
+    if(state.out && !hasOutdoor(p)) return false;
+    return true;
+  }
+
+  function render(){
+    var now = hkNow();
+    $("#clock").textContent = now.toLocaleTimeString("en-GB",
+      {hour:"2-digit", minute:"2-digit"}) + ", " +
+      now.toLocaleDateString("en-GB", {weekday:"short", day:"numeric", month:"short"});
+
+    var rows = state.pools.filter(matches).map(function(p){
+      return {p:p, st:venueStatus(p, now)};
+    }).filter(function(r){
+      if(state.open && r.st.openN === 0) return false;
+      if(state.lap && !r.st.lapOpen) return false;
+      return true;
+    });
+
+    var openN = rows.filter(function(r){ return r.st.openN > 0; }).length;
+    $("#count").textContent = rows.length
+      ? rows.length + " venue" + (rows.length === 1 ? "" : "s") +
+        " · " + openN + " with something open right now"
+      : "";
+
+    var list = $("#list");
+    if(!rows.length){
+      list.innerHTML = '<p class="empty">Nothing matches those filters.</p>';
+      return;
+    }
+
+    var openIds = {};
+    Array.prototype.forEach.call(list.querySelectorAll("details[open]"), function(d){
+      openIds[d.dataset.id] = true;
+    });
+
+    var html = "", region = null;
+    rows.forEach(function(r){
+      if(r.p.region !== region){
+        region = r.p.region;
+        html += '<h2 class="region">' + esc(region) + "</h2>";
+      }
+      html += card(r.p, r.st, now, openIds[r.p.id]);
+    });
+    list.innerHTML = html;
+  }
+
+  function card(p, st, now, isOpen){
+    var lines = stateLines(p, st);
+    return '<details class="pool ' + st.code + '" data-id="' + esc(p.id) + '"' +
+             (isOpen ? " open" : "") + '>' +
+      "<summary>" +
+        '<span class="dot"></span>' +
+        "<span>" +
+          '<span class="nm">' + esc(shortName(p.name)) + "</span>" +
+          '<span class="meta">' + esc(p.district) +
+            (hasOutdoor(p) ? " · outdoor" : " · indoor") + "</span>" +
+        "</span>" +
+        '<span class="state">' + esc(lines[0]) +
+          "<small>" + esc(lines[1]) + "</small></span>" +
+      "</summary>" +
+      '<div class="body">' + facilityTable(p, st) + notices(p, st, now) +
+        '<div class="links">' +
+          '<a href="' + esc(p.url) + '" rel="noreferrer">LCSD page</a>' +
+          '<a href="https://maps.apple.com/?q=' + encodeURIComponent(p.name) +
+            "&ll=" + p.lat + "," + p.lon + '" rel="noreferrer">Map</a>' +
+          (p.phone ? '<a href="tel:' + esc(p.phone.replace(/\s/g, "")) + '">' +
+                     esc(p.phone) + "</a>" : "") +
+        "</div>" +
+      "</div></details>";
+  }
+
+  function facilityTable(p, st){
+    if(!st.facs.length) return '<p class="spec">No facility list published.</p>';
+    var rows = st.facs.map(function(x){
+      var s = x.s, when =
+        s.code === "open" ? "until " + fmt(s.until) :
+        s.code === "soon" ? "opens " + s.label :
+        s.label;
+      return "<tr><td>" + esc(x.f.name) +
+        (x.f.lap ? '<span class="tag">lap</span>' : "") +
+        (x.f.location === "outdoor" ? '<span class="tag">outdoor</span>' : "") +
+        (x.f.spec ? '<div class="spec">' + esc(x.f.spec) + "</div>" : "") +
+        (s.note ? '<div class="spec">' + esc(s.note) + "</div>" : "") +
+        '</td><td class="fs ' + s.code + '">' + esc(when) + "</td></tr>";
+    }).join("");
+    return '<table class="facs">' + rows + "</table>";
+  }
+
+  function notices(p, st, now){
+    var out = [];
+    if(st.cleansing || p.cleansing_weekday != null){
+      var day = ["Monday","Tuesday","Wednesday","Thursday","Friday",
+                 "Saturday","Sunday"][p.cleansing_weekday];
+      if(day) out.push("Weekly cleansing: " + day +
+        (p.cleansing_note ? " — " + p.cleansing_note : ""));
+    }
+    (p.maintenance || []).forEach(function(m){
+      out.push("Annual maintenance: " + m.label);
+    });
+    (st.vague || []).forEach(function(c){ out.push("Notice: " + c.reason); });
+    if(!out.length) return "";
+    return '<ul class="notices"><li>' +
+           out.map(esc).join("</li><li>") + "</li></ul>";
+  }
+
+  /* ---- wiring ---- */
+
+  $("#q").addEventListener("input", function(e){ state.q = e.target.value; render(); });
+  [["#f-open","open"],["#f-lap","lap"],["#f-out","out"]].forEach(function(pair){
+    var el = $(pair[0]);
+    el.onclick = function(){
+      state[pair[1]] = !state[pair[1]];
+      el.setAttribute("aria-pressed", String(state[pair[1]]));
+      render();
+    };
+  });
+
+  boot();
+})();
+</script>
+</body>
+</html>

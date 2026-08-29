@@ -34,7 +34,7 @@ function facilityStatus(p, f, now){
   var mo=now.getMonth()+1, day=now.getDate(), wd=(now.getDay()+6)%7;
   var nowM=now.getHours()*60+now.getMinutes();
   var today=isoDay(now);
-  var out={code:"shut", label:"Closed", note:f.note||"", sessions:[]};
+  var out={code:"shut", label:"Closed", note:f.note||"", reason:"", sessions:[]};
 
   if(!p.public || !f.public){
     out.code="priv"; out.label="Groups only";
@@ -45,7 +45,7 @@ function facilityStatus(p, f, now){
     var m=p.maintenance[i];
     if(inMonthRange(m.range,mo,day) &&
        (m.scope==="venue" || (m.targets && m.targets.indexOf(f.id)>=0))){
-      out.label="Maintenance"; out.note=m.label; return out;
+      out.label="Maintenance"; out.note=m.label; out.reason=m.label; return out;
     }
   }
 
@@ -95,6 +95,9 @@ function facilityStatus(p, f, now){
   if(closure){
     out.label="Closed";
     out.note=closure.reason + (closure.end ? "" : " (until further notice)");
+    // `reason` marks a closure we can name; `note` may just be standing text
+    // about the facility, which is never why it is shut right now.
+    out.reason=out.note;
     return out;
   }
 
