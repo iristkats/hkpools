@@ -126,6 +126,10 @@ def main():
         classes = " ".join(table.get("class") or []) or "-"
         print(f"\n  --- table {n}  class={classes}  rows={len(rows)}")
         for r, tr in enumerate(rows[:14]):
+            spans = [(c.name, c.get("colspan") or "1")
+                     for c in tr.find_all(["td", "th"])]
+            if spans:
+                print(f"      [{r}] spans={spans}")
             cells = [re.sub(r"\s+", " ", c.get_text(" ", strip=True))[:300]
                      for c in tr.find_all(["td", "th"])]
             if any(cells):
