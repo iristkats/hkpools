@@ -105,7 +105,8 @@ at `https://YOURNAME.github.io/hkpools/`. `setup-github.sh` prints the link.
 6. **Long-press the new widget → Edit Widget**:
    - **Script**: `HK Pools`
    - **Parameter**: your pools, comma-separated —
-     `Kowloon Park, Victoria Park, Morrison Hill`
+     `Kowloon Park, Victoria Park, Morrison Hill`. Up to three are shown, on
+     either size; a single name gives the small widget its large layout.
    - **When Interacting**: `Run Script` (or `Open URL` if you'd rather it opened
      something else)
 
@@ -116,28 +117,54 @@ Partial names are fine and case doesn't matter: `kowloon park` finds
 
 ## What you'll see
 
-**Small** — one pool, at a glance:
+Both sizes take up to three pools. Name one and the small widget spends the
+whole tile on it; name two or three and it lists them.
+
+**Small, one pool** — at a glance:
 
 ```
-HK POOLS              Mon 11:33
+HK POOLS              Mon 07:30
 Victoria Park
 OPEN
-until 5:00pm · all pools
+until 10:00am · all pools
+next session 6:00pm
 ```
 
-**Medium** — up to three:
+**Small, two or three:**
 
 ```
-HK POOLS              Mon 11:33
-● Kowloon Park     until 5:00pm · all pools
-● Victoria Park    Opens 6:00pm · cleansing
-● Morrison Hill    until 5:00pm · 3 of 4 pools
+HK POOLS              Mon 07:30
+● Kowloon Park
+  until 12pm · next 1pm
+● Victoria Park
+  until 10am · next 6pm
+● Morrison Hill
+  until 12pm · next 1pm
+```
+
+**Medium** — the same three, one line each:
+
+```
+HK POOLS                                 Mon 07:30
+● Kowloon Park    until 12pm · next 1pm · all pools
+● Victoria Park   until 10am · next 6pm · all pools
+● Morrison Hill   Opens 6pm · cleansing
 ⚠ Thunderstorm Warning — outdoor pools likely shut
 ```
 
+**`next` is the session after the one running now**, which is the number that
+actually decides whether you set off. LCSD pools close between sessions, and on
+a venue's weekly cleansing day the gap is most of the day — Victoria Park above
+shuts at 10am on a Monday and is not back until 6pm. When a pool runs straight
+through to closing there is no gap, so no `next`.
+
+The small tile drops the "all pools" half of the line: the dot is already
+telling you that, and the times are what it has room for.
+
 The dot is colour-coded: green all open, amber partly open, red closed, purple
 group-training-only. The weather row only appears when a warning is in force
-*and* one of your pools has outdoor facilities.
+*and* one of your pools has outdoor facilities; on the small tile it shows the
+warning's name alone, there being no room for the sentence.
 
 A **⚠ before the time** means the widget couldn't reach GitHub and is showing
 its last download. The status itself is still computed from the live clock, so
@@ -177,3 +204,5 @@ session times stay correct — only closures could be out of date.
 | Widget stuck on old data | Check the repo's **Actions** tab for a failed run. |
 | Everything shows CLOSED overnight | Correct — LCSD pools shut at 10pm. |
 | A pool shows closed on a weekday afternoon | Probably its weekly cleansing day; the widget says `· cleansing` when so. |
+| Open now, but `next` is hours away | Also cleansing — the pool shuts mid-morning and reopens in the evening. |
+| No `next` shown | That pool runs straight through to closing; there is no gap to warn you about. |

@@ -128,42 +128,57 @@ function scriptableMock(now, family, widgetParameter, warnings) {
 
 /* ---- printing ------------------------------------------------------ */
 
-function flatten(node, out, depth) {
+function flatten(node) {
+  const out = [];
   for (const k of node._kids || []) {
-    if (k._kind === "text") out.push({ text: k._text, depth });
+    if (k._kind === "text") out.push({ text: k._text, limit: k.lineLimit });
+    else if (k._kind === "spacer") out.push({ spacer: k._n });
     else if (k._kind === "stack") {
-      const row = [];
-      flatten(k, row, depth + 1);
-      out.push({ row: row.map((r) => r.text) });
+      const row = flatten(k);
+      out.push({ row, limit: row.some((i) => i.limit === 1) ? 1 : 0 });
     }
   }
   return out;
 }
 
+/* A stack lays out left-to-right; an argument-less spacer is the flexible one
+   that pushes what follows to the right edge. A leading fixed spacer is an
+   indent. Anything else just runs on. */
+function renderRow(items, width) {
+  const flex = items.findIndex((i) => "spacer" in i && i.spacer === undefined);
+  const run = (list) => list.map((i) => {
+    if (i.text !== undefined) return i.text;
+    if (i.row) return renderRow(i.row, width);
+    return " ".repeat(Math.max(1, Math.round((i.spacer || 0) / 6)));
+  }).join("");
+
+  if (flex < 0) return run(items);
+  const left = run(items.slice(0, flex));
+  const right = run(items.slice(flex + 1));
+  if (!right) return left;
+  return left + " ".repeat(Math.max(1, width - left.length - right.length)) + right;
+}
+
 function print(widget, family) {
   const width = family === "small" ? 34 : 60;
-  const items = flatten(widget, [], 0);
+  const items = flatten(widget);
   console.log("+" + "-".repeat(width) + "+");
+  let drawn = 0;
   for (const it of items) {
-    let line;
-    if (it.row) {
-      // a stack lays its texts out left..right with the spacer pushing apart
-      const left = it.row[0] || "";
-      const right = it.row.length > 1 ? it.row[it.row.length - 1] : "";
-      const mid = it.row.slice(1, -1).join(" ");
-      const l = (left + (mid ? " " + mid : "")).slice(0, width);
-      line = right && it.row.length > 1
-        ? l + " ".repeat(Math.max(1, width - l.length - right.length)) + right
-        : l;
-    } else {
-      line = it.text;
-    }
-    for (const chunk of wrap(line, width))
+    if ("spacer" in it) continue;                 // vertical spacing
+    const line = it.row ? renderRow(it.row, width) : it.text;
+    if (line === undefined) continue;
+    drawn++;
+    // lineLimit 1 means the device shrinks then truncates it, never wraps —
+    // so an overflowing line shows here as it will there
+    for (const chunk of (it.limit === 1 ? [clip(line, width)] : wrap(line, width)))
       console.log("|" + chunk.padEnd(width) + "|");
   }
   console.log("+" + "-".repeat(width) + "+");
-  return items.length;
+  return drawn;
 }
+
+const clip = (s, width) => (s.length > width ? s.slice(0, width - 1) + "…" : s);
 
 function wrap(s, width) {
   const out = [];

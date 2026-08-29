@@ -11,7 +11,9 @@ for all 45 LCSD public swimming pools in Hong Kong — refreshed twice daily.
   It runs the parser tests and a sanity check first, and refuses to publish a
   scrape that returns implausibly little.
 - **Consumers:** an iOS home-screen widget (Scriptable) and a web app, both of
-  which compute status from `status.js` so they can't disagree.
+  which compute status from `status.js` so they can't disagree. Both show when
+  the current session ends *and* when the next one starts — the gap is the whole
+  day on a venue's cleansing day.
 
 All source data is public information published by the Leisure and Cultural
 Services Department.

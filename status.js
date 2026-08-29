@@ -102,7 +102,15 @@ function facilityStatus(p, f, now){
   }
 
   var cur=live.filter(function(s){ return nowM>=mins(s.from) && nowM<mins(s.to); })[0];
-  if(cur){ out.code="open"; out.label="Open"; out.until=cur.to; return out; }
+  if(cur){
+    out.code="open"; out.label="Open"; out.until=cur.to;
+    // the session after this one, so the gap is visible before you set off
+    live.forEach(function(s){
+      if(mins(s.from)>=mins(cur.to) &&
+         (!out.afterRaw || mins(s.from)<mins(out.afterRaw))) out.afterRaw=s.from;
+    });
+    return out;
+  }
   var next=live.filter(function(s){ return mins(s.from)>nowM; })[0];
   if(next){ out.code="soon"; out.label=fmt(next.from); out.nextRaw=next.from; return out; }
   return out;
@@ -126,6 +134,12 @@ function venueStatus(p, now){
   open.forEach(function(x){
     if(x.s.until && (!until || mins(x.s.until)<mins(until))) until=x.s.until;
   });
+  // when open, when swimming resumes after that earliest close
+  var resumeRaw=null;
+  open.forEach(function(x){
+    if(x.s.afterRaw && (!resumeRaw || mins(x.s.afterRaw)<mins(resumeRaw)))
+      resumeRaw=x.s.afterRaw;
+  });
   // when shut, the earliest next opening
   var nextRaw=null;
   facs.forEach(function(x){
@@ -147,8 +161,8 @@ function venueStatus(p, now){
   else { code="part"; label=openN+" of "+total+" open"; }
 
   return {code:code, label:label, facs:facs, openN:openN, total:total,
-          lapOpen:lapOpen, until:until, nextRaw:nextRaw, vague:vague,
-          cleansing:cleansing};
+          lapOpen:lapOpen, until:until, resumeRaw:resumeRaw, nextRaw:nextRaw,
+          vague:vague, cleansing:cleansing};
 }
 
 /* Node/test export; harmless in a browser or Scriptable. */

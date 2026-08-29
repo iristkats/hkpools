@@ -49,11 +49,13 @@ function comparable(st) {
   return JSON.stringify({
     code: st.code, label: st.label, openN: st.openN, total: st.total,
     lapOpen: st.lapOpen || false, until: st.until || null,
-    nextRaw: st.nextRaw || null, cleansing: st.cleansing || false,
+    resumeRaw: st.resumeRaw || null, nextRaw: st.nextRaw || null,
+    cleansing: st.cleansing || false,
     vague: (st.vague || []).map((c) => c.reason),
     facs: st.facs.map((x) => [x.f.id, x.s.code, x.s.label, x.s.note || "",
                               x.s.reason || "", x.s.until || null,
-                              x.s.nextRaw || null, !!x.s.cleansing]),
+                              x.s.afterRaw || null, x.s.nextRaw || null,
+                              !!x.s.cleansing]),
   });
 }
 

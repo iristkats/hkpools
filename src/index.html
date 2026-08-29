@@ -65,24 +65,25 @@
   }
   .pool > summary{
     list-style:none; cursor:pointer; padding:12px 14px;
-    display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:10px;
-    align-items:center;
+    display:flex; gap:10px; align-items:flex-start;
   }
   .pool > summary::-webkit-details-marker{display:none}
-  .dot{width:10px; height:10px; border-radius:50%; background:var(--unk)}
-  .nm{font-weight:600; letter-spacing:-.01em; display:block}
-  .meta{display:block; color:var(--dim); font-size:12.5px; margin-top:1px}
-  .state{text-align:right; font-size:13px; font-weight:600; max-width:56%}
-  .state small{
-    display:block; font-weight:400; color:var(--dim); font-size:12px;
-    line-height:1.35; overflow-wrap:anywhere;
+  .dot{
+    width:10px; height:10px; border-radius:50%; background:var(--unk);
+    margin-top:5px; flex:none;
   }
+  .txt{display:block; flex:1; min-width:0}
+  .top{display:flex; gap:10px; align-items:baseline}
+  .nm{font-weight:600; letter-spacing:-.01em; flex:1; min-width:0}
+  .hd{font-size:13px; font-weight:600; white-space:nowrap; flex:none}
+  .meta{display:block; color:var(--dim); font-size:12.5px; margin-top:1px}
+  .det{display:block; color:var(--dim); font-size:12.5px; margin-top:3px}
 
-  .open .dot{background:var(--open)} .open .state{color:var(--open)}
-  .part .dot{background:var(--part)} .part .state{color:var(--part)}
-  .shut .dot{background:var(--shut)} .shut .state{color:var(--shut)}
-  .priv .dot{background:var(--priv)} .priv .state{color:var(--priv)}
-  .unk  .dot{background:var(--unk)}  .unk  .state{color:var(--unk)}
+  .open .dot{background:var(--open)} .open .hd{color:var(--open)}
+  .part .dot{background:var(--part)} .part .hd{color:var(--part)}
+  .shut .dot{background:var(--shut)} .shut .hd{color:var(--shut)}
+  .priv .dot{background:var(--priv)} .priv .hd{color:var(--priv)}
+  .unk  .dot{background:var(--unk)}  .unk  .hd{color:var(--unk)}
 
   .body{padding:2px 14px 14px; border-top:1px solid var(--line); margin-top:2px}
   .facs{width:100%; border-collapse:collapse; font-size:13px; margin-top:8px}
@@ -248,14 +249,19 @@
 
   /* ---- phrasing (mirrors the widget's, from the same status fields) ---- */
 
+  /* [headline, detail] — the headline is the coloured word, the detail the
+     whole sentence beneath it. */
   function stateLines(p, st){
     if(st.code === "priv") return ["Groups only", "no public swimming"];
     if(st.code === "unk")  return ["No hours", "not published"];
     if(st.openN > 0){
-      var what = st.vague && st.vague.length ? "see notice"
-               : st.openN === st.total ? "all pools open"
-               : st.openN + " of " + st.total + " pools";
-      return ["Open", "until " + fmt(st.until) + " · " + what];
+      var bits = ["until " + fmt(st.until)];
+      // the gap matters most on a cleansing day, when it can be eight hours
+      if(st.resumeRaw) bits.push("next session " + fmt(st.resumeRaw));
+      bits.push(st.vague && st.vague.length ? "see notice"
+              : st.openN === st.total ? "all pools open"
+              : st.openN + " of " + st.total + " pools");
+      return ["Open", bits.join(" · ")];
     }
     var when = st.nextRaw ? "Opens " + fmt(st.nextRaw) : "Closed";
     var why  = st.cleansing ? "weekly cleansing" : closedReason(st);
@@ -334,13 +340,15 @@
              (isOpen ? " open" : "") + '>' +
       "<summary>" +
         '<span class="dot"></span>' +
-        "<span>" +
-          '<span class="nm">' + esc(shortName(p.name)) + "</span>" +
+        '<span class="txt">' +
+          '<span class="top">' +
+            '<span class="nm">' + esc(shortName(p.name)) + "</span>" +
+            '<span class="hd">' + esc(lines[0]) + "</span>" +
+          "</span>" +
           '<span class="meta">' + esc(p.district) +
             (hasOutdoor(p) ? " · outdoor" : " · indoor") + "</span>" +
+          '<span class="det">' + esc(lines[1]) + "</span>" +
         "</span>" +
-        '<span class="state">' + esc(lines[0]) +
-          "<small>" + esc(lines[1]) + "</small></span>" +
       "</summary>" +
       '<div class="body">' + facilityTable(p, st) + notices(p, st, now) +
         '<div class="links">' +
@@ -360,12 +368,15 @@
         s.code === "open" ? "until " + fmt(s.until) :
         s.code === "soon" ? "opens " + s.label :
         s.label;
+      // facilities within one venue resume at different times
+      var back = s.code === "open" && s.afterRaw ? "back " + fmt(s.afterRaw) : "";
       return "<tr><td>" + esc(x.f.name) +
         (x.f.lap ? '<span class="tag">lap</span>' : "") +
         (x.f.location === "outdoor" ? '<span class="tag">outdoor</span>' : "") +
         (x.f.spec ? '<div class="spec">' + esc(x.f.spec) + "</div>" : "") +
         (s.note ? '<div class="spec">' + esc(s.note) + "</div>" : "") +
-        '</td><td class="fs ' + s.code + '">' + esc(when) + "</td></tr>";
+        '</td><td class="fs ' + s.code + '">' + esc(when) +
+        (back ? '<div class="spec">' + esc(back) + "</div>" : "") + "</td></tr>";
     }).join("");
     return '<table class="facs">' + rows + "</table>";
   }

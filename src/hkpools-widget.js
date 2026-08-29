@@ -136,41 +136,70 @@ const hasOutdoor = (p) =>
 
 /* ---- phrasing ------------------------------------------------------ */
 
-/* The one-line "when · what" that sits beside each pool name. */
-function detailLine(p, st) {
+/* Times lose the ":00" so three of them fit on one widget line:
+   "17:00" -> "5pm", "06:30" -> "6:30am". */
+function compact(t) {
+  return fmt(t).replace(":00", "");
+}
+
+/* The whole story on one line: when it shuts, when it is back, what is open.
+   "until 5pm · next 6pm · all pools". `tight` is the small tile, which has
+   about half the width — there the green dot already says "all open", so the
+   words that survive are the ones the dot cannot say. */
+function detailLine(st, tight) {
   if (st.code === "priv") return "group training only";
   if (st.code === "unk") return "hours not published";
 
-  const when = st.openN > 0
-    ? "until " + fmt(st.until)
-    : (st.nextRaw ? "Opens " + fmt(st.nextRaw) : "closed today");
+  const bits = [];
+  if (st.openN > 0) {
+    bits.push("until " + compact(st.until));
+    if (st.resumeRaw) bits.push("next " + compact(st.resumeRaw));
+  } else {
+    bits.push(st.nextRaw ? "Opens " + compact(st.nextRaw) : "closed today");
+  }
+  const why = reason(st, tight);
+  if (why) bits.push(why);
+  return bits.join(" · ");
+}
 
-  const why = reason(st);
-  return why ? when + " · " + why : when;
+/* The single-pool small widget has room to breathe, so it spends it on
+   unabbreviated times and puts the next session on its own line. */
+function stateLines(st) {
+  if (st.code === "priv") return ["group training only", ""];
+  if (st.code === "unk") return ["hours not published", ""];
+
+  const why = reason(st, false);
+  const tail = why ? " · " + why : "";
+  if (st.openN > 0)
+    return ["until " + fmt(st.until) + tail,
+            st.resumeRaw ? "next session " + fmt(st.resumeRaw) : ""];
+  return [(st.nextRaw ? "Opens " + fmt(st.nextRaw) : "closed today") + tail, ""];
 }
 
 /* Why it looks the way it does — the half of the line that isn't a clock. */
-function reason(st) {
+function reason(st, tight) {
   if (st.openN > 0) {
-    if (st.vague && st.vague.length) return "see notice";
-    return st.openN === st.total ? "all pools"
-                                 : st.openN + " of " + st.total + " pools";
+    if (st.vague && st.vague.length) return tight ? "notice" : "see notice";
+    if (st.openN === st.total) return tight ? "" : "all pools";
+    return tight ? st.openN + "/" + st.total
+                 : st.openN + " of " + st.total + " pools";
   }
   if (st.cleansing) return "cleansing";
 
   const shut = st.facs.filter((x) => x.s.code !== "priv");
   if (!shut.length) return "";
   const all = (label) => shut.every((x) => x.s.label === label);
-  if (all("Maintenance")) return "annual maintenance";
-  if (all("Out of season")) return "out of season";
+  if (all("Maintenance")) return tight ? "maintenance" : "annual maintenance";
+  if (all("Out of season")) return tight ? "off season" : "out of season";
 
   // only a stated closure explains the shut — a facility's standing note is
   // not a reason, and outside opening hours nothing needs one
   const named = shut.filter((x) => x.s.reason);
-  return named.length === shut.length ? short(named[0].s.reason) : "";
+  if (named.length !== shut.length) return "";
+  return tight ? short(named[0].s.reason, 12) : short(named[0].s.reason, 22);
 }
 
-const short = (s) => (s.length > 22 ? s.slice(0, 21) + "…" : s);
+const short = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
 
 const HEADLINE = { open: "OPEN", part: "PARTLY OPEN", shut: "CLOSED",
                    priv: "GROUPS ONLY", unk: "NO HOURS" };
@@ -224,7 +253,8 @@ function message(w, now, lines) {
   return w;
 }
 
-function smallWidget(w, p, st, now, stale) {
+/* One pool named: spend the whole tile on it. */
+function smallOne(w, p, st, now, stale, warnings) {
   header(w, now, stale);
   w.addSpacer(6);
 
@@ -241,13 +271,57 @@ function smallWidget(w, p, st, now, stale) {
   head.minimumScaleFactor = 0.6;
   head.lineLimit = 1;
 
+  const lines = stateLines(st);
   w.addSpacer(3);
-  const detail = w.addText(detailLine(p, st));
+  const detail = w.addText(lines[0]);
   detail.font = Font.systemFont(10);
   detail.textColor = DIM;
   detail.minimumScaleFactor = 0.7;
   detail.lineLimit = 2;
+
+  if (lines[1]) {
+    w.addSpacer(2);
+    const next = w.addText(lines[1]);
+    next.font = Font.systemFont(10);
+    next.textColor = st.code === "open" ? COLORS.part : DIM;
+    next.minimumScaleFactor = 0.7;
+    next.lineLimit = 1;
+  }
+
   w.addSpacer();
+  weatherRow(w, warnings, true);
+}
+
+/* Two or three named: a stacked row each — name, then its line beneath, so
+   the detail gets the full tile width rather than a narrow right-hand column. */
+function smallMany(w, rows, now, stale, warnings) {
+  header(w, now, stale);
+  w.addSpacer(4);
+
+  for (const { p, st } of rows) {
+    const head = w.addStack();
+    head.centerAlignContent();
+    dot(head, st.code);
+    head.addSpacer(4);
+    const name = head.addText(shortName(p.name));
+    name.font = Font.mediumSystemFont(11);
+    name.textColor = INK;
+    name.lineLimit = 1;
+    name.minimumScaleFactor = 0.65;
+
+    const under = w.addStack();
+    under.addSpacer(13);               // clear the dot
+    const detail = under.addText(detailLine(st, true));
+    detail.font = Font.systemFont(9.5);
+    detail.textColor = DIM;
+    detail.lineLimit = 1;
+    detail.minimumScaleFactor = 0.55;
+
+    w.addSpacer(5);
+  }
+
+  w.addSpacer();
+  weatherRow(w, warnings, true);
 }
 
 function mediumWidget(w, rows, now, stale, warnings) {
@@ -267,23 +341,29 @@ function mediumWidget(w, rows, now, stale, warnings) {
     name.minimumScaleFactor = 0.7;
 
     row.addSpacer();
-    const detail = row.addText(detailLine(p, st));
+    const detail = row.addText(detailLine(st, false));
     detail.font = Font.systemFont(11);
     detail.textColor = DIM;
     detail.lineLimit = 1;
-    detail.minimumScaleFactor = 0.7;
+    detail.minimumScaleFactor = 0.65;
     detail.rightAlignText();
     w.addSpacer(5);
   }
 
   w.addSpacer();
-  if (warnings.length) {
-    const t = w.addText("⚠ " + warnings[0] + " — outdoor pools likely shut");
-    t.font = Font.systemFont(10);
-    t.textColor = COLORS.part;
-    t.lineLimit = 1;
-    t.minimumScaleFactor = 0.7;
-  }
+  weatherRow(w, warnings, false);
+}
+
+/* Shown only when a signal is up and one of the chosen pools is outdoors.
+   The small tile has no room for the sentence, so it gets the name alone. */
+function weatherRow(w, warnings, tight) {
+  if (!warnings.length) return;
+  const t = w.addText(tight ? "⚠ " + warnings[0]
+                            : "⚠ " + warnings[0] + " — outdoor pools likely shut");
+  t.font = Font.systemFont(tight ? 9 : 10);
+  t.textColor = COLORS.part;
+  t.lineLimit = 1;
+  t.minimumScaleFactor = 0.6;
 }
 
 /* ---- assembly ------------------------------------------------------ */
@@ -305,15 +385,16 @@ async function build() {
     return message(w, now, ["No pool matched “" + missing.join(", ") + "”.",
                             "Check the widget Parameter."]);
 
-  const limit = family === "small" ? 1 : 3;
-  const rows = picked.slice(0, limit)
-    .map((p) => ({ p, st: venueStatus(p, now) }));
+  // small used to be a single pool; it now takes up to three, like medium
+  const rows = picked.slice(0, 3).map((p) => ({ p, st: venueStatus(p, now) }));
 
   // only worth a row if a warning is up AND one of these pools is outdoors
   const warnings = rows.some(({ p }) => hasOutdoor(p)) ? await loadWarnings() : [];
 
-  if (family === "small") smallWidget(w, rows[0].p, rows[0].st, now, stale);
-  else mediumWidget(w, rows, now, stale, warnings);
+  if (family !== "small") mediumWidget(w, rows, now, stale, warnings);
+  else if (rows.length === 1)
+    smallOne(w, rows[0].p, rows[0].st, now, stale, warnings);
+  else smallMany(w, rows, now, stale, warnings);
 
   w.refreshAfterDate = new Date(Date.now() + 15 * 60 * 1000);
   return w;
