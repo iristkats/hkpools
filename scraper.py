@@ -80,10 +80,21 @@ def to24(text: str, assume_pm_before: str | None = None) -> str | None:
     return f"{h:02d}:{mi:02d}"
 
 
+SUFFIX_RE = re.compile(r"(a\.?m\.?|p\.?m\.?|nn|noon)\s*$", re.I)
+
+
 def parse_sessions(text: str) -> list[list[str]]:
     out = []
     for a, b in SESSION_RE.findall(text or ""):
         s, e = to24(a), to24(b)
+        # "6:00 - 10:00 pm" carries one marker for both ends, and the bare 6:00
+        # is an evening session, not a dawn one
+        if s and e and not SUFFIX_RE.search(a.strip()):
+            m = SUFFIX_RE.search(b.strip())
+            if m and m.group(1).lower().startswith("p"):
+                pm = to24(a + " pm")
+                if pm and pm < e:
+                    s = pm
         if s and e and s < e:
             out.append([s, e])
     # de-duplicate, keep order
@@ -107,6 +118,13 @@ def parse_cleansing(text: str):
                     r"\s+if[^)\.]*", low)
     if alt:
         note = alt.group(0).strip("( ").capitalize()
+    else:
+        # the live pages write it as "Every Wednesday (Thursday ※)", the ※
+        # footnote being "if the cleansing day falls on a public holiday"
+        alt = re.search(r"\((monday|tuesday|wednesday|thursday|friday|saturday|sunday)"
+                        r"\s*※?\s*\)", low)
+        if alt and WEEKDAYS[alt.group(1)] != wd:
+            note = alt.group(1).capitalize() + " if public holiday"
     return wd, note
 
 
@@ -175,10 +193,36 @@ def maintenance_scope(label: str) -> str:
     return "venue" if not any(h in prefix for h in SUBSET_HINTS) else "partial"
 
 
+# "2026/09/06 07:00 - 2026/09/06 22:00", or "… - Until further notice"
+DT_RANGE = re.compile(
+    r"(\d{4})/(\d{1,2})/(\d{1,2})\s+(\d{1,2}):(\d{2})\s*(?:-|–|—|to)\s*"
+    r"(?:(\d{4})/(\d{1,2})/(\d{1,2})\s+)?(?:(\d{1,2}):(\d{2})|until further notice)",
+    re.I)
+
+
 def parse_closure_row(cells: list[str]) -> dict | None:
-    """LCSD closure rows are roughly: date(s) | time(s) | facilities | reason."""
+    """One row of the temporary-closure table.
+
+    Live pages put the whole span in a single "Date & Time" cell, followed by
+    facilities, reason and remarks. Older markup split date and time into
+    separate cells; both are read here.
+    """
     if len(cells) < 3:
         return None
+
+    m = DT_RANGE.search(cells[0])
+    if m:
+        y1, mo1, d1, h1, mi1, y2, mo2, d2, h2, mi2 = m.groups()
+        start = f"{int(y1):04d}-{int(mo1):02d}-{int(d1):02d}T{int(h1):02d}:{mi1}"
+        if h2 is None:                      # "until further notice"
+            end = None
+        else:
+            y2, mo2, d2 = y2 or y1, mo2 or mo1, d2 or d1
+            end = f"{int(y2):04d}-{int(mo2):02d}-{int(d2):02d}T{int(h2):02d}:{mi2}"
+        return dict(start=start, end=end,
+                    facilities=cells[1].strip() or "Not stated",
+                    reason=cells[2].strip() or "Not stated")
+
     raw_date, raw_time = cells[0], cells[1]
     dates = DATE_RE.findall(raw_date) or DATE_RE.findall(raw_date + " " + raw_time)
     if not dates:
@@ -253,6 +297,72 @@ def section_text(soup, *heading_keywords) -> str:
     return ""
 
 
+# the schedule cell repeats the gaps between sessions, and a break is a time
+# range like any other — counting it as a session is how three became five
+SESSION_NOISE = re.compile(r"\((?:session breaks?|maintenance)[^)]*\)", re.I)
+
+
+def schedule_cell(soup, month: int):
+    """The opening-schedule cell covering a given month.
+
+    The schedule is a grid, not a labelled field: a header row of month
+    abbreviations over a body row whose cells span runs of months, so a venue
+    can keep different hours in April than in July. The colspans have to be
+    expanded to line the two rows up.
+    """
+    for table in soup.find_all("table"):
+        rows = table.find_all("tr")
+        if len(rows) < 2:
+            continue
+        head = [c.get_text(" ", strip=True) for c in rows[0].find_all(["td", "th"])]
+        months = [MONTHS.get(h.lower()[:3]) for h in head if h]
+        if len(months) < 3 or not all(months):
+            continue
+
+        cells = []
+        for c in rows[1].find_all(["td", "th"]):
+            cells.extend([c] * int(c.get("colspan") or 1))
+        if not cells:
+            continue
+        for i, m in enumerate(months):
+            if m == month:
+                return cells[i] if i < len(cells) else cells[-1]
+        return cells[0]                     # out of season: any column will do
+    return None
+
+
+def cleansing_text(soup) -> str:
+    """The venue's own cleansing line, "Every Wednesday (Thursday ※)".
+
+    Every page also carries a paragraph explaining what a cleansing operation
+    is, which names no day; only a cell naming one counts.
+    """
+    for cell in soup.find_all(["td", "th"]):
+        text = re.sub(r"\s+", " ", cell.get_text(" ", strip=True))
+        if len(text) < 120 and re.search(
+                r"every\s+(mon|tues|wednes|thurs|fri|satur|sun)day", text, re.I):
+            return text
+    return ""
+
+
+def closure_table(soup):
+    """The temporary-closure table, found by its headings.
+
+    It is titled "Date & Time / Facilities / Reason / Remarks" and the word
+    "closure" appears nowhere in it, which is why looking for that word found
+    nothing on any venue page.
+    """
+    for table in soup.find_all("table"):
+        rows = table.find_all("tr")
+        if not rows:
+            continue
+        head = " ".join(c.get_text(" ", strip=True).lower()
+                        for c in rows[0].find_all(["td", "th"]))
+        if "date" in head and ("facilit" in head or "reason" in head):
+            return table
+    return None
+
+
 def facility_lines(cell) -> list[str]:
     """A venue's facility list, one entry per line.
 
@@ -291,11 +401,12 @@ def scrape_pool(swp_id: int, verbose=False) -> dict | None:
 
     phone_m = re.search(r"\b(\d{4}\s?\d{4})\b", section_text(soup, "Enquiry", "Telephone") or page)
 
-    sessions_txt = section_text(soup, "Opening Hours", "Opening Schedule", "Session")
-    sessions = parse_sessions(sessions_txt) or parse_sessions(page)
+    # the grid is per-month; today's column is the one that describes today
+    sched = schedule_cell(soup, date.today().month)
+    sessions_txt = SESSION_NOISE.sub(" ", sched.get_text(" ", strip=True)) if sched else ""
+    sessions = parse_sessions(sessions_txt)
 
-    cleansing_txt = section_text(soup, "cleansing", "cleaning")
-    cwd, cnote = parse_cleansing(cleansing_txt or page)
+    cwd, cnote = parse_cleansing(cleansing_text(soup))
 
     maint_txt = section_text(soup, "Annual Maintenance", "Maintenance Period")
     maintenance = []
@@ -306,17 +417,14 @@ def scrape_pool(swp_id: int, verbose=False) -> dict | None:
                                     scope=maintenance_scope(part)))
 
     closures = []
-    for table in soup.find_all("table"):
-        head = table.get_text(" ", strip=True)[:400]
-        if not re.search(r"closure|closed", head, re.I):
+    table = closure_table(soup)
+    for tr in (table.find_all("tr") if table else []):
+        cells = [td.get_text(" ", strip=True) for td in tr.find_all(["td", "th"])]
+        if not cells or re.search(r"date", cells[0], re.I):
             continue
-        for tr in table.find_all("tr"):
-            cells = [td.get_text(" ", strip=True) for td in tr.find_all(["td", "th"])]
-            if not cells or re.search(r"date", cells[0], re.I):
-                continue
-            row = parse_closure_row(cells)
-            if row:
-                closures.append(row)
+        row = parse_closure_row(cells)          # "No related notice" yields None
+        if row:
+            closures.append(row)
 
     low = page.lower()
     has_out = "outdoor" in low
@@ -399,6 +507,44 @@ def scrape_all(verbose=False) -> dict:
 
 
 # ---------------------------------------------------------------- self-test
+
+# The schedule, cleansing and closure tables, copied from the live Kennedy
+# Town (swpId=2) and Pao Yue Kong (swpId=1) pages. Kennedy Town keeps
+# different hours across the year, so its body row spans months unevenly —
+# April alone, May to August, then September and October.
+SCHEDULE_PAGE = """
+<table class="table table-bordered"><tr>
+  <th></th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th>
+  <th>Sep</th><th>Oct</th></tr><tr>
+  <td colspan="1">1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm
+    3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm&amp; 5:00 -
+    6:00 pm) Indoor pools only (Maintenance of outdoor pools: 1.4.2026 -
+    15.4.2026)</td>
+  <td colspan="4">1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm
+    3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm &amp; 5:00
+    - 6:00 pm)</td>
+  <td colspan="2">1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm
+    3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm &amp; 5:00
+    - 6:00 pm) Outdoor pools only (Maintenance of indoor pools: 11.9.2026 -
+    31.10.2026)</td></tr></table>
+<table class="table table-bordered"><tr><td>Every Wednesday (Thursday
+  \u203b)</td></tr></table>
+<table class="table table-responsive borderless"><tr><td>Note 3</td>
+  <td>The weekly cleansing operation is carried out from 10:00 a.m. to the end
+  of the second session. The swimming pool will reopen at the third session on
+  the same day.</td></tr></table>
+<table class="table table-bordered table-striped">
+  <tr><th>Date &amp; Time</th><th>Facilities</th><th>Reason</th>
+      <th>Remarks</th></tr>
+  <tr><td>2026/09/06 07:00 - 2026/09/06 22:00</td><td>Main Pool</td>
+      <td>Competition</td><td>Function : Southern District Swimming
+      Competition</td></tr>
+  <tr><td>2026/08/30 06:30 - 2026/08/30 20:00</td>
+      <td>Teaching Pool (1), Training Pool, Diving Pool</td>
+      <td>Insufficient Lifeguard</td><td>N/A</td></tr>
+</table>
+"""
+
 
 # Trimmed from the live Pao Yue Kong page (swpId=1), keeping the two things
 # that matter: the navigation entry ending "…Swimming Pool Facilities", which
@@ -504,6 +650,41 @@ def selftest():
     # prose about accessibility names pools but is not one
     assert not any("Barrier" in f for f in facs), facs
 
+
+    # --- schedule grid, cleansing day and closures, from real markup -------
+    sched = BeautifulSoup(SCHEDULE_PAGE, "html.parser")
+
+    # August falls in the May-Aug column; the breaks between sessions are time
+    # ranges too, and counting them is how three sessions became five
+    cell = schedule_cell(sched, 8)
+    assert cell is not None, "schedule grid not found"
+    txt = SESSION_NOISE.sub(" ", cell.get_text(" ", strip=True))
+    assert parse_sessions(txt) == [["06:30", "12:00"], ["13:00", "17:00"],
+                                   ["18:00", "22:00"]], parse_sessions(txt)
+    # April is its own column, with the outdoor pools under maintenance
+    assert "Indoor pools only" in schedule_cell(sched, 4).get_text(" ", strip=True)
+    assert "Outdoor pools only" in schedule_cell(sched, 9).get_text(" ", strip=True)
+    # August sits inside the four-month span, so it must resolve to the plain
+    # cell — without expanding colspans it would run off the end and pick up
+    # September's "Outdoor pools only" instead
+    assert "pools only" not in schedule_cell(sched, 8).get_text(" ", strip=True)
+
+    # the venue's own line, not the paragraph explaining what cleansing is
+    ctext = cleansing_text(sched)
+    assert ctext.startswith("Every Wednesday"), ctext
+    assert parse_cleansing(ctext) == (2, "Thursday if public holiday"), ctext
+
+    # the closure table names neither "closure" nor "closed" anywhere
+    table = closure_table(sched)
+    assert table is not None, "closure table not found"
+    rows = [parse_closure_row([c.get_text(" ", strip=True)
+                               for c in tr.find_all(["td", "th"])])
+            for tr in table.find_all("tr")]
+    rows = [r for r in rows if r]
+    assert len(rows) == 2, rows
+    assert rows[0]["start"] == "2026-09-06T07:00" and rows[0]["end"] == "2026-09-06T22:00"
+    assert rows[0]["facilities"] == "Main Pool" and rows[0]["reason"] == "Competition"
+    assert rows[1]["facilities"].startswith("Teaching Pool (1)"), rows[1]
 
     # weekend-only facility (Ma On Shan giant water slides)
     assert parse_weekend_only(
