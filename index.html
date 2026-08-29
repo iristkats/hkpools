@@ -388,10 +388,14 @@ if (typeof module !== "undefined" && module.exports)
       return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];
     });
   };
+  var pad = function(n){ return (n < 10 ? "0" : "") + n; };
   var shortName = function(n){ return n.replace(/\s+Swimming Pool( Complex)?$/i, ""); };
   var hasOutdoor = function(p){
     return p.type !== "indoor" ||
            (p.facilities||[]).some(function(f){ return f.location === "outdoor"; });
+  };
+  var hasLap = function(p){
+    return (p.facilities||[]).some(function(f){ return f.lap; });
   };
 
   /* ---- load ---- */
@@ -538,11 +542,17 @@ if (typeof module !== "undefined" && module.exports)
       {hour:"2-digit", minute:"2-digit"}) + ", " +
       now.toLocaleDateString("en-GB", {weekday:"short", day:"numeric", month:"short"});
 
-    var rows = state.pools.filter(matches).map(function(p){
+    var base = state.pools.filter(matches).map(function(p){
       return {p:p, st:venueStatus(p, now)};
-    }).filter(function(r){
+    });
+    var rows = base.filter(function(r){
       if(state.open && r.st.openN === 0) return false;
-      if(state.lap && !r.st.lapOpen) return false;
+      // "Lap swimming" describes the venue, as "Outdoor" beside it does: a
+      // pool you can swim lengths in. It used to mean "a lap pool open this
+      // second", so at 1am it matched nothing and said nothing. Tick "Open
+      // now" as well and it tightens to exactly that, which is what asking
+      // for both plainly means.
+      if(state.lap && (state.open ? !r.st.lapOpen : !hasLap(r.p))) return false;
       return true;
     });
 
@@ -554,7 +564,15 @@ if (typeof module !== "undefined" && module.exports)
 
     var list = $("#list");
     if(!rows.length){
-      list.innerHTML = '<p class="empty">Nothing matches those filters.</p>';
+      // an empty list should say which filter emptied it
+      var anyOpen = base.some(function(r){ return r.st.openN > 0; });
+      var why = !base.length ? "No venue matches that search."
+              : state.open && !anyOpen
+                ? "Nothing is open at " + fmt(pad(now.getHours()) + ":" +
+                    pad(now.getMinutes())) + " — every LCSD pool shuts by 10pm. " +
+                  "Untick “Open now” to see when they are next back."
+              : "Nothing matches those filters.";
+      list.innerHTML = '<p class="empty">' + esc(why) + "</p>";
       return;
     }
 
