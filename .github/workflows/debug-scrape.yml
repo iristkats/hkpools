@@ -1,0 +1,31 @@
+# TEMPORARY — delete along with debug_scrape.py once the facility parser is
+# fixed. Manual only; it publishes nothing and needs no write access.
+name: debug scrape
+
+on:
+  workflow_dispatch:
+    inputs:
+      swp_id:
+        description: "LCSD swimming pool id (1 = Pao Yue Kong)"
+        default: "1"
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests beautifulsoup4 lxml
+
+      - name: Dump the facilities region of one venue page
+        env:
+          SWP_ID: ${{ inputs.swp_id }}   # via env, never interpolated into the script
+        run: python debug_scrape.py
