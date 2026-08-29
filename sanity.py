@@ -23,6 +23,9 @@ FLOORS = dict(venues=40, facilities=150, with_hours=40)
 # how many venues may regress before the scrape is presumed broken
 MAX_SESSION_DRIFT = 5
 MAX_CLEANSING_LOST = 3
+# losing every session is not a change of hours, it is a failure to read them,
+# and a venue with no hours shows as "Hours unknown" — worse than yesterday's
+MAX_HOURS_LOST = 0
 
 
 def load(path):
@@ -61,6 +64,14 @@ def main():
                          f"(limit {MAX_SESSION_DRIFT})")
         for name, a, b in drift[:10]:
             print(f"  sessions {a} -> {b}  {name}")
+
+        blanked = [old[k]["name"] for k in shared
+                   if (old[k].get("sessions") or []) and not (new[k].get("sessions") or [])]
+        if len(blanked) > MAX_HOURS_LOST:
+            fails.append(f"{len(blanked)} venues lost their hours entirely "
+                         f"(limit {MAX_HOURS_LOST})")
+        for name in blanked[:10]:
+            print(f"  all hours lost: {name}")
 
         lost = [old[k]["name"] for k in shared
                 if old[k].get("cleansing_weekday") is not None
