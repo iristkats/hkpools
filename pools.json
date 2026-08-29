@@ -488,7 +488,7 @@
      "name": "Training pool 1",
      "spec": "Length 25m x Width 25m, Depth: 1.1m-1.4m",
      "kind": "training",
-     "location": "outdoor",
+     "location": "indoor",
      "location_inferred": false,
      "lap": true,
      "public": true,
@@ -496,9 +496,12 @@
      "sessions": null,
      "session_days": null,
      "days": null,
-     "months": null,
+     "months": [
+      4,
+      5
+     ],
      "weekday_sessions": null,
-     "note": "",
+     "note": "Indoor pools open April-May only",
      "closures": [],
      "maintenance": []
     },
@@ -559,9 +562,15 @@
      "sessions": null,
      "session_days": null,
      "days": null,
-     "months": null,
+     "months": [
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
      "weekday_sessions": null,
-     "note": "",
+     "note": "Outdoor pools open June-October",
      "closures": [],
      "maintenance": []
     },
@@ -1720,9 +1729,9 @@
      "maintenance": []
     },
     {
-     "id": "toddlers-pool-irregular-shape-depth-0-3m-0-4m-is-open-from-june-to-august-free-of-charge",
-     "name": "Toddlers' pool (Irregular shape, Depth: 0.3m-0.4m) is open from June to August free of charge",
-     "spec": "",
+     "id": "toddlers-pool-irregular-shape",
+     "name": "Toddlers' pool (Irregular shape,",
+     "spec": "Depth: 0.3m-0.4m) is open from June to August free of charge",
      "kind": "toddlers",
      "location": "outdoor",
      "location_inferred": true,
@@ -1838,7 +1847,7 @@
      "reason": "Urgent Repairs",
      "targets": [
       "children-pool",
-      "toddlers-pool-irregular-shape-depth-0-3m-0-4m-is-open-from-june-to-august-free-of-charge"
+      "toddlers-pool-irregular-shape"
      ]
     }
    ],
@@ -2126,7 +2135,7 @@
      "name": "Jacuzzi pool",
      "spec": "Circular, Depth: 0.85m",
      "kind": "jacuzzi",
-     "location": "outdoor",
+     "location": "indoor",
      "location_inferred": false,
      "lap": false,
      "public": true,
@@ -3054,9 +3063,9 @@
      "maintenance": []
     },
     {
-     "id": "toddlers-pool-irregular-shape-depth-0-32m-is-open-from-june-to-august-free-of-charge",
-     "name": "Toddlers' pool (Irregular shape, Depth: 0.32m) is open from June to August free of charge",
-     "spec": "",
+     "id": "toddlers-pool-irregular-shape",
+     "name": "Toddlers' pool (Irregular shape,",
+     "spec": "Depth: 0.32m) is open from June to August free of charge",
      "kind": "toddlers",
      "location": "outdoor",
      "location_inferred": false,
@@ -3091,8 +3100,7 @@
       "diving-pool",
       "main-pool",
       "teaching-pool-1",
-      "teaching-pool-2",
-      "toddlers-pool-irregular-shape-depth-0-32m-is-open-from-june-to-august-free-of-charge"
+      "teaching-pool-2"
      ]
     }
    ],
@@ -3265,9 +3273,9 @@
      "maintenance": []
     },
     {
-     "id": "toddlers-pool-1-irregular-shape-depth-0-43m-0-5m-is-open-from-june-to-august-free-of-charge",
-     "name": "Toddlers' pool(1) (Irregular shape, Depth: 0.43m-0.5m) is open from June to August free of charge",
-     "spec": "",
+     "id": "toddlers-pool-1-irregular-shape",
+     "name": "Toddlers' pool(1) (Irregular shape,",
+     "spec": "Depth: 0.43m-0.5m) is open from June to August free of charge",
      "kind": "toddlers",
      "location": "outdoor",
      "location_inferred": false,
@@ -3284,9 +3292,9 @@
      "maintenance": []
     },
     {
-     "id": "toddlers-pool-2-irregular-shape-depth-0-46m-0-5m-is-open-from-june-to-august-free-of-charge",
-     "name": "Toddlers' pool(2) (Irregular shape, Depth: 0.46m-0.5m) is open from June to August free of charge",
-     "spec": "",
+     "id": "toddlers-pool-2-irregular-shape",
+     "name": "Toddlers' pool(2) (Irregular shape,",
+     "spec": "Depth: 0.46m-0.5m) is open from June to August free of charge",
      "kind": "toddlers",
      "location": "outdoor",
      "location_inferred": false,
@@ -3325,8 +3333,8 @@
       "teaching-pool",
       "teaching-pool-2",
       "teaching-pool-3",
-      "toddlers-pool-1-irregular-shape-depth-0-43m-0-5m-is-open-from-june-to-august-free-of-charge",
-      "toddlers-pool-2-irregular-shape-depth-0-46m-0-5m-is-open-from-june-to-august-free-of-charge"
+      "toddlers-pool-1-irregular-shape",
+      "toddlers-pool-2-irregular-shape"
      ]
     }
    ],
@@ -3337,8 +3345,8 @@
      "facilities": "Toddlers' Pool(1), Toddlers' Pool(2)",
      "reason": "Insufficient Lifeguard",
      "targets": [
-      "toddlers-pool-1-irregular-shape-depth-0-43m-0-5m-is-open-from-june-to-august-free-of-charge",
-      "toddlers-pool-2-irregular-shape-depth-0-46m-0-5m-is-open-from-june-to-august-free-of-charge"
+      "toddlers-pool-1-irregular-shape",
+      "toddlers-pool-2-irregular-shape"
      ]
     }
    ],
@@ -3472,7 +3480,7 @@
    "lon": 114.12351962,
    "swp_id": 25,
    "phone": "2416 0522",
-   "type": "outdoor",
+   "type": "both",
    "sessions": [
     [
      "06:30",
@@ -3492,10 +3500,10 @@
    "facilities": [
     {
      "id": "main-pool",
-     "name": "@^Main pool",
+     "name": "Main pool",
      "spec": "Length 23.5m x Width 25m, Depth: 1.2m",
      "kind": "main",
-     "location": "outdoor",
+     "location": "indoor",
      "location_inferred": false,
      "lap": true,
      "public": true,
@@ -3511,10 +3519,10 @@
     },
     {
      "id": "main-pool-2",
-     "name": "@^Main pool",
+     "name": "Main pool",
      "spec": "Length 25m x Width 25m, Depth: 2m",
      "kind": "main",
-     "location": "outdoor",
+     "location": "indoor",
      "location_inferred": false,
      "lap": true,
      "public": true,
@@ -3654,28 +3662,40 @@
      "end": "2026-09-10T16:00",
      "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
      "reason": "School Swimming Gala",
-     "targets": null
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
     },
     {
      "start": "2026-09-13T07:30",
      "end": "2026-09-13T22:00",
      "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
      "reason": "Competition",
-     "targets": null
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
     },
     {
      "start": "2026-09-17T07:30",
      "end": "2026-09-17T16:00",
      "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
      "reason": "School Swimming Gala",
-     "targets": null
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
     },
     {
      "start": "2026-09-22T07:30",
      "end": "2026-09-22T16:00",
      "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
      "reason": "School Swimming Gala",
-     "targets": null
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
     }
    ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=25",
@@ -3865,9 +3885,9 @@
      "maintenance": []
     },
     {
-     "id": "toddlers-pool-irregular-shape-depth-0-18m-0-3m-is-open-from-june-to-august-free-of-charge",
-     "name": "Toddlers' Pool (Irregular shape, Depth: 0.18m-0.3m) is open from June to August free of charge",
-     "spec": "",
+     "id": "toddlers-pool-irregular-shape",
+     "name": "Toddlers' Pool (Irregular shape,",
+     "spec": "Depth: 0.18m-0.3m) is open from June to August free of charge",
      "kind": "toddlers",
      "location": "outdoor",
      "location_inferred": true,
@@ -3922,7 +3942,7 @@
       "main-pool",
       "public-coaching-area-secondary-pool",
       "secondary-pool",
-      "toddlers-pool-irregular-shape-depth-0-18m-0-3m-is-open-from-june-to-august-free-of-charge",
+      "toddlers-pool-irregular-shape",
       "training-pool"
      ]
     }
@@ -4307,11 +4327,11 @@
      "maintenance": []
     },
     {
-     "id": "training-pool-length-25m-x-width-15m-depth-1-2m-1-4m",
-     "name": "Training pool Length 25m x Width 15m, Depth: 1.2m-1.4m)",
-     "spec": "",
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "Length 25m x Width 15m, Depth: 1.2m-1.4m",
      "kind": "training",
-     "location": "outdoor",
+     "location": "indoor",
      "location_inferred": false,
      "lap": true,
      "public": true,
@@ -4330,7 +4350,7 @@
      "name": "Training pool 2",
      "spec": "Length 25m x Width 30m, Depth: 1.1m-1.4m",
      "kind": "training",
-     "location": "outdoor",
+     "location": "indoor",
      "location_inferred": false,
      "lap": true,
      "public": true,
@@ -4421,8 +4441,8 @@
       "leisure-pool",
       "main-pool",
       "teaching-pool",
-      "training-pool-2",
-      "training-pool-length-25m-x-width-15m-depth-1-2m-1-4m"
+      "training-pool",
+      "training-pool-2"
      ]
     }
    ],
