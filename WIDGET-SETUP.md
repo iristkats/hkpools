@@ -228,6 +228,13 @@ session times stay correct — only closures could be out of date.
   venues at 12 different times to prove they agree. Change the logic in
   `status.js` only — never in the built files; `build.py --check` fails the
   build if you do.
+- **Every row in a widget is set at one size.** Scriptable's own
+  `minimumScaleFactor` shrinks each label independently, so a long venue name
+  ends up visibly smaller than a short one beneath it. Instead the rows are
+  measured together and given a single size — which means a widget showing
+  three short names is set larger than one showing three long ones, and both
+  are internally consistent. `widget-preview.js` prints the sizes it chose and
+  exits non-zero if they ever diverge.
 - **You can see the widget without an iPhone.** `node widget-preview.js` draws
   it as text, and takes `--at 2026-08-25T10:30` and `--warn` so you can look at
   a cleansing day or a thunderstorm signal.

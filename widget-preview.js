@@ -81,8 +81,10 @@ function scriptableMock(now, family, widgetParameter, warnings) {
   function Color(hex, alpha) { this.hex = hex; this.alpha = alpha; }
   function LinearGradient() { this.colors = []; this.locations = []; }
 
-  const fontStub = () => ({});
-  const Font = new Proxy({}, { get: () => fontStub });
+  // record what each label was actually sized at, so uniformity is checkable
+  const Font = new Proxy({}, {
+    get: (_t, name) => (size) => ({ face: String(name), size: size }),
+  });
 
   function DateFormatter() {
     this.dateFormat = "";
@@ -131,7 +133,9 @@ function scriptableMock(now, family, widgetParameter, warnings) {
 function flatten(node) {
   const out = [];
   for (const k of node._kids || []) {
-    if (k._kind === "text") out.push({ text: k._text, limit: k.lineLimit });
+    if (k._kind === "text")
+      out.push({ text: k._text, limit: k.lineLimit, shrink: k.minimumScaleFactor,
+                 size: k.font && k.font.size, face: k.font && k.font.face });
     else if (k._kind === "spacer") out.push({ spacer: k._n });
     else if (k._kind === "stack") {
       const row = flatten(k);
@@ -175,7 +179,44 @@ function print(widget, family) {
       console.log("|" + chunk.padEnd(width) + "|");
   }
   console.log("+" + "-".repeat(width) + "+");
+  reportSizes(items);
   return drawn;
+}
+
+/* Every row's label should have been sized together, and so should every
+   row's detail line. Two labels of the same kind at different sizes is the
+   bug this reports — the header, the dots and the footer legitimately differ,
+   so they are not compared against them. */
+function reportSizes(items) {
+  const names = [], details = [], shrinkers = [];
+  const note = (bucket, x) => {
+    if (!x) return;
+    bucket.push(x.size);
+    // auto-shrink is what made one row render smaller than the next; the
+    // sizes above are only uniform if nothing is left free to rescale
+    if (x.shrink !== undefined && x.shrink < 1) shrinkers.push(x.text);
+  };
+  for (const item of items) {
+    if (!item.row) continue;
+    const texts = item.row.filter((x) => x.text !== undefined);
+    if (texts.length && texts[0].text === "●") {
+      note(names, texts[1]);                          // name follows the dot
+      note(details, texts[2]);                        // medium: same row
+    } else if (item.row[0] && "spacer" in item.row[0] && texts.length === 1) {
+      note(details, texts[0]);                        // small: indented line
+    }
+  }
+
+  const distinct = (a) => [...new Set(a.filter((s) => s !== undefined))];
+  const n = distinct(names), d = distinct(details);
+  if (!n.length && !d.length) return;
+
+  const show = (label, sizes) =>
+    sizes.length ? label + " " + sizes.join("/") + (sizes.length > 1 ? " MIXED" : "") : "";
+  const line = [show("names", n), show("details", d)].filter(Boolean).join(", ");
+  console.log("  fonts: " + line +
+    (shrinkers.length ? "   <-- AUTO-SHRINKS: " + shrinkers.join(" | ") : ""));
+  if (n.length > 1 || d.length > 1 || shrinkers.length) process.exitCode = 1;
 }
 
 const clip = (s, width) => (s.length > width ? s.slice(0, width - 1) + "…" : s);

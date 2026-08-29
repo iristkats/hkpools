@@ -31,7 +31,7 @@ Services Department.
 | `src/index.html`, `src/hkpools-widget.js` | the consumers' sources |
 | `index.html`, `hkpools-widget.js` | generated; committed so they can be used without a build step. The widget ships pointed at this repo's published `pools.json` |
 | `parity.js` | proves the two generated copies answer identically |
-| `widget-preview.js` | runs the widget outside Scriptable, so you can see it without an iPhone |
+| `widget-preview.js` | runs the widget outside Scriptable, so you can see it without an iPhone; also checks every row was set at one font size |
 | `setup-github.sh` | publishes this folder as a repo and starts the first scrape |
 
 ## Working on it

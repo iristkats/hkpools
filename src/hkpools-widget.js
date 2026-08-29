@@ -315,8 +315,43 @@ const shortName = (n) => n.replace(/\s+Swimming Pool( Complex)?$/i, "");
 
 /* "Morrison Hill" or, when one pool was singled out, "Morrison Hill · Main".
    The facility loses its own "pool" — every one of them is a pool. */
-const rowLabel = (r) => shortName(r.p.name) +
-  (r.f ? " · " + r.f.name.replace(/\s*pools?$/i, "") : "");
+const facLabel = (f) => " · " + f.name.replace(/\s*pools?$/i, "");
+const rowLabel = (r) => shortName(r.p.name) + (r.f ? facLabel(r.f) : "");
+
+/* The same label cut to fit. The venue gives way, never the facility: a row
+   reading "Morrison Hill · Main" that loses its tail becomes a claim about
+   the whole venue, which is the one thing it is not. */
+function fitLabel(r, max) {
+  const venue = shortName(r.p.name);
+  if (!r.f) return clip(venue, max);
+  const fac = facLabel(r.f);
+  return clip(venue, Math.max(6, max - fac.length)) + fac;
+}
+
+/* ---- fitting -------------------------------------------------------- */
+
+/* Scriptable cannot measure text, and minimumScaleFactor shrinks each label
+   independently — so a long venue name renders visibly smaller than a short
+   one sitting right beneath it. Instead we size every row together: estimate
+   widths from the character count, pick one size that suits the longest, and
+   turn per-label shrinking off. Rows then differ in length, never in size.
+
+   San Francisco averages a little over half its point size per character in
+   mixed case; 0.53 is close enough to choose between half-point steps. */
+const CHAR_W = 0.53;
+
+/* The largest size in [min,max] at which every label fits `width`. */
+function fitSize(labels, width, max, min) {
+  const longest = labels.reduce((n, s) => Math.max(n, s.length), 0);
+  if (!longest) return max;
+  const ideal = width / (longest * CHAR_W);
+  return Math.max(min, Math.min(max, Math.floor(ideal * 2) / 2));
+}
+
+/* How many characters survive at that size — only bites once fitSize has
+   bottomed out on its floor, so most labels are never cut. */
+const budget = (width, size) => Math.max(6, Math.floor(width / (size * CHAR_W)));
+const clip = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
 
 /* ---- drawing ------------------------------------------------------- */
 
@@ -410,28 +445,34 @@ function smallMany(w, rows, now, stale, warnings, notes) {
   header(w, now, stale);
   w.addSpacer(4);
 
-  for (const row of rows) {
-    const st = row.st;
+  // 155pt tile, 13pt padding each side; the dot and its gap cost 14 more
+  const NAME_W = 115, DET_W = 116;
+  const labels = rows.map(rowLabel);
+  const details = rows.map((r) => detailLine(r.st, true));
+  const nameSize = fitSize(labels, NAME_W, 11, 8.5);
+  const detSize = fitSize(details, DET_W, nameSize - 1.5, 7.5);
+
+  rows.forEach(function (row, i) {
     const head = w.addStack();
     head.centerAlignContent();
-    dot(head, st.code);
+    dot(head, row.st.code);
     head.addSpacer(4);
-    const name = head.addText(rowLabel(row));
-    name.font = Font.mediumSystemFont(11);
+    const name = head.addText(fitLabel(row, budget(NAME_W, nameSize)));
+    name.font = Font.mediumSystemFont(nameSize);
     name.textColor = INK;
     name.lineLimit = 1;
-    name.minimumScaleFactor = 0.55;   // "Venue · Facility" runs long
+    name.minimumScaleFactor = 1;      // sized above; never shrink alone
 
     const under = w.addStack();
     under.addSpacer(13);               // clear the dot
-    const detail = under.addText(detailLine(st, true));
-    detail.font = Font.systemFont(9.5);
+    const detail = under.addText(clip(details[i], budget(DET_W, detSize)));
+    detail.font = Font.systemFont(detSize);
     detail.textColor = DIM;
     detail.lineLimit = 1;
-    detail.minimumScaleFactor = 0.55;
+    detail.minimumScaleFactor = 1;
 
     w.addSpacer(5);
-  }
+  });
 
   w.addSpacer();
   footerRow(w, warnings, notes, true);
@@ -441,28 +482,35 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
   header(w, now, stale);
   w.addSpacer(5);
 
-  for (const r of rows) {
-    const st = r.st;
+  // name and detail share one line, so they are fitted against their combined
+  // length and share a size — the weight is what separates them
+  const ROW_W = 288;
+  const labels = rows.map(rowLabel);
+  const details = rows.map((r) => detailLine(r.st, false));
+  const size = fitSize(labels.map((l, i) => l + details[i]), ROW_W, 12, 8.5);
+  const nameBudget = budget(ROW_W, size);
+
+  rows.forEach(function (r, i) {
     const row = w.addStack();
     row.centerAlignContent();
-    dot(row, st.code);
+    dot(row, r.st.code);
     row.addSpacer(5);
 
-    const name = row.addText(rowLabel(r));
-    name.font = Font.mediumSystemFont(12);
+    const name = row.addText(fitLabel(r, nameBudget - details[i].length));
+    name.font = Font.mediumSystemFont(size);
     name.textColor = INK;
     name.lineLimit = 1;
-    name.minimumScaleFactor = 0.7;
+    name.minimumScaleFactor = 1;
 
     row.addSpacer();
-    const detail = row.addText(detailLine(st, false));
-    detail.font = Font.systemFont(11);
+    const detail = row.addText(details[i]);
+    detail.font = Font.systemFont(size);
     detail.textColor = DIM;
     detail.lineLimit = 1;
-    detail.minimumScaleFactor = 0.65;
+    detail.minimumScaleFactor = 1;
     detail.rightAlignText();
     w.addSpacer(5);
-  }
+  });
 
   w.addSpacer();
   footerRow(w, warnings, notes, false);
