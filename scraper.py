@@ -446,6 +446,49 @@ def facility_lines(cell) -> list[str]:
             out.append(line)
     return out
 
+def page_venue_name(soup) -> str:
+    """The venue name a page gives itself, in its panel heading."""
+    node = soup.find(class_="panel-heading")
+    return re.sub(r"\s+", " ", node.get_text(" ", strip=True)) if node else ""
+
+
+def norm_name(s: str) -> str:
+    """Comparable form of a venue name: case, spacing and punctuation ignored."""
+    return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
+
+
+def find_pool_by_id_scan(name: str, taken: set, verbose=False, span=16):
+    """Locate a venue's page when the directory gives no swpId.
+
+    At least one venue — Tung Cheong Street — has an empty link field in the
+    dataset, so it was published with no hours, no facilities and no closures
+    at all. Hard-coding an id would fix it until LCSD renumbers something and
+    the venue silently starts showing another pool's hours. Instead the ids
+    nothing else claimed are tried, and one is accepted only when the page
+    names itself the same venue.
+    """
+    want = norm_name(name)
+    ceiling = (max(taken) if taken else 0) + span
+    for swp in range(1, ceiling + 1):
+        if swp in taken:
+            continue
+        try:
+            r = requests.get(POOL_PAGE.format(swp), headers=UA, timeout=30)
+        except Exception:                            # noqa: BLE001
+            continue
+        time.sleep(THROTTLE)
+        if r.status_code != 200:
+            continue
+        if norm_name(page_venue_name(BeautifulSoup(r.text, "lxml"))) != want:
+            continue
+        if verbose:
+            print(f"  [{swp}] matched by name: {name}")
+        detail = scrape_pool(swp, verbose)
+        if detail:
+            return swp, detail
+    return None
+
+
 def scrape_pool(swp_id: int, verbose=False) -> dict | None:
     url = POOL_PAGE.format(swp_id)
     r = requests.get(url, headers=UA, timeout=30)
@@ -505,7 +548,7 @@ def scrape_all(verbose=False) -> dict:
     directory = requests.get(DATASET, headers=UA, timeout=30).json()
     records = directory if isinstance(directory, list) else directory.get("features", directory)
 
-    pools, seen = [], set()
+    pools, seen, gaps = [], set(), []
     for rec in records:
         props = rec.get("properties", rec)
         link = props.get("NSEARCH06_EN") or ""
@@ -519,12 +562,8 @@ def scrape_all(verbose=False) -> dict:
             lon=float(props.get("LONGITUDE") or 0))
 
         if not m:
-            base.update(swp_id=None, phone="", type="indoor", sessions=[],
-                        cleansing_weekday=None, cleansing_note="", facilities=[],
-                        maintenance=[], closures=[],
-                        url="https://www.lcsd.gov.hk/en/beach/swim-intro/swimlocation.html",
-                        data_gap="No LCSD detail page published for this venue yet.")
-            pools.append(base)
+            # resolved after the main pass, once every claimed id is known
+            gaps.append(base)
             continue
 
         swp = int(m.group(1))
@@ -541,6 +580,23 @@ def scrape_all(verbose=False) -> dict:
             base.update(detail)
         pools.append(base)
         time.sleep(THROTTLE)
+
+    # venues the directory gave no link for: find the page by name, or record
+    # the gap honestly rather than publishing a venue with nothing in it
+    for base in gaps:
+        found = find_pool_by_id_scan(base["name"], seen, verbose)
+        if found:
+            swp, detail = found
+            seen.add(swp)
+            detail.pop("name", None)                 # dataset name is canonical
+            base.update(detail)
+        else:
+            base.update(swp_id=None, phone="", type="indoor", sessions=[],
+                        cleansing_weekday=None, cleansing_note="", facilities=[],
+                        maintenance=[], closures=[],
+                        url="https://www.lcsd.gov.hk/en/beach/swim-intro/swimlocation.html",
+                        data_gap="No LCSD detail page published for this venue yet.")
+        pools.append(base)
 
     for p in pools:
         p["id"] = (p["name"].lower().replace(" ", "-").replace("'", "")
@@ -814,6 +870,18 @@ def selftest():
     assert rows[0]["start"] == "2026-09-06T07:00" and rows[0]["end"] == "2026-09-06T22:00"
     assert rows[0]["facilities"] == "Main Pool" and rows[0]["reason"] == "Competition"
     assert rows[1]["facilities"].startswith("Teaching Pool (1)"), rows[1]
+
+    # --- finding a venue whose directory entry has no swpId ---------------
+    # accepting an id only when the page names itself the same venue is what
+    # keeps a renumbering from silently attaching another pool's hours
+    heading = BeautifulSoup(
+        '<div class="panel panel-primary"><div class="panel-heading">'
+        'Tung Cheong Street Swimming Pool</div></div>', "html.parser")
+    assert page_venue_name(heading) == "Tung Cheong Street Swimming Pool"
+    assert page_venue_name(BeautifulSoup("<div>nothing</div>", "html.parser")) == ""
+    assert norm_name("Tung Cheong Street Swimming Pool") == \
+           norm_name("tung cheong street  swimming-pool")
+    assert norm_name("Tung Cheong Street") != norm_name("Tung Chung Street")
 
     # weekend-only facility (Ma On Shan giant water slides)
     assert parse_weekend_only(
