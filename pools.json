@@ -757,7 +757,20 @@
    "swp_id": 39,
    "phone": "3427 3341",
    "type": "indoor",
-   "sessions": [],
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ]
+   ],
    "cleansing_weekday": 3,
    "cleansing_note": "Monday if public holiday",
    "facilities": [
@@ -858,7 +871,20 @@
    "swp_id": 42,
    "phone": "2205 6535",
    "type": "indoor",
-   "sessions": [],
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
    "cleansing_weekday": 3,
    "cleansing_note": "Monday if public holiday",
    "facilities": [
@@ -7546,7 +7572,24 @@
    "swp_id": 40,
    "phone": "2540 6708",
    "type": "indoor",
-   "sessions": [],
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "17:00"
+    ],
+    [
+     "18:00",
+     "22:00"
+    ],
+    [
+     "17:00",
+     "19:00"
+    ]
+   ],
    "cleansing_weekday": 1,
    "cleansing_note": "Friday if public holiday",
    "facilities": [
