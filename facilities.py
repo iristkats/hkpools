@@ -35,10 +35,18 @@ def classify(name):
 
 def split_spec(raw):
     """'Main pool (50m x 25m, 1.4-1.9m)' -> ('Main pool', '50m x 25m, 1.4-1.9m')"""
-    m = re.match(r"^(.*?)\s*\((.*)\)\s*$", raw.strip())
+    raw = raw.strip()
+    m = re.match(r"^(.*?)\s*\((.*)\)\s*$", raw)
     if m:
         return m.group(1).strip(), m.group(2).strip()
-    return raw.strip(), ""
+    # Some pages lose the opening bracket, leaving "Training pool Length 25m x
+    # Width 15m, Depth: 1.2m-1.4m)". Without this the dimensions stay in the
+    # name, and the name is what the indoor/outdoor and per-venue overrides
+    # are matched against.
+    m = re.match(r"^(.*?)\s+((?:Length|Width|Depth|Irregular)\b.*?)\)?$", raw, re.I)
+    if m and m.group(1).strip():
+        return m.group(1).strip(), m.group(2).strip()
+    return raw, ""
 
 
 # Indoor/outdoor placement, read off each venue page's facilities table.
@@ -48,21 +56,21 @@ INDOOR_AT = {
     2:  ["Secondary pool", "Training pool", "Jacuzzi"],
     4:  ["Main pool", "Training pool"],
     8:  ["Secondary pool"],
-    11: ["Main pool", "Indoor L1 training pool", "Indoor L2 training pool", "Diving pool"],
+    11: ["Main pool", "Indoor L1 training pool", "Indoor L2 training pool"],
     13: ["Leisure pool 1", "Leisure pool 2"],
     14: ["Main pool"],
     15: ["Secondary pool"],
     16: ["Training pool", "Leisure pool 1"],
     18: ["Main pool", "Training pool"],
-    20: ["Main pool", "Training pool"],
+    20: ["Main pool", "Training pool", "Training pool 2"],
     22: ["Main pool"],
     25: ["Main pool"],          # both same-named main pools are indoor
     29: ["Main pool"],
     32: ["Main pool"],
-    33: ["Main pool", "Jacuzzi"],
+    33: ["Main pool", "Jacuzzi pool"],
     35: ["Main pool"],
     38: ["Main pool"],
-    43: ["Indoor training pool 1", "Leisure pool", "Jacuzzi"],
+    43: ["Training pool 1", "Leisure pool", "Jacuzzi"],
 }
 ALL_OUTDOOR = {1, 7, 9, 10, 17, 19, 21, 23, 24, 26, 27, 28, 31, 34, 36}
 ALL_INDOOR = {3, 5, 6, 12, 30, 37, 39, 40, 41, 42, 44}
@@ -143,10 +151,10 @@ EXCEPTIONS = {
 
     # Tuen Mun North West alternates indoor and outdoor by season.
     43: {
-        "Indoor training pool 1": {"months": [4, 5], "note": "Indoor pools open April-May only"},
+        "Training pool 1":        {"months": [4, 5], "note": "Indoor pools open April-May only"},
         "Leisure pool":           {"months": [4, 5], "note": "Indoor pools open April-May only"},
         "Jacuzzi":                {"months": [4, 5], "note": "Indoor pools open April-May only"},
-        "Outdoor main pool":      {"months": [6, 7, 8, 9, 10], "note": "Outdoor pools open June-October"},
+        "Main pool":              {"months": [6, 7, 8, 9, 10], "note": "Outdoor pools open June-October"},
         "Training pool 2":        {"months": [6, 7, 8, 9, 10], "note": "Outdoor pools open June-October"},
         "Teaching pool":          {"months": [6, 7, 8, 9, 10], "note": "Outdoor pools open June-October"},
     },
@@ -248,6 +256,18 @@ def main():
                     if over.get("public") is False:
                         stats["nonpublic"] += 1
             facilities.append(f)
+
+        # The same for the indoor/outdoor map. It had no such check, so when the
+        # scraped names stopped matching, facilities silently changed side —
+        # which decides the Outdoor filter and whether a weather warning
+        # applies to them.
+        want_indoor = INDOOR_AT.get(p.get("swp_id"))
+        if want_indoor:
+            have = {f["name"].lower() for f in facilities}
+            for n in want_indoor:
+                if n.lower() not in have:
+                    unmatched.append(
+                        f'{p["name"]}: indoor list names "{n}", which is not a facility')
 
         # An exception that matched nothing means LCSD renamed a facility and the
         # override silently stopped applying — loud, because the failure mode is a

@@ -438,7 +438,7 @@ def facility_lines(cell) -> list[str]:
         # ^ marks a heated pool and * a pool with a lift; both are footnote
         # markers on the name, not part of it, and the name becomes the
         # facility's id, which closures are matched against
-        line = re.sub(r"\s+", " ", line).strip(" .;*^#\u00a0")
+        line = re.sub(r"\s+", " ", line).strip(" .;*^#@\u00a0")
         # the long "Barrier Free Facilities: …" sentence names pools but is
         # prose about step-free access, not a facility; length keeps it out
         if 3 < len(line) < 120 and re.search(
