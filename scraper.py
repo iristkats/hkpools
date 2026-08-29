@@ -368,6 +368,9 @@ def closure_table(soup):
     return None
 
 
+SECTION_HEAD = re.compile(r"(?:indoor|outdoor)\s+facilities\s*:", re.I)
+
+
 def facility_lines(cell) -> list[str]:
     """A venue's facility list, one entry per line.
 
@@ -382,10 +385,17 @@ def facility_lines(cell) -> list[str]:
     for br in cell.find_all("br"):
         br.replace_with(BREAK)
     text = cell.get_text("")
+    # venues with both list them under "Indoor Facilities :" / "Outdoor
+    # Facilities :" headings that do not always sit on their own line, so the
+    # heading would otherwise glue itself to the entry either side of it
+    text = SECTION_HEAD.sub(BREAK, text)
 
     out = []
     for line in re.split(BREAK + r"+|[;\u2022]|(?<=\))\s+(?=[A-Z*])", text):
-        line = re.sub(r"\s+", " ", line).strip(" .;*\u00a0")
+        # ^ marks a heated pool and * a pool with a lift; both are footnote
+        # markers on the name, not part of it, and the name becomes the
+        # facility's id, which closures are matched against
+        line = re.sub(r"\s+", " ", line).strip(" .;*^#\u00a0")
         # the long "Barrier Free Facilities: …" sentence names pools but is
         # prose about step-free access, not a facility; length keeps it out
         if 3 < len(line) < 120 and re.search(
@@ -556,6 +566,18 @@ SCHEDULE_PAGE = """
 """
 
 
+# Kennedy Town (swpId=2): indoor and outdoor sections, and the ^ and * footnote
+# markers that were ending up inside the facility names.
+SECTIONED_FACILITIES = """
+<table><tr><td class="info"><b>Facilities</b></td><td><p>Indoor Facilities :
+*^Secondary pool (Length 50m x Width 15m, Depth: 1.2m-1.4m)<br/>^Training pool
+(Length 25m x Width 12.5m, Depth: 0.9m-1.2m)<br/>^Jacuzzi (Depth: 0.85m)<br/>
+Family changing room Outdoor Facilities : *Secondary pool (Length 50m x Width
+25m, Depth: 1.1m-1.4m)<br/>Leisure pool (Irregular shape, Depth:
+0m-0.85m)</p></td></tr></table>
+"""
+
+
 # Trimmed from the live Pao Yue Kong page (swpId=1), keeping the two things
 # that matter: the navigation entry ending "…Swimming Pool Facilities", which
 # used to win the match, and the real facilities row it hid. The live page puts
@@ -660,6 +682,17 @@ def selftest():
     # prose about accessibility names pools but is not one
     assert not any("Barrier" in f for f in facs), facs
 
+
+    sect = BeautifulSoup(SECTIONED_FACILITIES, "html.parser")
+    facs = facility_lines(labelled_cell(sect, r"^Facilities$", "Facilit"))
+    # the section heading must not glue itself to the entry on either side,
+    # and the footnote markers must not end up in a name — names become ids
+    assert facs[0] == "Secondary pool (Length 50m x Width 15m, Depth: 1.2m-1.4m)", facs[0]
+    assert facs[1].startswith("Training pool"), facs[1]
+    assert facs[2].startswith("Jacuzzi"), facs[2]
+    assert any(f.startswith("Secondary pool (Length 50m x Width 25m") for f in facs), facs
+    assert not any("Facilities :" in f for f in facs), facs
+    assert not any(f.startswith(("*", "^")) for f in facs), facs
 
     # --- schedule grid, cleansing day and closures, from real markup -------
     sched = BeautifulSoup(SCHEDULE_PAGE, "html.parser")
