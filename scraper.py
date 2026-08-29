@@ -457,7 +457,7 @@ def norm_name(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
 
 
-def find_pool_by_id_scan(name: str, taken: set, verbose=False, span=16):
+def find_pool_by_id_scan(name: str, taken: set, verbose=False, span=30):
     """Locate a venue's page when the directory gives no swpId.
 
     At least one venue — Tung Cheong Street — has an empty link field in the
@@ -478,8 +478,13 @@ def find_pool_by_id_scan(name: str, taken: set, verbose=False, span=16):
             continue
         time.sleep(THROTTLE)
         if r.status_code != 200:
+            if verbose:
+                print(f"  [scan {swp}] HTTP {r.status_code}")
             continue
-        if norm_name(page_venue_name(BeautifulSoup(r.text, "lxml"))) != want:
+        found = page_venue_name(BeautifulSoup(r.text, "lxml"))
+        if verbose:
+            print(f"  [scan {swp}] {found!r}")
+        if norm_name(found) != want:
             continue
         if verbose:
             print(f"  [{swp}] matched by name: {name}")
