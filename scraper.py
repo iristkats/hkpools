@@ -302,13 +302,13 @@ def section_text(soup, *heading_keywords) -> str:
 SESSION_NOISE = re.compile(r"\((?:session breaks?|maintenance)[^)]*\)", re.I)
 
 
-def schedule_cell(soup, month: int):
-    """The opening-schedule cell covering a given month.
+def schedule_row(soup):
+    """(months, cells) for the opening-schedule grid, or (None, None).
 
     The schedule is a grid, not a labelled field: a header row of month
     abbreviations over a body row whose cells span runs of months, so a venue
-    can keep different hours in April than in July. The colspans have to be
-    expanded to line the two rows up.
+    can keep different hours in April than in July. Colspans are expanded so
+    the two rows line up.
     """
     for table in soup.find_all("table"):
         rows = table.find_all("tr")
@@ -322,13 +322,48 @@ def schedule_cell(soup, month: int):
         cells = []
         for c in rows[1].find_all(["td", "th"]):
             cells.extend([c] * int(c.get("colspan") or 1))
-        if not cells:
-            continue
-        for i, m in enumerate(months):
-            if m == month:
-                return cells[i] if i < len(cells) else cells[-1]
-        return cells[0]                     # out of season: any column will do
-    return None
+        if cells:
+            return months, cells
+    return None, None
+
+
+def schedule_cell(soup, month: int):
+    """The schedule cell covering a given month."""
+    months, cells = schedule_row(soup)
+    if not cells:
+        return None
+    for i, m in enumerate(months):
+        if m == month:
+            return cells[i] if i < len(cells) else cells[-1]
+    return cells[0]                         # out of season: any column will do
+
+
+def schedule_sessions(soup, month: int) -> list[list[str]]:
+    """A venue's session times, preferring the column covering `month`.
+
+    A column can hold an annual-maintenance notice instead of hours — Siu Sai
+    Wan reads "Maintenance 2.5.2026 - 26.7.2026" — and reading that as "no
+    sessions" leaves the venue with no hours at all, which is how three
+    venues published as "Hours unknown". `sessions` means the venue's normal
+    operating hours; the maintenance window is modelled separately, in
+    `maintenance`, and applied by the status engine. So when today's column
+    states no hours, take them from a column that does.
+    """
+    months, cells = schedule_row(soup)
+    if not cells:
+        return []
+
+    ordered = []
+    for i, m in enumerate(months):
+        if m == month and i < len(cells):
+            ordered.append(cells[i])
+    ordered.extend(cells)
+
+    for cell in ordered:
+        found = parse_sessions(SESSION_NOISE.sub(" ", cell.get_text(" ", strip=True)))
+        if found:
+            return found
+    return []
 
 
 def cleansing_text(soup) -> str:
@@ -417,9 +452,7 @@ def scrape_pool(swp_id: int, verbose=False) -> dict | None:
     phone_m = re.search(r"\b(\d{4}\s?\d{4})\b", section_text(soup, "Enquiry", "Telephone") or page)
 
     # the grid is per-month; today's column is the one that describes today
-    sched = schedule_cell(soup, date.today().month)
-    sessions_txt = SESSION_NOISE.sub(" ", sched.get_text(" ", strip=True)) if sched else ""
-    sessions = parse_sessions(sessions_txt)
+    sessions = schedule_sessions(soup, date.today().month)
 
     cwd, cnote = parse_cleansing(cleansing_text(soup))
 
@@ -563,6 +596,23 @@ SCHEDULE_PAGE = """
       <td>Teaching Pool (1), Training Pool, Diving Pool</td>
       <td>Insufficient Lifeguard</td><td>N/A</td></tr>
 </table>
+"""
+
+
+# Siu Sai Wan (swpId=39): a column of the grid states an annual-maintenance
+# window instead of hours. Whatever the colspans do, the venue's hours must
+# still be found — its maintenance window is carried separately.
+MAINTENANCE_COLUMN = """
+<table class="table table-bordered"><tr>
+  <th></th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th>
+  <th>Sep</th><th>Oct</th></tr><tr>
+  <td colspan="4">1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm
+    3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm &amp; 5:00
+    - 6:00 pm)</td>
+  <td colspan="3">Maintenance 2.5.2026 - 26.7.2026</td>
+  <td colspan="1">1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm
+    3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm &amp; 5:00
+    - 6:00 pm)</td></tr></table>
 """
 
 
@@ -711,6 +761,16 @@ def selftest():
     # cell — without expanding colspans it would run off the end and pick up
     # September's "Outdoor pools only" instead
     assert "pools only" not in schedule_cell(sched, 8).get_text(" ", strip=True)
+
+    # August lands on the maintenance column here, whichever way the colspans
+    # are read. Reporting no hours put three venues in front of people as
+    # "Hours unknown"; the hours are in the row, just not in that column.
+    maint = BeautifulSoup(MAINTENANCE_COLUMN, "html.parser")
+    assert "Maintenance" in schedule_cell(maint, 8).get_text(" ", strip=True)
+    assert schedule_sessions(maint, 8) == [["06:30", "12:00"], ["13:00", "17:00"],
+                                           ["18:00", "22:00"]], schedule_sessions(maint, 8)
+    # a month whose own column states hours still uses that column
+    assert schedule_sessions(maint, 4) == schedule_sessions(maint, 8)
 
     # the venue's own line, not the paragraph explaining what cleansing is
     # the wrapper cell opens with "Weekly Cleansing Operation" and the venue's
