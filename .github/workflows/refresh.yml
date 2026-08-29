@@ -31,26 +31,20 @@ jobs:
       - name: Test parsers
         run: python scraper.py --selftest
 
+      # keep what is currently published, to compare the scrape against
+      - name: Snapshot the published data
+        run: cp pools.json published.json
+
       - name: Scrape LCSD
         run: |
           python scraper.py -o pools.json --verbose
           python enrich.py
           python facilities.py
 
+      # counts alone cannot tell a good scrape from a confident wrong one,
+      # so this also refuses a large regression against the published copy
       - name: Sanity-check the result
-        run: |
-          python - <<'PY'
-          import json, sys
-          d = json.load(open("pools.json"))
-          pools = d["pools"]
-          facs = sum(len(p["facilities"]) for p in pools)
-          print(f"{len(pools)} venues, {facs} facilities")
-          # refuse to publish an obviously broken scrape
-          if len(pools) < 40:      sys.exit(f"only {len(pools)} venues - aborting")
-          if facs < 150:           sys.exit(f"only {facs} facilities - aborting")
-          withhours = sum(1 for p in pools if p.get("sessions"))
-          if withhours < 40:       sys.exit(f"only {withhours} venues have hours - aborting")
-          PY
+        run: python sanity.py pools.json published.json
 
       # the freshly scraped data must still drive both consumers identically,
       # and still satisfy the engine's invariants
@@ -61,6 +55,7 @@ jobs:
         run: |
           git config user.name  "hkpools bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f published.json
           git add pools.json
           git diff --staged --quiet && echo "no change" && exit 0
           git commit -m "data: refresh $(date -u +%Y-%m-%d\ %H:%M)Z"

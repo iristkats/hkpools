@@ -34,6 +34,11 @@ jobs:
       - name: Built files are current
         run: python build.py --check
 
+      # the publish gate must itself work; comparing the file to itself is the
+      # cheapest way to prove it runs and passes a clean case
+      - name: Publish gate
+        run: python sanity.py pools.json pools.json
+
       # the web app and the widget must answer identically, everywhere, always
       - name: Status-engine parity
         run: node parity.js
