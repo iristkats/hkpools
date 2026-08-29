@@ -39,7 +39,7 @@ Services Department.
 ```sh
 python scraper.py --selftest   # parser tests, no network
 python build.py                # re-inject status.js after editing it
-node parity.js                 # 45 venues × 11 times × 2 consumers
+node parity.js                 # 45 venues × 12 times × 2 consumers
 node widget-preview.js         # see what the widget would draw
 ```
 

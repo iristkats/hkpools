@@ -29,43 +29,39 @@ function inMonthRange(rng, mo, day){
   return a<=b ? (x>=a && x<=b) : (x>=a || x<=b);
 }
 
-/* ---- one facility -------------------------------------------------- */
-function facilityStatus(p, f, now){
-  var mo=now.getMonth()+1, day=now.getDate(), wd=(now.getDay()+6)%7;
-  var nowM=now.getHours()*60+now.getMinutes();
-  var today=isoDay(now);
-  var out={code:"shut", label:"Closed", note:f.note||"", reason:"", sessions:[]};
+/* ---- one day, one facility ----------------------------------------- */
 
-  if(!p.public || !f.public){
-    out.code="priv"; out.label="Groups only";
-    out.note=f.access_note||p.access_note||""; return out;
-  }
+/* The sessions a facility runs on a given date, before any clock is applied.
+   Split out of facilityStatus so the same rules — maintenance, season,
+   weekday, cleansing — can be asked about tomorrow, which is how the
+   overnight "opens 6:30am" is worked out. */
+function daySessions(p, f, d){
+  var mo=d.getMonth()+1, day=d.getDate(), wd=(d.getDay()+6)%7;
 
   for(var i=0;i<p.maintenance.length;i++){
     var m=p.maintenance[i];
     if(inMonthRange(m.range,mo,day) &&
-       (m.scope==="venue" || (m.targets && m.targets.indexOf(f.id)>=0))){
-      out.label="Maintenance"; out.note=m.label; out.reason=m.label; return out;
-    }
+       (m.scope==="venue" || (m.targets && m.targets.indexOf(f.id)>=0)))
+      return {blocked:"Maintenance", note:m.label, live:[]};
   }
-
-  if(f.months && f.months.indexOf(mo)<0){ out.label="Out of season"; return out; }
-  if(f.days && f.days.indexOf(wd)<0){ out.label="Not today"; return out; }
+  if(f.months && f.months.indexOf(mo)<0) return {blocked:"Out of season", live:[]};
+  if(f.days && f.days.indexOf(wd)<0) return {blocked:"Not today", live:[]};
 
   var list, sdays;
   if(f.weekday_sessions && f.weekday_sessions.days.indexOf(wd)>=0){
     list=f.weekday_sessions.sessions; sdays=null;
   } else if(f.sessions){ list=f.sessions; sdays=f.session_days; }
   else { list=p.sessions; sdays=p.session_days; }
-  if(!list || !list.length){ out.code="unk"; out.label="Unknown"; return out; }
+  if(!list || !list.length) return {blocked:"Unknown", live:[]};
 
   var sess=list.map(function(s,i){
-    var d = sdays && sdays[String(i)];
-    return {from:s[0], to:s[1], skipped: d ? d.indexOf(wd)<0 : false};
+    var dd = sdays && sdays[String(i)];
+    return {from:s[0], to:s[1], skipped: dd ? dd.indexOf(wd)<0 : false};
   });
 
   // Weekly cleansing is a venue-wide clock blackout, never a session index:
   // facilities that open from the 2nd session have a different session list.
+  var cleansing=false;
   if(p.cleansing_weekday===wd){
     var w = p.cleansing_window ||
             (p.sessions && p.sessions.length>1 ? ["10:00", p.sessions[1][1]] : null);
@@ -77,21 +73,68 @@ function facilityStatus(p, f, now){
         if(mins(s.from)<mins(w[0])) split.push({from:s.from,to:w[0],skipped:false});
         if(mins(s.to)>mins(w[1]))   split.push({from:w[1],to:s.to,skipped:false});
       });
-      sess=split; out.cleansing=true;
+      sess=split; cleansing=true;
     }
   }
+  return {blocked:null, cleansing:cleansing,
+          live:sess.filter(function(s){ return !s.skipped; })};
+}
 
-  var live=sess.filter(function(s){ return !s.skipped; });
-  out.sessions=live;
-
-  var closure=(p.closures||[]).filter(function(c){
+/* The temporary closure covering this facility at this moment, if any. */
+function closureAt(p, f, dayISO, minute){
+  return (p.closures||[]).filter(function(c){
     if(!c.targets || c.targets.indexOf(f.id)<0) return false;
     var s=c.start.slice(0,10), e=c.end?c.end.slice(0,10):"9999-12-31";
-    if(!(s<=today && today<=e)) return false;
-    var from = c.start.slice(0,10)===today ? mins(c.start.slice(11)) : 0;
-    var to   = (c.end && c.end.slice(0,10)===today) ? mins(c.end.slice(11)) : 1440;
-    return nowM>=from && nowM<to;
+    if(!(s<=dayISO && dayISO<=e)) return false;
+    var from = s===dayISO ? mins(c.start.slice(11)) : 0;
+    var to   = (c.end && c.end.slice(0,10)===dayISO) ? mins(c.end.slice(11)) : 1440;
+    return minute>=from && minute<to;
   })[0];
+}
+
+/* When today has no session left, the first one on a later day. Looks a week
+   ahead and no further: past that a venue is in annual maintenance, and a
+   date months out is not the useful thing to say. */
+function nextOpening(p, f, now){
+  for(var n=1;n<=7;n++){
+    var d=new Date(now.getFullYear(), now.getMonth(), now.getDate()+n);
+    var day=daySessions(p,f,d);
+    if(day.blocked || !day.live.length) continue;
+    var iso=isoDay(d);
+    for(var i=0;i<day.live.length;i++){
+      if(!closureAt(p,f,iso,mins(day.live[i].from)))
+        return {at:day.live[i].from, days:n, wd:(d.getDay()+6)%7};
+    }
+  }
+  return null;
+}
+
+/* ---- one facility -------------------------------------------------- */
+function facilityStatus(p, f, now){
+  var nowM=now.getHours()*60+now.getMinutes();
+  var today=isoDay(now);
+  var out={code:"shut", label:"Closed", note:f.note||"", reason:"", sessions:[]};
+
+  if(!p.public || !f.public){
+    out.code="priv"; out.label="Groups only";
+    out.note=f.access_note||p.access_note||""; return out;
+  }
+
+  var d=daySessions(p,f,now);
+  if(d.blocked==="Maintenance"){
+    out.label="Maintenance"; out.note=d.note; out.reason=d.note; return out;
+  }
+  if(d.blocked==="Out of season"){ out.label="Out of season"; return out; }
+  if(d.blocked==="Not today"){
+    out.label="Not today"; out.reopen=nextOpening(p,f,now); return out;
+  }
+  if(d.blocked==="Unknown"){ out.code="unk"; out.label="Unknown"; return out; }
+
+  if(d.cleansing) out.cleansing=true;
+  var live=d.live;
+  out.sessions=live;
+
+  var closure=closureAt(p,f,today,nowM);
   if(closure){
     out.label="Closed";
     out.note=closure.reason + (closure.end ? "" : " (until further notice)");
@@ -113,6 +156,9 @@ function facilityStatus(p, f, now){
   }
   var next=live.filter(function(s){ return mins(s.from)>nowM; })[0];
   if(next){ out.code="soon"; out.label=fmt(next.from); out.nextRaw=next.from; return out; }
+
+  // nothing left today — say when it is back rather than just "closed"
+  out.reopen=nextOpening(p,f,now);
   return out;
 }
 
@@ -154,17 +200,32 @@ function venueStatus(p, now){
 
   var cleansing=facs.some(function(x){ return x.s.cleansing; });
 
+  // shut for the rest of today: the soonest any facility is back
+  var reopen=null;
+  if(openN===0 && !nextRaw)
+    facs.forEach(function(x){
+      var r=x.s.reopen;
+      if(!r) return;
+      if(!reopen || r.days<reopen.days ||
+         (r.days===reopen.days && mins(r.at)<mins(reopen.at))) reopen=r;
+    });
+
   var code, label;
-  if(openN===0){ code="shut"; label = nextRaw ? "Opens "+fmt(nextRaw) : "Closed"; }
+  if(openN===0){
+    code="shut";
+    label = nextRaw ? "Opens "+fmt(nextRaw)
+          : reopen ? "Opens "+fmt(reopen.at) : "Closed";
+  }
   else if(vague.length){ code="part"; label="Open · see notice"; }
   else if(openN===total){ code="open"; label="All open"; }
   else { code="part"; label=openN+" of "+total+" open"; }
 
   return {code:code, label:label, facs:facs, openN:openN, total:total,
           lapOpen:lapOpen, until:until, resumeRaw:resumeRaw, nextRaw:nextRaw,
-          vague:vague, cleansing:cleansing};
+          reopen:reopen, vague:vague, cleansing:cleansing};
 }
 
 /* Node/test export; harmless in a browser or Scriptable. */
 if (typeof module !== "undefined" && module.exports)
-  module.exports = {hkNow, mins, fmt, isoDay, inMonthRange, facilityStatus, venueStatus};
+  module.exports = {hkNow, mins, fmt, isoDay, inMonthRange, daySessions,
+                  closureAt, nextOpening, facilityStatus, venueStatus};

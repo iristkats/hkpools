@@ -263,8 +263,14 @@
               : st.openN + " of " + st.total + " pools");
       return ["Open", bits.join(" · ")];
     }
-    var when = st.nextRaw ? "Opens " + fmt(st.nextRaw) : "Closed";
-    var why  = st.cleansing ? "weekly cleansing" : closedReason(st);
+    var WD = ["Monday","Tuesday","Wednesday","Thursday","Friday",
+              "Saturday","Sunday"];
+    var when = st.nextRaw ? "Opens " + fmt(st.nextRaw)
+             : st.reopen ? "Opens " + fmt(st.reopen.at) +
+                 (st.reopen.days === 1 ? " tomorrow" : " " + WD[st.reopen.wd])
+             : "Closed";
+    // cleansing explains a gap in today's timetable, not an empty evening
+    var why = st.cleansing && st.nextRaw ? "weekly cleansing" : closedReason(st);
     return [when, why];
   }
 
@@ -278,7 +284,9 @@
     if(all("Out of season")) return "out of season";
     // a stated closure, not a facility's standing note
     var named = shut.filter(function(x){ return x.s.reason; });
-    return named.length === shut.length ? named[0].s.reason : "closed for the day";
+    if(named.length === shut.length) return named[0].s.reason;
+    // with a reopening time already on the line there is nothing to add
+    return st.nextRaw || st.reopen ? "" : "closed for the day";
   }
 
   /* ---- render ---- */
@@ -347,7 +355,7 @@
           "</span>" +
           '<span class="meta">' + esc(p.district) +
             (hasOutdoor(p) ? " · outdoor" : " · indoor") + "</span>" +
-          '<span class="det">' + esc(lines[1]) + "</span>" +
+          (lines[1] ? '<span class="det">' + esc(lines[1]) + "</span>" : "") +
         "</span>" +
       "</summary>" +
       '<div class="body">' + facilityTable(p, st) + notices(p, st, now) +

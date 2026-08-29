@@ -180,6 +180,15 @@ group-training-only. The weather row only appears when a warning is in force
 *and* one of your pools has outdoor facilities; on the small tile it shows the
 warning's name alone, there being no room for the sentence.
 
+**Past the last session** the widget names the day it is next back —
+"Opens Sun 6:30am" — rather than just saying closed. It looks a week ahead,
+so a pool shut for annual maintenance says "closed today" instead of a date
+months away.
+
+If a name only matched after forgiving a typo, the bottom line says which
+pool it landed on — `⚠ kowlon park → Kowloon Park` — so a substitution you
+did not ask for never passes unnoticed.
+
 A **⚠ before the time** means the widget couldn't reach GitHub and is showing
 its last download. The status itself is still computed from the live clock, so
 session times stay correct — only closures could be out of date.
@@ -199,7 +208,7 @@ session times stay correct — only closures could be out of date.
   takes a few minutes to reach the widget.
 - **The status engine is shared.** `status.js` is injected into both the web app
   and the widget at build time by `build.py`, and `parity.js` checks all 45
-  venues at 11 different times to prove they agree. Change the logic in
+  venues at 12 different times to prove they agree. Change the logic in
   `status.js` only — never in the built files; `build.py --check` fails the
   build if you do.
 - **You can see the widget without an iPhone.** `node widget-preview.js` draws

@@ -26,9 +26,10 @@ const CONSUMERS = [
   { name: "hkpools-widget.js", file: path.join(ROOT, "hkpools-widget.js") },
 ];
 
-/* Eleven probes: either side of every session boundary a venue can have,
-   inside a cleansing window, inside a dated closure, overnight, at a
-   weekend, and in winter when the maintenance ranges bite. */
+/* Twelve probes: either side of every session boundary a venue can have,
+   inside a cleansing window, inside a dated closure, past the last session
+   when only tomorrow's opening is left to report, at a weekend, and in
+   winter when the maintenance ranges bite. */
 const PROBES = [
   ["Mon before opening",      2026,  8, 24,  5, 55],
   ["Mon first session",       2026,  8, 24,  7, 30],
@@ -39,6 +40,7 @@ const PROBES = [
   ["Fri evening",             2026,  8, 28, 18, 30],
   ["Sat late morning",        2026,  8, 29, 11,  0],
   ["Sun near closing",        2026,  8, 30, 21, 50],
+  ["Sat after last session",  2026,  8, 29, 23, 28],
   ["Inside a dated closure",  2026,  8, 11,  7,  0],
   ["Christmas, winter works", 2026, 12, 25, 14,  0],
 ];
@@ -50,11 +52,13 @@ function comparable(st) {
     code: st.code, label: st.label, openN: st.openN, total: st.total,
     lapOpen: st.lapOpen || false, until: st.until || null,
     resumeRaw: st.resumeRaw || null, nextRaw: st.nextRaw || null,
+    reopen: st.reopen ? [st.reopen.at, st.reopen.days, st.reopen.wd] : null,
     cleansing: st.cleansing || false,
     vague: (st.vague || []).map((c) => c.reason),
     facs: st.facs.map((x) => [x.f.id, x.s.code, x.s.label, x.s.note || "",
                               x.s.reason || "", x.s.until || null,
                               x.s.afterRaw || null, x.s.nextRaw || null,
+                              x.s.reopen ? x.s.reopen.at + "+" + x.s.reopen.days : null,
                               !!x.s.cleansing]),
   });
 }

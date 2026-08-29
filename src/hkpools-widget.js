@@ -126,29 +126,25 @@ function relevantWarnings(raw) {
 const SEPARATORS = /[,;:/|\n\t\u3001\u3002\uFF0C\uFF1A\uFF1B\uFF5C]+/;
 
 /* "victoria park; mui wo" -> the pools they name, in the order given.
-   Case-insensitive substring, so nobody has to type "Swimming Pool". */
+   Case-insensitive substring, so nobody has to type "Swimming Pool".
+   `guessed` records anything only the typo pass could match — a substitution
+   the reader never asked for is exactly what needs saying out loud. */
 function pickPools(pools, param) {
   const wanted = (param || DEFAULT_POOLS)
     .split(SEPARATORS).map((s) => s.trim().toLowerCase()).filter(Boolean);
-  const picked = [];
-  const missing = [];
+  const picked = [], missing = [], guessed = [];
+
   for (const w of wanted) {
-    const hit = findPool(pools, w);
-    if (!hit) missing.push(w);
-    else if (!picked.includes(hit)) picked.push(hit);
+    const exact = pools.find((p) => p.name.toLowerCase().includes(w)) ||
+                  pools.find((p) => (p.district || "").toLowerCase().includes(w));
+    const hit = exact || nearest(pools, w);
+    if (!hit) { missing.push(w); continue; }
+    if (!exact) guessed.push(w + " → " + shortName(hit.name));
+    if (!picked.includes(hit)) picked.push(hit);
   }
-  return { picked, missing };
+  return { picked, missing, guessed };
 }
 
-function findPool(pools, term) {
-  return pools.find((p) => p.name.toLowerCase().includes(term)) ||
-         pools.find((p) => (p.district || "").toLowerCase().includes(term)) ||
-         nearest(pools, term);
-}
-
-/* A typo shouldn't cost you the widget: "mai wo" still finds Mui Wo. Every
-   word must land, and if two venues match equally well we give up rather
-   than guess — showing the wrong pool's hours is worse than saying so. */
 function nearest(pools, term) {
   const words = term.split(/\s+/).filter(Boolean);
   if (!words.length) return null;
@@ -207,7 +203,9 @@ function detailLine(st, tight) {
     bits.push("until " + compact(st.until));
     if (st.resumeRaw) bits.push("next " + compact(st.resumeRaw));
   } else {
-    bits.push(st.nextRaw ? "Opens " + compact(st.nextRaw) : "closed today");
+    if (st.nextRaw) bits.push("Opens " + compact(st.nextRaw));
+    else if (st.reopen) bits.push("Opens " + reopenAt(st.reopen));
+    else bits.push("closed today");
   }
   const why = reason(st, tight);
   if (why) bits.push(why);
@@ -225,7 +223,11 @@ function stateLines(st) {
   if (st.openN > 0)
     return ["until " + fmt(st.until) + tail,
             st.resumeRaw ? "next session " + fmt(st.resumeRaw) : ""];
-  return [(st.nextRaw ? "Opens " + fmt(st.nextRaw) : "closed today") + tail, ""];
+
+  const when = st.nextRaw ? "Opens " + fmt(st.nextRaw)
+             : st.reopen ? "Opens " + WD[st.reopen.wd] + " " + fmt(st.reopen.at)
+             : "closed today";
+  return [when + tail, ""];
 }
 
 /* Why it looks the way it does — the half of the line that isn't a clock. */
@@ -236,7 +238,9 @@ function reason(st, tight) {
     return tight ? st.openN + "/" + st.total
                  : st.openN + " of " + st.total + " pools";
   }
-  if (st.cleansing) return "cleansing";
+  // cleansing explains a gap in today's timetable, not an empty evening —
+  // past the last session it is no longer why the doors are shut
+  if (st.cleansing && st.nextRaw) return "cleansing";
 
   const shut = st.facs.filter((x) => x.s.code !== "priv");
   if (!shut.length) return "";
@@ -255,6 +259,13 @@ const short = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
 
 const HEADLINE = { open: "OPEN", part: "PARTLY OPEN", shut: "CLOSED",
                    priv: "GROUPS ONLY", unk: "NO HOURS" };
+
+const WD = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+/* "Opens Sun 6:30am". The day is always named: at 11pm "opens 6:30am" reads
+   like this morning, and a venue whose last session has passed can reopen at
+   any hour of any later day. */
+const reopenAt = (r) => WD[r.wd] + " " + compact(r.at);
 
 /* Strip the boilerplate every LCSD venue name carries. */
 const shortName = (n) => n.replace(/\s+Swimming Pool( Complex)?$/i, "");
@@ -306,7 +317,7 @@ function message(w, now, lines) {
 }
 
 /* One pool named: spend the whole tile on it. */
-function smallOne(w, p, st, now, stale, warnings, missing) {
+function smallOne(w, p, st, now, stale, warnings, notes) {
   header(w, now, stale);
   w.addSpacer(6);
 
@@ -341,12 +352,12 @@ function smallOne(w, p, st, now, stale, warnings, missing) {
   }
 
   w.addSpacer();
-  footerRow(w, warnings, missing, true);
+  footerRow(w, warnings, notes, true);
 }
 
 /* Two or three named: a stacked row each — name, then its line beneath, so
    the detail gets the full tile width rather than a narrow right-hand column. */
-function smallMany(w, rows, now, stale, warnings, missing) {
+function smallMany(w, rows, now, stale, warnings, notes) {
   header(w, now, stale);
   w.addSpacer(4);
 
@@ -373,10 +384,10 @@ function smallMany(w, rows, now, stale, warnings, missing) {
   }
 
   w.addSpacer();
-  footerRow(w, warnings, missing, true);
+  footerRow(w, warnings, notes, true);
 }
 
-function mediumWidget(w, rows, now, stale, warnings, missing) {
+function mediumWidget(w, rows, now, stale, warnings, notes) {
   header(w, now, stale);
   w.addSpacer(5);
 
@@ -403,20 +414,23 @@ function mediumWidget(w, rows, now, stale, warnings, missing) {
   }
 
   w.addSpacer();
-  footerRow(w, warnings, missing, false);
+  footerRow(w, warnings, notes, false);
 }
 
 /* The last line carries whichever matters more: a weather signal that could
    shut the pools, or — failing that — a name from the Parameter that matched
    nothing, so a silent drop doesn't look like a deliberate omission. */
-function footerRow(w, warnings, missing, tight) {
+function footerRow(w, warnings, notes, tight) {
   let text, color;
   if (warnings.length) {
     text = tight ? "⚠ " + warnings[0]
                  : "⚠ " + warnings[0] + " — outdoor pools likely shut";
     color = COLORS.part;
-  } else if (missing.length) {
-    text = "⚠ no match: " + missing.join(", ");
+  } else if (notes.guessed.length) {
+    text = "⚠ " + notes.guessed.join(", ");
+    color = COLORS.part;
+  } else if (notes.missing.length) {
+    text = "⚠ no match: " + notes.missing.join(", ");
     color = DIM;
   } else return;
 
@@ -441,10 +455,11 @@ async function build() {
   if (!data)
     return message(w, now, ["No data yet — open the script once while online."]);
 
-  const { picked, missing } = pickPools(data.pools, args.widgetParameter);
+  const { picked, missing, guessed } = pickPools(data.pools, args.widgetParameter);
   if (!picked.length)
     return message(w, now, ["No pool matched “" + missing.join(", ") + "”.",
                             "Check the widget Parameter."]);
+  const notes = { missing, guessed };
 
   // small used to be a single pool; it now takes up to three, like medium
   const rows = picked.slice(0, 3).map((p) => ({ p, st: venueStatus(p, now) }));
@@ -452,10 +467,10 @@ async function build() {
   // only worth a row if a warning is up AND one of these pools is outdoors
   const warnings = rows.some(({ p }) => hasOutdoor(p)) ? await loadWarnings() : [];
 
-  if (family !== "small") mediumWidget(w, rows, now, stale, warnings, missing);
+  if (family !== "small") mediumWidget(w, rows, now, stale, warnings, notes);
   else if (rows.length === 1)
-    smallOne(w, rows[0].p, rows[0].st, now, stale, warnings, missing);
-  else smallMany(w, rows, now, stale, warnings, missing);
+    smallOne(w, rows[0].p, rows[0].st, now, stale, warnings, notes);
+  else smallMany(w, rows, now, stale, warnings, notes);
 
   w.refreshAfterDate = new Date(Date.now() + 15 * 60 * 1000);
   return w;

@@ -75,43 +75,39 @@ function inMonthRange(rng, mo, day){
   return a<=b ? (x>=a && x<=b) : (x>=a || x<=b);
 }
 
-/* ---- one facility -------------------------------------------------- */
-function facilityStatus(p, f, now){
-  var mo=now.getMonth()+1, day=now.getDate(), wd=(now.getDay()+6)%7;
-  var nowM=now.getHours()*60+now.getMinutes();
-  var today=isoDay(now);
-  var out={code:"shut", label:"Closed", note:f.note||"", reason:"", sessions:[]};
+/* ---- one day, one facility ----------------------------------------- */
 
-  if(!p.public || !f.public){
-    out.code="priv"; out.label="Groups only";
-    out.note=f.access_note||p.access_note||""; return out;
-  }
+/* The sessions a facility runs on a given date, before any clock is applied.
+   Split out of facilityStatus so the same rules — maintenance, season,
+   weekday, cleansing — can be asked about tomorrow, which is how the
+   overnight "opens 6:30am" is worked out. */
+function daySessions(p, f, d){
+  var mo=d.getMonth()+1, day=d.getDate(), wd=(d.getDay()+6)%7;
 
   for(var i=0;i<p.maintenance.length;i++){
     var m=p.maintenance[i];
     if(inMonthRange(m.range,mo,day) &&
-       (m.scope==="venue" || (m.targets && m.targets.indexOf(f.id)>=0))){
-      out.label="Maintenance"; out.note=m.label; out.reason=m.label; return out;
-    }
+       (m.scope==="venue" || (m.targets && m.targets.indexOf(f.id)>=0)))
+      return {blocked:"Maintenance", note:m.label, live:[]};
   }
-
-  if(f.months && f.months.indexOf(mo)<0){ out.label="Out of season"; return out; }
-  if(f.days && f.days.indexOf(wd)<0){ out.label="Not today"; return out; }
+  if(f.months && f.months.indexOf(mo)<0) return {blocked:"Out of season", live:[]};
+  if(f.days && f.days.indexOf(wd)<0) return {blocked:"Not today", live:[]};
 
   var list, sdays;
   if(f.weekday_sessions && f.weekday_sessions.days.indexOf(wd)>=0){
     list=f.weekday_sessions.sessions; sdays=null;
   } else if(f.sessions){ list=f.sessions; sdays=f.session_days; }
   else { list=p.sessions; sdays=p.session_days; }
-  if(!list || !list.length){ out.code="unk"; out.label="Unknown"; return out; }
+  if(!list || !list.length) return {blocked:"Unknown", live:[]};
 
   var sess=list.map(function(s,i){
-    var d = sdays && sdays[String(i)];
-    return {from:s[0], to:s[1], skipped: d ? d.indexOf(wd)<0 : false};
+    var dd = sdays && sdays[String(i)];
+    return {from:s[0], to:s[1], skipped: dd ? dd.indexOf(wd)<0 : false};
   });
 
   // Weekly cleansing is a venue-wide clock blackout, never a session index:
   // facilities that open from the 2nd session have a different session list.
+  var cleansing=false;
   if(p.cleansing_weekday===wd){
     var w = p.cleansing_window ||
             (p.sessions && p.sessions.length>1 ? ["10:00", p.sessions[1][1]] : null);
@@ -123,21 +119,68 @@ function facilityStatus(p, f, now){
         if(mins(s.from)<mins(w[0])) split.push({from:s.from,to:w[0],skipped:false});
         if(mins(s.to)>mins(w[1]))   split.push({from:w[1],to:s.to,skipped:false});
       });
-      sess=split; out.cleansing=true;
+      sess=split; cleansing=true;
     }
   }
+  return {blocked:null, cleansing:cleansing,
+          live:sess.filter(function(s){ return !s.skipped; })};
+}
 
-  var live=sess.filter(function(s){ return !s.skipped; });
-  out.sessions=live;
-
-  var closure=(p.closures||[]).filter(function(c){
+/* The temporary closure covering this facility at this moment, if any. */
+function closureAt(p, f, dayISO, minute){
+  return (p.closures||[]).filter(function(c){
     if(!c.targets || c.targets.indexOf(f.id)<0) return false;
     var s=c.start.slice(0,10), e=c.end?c.end.slice(0,10):"9999-12-31";
-    if(!(s<=today && today<=e)) return false;
-    var from = c.start.slice(0,10)===today ? mins(c.start.slice(11)) : 0;
-    var to   = (c.end && c.end.slice(0,10)===today) ? mins(c.end.slice(11)) : 1440;
-    return nowM>=from && nowM<to;
+    if(!(s<=dayISO && dayISO<=e)) return false;
+    var from = s===dayISO ? mins(c.start.slice(11)) : 0;
+    var to   = (c.end && c.end.slice(0,10)===dayISO) ? mins(c.end.slice(11)) : 1440;
+    return minute>=from && minute<to;
   })[0];
+}
+
+/* When today has no session left, the first one on a later day. Looks a week
+   ahead and no further: past that a venue is in annual maintenance, and a
+   date months out is not the useful thing to say. */
+function nextOpening(p, f, now){
+  for(var n=1;n<=7;n++){
+    var d=new Date(now.getFullYear(), now.getMonth(), now.getDate()+n);
+    var day=daySessions(p,f,d);
+    if(day.blocked || !day.live.length) continue;
+    var iso=isoDay(d);
+    for(var i=0;i<day.live.length;i++){
+      if(!closureAt(p,f,iso,mins(day.live[i].from)))
+        return {at:day.live[i].from, days:n, wd:(d.getDay()+6)%7};
+    }
+  }
+  return null;
+}
+
+/* ---- one facility -------------------------------------------------- */
+function facilityStatus(p, f, now){
+  var nowM=now.getHours()*60+now.getMinutes();
+  var today=isoDay(now);
+  var out={code:"shut", label:"Closed", note:f.note||"", reason:"", sessions:[]};
+
+  if(!p.public || !f.public){
+    out.code="priv"; out.label="Groups only";
+    out.note=f.access_note||p.access_note||""; return out;
+  }
+
+  var d=daySessions(p,f,now);
+  if(d.blocked==="Maintenance"){
+    out.label="Maintenance"; out.note=d.note; out.reason=d.note; return out;
+  }
+  if(d.blocked==="Out of season"){ out.label="Out of season"; return out; }
+  if(d.blocked==="Not today"){
+    out.label="Not today"; out.reopen=nextOpening(p,f,now); return out;
+  }
+  if(d.blocked==="Unknown"){ out.code="unk"; out.label="Unknown"; return out; }
+
+  if(d.cleansing) out.cleansing=true;
+  var live=d.live;
+  out.sessions=live;
+
+  var closure=closureAt(p,f,today,nowM);
   if(closure){
     out.label="Closed";
     out.note=closure.reason + (closure.end ? "" : " (until further notice)");
@@ -159,6 +202,9 @@ function facilityStatus(p, f, now){
   }
   var next=live.filter(function(s){ return mins(s.from)>nowM; })[0];
   if(next){ out.code="soon"; out.label=fmt(next.from); out.nextRaw=next.from; return out; }
+
+  // nothing left today — say when it is back rather than just "closed"
+  out.reopen=nextOpening(p,f,now);
   return out;
 }
 
@@ -200,20 +246,35 @@ function venueStatus(p, now){
 
   var cleansing=facs.some(function(x){ return x.s.cleansing; });
 
+  // shut for the rest of today: the soonest any facility is back
+  var reopen=null;
+  if(openN===0 && !nextRaw)
+    facs.forEach(function(x){
+      var r=x.s.reopen;
+      if(!r) return;
+      if(!reopen || r.days<reopen.days ||
+         (r.days===reopen.days && mins(r.at)<mins(reopen.at))) reopen=r;
+    });
+
   var code, label;
-  if(openN===0){ code="shut"; label = nextRaw ? "Opens "+fmt(nextRaw) : "Closed"; }
+  if(openN===0){
+    code="shut";
+    label = nextRaw ? "Opens "+fmt(nextRaw)
+          : reopen ? "Opens "+fmt(reopen.at) : "Closed";
+  }
   else if(vague.length){ code="part"; label="Open · see notice"; }
   else if(openN===total){ code="open"; label="All open"; }
   else { code="part"; label=openN+" of "+total+" open"; }
 
   return {code:code, label:label, facs:facs, openN:openN, total:total,
           lapOpen:lapOpen, until:until, resumeRaw:resumeRaw, nextRaw:nextRaw,
-          vague:vague, cleansing:cleansing};
+          reopen:reopen, vague:vague, cleansing:cleansing};
 }
 
 /* Node/test export; harmless in a browser or Scriptable. */
 if (typeof module !== "undefined" && module.exports)
-  module.exports = {hkNow, mins, fmt, isoDay, inMonthRange, facilityStatus, venueStatus};
+  module.exports = {hkNow, mins, fmt, isoDay, inMonthRange, daySessions,
+                  closureAt, nextOpening, facilityStatus, venueStatus};
 /* <<< end status.js */
 
 /* ---- data ---------------------------------------------------------- */
@@ -297,29 +358,25 @@ function relevantWarnings(raw) {
 const SEPARATORS = /[,;:/|\n\t\u3001\u3002\uFF0C\uFF1A\uFF1B\uFF5C]+/;
 
 /* "victoria park; mui wo" -> the pools they name, in the order given.
-   Case-insensitive substring, so nobody has to type "Swimming Pool". */
+   Case-insensitive substring, so nobody has to type "Swimming Pool".
+   `guessed` records anything only the typo pass could match — a substitution
+   the reader never asked for is exactly what needs saying out loud. */
 function pickPools(pools, param) {
   const wanted = (param || DEFAULT_POOLS)
     .split(SEPARATORS).map((s) => s.trim().toLowerCase()).filter(Boolean);
-  const picked = [];
-  const missing = [];
+  const picked = [], missing = [], guessed = [];
+
   for (const w of wanted) {
-    const hit = findPool(pools, w);
-    if (!hit) missing.push(w);
-    else if (!picked.includes(hit)) picked.push(hit);
+    const exact = pools.find((p) => p.name.toLowerCase().includes(w)) ||
+                  pools.find((p) => (p.district || "").toLowerCase().includes(w));
+    const hit = exact || nearest(pools, w);
+    if (!hit) { missing.push(w); continue; }
+    if (!exact) guessed.push(w + " → " + shortName(hit.name));
+    if (!picked.includes(hit)) picked.push(hit);
   }
-  return { picked, missing };
+  return { picked, missing, guessed };
 }
 
-function findPool(pools, term) {
-  return pools.find((p) => p.name.toLowerCase().includes(term)) ||
-         pools.find((p) => (p.district || "").toLowerCase().includes(term)) ||
-         nearest(pools, term);
-}
-
-/* A typo shouldn't cost you the widget: "mai wo" still finds Mui Wo. Every
-   word must land, and if two venues match equally well we give up rather
-   than guess — showing the wrong pool's hours is worse than saying so. */
 function nearest(pools, term) {
   const words = term.split(/\s+/).filter(Boolean);
   if (!words.length) return null;
@@ -378,7 +435,9 @@ function detailLine(st, tight) {
     bits.push("until " + compact(st.until));
     if (st.resumeRaw) bits.push("next " + compact(st.resumeRaw));
   } else {
-    bits.push(st.nextRaw ? "Opens " + compact(st.nextRaw) : "closed today");
+    if (st.nextRaw) bits.push("Opens " + compact(st.nextRaw));
+    else if (st.reopen) bits.push("Opens " + reopenAt(st.reopen));
+    else bits.push("closed today");
   }
   const why = reason(st, tight);
   if (why) bits.push(why);
@@ -396,7 +455,11 @@ function stateLines(st) {
   if (st.openN > 0)
     return ["until " + fmt(st.until) + tail,
             st.resumeRaw ? "next session " + fmt(st.resumeRaw) : ""];
-  return [(st.nextRaw ? "Opens " + fmt(st.nextRaw) : "closed today") + tail, ""];
+
+  const when = st.nextRaw ? "Opens " + fmt(st.nextRaw)
+             : st.reopen ? "Opens " + WD[st.reopen.wd] + " " + fmt(st.reopen.at)
+             : "closed today";
+  return [when + tail, ""];
 }
 
 /* Why it looks the way it does — the half of the line that isn't a clock. */
@@ -407,7 +470,9 @@ function reason(st, tight) {
     return tight ? st.openN + "/" + st.total
                  : st.openN + " of " + st.total + " pools";
   }
-  if (st.cleansing) return "cleansing";
+  // cleansing explains a gap in today's timetable, not an empty evening —
+  // past the last session it is no longer why the doors are shut
+  if (st.cleansing && st.nextRaw) return "cleansing";
 
   const shut = st.facs.filter((x) => x.s.code !== "priv");
   if (!shut.length) return "";
@@ -426,6 +491,13 @@ const short = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
 
 const HEADLINE = { open: "OPEN", part: "PARTLY OPEN", shut: "CLOSED",
                    priv: "GROUPS ONLY", unk: "NO HOURS" };
+
+const WD = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+/* "Opens Sun 6:30am". The day is always named: at 11pm "opens 6:30am" reads
+   like this morning, and a venue whose last session has passed can reopen at
+   any hour of any later day. */
+const reopenAt = (r) => WD[r.wd] + " " + compact(r.at);
 
 /* Strip the boilerplate every LCSD venue name carries. */
 const shortName = (n) => n.replace(/\s+Swimming Pool( Complex)?$/i, "");
@@ -477,7 +549,7 @@ function message(w, now, lines) {
 }
 
 /* One pool named: spend the whole tile on it. */
-function smallOne(w, p, st, now, stale, warnings, missing) {
+function smallOne(w, p, st, now, stale, warnings, notes) {
   header(w, now, stale);
   w.addSpacer(6);
 
@@ -512,12 +584,12 @@ function smallOne(w, p, st, now, stale, warnings, missing) {
   }
 
   w.addSpacer();
-  footerRow(w, warnings, missing, true);
+  footerRow(w, warnings, notes, true);
 }
 
 /* Two or three named: a stacked row each — name, then its line beneath, so
    the detail gets the full tile width rather than a narrow right-hand column. */
-function smallMany(w, rows, now, stale, warnings, missing) {
+function smallMany(w, rows, now, stale, warnings, notes) {
   header(w, now, stale);
   w.addSpacer(4);
 
@@ -544,10 +616,10 @@ function smallMany(w, rows, now, stale, warnings, missing) {
   }
 
   w.addSpacer();
-  footerRow(w, warnings, missing, true);
+  footerRow(w, warnings, notes, true);
 }
 
-function mediumWidget(w, rows, now, stale, warnings, missing) {
+function mediumWidget(w, rows, now, stale, warnings, notes) {
   header(w, now, stale);
   w.addSpacer(5);
 
@@ -574,20 +646,23 @@ function mediumWidget(w, rows, now, stale, warnings, missing) {
   }
 
   w.addSpacer();
-  footerRow(w, warnings, missing, false);
+  footerRow(w, warnings, notes, false);
 }
 
 /* The last line carries whichever matters more: a weather signal that could
    shut the pools, or — failing that — a name from the Parameter that matched
    nothing, so a silent drop doesn't look like a deliberate omission. */
-function footerRow(w, warnings, missing, tight) {
+function footerRow(w, warnings, notes, tight) {
   let text, color;
   if (warnings.length) {
     text = tight ? "⚠ " + warnings[0]
                  : "⚠ " + warnings[0] + " — outdoor pools likely shut";
     color = COLORS.part;
-  } else if (missing.length) {
-    text = "⚠ no match: " + missing.join(", ");
+  } else if (notes.guessed.length) {
+    text = "⚠ " + notes.guessed.join(", ");
+    color = COLORS.part;
+  } else if (notes.missing.length) {
+    text = "⚠ no match: " + notes.missing.join(", ");
     color = DIM;
   } else return;
 
@@ -612,10 +687,11 @@ async function build() {
   if (!data)
     return message(w, now, ["No data yet — open the script once while online."]);
 
-  const { picked, missing } = pickPools(data.pools, args.widgetParameter);
+  const { picked, missing, guessed } = pickPools(data.pools, args.widgetParameter);
   if (!picked.length)
     return message(w, now, ["No pool matched “" + missing.join(", ") + "”.",
                             "Check the widget Parameter."]);
+  const notes = { missing, guessed };
 
   // small used to be a single pool; it now takes up to three, like medium
   const rows = picked.slice(0, 3).map((p) => ({ p, st: venueStatus(p, now) }));
@@ -623,10 +699,10 @@ async function build() {
   // only worth a row if a warning is up AND one of these pools is outdoors
   const warnings = rows.some(({ p }) => hasOutdoor(p)) ? await loadWarnings() : [];
 
-  if (family !== "small") mediumWidget(w, rows, now, stale, warnings, missing);
+  if (family !== "small") mediumWidget(w, rows, now, stale, warnings, notes);
   else if (rows.length === 1)
-    smallOne(w, rows[0].p, rows[0].st, now, stale, warnings, missing);
-  else smallMany(w, rows, now, stale, warnings, missing);
+    smallOne(w, rows[0].p, rows[0].st, now, stale, warnings, notes);
+  else smallMany(w, rows, now, stale, warnings, notes);
 
   w.refreshAfterDate = new Date(Date.now() + 15 * 60 * 1000);
   return w;
