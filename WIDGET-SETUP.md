@@ -119,8 +119,25 @@ Partial names are fine and case doesn't matter: `kowloon park` finds
 and `mai wo` both land. So does a district name, if you only know roughly
 where you are going.
 
-Commas are the tidy separator, but `;` `:` `/` `|` and the full-width `，`
-`、` `；` all work, since no pool name contains any of them.
+Commas are the tidy separator, but `;` `/` `|` and the full-width `，` `、`
+`；` all work, since no pool name contains any of them.
+
+**A colon narrows a venue to one of its pools**, which matters when a venue
+has eight and only one of them is the 50m you came for:
+
+```
+Sun Yat Sen: main, Morrison Hill: main
+```
+
+Use `main`, `secondary`, `training`, `teaching`, `diving`, `toddlers`,
+`jacuzzi`, `leisure` or `slides` — or `lap` for whichever pool you can swim
+lengths in. The printed name works too (`Kowloon Park: leisure pool 2`). The
+row then reads `Morrison Hill · Main` and reports that pool alone.
+
+This is not cosmetic. Lei Cheng Uk's main pool has no afternoon session on
+weekdays, so at 2pm the venue says "until 6pm" while the main pool is
+already done for the day. If the venue has no such pool the row falls back
+to the whole venue and the bottom line says so.
 
 If one of the names matches nothing, the others still show and the bottom
 line says which was dropped, so it never silently disappears. A name too

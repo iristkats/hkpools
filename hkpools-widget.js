@@ -355,26 +355,68 @@ function relevantWarnings(raw) {
    offers plenty of other plausible separators — including the full-width
    punctuation a Chinese keyboard produces. No LCSD pool name or district
    contains any of these, so splitting on all of them is free. */
-const SEPARATORS = /[,;:/|\n\t\u3001\u3002\uFF0C\uFF1A\uFF1B\uFF5C]+/;
+const SEPARATORS = /[,;/|\n\t\u3001\uFF0C\uFF1B\uFF5C]+/;
 
-/* "victoria park; mui wo" -> the pools they name, in the order given.
+/* A colon narrows a venue to one of its pools: "victoria park: main" is the
+   main pool alone, not the whole venue. Half a venue being open tells you
+   little when it is the 50m lap pool you came for. */
+const FACILITY_MARK = /[:\uFF1A]/;
+
+/* "victoria park; mui wo: main" -> the pools they name, in the order given.
    Case-insensitive substring, so nobody has to type "Swimming Pool".
    `guessed` records anything only the typo pass could match — a substitution
    the reader never asked for is exactly what needs saying out loud. */
 function pickPools(pools, param) {
   const wanted = (param || DEFAULT_POOLS)
-    .split(SEPARATORS).map((s) => s.trim().toLowerCase()).filter(Boolean);
+    .split(SEPARATORS).map((s) => s.trim()).filter(Boolean);
   const picked = [], missing = [], guessed = [];
 
-  for (const w of wanted) {
-    const exact = pools.find((p) => p.name.toLowerCase().includes(w)) ||
-                  pools.find((p) => (p.district || "").toLowerCase().includes(w));
-    const hit = exact || nearest(pools, w);
-    if (!hit) { missing.push(w); continue; }
-    if (!exact) guessed.push(w + " → " + shortName(hit.name));
-    if (!picked.includes(hit)) picked.push(hit);
+  for (const raw of wanted) {
+    const parts = raw.split(FACILITY_MARK);
+    const term = parts[0].trim().toLowerCase();
+    const want = (parts[1] || "").trim().toLowerCase();
+    if (!term) continue;
+
+    const exact = pools.find((p) => p.name.toLowerCase().includes(term)) ||
+                  pools.find((p) => (p.district || "").toLowerCase().includes(term));
+    const p = exact || nearest(pools, term);
+    if (!p) { missing.push(term); continue; }
+    if (!exact) guessed.push(term + " → " + shortName(p.name));
+
+    let f = null;
+    if (want) {
+      f = findFacility(p, want);
+      if (!f) missing.push(want + " at " + shortName(p.name));
+    }
+    if (!picked.some((x) => x.p === p && x.f === f)) picked.push({ p: p, f: f });
   }
   return { picked, missing, guessed };
+}
+
+/* "main" -> the main pool; also matches the printed name and, so that a
+   half-remembered word still lands, tolerates the same single typo. */
+function findFacility(p, want) {
+  const fs = p.facilities || [];
+  return fs.find((f) => f.kind === want) ||
+         fs.find((f) => f.name.toLowerCase().includes(want)) ||
+         fs.find((f) => f.kind.startsWith(want)) ||
+         fs.find((f) => f.name.toLowerCase().split(/\s+/)
+                         .some((w) => editDistance(w, want) <= 1)) ||
+         (want === "lap" ? fs.find((f) => f.lap) : null) || null;
+}
+
+/* One facility, shaped like a venue so the layouts need no special case. */
+function facilityView(p, f, now) {
+  const s = facilityStatus(p, f, now);
+  const open = s.code === "open";
+  return {
+    code: open ? "open" : s.code === "priv" ? "priv"
+        : s.code === "unk" ? "unk" : "shut",
+    openN: open ? 1 : 0, total: 1, single: true,
+    until: s.until || null, resumeRaw: s.afterRaw || null,
+    nextRaw: s.nextRaw || null, reopen: s.reopen || null,
+    cleansing: !!s.cleansing, vague: [], facs: [{ f: f, s: s }],
+  };
 }
 
 function nearest(pools, term) {
@@ -466,6 +508,7 @@ function stateLines(st) {
 function reason(st, tight) {
   if (st.openN > 0) {
     if (st.vague && st.vague.length) return tight ? "notice" : "see notice";
+    if (st.single) return "";      // the name already says which pool
     if (st.openN === st.total) return tight ? "" : "all pools";
     return tight ? st.openN + "/" + st.total
                  : st.openN + " of " + st.total + " pools";
@@ -501,6 +544,11 @@ const reopenAt = (r) => WD[r.wd] + " " + compact(r.at);
 
 /* Strip the boilerplate every LCSD venue name carries. */
 const shortName = (n) => n.replace(/\s+Swimming Pool( Complex)?$/i, "");
+
+/* "Morrison Hill" or, when one pool was singled out, "Morrison Hill · Main".
+   The facility loses its own "pool" — every one of them is a pool. */
+const rowLabel = (r) => shortName(r.p.name) +
+  (r.f ? " · " + r.f.name.replace(/\s*pools?$/i, "") : "");
 
 /* ---- drawing ------------------------------------------------------- */
 
@@ -549,11 +597,12 @@ function message(w, now, lines) {
 }
 
 /* One pool named: spend the whole tile on it. */
-function smallOne(w, p, st, now, stale, warnings, notes) {
+function smallOne(w, row, now, stale, warnings, notes) {
+  const st = row.st;
   header(w, now, stale);
   w.addSpacer(6);
 
-  const name = w.addText(shortName(p.name));
+  const name = w.addText(rowLabel(row));
   name.font = Font.semiboldSystemFont(13);
   name.textColor = INK;
   name.minimumScaleFactor = 0.7;
@@ -593,16 +642,17 @@ function smallMany(w, rows, now, stale, warnings, notes) {
   header(w, now, stale);
   w.addSpacer(4);
 
-  for (const { p, st } of rows) {
+  for (const row of rows) {
+    const st = row.st;
     const head = w.addStack();
     head.centerAlignContent();
     dot(head, st.code);
     head.addSpacer(4);
-    const name = head.addText(shortName(p.name));
+    const name = head.addText(rowLabel(row));
     name.font = Font.mediumSystemFont(11);
     name.textColor = INK;
     name.lineLimit = 1;
-    name.minimumScaleFactor = 0.65;
+    name.minimumScaleFactor = 0.55;   // "Venue · Facility" runs long
 
     const under = w.addStack();
     under.addSpacer(13);               // clear the dot
@@ -623,13 +673,14 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
   header(w, now, stale);
   w.addSpacer(5);
 
-  for (const { p, st } of rows) {
+  for (const r of rows) {
+    const st = r.st;
     const row = w.addStack();
     row.centerAlignContent();
     dot(row, st.code);
     row.addSpacer(5);
 
-    const name = row.addText(shortName(p.name));
+    const name = row.addText(rowLabel(r));
     name.font = Font.mediumSystemFont(12);
     name.textColor = INK;
     name.lineLimit = 1;
@@ -694,14 +745,17 @@ async function build() {
   const notes = { missing, guessed };
 
   // small used to be a single pool; it now takes up to three, like medium
-  const rows = picked.slice(0, 3).map((p) => ({ p, st: venueStatus(p, now) }));
+  const rows = picked.slice(0, 3).map((x) => ({
+    p: x.p, f: x.f,
+    st: x.f ? facilityView(x.p, x.f, now) : venueStatus(x.p, now),
+  }));
 
   // only worth a row if a warning is up AND one of these pools is outdoors
-  const warnings = rows.some(({ p }) => hasOutdoor(p)) ? await loadWarnings() : [];
+  const warnings = rows.some((r) => hasOutdoor(r.p)) ? await loadWarnings() : [];
 
   if (family !== "small") mediumWidget(w, rows, now, stale, warnings, notes);
   else if (rows.length === 1)
-    smallOne(w, rows[0].p, rows[0].st, now, stale, warnings, notes);
+    smallOne(w, rows[0], now, stale, warnings, notes);
   else smallMany(w, rows, now, stale, warnings, notes);
 
   w.refreshAfterDate = new Date(Date.now() + 15 * 60 * 1000);
