@@ -21,6 +21,10 @@ jobs:
         with:
           node-version: "20"
 
+      # the parser tests exercise real page markup, so they need the parser's
+      # own dependencies — without them --selftest used to skip its HTML cases
+      - run: pip install requests beautifulsoup4 lxml
+
       # a regex regression must never reach a published pools.json
       - name: Parser self-tests
         run: python scraper.py --selftest

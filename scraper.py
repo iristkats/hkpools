@@ -201,8 +201,41 @@ def parse_closure_row(cells: list[str]) -> dict | None:
 
 
 # ---------------------------------------------------------------- scraping
+def labelled_cell(soup, *labels):
+    """The value cell beside a label cell in a venue page's field table.
+
+    The pages lay each field out as a two-cell row — <td class="info"> holding
+    the label, the value in the cell next to it. The label cell's *own* text is
+    what gets matched, and only if it is short enough to be a label.
+    """
+    for kw in labels:
+        pat = re.compile(kw, re.I)
+        for cell in soup.find_all(["td", "th"]):
+            label = cell.get_text(" ", strip=True)
+            if not label or len(label) > 40 or not pat.search(label):
+                continue
+            value = cell.find_next_sibling(["td", "th"])
+            if value is not None and value.get_text(strip=True):
+                return value
+    return None
+
+
 def section_text(soup, *heading_keywords) -> str:
-    """Grab the text near a heading whose label contains any of the keywords."""
+    """Grab the value for a heading whose label contains any of the keywords.
+
+    The labelled table cell is tried first. Matching any text node containing
+    the keyword — which is all this did before — is what silently broke the
+    facility scrape: the site navigation carries "Notice of Temporary Closure
+    of Public Swimming Pool Facilities", and that comes first in the document,
+    so the parser walked into the menu and returned "Admission Fee" for every
+    venue. The looser walk stays as a fallback for fields outside that table.
+    """
+    cell = labelled_cell(soup, *heading_keywords)
+    if cell is not None:
+        text = cell.get_text(" ", strip=True)
+        if text:
+            return text
+
     for kw in heading_keywords:
         node = soup.find(string=re.compile(kw, re.I))
         if not node:
@@ -220,131 +253,61 @@ def section_text(soup, *heading_keywords) -> str:
     return ""
 
 
-def scrape_pool(swp_id: int, verbose=False) -> dict | None:
-    url = POOL_PAGE.format(swp_id)
-    r = requests.get(url, headers=UA, timeout=30)
-    if r.status_code != 200:
-        return None
-    soup = BeautifulSoup(r.text, "lxml")
-    page = soup.get_text(" ", strip=True)
+def facility_lines(cell) -> list[str]:
+    """A venue's facility list, one entry per line.
 
-    name = (soup.find("h1") or soup.find("h2"))
-    name = name.get_text(strip=True) if name else f"Pool {swp_id}"
+    Three things make the raw text unusable. The entries are separated by <br>,
+    which get_text() collapses away — so those become a sentinel first, chosen
+    because the markup wraps mid-entry and a newline would split names that
+    merely straddle a source line. An inline <span> can also split one name
+    across several strings ("…Depth: 1.4m-1.9" + "m" + ")"), so the pieces are
+    joined with nothing between them rather than the usual space.
+    """
+    BREAK = "\x00"
+    for br in cell.find_all("br"):
+        br.replace_with(BREAK)
+    text = cell.get_text("")
 
-    phone_m = re.search(r"\b(\d{4}\s?\d{4})\b", section_text(soup, "Enquiry", "Telephone") or page)
+    out = []
+    for line in re.split(BREAK + r"+|[;\u2022]|(?<=\))\s+(?=[A-Z*])", text):
+        line = re.sub(r"\s+", " ", line).strip(" .;*\u00a0")
+        # the long "Barrier Free Facilities: …" sentence names pools but is
+        # prose about step-free access, not a facility; length keeps it out
+        if 3 < len(line) < 120 and re.search(
+                r"pool|jacuzzi|slide|stand|fountain", line, re.I):
+            out.append(line)
+    return out
 
-    sessions_txt = section_text(soup, "Opening Hours", "Opening Schedule", "Session")
-    sessions = parse_sessions(sessions_txt) or parse_sessions(page)
-
-    cleansing_txt = section_text(soup, "cleansing", "cleaning")
-    cwd, cnote = parse_cleansing(cleansing_txt or page)
-
-    maint_txt = section_text(soup, "Annual Maintenance", "Maintenance Period")
-    maintenance = []
-    for part in re.split(r"[;\n]|(?<=\d)\s{2,}", maint_txt):
-        part = part.strip(" .;")
-        if len(part) > 6 and RANGE_RE.search(part):
-            maintenance.append(dict(label=part, range=parse_month_range(part),
-                                    scope=maintenance_scope(part)))
-
-    closures = []
-    for table in soup.find_all("table"):
-        head = table.get_text(" ", strip=True)[:400]
-        if not re.search(r"closure|closed", head, re.I):
-            continue
-        for tr in table.find_all("tr"):
-            cells = [td.get_text(" ", strip=True) for td in tr.find_all(["td", "th"])]
-            if not cells or re.search(r"date", cells[0], re.I):
-                continue
-            row = parse_closure_row(cells)
-            if row:
-                closures.append(row)
-
-    low = page.lower()
-    has_out = "outdoor" in low
-    has_in = "indoor" in low
-    ptype = "both" if (has_in and has_out) else ("outdoor" if has_out else "indoor")
-
-    facilities = []
-    fac_txt = section_text(soup, "Facilit")
-    for f in re.split(r"[;•]|(?<=\))\s+(?=[A-Z])", fac_txt):
-        f = f.strip(" .;")
-        if 3 < len(f) < 90 and re.search(r"pool|jacuzzi|slide|stand|fountain", f, re.I):
-            facilities.append(f)
-
-    if verbose:
-        print(f"  [{swp_id}] {name}: {len(sessions)} sessions, cleansing={cwd}, "
-              f"{len(maintenance)} maint, {len(closures)} closures, {len(facilities)} facilities")
-
-    return dict(swp_id=swp_id, name=name, phone=phone_m.group(1) if phone_m else "",
-                type=ptype, sessions=sessions, cleansing_weekday=cwd,
-                cleansing_note=cnote, facilities=facilities,
-                maintenance=maintenance, closures=closures, url=url)
+# Trimmed from the live Pao Yue Kong page (swpId=1), keeping the two things
+# that matter: the navigation entry ending "…Swimming Pool Facilities", which
+# used to win the match, and the real facilities row it hid. The live page puts
+# that row's text on one long line; it is wrapped here so the test also proves
+# a newline mid-entry does not split a facility in two.
+VENUE_PAGE = """
+<ul class="menu_lv1"><li class="current"><ul class="menu_lv2">
+  <li><a href="/en/beach/swim-intro/swimlocation.html"><span>Information of
+    Swimming Pools<br/><br/>Opening Schedules<br/><br/>Schedule of Weekly
+    Cleansing Operation<br/><br/>Notice of Temporary Closure of Public
+    Swimming Pool Facilities</span></a></li>
+  <li><a href="/en/fees.html"><span>Admission Fee</span></a></li>
+</ul></li></ul>
+<div class="panel panel-primary"><div class="panel-body">
+<table class="table table-bordered">
+<tr><td class="info"><b>Facilities</b></td>
+<td><p class="MsoNormal"><span lang="EN-US">Main pool (Length 50m x Width 21m,
+Depth: 1.4m-1.9</span><span lang="EN-US" style="mso-fareast-language: ZH-HK;">m</span
+><span lang="EN-US">)<br/></span>Secondary pool (Length 50m x Width 21m, Depth:
+1.1m-1.4m)<br/>*Training pool (Length 25m x 9m, Depth: 0.9m - 1.2m)<br/>Teaching
+pool1 (Length 18m x Width 12m, Depth: 0.6m-0.9m)<br/>Diving pool (Length 11.7m x
+Width 11m, Depth: 4.5m)<br/>Children's pool (Irregular shape, Depth: 0.3m)<br/
+>Toddlers' pool (Irregular shape, Depth: 0.3m)<br/>Barrier Free Facilities: A
+Barrier free access (es) facilitating entrance to the pool deck area, Accessible
+lifting platform (Training pool), Accessible toilets and shower compartments,
+Tactile guide path, Visual fire alarm system</p></td></tr>
+</table></div></div>
+"""
 
 
-def scrape_all(verbose=False) -> dict:
-    print("fetching facility dataset…")
-    directory = requests.get(DATASET, headers=UA, timeout=30).json()
-    records = directory if isinstance(directory, list) else directory.get("features", directory)
-
-    pools, seen = [], set()
-    for rec in records:
-        props = rec.get("properties", rec)
-        link = props.get("NSEARCH06_EN") or ""
-        m = re.search(r"swpId=(\d+)", link)
-        district = (props.get("SEARCH01_EN") or "").title()
-        base = dict(
-            name=props.get("NAME_EN", "").strip(),
-            district=district,
-            region=REGION_BY_DISTRICT.get(district.lower(), "New Territories"),
-            lat=float(props.get("LATITUDE") or 0),
-            lon=float(props.get("LONGITUDE") or 0))
-
-        if not m:
-            base.update(swp_id=None, phone="", type="indoor", sessions=[],
-                        cleansing_weekday=None, cleansing_note="", facilities=[],
-                        maintenance=[], closures=[],
-                        url="https://www.lcsd.gov.hk/en/beach/swim-intro/swimlocation.html",
-                        data_gap="No LCSD detail page published for this venue yet.")
-            pools.append(base)
-            continue
-
-        swp = int(m.group(1))
-        if swp in seen:
-            continue
-        seen.add(swp)
-        try:
-            detail = scrape_pool(swp, verbose)
-        except Exception as e:                       # noqa: BLE001
-            print(f"  !! swpId={swp} failed: {e}", file=sys.stderr)
-            detail = None
-        if detail:
-            detail.pop("name", None)                 # dataset name is canonical
-            base.update(detail)
-        pools.append(base)
-        time.sleep(THROTTLE)
-
-    for p in pools:
-        p["id"] = (p["name"].lower().replace(" ", "-").replace("'", "")
-                   .replace("&", "and").replace("--", "-"))
-
-    return dict(
-        snapshot_date=date.today().isoformat(),
-        source="LCSD Swimming.do pages + data.gov.hk facility-swimming-pools.json",
-        season=dict(summer="April - October",
-                    note="Heated pools operate in winter with reduced facilities"),
-        fees=dict(standard_weekday=17, standard_weekend=19,
-                  concession_weekday=8, concession_weekend=9, monthly=300),
-        weather_rules=dict(
-            thunderstorm="Outdoor facilities close on an HKO thunderstorm warning for the "
-                         "affected region; otherwise if lightning is reported within 10km, "
-                         "Amber rainstorm or above is in force, or lightning/thunder is "
-                         "observed on site.",
-            reopen="Outdoor facilities reopen when none of the above apply."),
-        pools=pools)
-
-
-# ---------------------------------------------------------------- self-test
 def selftest():
     assert to24("6:30 a.m.") == "06:30"
     assert to24("1:00 p.m.") == "13:00"
@@ -389,6 +352,36 @@ def selftest():
         "on Mon to Fri, except public holidays under the trial scheme.")
     assert eb == {"from": "17:00", "to": "19:00", "days": [0, 1, 2, 3, 4]}, eb
     assert parse_extended_break("Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm") is None
+
+    # --- facility extraction, against real page markup ---------------------
+    # Every refresh run from 26-29 Aug aborted with "0 facilities": the first
+    # text node matching "Facilit" was the nav link above, so the parser walked
+    # into the menu and returned its sibling, "Admission Fee".
+    if BeautifulSoup is None:
+        sys.exit("--selftest needs beautifulsoup4: pip install beautifulsoup4 lxml\n"
+                 "(skipping these silently is how the facility bug survived "
+                 "seven failed refreshes)")
+    soup = BeautifulSoup(VENUE_PAGE, "html.parser")
+
+    # the loose keyword is the one that failed in production — an anchored
+    # ^Facilities$ would have matched the <b> label even before the fix,
+    # so testing with that would prove nothing
+    got = section_text(soup, "Facilit")
+    assert "Admission Fee" not in got, f"still reading the nav menu: {got!r}"
+    assert "Main pool" in got, got
+
+    cell = labelled_cell(soup, r"^Facilities$", "Facilit")
+    assert cell is not None
+    facs = facility_lines(cell)
+    assert len(facs) == 7, facs
+    # a <span> splits this name mid-word; the pieces must rejoin cleanly
+    assert facs[0] == "Main pool (Length 50m x Width 21m, Depth: 1.4m-1.9m)", facs[0]
+    assert facs[1].startswith("Secondary pool"), facs[1]
+    assert facs[2].startswith("Training pool"), facs[2]   # leading * stripped
+    assert facs[-1].startswith("Toddlers' pool"), facs[-1]
+    # prose about accessibility names pools but is not one
+    assert not any("Barrier" in f for f in facs), facs
+
 
     # weekend-only facility (Ma On Shan giant water slides)
     assert parse_weekend_only(
