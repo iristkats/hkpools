@@ -607,16 +607,30 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
 
   const ROW_W = 288;
   const labels = rows.map(rowLabel);
-  // the row holds a name and a detail, so each is fitted against the pair;
-  // as in fitDetails, a second pass re-fits to whatever survived the first
-  const combined = (d) => fitSize(labels.map((l, i) => l + d[i]), ROW_W, 14,
-                                  MIN_NAME);
-  const trim = (size) => rows.map((r, i) =>
-    detailFor(r.st, false, Math.max(12, budget(ROW_W, size) - labels[i].length)));
-  let details = trim(combined(rows.map((r) => detailLine(r.st, false))));
-  const size = combined(details);
-  details = trim(size);
+
+  /* Name and detail share the line, so the width has to be split before
+     either is fitted. The split is the same on every row: budgeting each row
+     against its own name would let one long venue quietly buy itself a wider
+     detail, and the rows beside it would drop segments it kept — three pools
+     in the same state disagreeing about what they had room to say.
+
+     So: reserve what the longest name needs, up to a point past which a very
+     long name is better cut than allowed to squeeze the status out; size the
+     row to hold that reserve plus everything the status wants to say; and let
+     the detail keep the rest. Only when even the floor is too small does the
+     status start dropping segments — and then on every row alike. */
+  const room = Math.min(18, labels.reduce((n, l) => Math.max(n, l.length), 0));
+  const fitTo = (d) =>
+    fitSize(d.map((x) => x + " ".repeat(room)), ROW_W, 14, MIN_NAME);
+  const trim = (at) =>
+    rows.map((r) => detailFor(r.st, false, budget(ROW_W, at) - room));
+
+  // as in fitDetails, fit the whole line, drop what that size can't hold, then
+  // fit again to what survived — same text as the first pass, but larger
+  const full = rows.map((r) => detailLine(r.st, false));
+  const size = fitTo(trim(fitTo(full)));
   const nameBudget = budget(ROW_W, size);
+  const details = trim(size);
 
   rows.forEach(function (r, i) {
     const row = w.addStack();
