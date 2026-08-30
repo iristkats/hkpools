@@ -1581,6 +1581,25 @@
      "note": "",
      "closures": [],
      "maintenance": []
+    },
+    {
+     "id": "public-coaching-area-secondary-pool-and-teaching-pool-2",
+     "name": "Public Coaching Area: Secondary pool and Teaching pool 2",
+     "spec": "",
+     "kind": "teaching",
+     "location": "outdoor",
+     "location_inferred": true,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
     }
    ],
    "maintenance": [],
@@ -5361,8 +5380,27 @@
     {
      "id": "main-pool",
      "name": "Main pool",
-     "spec": "Length 50m x Width 25m, Depth: 1.2m-2.5m) ^Indoor L1 Training pool (Length 25m x Width 10m, Depth: 1.2m",
+     "spec": "Length 50m x Width 25m, Depth: 1.2m-2.5m",
      "kind": "main",
+     "location": "indoor",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "indoor-l1-training-pool",
+     "name": "Indoor L1 Training pool",
+     "spec": "Length 25m x Width 10m, Depth: 1.2m",
+     "kind": "training",
      "location": "indoor",
      "location_inferred": false,
      "lap": true,
@@ -5380,11 +5418,30 @@
     {
      "id": "indoor-l2-training-pool",
      "name": "Indoor L2 Training pool",
-     "spec": "Length 25m x Width 12.5m, Depth: 1.2m) ^Diving pool (Length 21m x Width 15m, Depth: 5m",
+     "spec": "Length 25m x Width 12.5m, Depth: 1.2m",
      "kind": "training",
      "location": "indoor",
      "location_inferred": false,
      "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "diving-pool",
+     "name": "Diving pool",
+     "spec": "Length 21m x Width 15m, Depth: 5m",
+     "kind": "diving",
+     "location": "outdoor",
+     "location_inferred": false,
+     "lap": false,
      "public": true,
      "access_note": "",
      "sessions": null,
@@ -5481,6 +5538,8 @@
      "facilities": "Main Pool , Diving Pool , Indoor L1 Training Pool",
      "reason": "Competition",
      "targets": [
+      "diving-pool",
+      "indoor-l1-training-pool",
       "main-pool"
      ]
     },
@@ -5490,6 +5549,8 @@
      "facilities": "Main Pool , Diving Pool , Indoor L1 Training Pool",
      "reason": "Competition",
      "targets": [
+      "diving-pool",
+      "indoor-l1-training-pool",
       "main-pool"
      ]
     },
@@ -5499,6 +5560,8 @@
      "facilities": "Main Pool , Diving Pool , Indoor L1 Training Pool",
      "reason": "School Swimming Gala",
      "targets": [
+      "diving-pool",
+      "indoor-l1-training-pool",
       "main-pool"
      ]
     },
@@ -5508,6 +5571,8 @@
      "facilities": "Main Pool , Diving Pool , Indoor L1 Training Pool",
      "reason": "School Swimming Gala",
      "targets": [
+      "diving-pool",
+      "indoor-l1-training-pool",
       "main-pool"
      ]
     },
@@ -5517,6 +5582,8 @@
      "facilities": "Main Pool , Diving Pool , Indoor L1 Training Pool",
      "reason": "School Swimming Gala",
      "targets": [
+      "diving-pool",
+      "indoor-l1-training-pool",
       "main-pool"
      ]
     },
@@ -5526,6 +5593,8 @@
      "facilities": "Main Pool , Diving Pool , Indoor L1 Training Pool",
      "reason": "Competition",
      "targets": [
+      "diving-pool",
+      "indoor-l1-training-pool",
       "main-pool"
      ]
     }
@@ -7451,7 +7520,65 @@
    ],
    "cleansing_weekday": 3,
    "cleansing_note": "Friday if public holiday",
-   "facilities": [],
+   "facilities": [
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "Length 25m x Width 25m, Depth: 1.2m-1.4m",
+     "kind": "training",
+     "location": "unknown",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool",
+     "name": "Teaching pool",
+     "spec": "Length 25m x Width 10m, Depth: 0.7m-0.9m",
+     "kind": "teaching",
+     "location": "unknown",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "jacuzzi",
+     "name": "Jacuzzi",
+     "spec": "Depth: 0.85m",
+     "kind": "jacuzzi",
+     "location": "unknown",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
    "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=250",
