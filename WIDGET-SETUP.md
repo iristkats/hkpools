@@ -228,6 +228,11 @@ session times stay correct — only closures could be out of date.
   venues at 12 different times to prove they agree. Change the logic in
   `status.js` only — never in the built files; `build.py --check` fails the
   build if you do.
+- **Names are cut before type is shrunk.** Rows are set no smaller than
+  10.5pt, and a label that will not fit at that size is truncated rather than
+  scaled down further — "Sun Yat Sen Memor… · Main" at a size you can read
+  beats the whole name at one you cannot. A status line drops whole segments
+  rather than cutting through one, so the pool count goes before the times do.
 - **Every row in a widget is set at one size.** Scriptable's own
   `minimumScaleFactor` shrinks each label independently, so a long venue name
   ends up visibly smaller than a short one beneath it. Instead the rows are

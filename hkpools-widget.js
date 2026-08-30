@@ -464,26 +464,39 @@ function compact(t) {
   return fmt(t).replace(":00", "");
 }
 
-/* The whole story on one line: when it shuts, when it is back, what is open.
-   "until 5pm · next 6pm · all pools". `tight` is the small tile, which has
-   about half the width — there the green dot already says "all open", so the
-   words that survive are the ones the dot cannot say. */
-function detailLine(st, tight) {
-  if (st.code === "priv") return "group training only";
-  if (st.code === "unk") return "hours not published";
+/* The parts of a row's status line, most important first: when it shuts, when
+   it is next open, and only then how much of the venue is available. Kept
+   separate so a narrow tile can drop whole segments rather than cut through
+   one and leave a dangling separator. */
+function detailBits(st, tight) {
+  if (st.code === "priv") return ["group training only"];
+  if (st.code === "unk") return ["hours not published"];
 
   const bits = [];
   if (st.openN > 0) {
     bits.push("until " + compact(st.until));
     if (st.resumeRaw) bits.push("next " + compact(st.resumeRaw));
   } else {
-    if (st.nextRaw) bits.push("Opens " + compact(st.nextRaw));
-    else if (st.reopen) bits.push("Opens " + reopenAt(st.reopen));
-    else bits.push("closed today");
+    bits.push(st.nextRaw ? "Opens " + compact(st.nextRaw)
+            : st.reopen ? "Opens " + reopenAt(st.reopen)
+            : "closed today");
   }
   const why = reason(st, tight);
   if (why) bits.push(why);
-  return bits.join(" · ");
+  return bits;
+}
+
+/* "until 5pm · next 6pm · all pools" */
+function detailLine(st, tight) {
+  return detailBits(st, tight).join(" · ");
+}
+
+/* The same, trimmed to `max` characters by dropping trailing segments — the
+   pool count goes before the times do. */
+function detailFor(st, tight, max) {
+  const bits = detailBits(st, tight);
+  while (bits.length > 1 && bits.join(" · ").length > max) bits.pop();
+  return clip(bits.join(" · "), max);
 }
 
 /* The single-pool small widget has room to breathe, so it spends it on
@@ -571,6 +584,14 @@ function fitLabel(r, max) {
    San Francisco averages a little over half its point size per character in
    mixed case; 0.53 is close enough to choose between half-point steps. */
 const CHAR_W = 0.53;
+
+/* Below these, a phone at arm's length stops being readable, so a label that
+   will not fit is cut rather than shrunk further: "Sun Yat Sen Memor…" at a
+   size you can read beats the whole name at one you cannot. Three pools at
+   11pt still fit the small tile's height — the pressure is on width, and
+   width is what truncation answers. */
+const MIN_NAME = 10.5;
+const MIN_DETAIL = 9;
 
 /* The largest size in [min,max] at which every label fits `width`. */
 function fitSize(labels, width, max, min) {
@@ -681,8 +702,9 @@ function smallMany(w, rows, now, stale, warnings, notes) {
   const NAME_W = 115, DET_W = 116;
   const labels = rows.map(rowLabel);
   const details = rows.map((r) => detailLine(r.st, true));
-  const nameSize = fitSize(labels, NAME_W, 11, 8.5);
-  const detSize = fitSize(details, DET_W, nameSize - 1.5, 7.5);
+  const nameSize = fitSize(labels, NAME_W, 11.5, MIN_NAME);
+  const detSize = fitSize(details, DET_W, nameSize - 1.5, MIN_DETAIL);
+  const detBudget = budget(DET_W, detSize);
 
   rows.forEach(function (row, i) {
     const head = w.addStack();
@@ -697,7 +719,7 @@ function smallMany(w, rows, now, stale, warnings, notes) {
 
     const under = w.addStack();
     under.addSpacer(13);               // clear the dot
-    const detail = under.addText(clip(details[i], budget(DET_W, detSize)));
+    const detail = under.addText(detailFor(row.st, true, detBudget));
     detail.font = Font.systemFont(detSize);
     detail.textColor = DIM;
     detail.lineLimit = 1;
@@ -719,8 +741,9 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
   const ROW_W = 288;
   const labels = rows.map(rowLabel);
   const details = rows.map((r) => detailLine(r.st, false));
-  const size = fitSize(labels.map((l, i) => l + details[i]), ROW_W, 12, 8.5);
+  const size = fitSize(labels.map((l, i) => l + details[i]), ROW_W, 12, MIN_NAME);
   const nameBudget = budget(ROW_W, size);
+  const detBudget = Math.max(12, nameBudget - 14);   // leave room for a name
 
   rows.forEach(function (r, i) {
     const row = w.addStack();
@@ -735,7 +758,7 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
     name.minimumScaleFactor = 1;
 
     row.addSpacer();
-    const detail = row.addText(details[i]);
+    const detail = row.addText(detailFor(r.st, false, detBudget));
     detail.font = Font.systemFont(size);
     detail.textColor = DIM;
     detail.lineLimit = 1;
