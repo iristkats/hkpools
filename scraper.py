@@ -261,6 +261,16 @@ def labelled_cell(soup, *labels):
             value = cell.find_next_sibling(["td", "th"])
             if value is not None and value.get_text(strip=True):
                 return value
+            # Some fields are laid out as a heading row above a value row
+            # rather than two cells side by side — "Temporary Closure for
+            # Annual Maintenance" is one. Without this the value is reachable
+            # only by walking up to a parent, which on some pages swallows the
+            # whole document.
+            row = cell.find_parent("tr")
+            nxt = row.find_next_sibling("tr") if row else None
+            for c in (nxt.find_all(["td", "th"]) if nxt else []):
+                if c.get_text(strip=True):
+                    return c
     return None
 
 
@@ -730,6 +740,17 @@ MAINTENANCE_COLUMN = """
 """
 
 
+# The annual-maintenance window: a heading row above a value row, which is
+# how every venue states it. Read only by walking up to a parent before, and
+# on Tung Cheong Street that parent was the whole page.
+HEADING_ROW_FIELD = """
+<table class="table table-bordered">
+  <tr><td class="info"><h4>Temporary Closure for Annual Maintenance</h4></td></tr>
+  <tr><td>From 11 September to 31 October</td></tr>
+</table>
+"""
+
+
 # Tung Cheong Street (swpId=250): one <div> per facility instead of <br>
 # separators, and the markers on the names as usual.
 DIV_FACILITIES = """
@@ -874,6 +895,12 @@ def selftest():
     assert any(f.startswith("Secondary pool (Length 50m x Width 25m") for f in facs), facs
     assert not any("Facilities :" in f for f in facs), facs
     assert not any(f.startswith(("*", "^")) for f in facs), facs
+
+    head_row = BeautifulSoup(HEADING_ROW_FIELD, "html.parser")
+    got = section_text(head_row, "Annual Maintenance", "Maintenance Period")
+    assert got == "From 11 September to 31 October", got
+    assert parse_month_range(got) == [[9, 11], [10, 31]], parse_month_range(got)
+    assert maintenance_scope(got) == "venue"
 
     divs = BeautifulSoup(DIV_FACILITIES, "html.parser")
     facs = facility_lines(labelled_cell(divs, r"^Facilities$", "Facilit"))
