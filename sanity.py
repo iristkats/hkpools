@@ -23,16 +23,17 @@ FLOORS = dict(venues=40, facilities=150, with_hours=40)
 # how many venues may regress before the scrape is presumed broken
 MAX_SESSION_DRIFT = 5
 MAX_CLEANSING_LOST = 3
-# losing every session is not a change of hours, it is a failure to read them,
-# and a venue with no hours shows as "Hours unknown" — worse than yesterday's
-MAX_HOURS_LOST = 0
-# a venue with sessions but no facilities shows as "Hours unknown" in both
-# consumers, whatever its sessions say, so it is a loss like any other
-MAX_FACILITIES_LOST = 0
-# annual maintenance is what keeps a venue from showing open through the
-# months it is shut, so losing it is a correctness failure, not a data change
-MAX_MAINTENANCE_LOST = 0
 
+# Fields where "populated yesterday, empty today" means the parser broke
+# rather than the pool changed. Each of these emptied out at some point while
+# the scraper was being fixed, and each was caught only after publishing,
+# because the gate was taught one rule at a time: hours, then facilities, then
+# annual maintenance. Named together so the next one is a single line, and so
+# a field nobody thought about is still covered the moment it is listed.
+#
+# Closures are deliberately absent: a notice expiring is normal, and the case
+# that matters — every venue losing them at once — is checked separately.
+MUST_STAY_POPULATED = ("sessions", "facilities", "maintenance")
 
 def load(path):
     """Keyed by name, not swpId.
@@ -78,31 +79,13 @@ def main():
         for name, a, b in drift[:10]:
             print(f"  sessions {a} -> {b}  {name}")
 
-        blanked = [old[k]["name"] for k in shared
-                   if (old[k].get("sessions") or []) and not (new[k].get("sessions") or [])]
-        if len(blanked) > MAX_HOURS_LOST:
-            fails.append(f"{len(blanked)} venues lost their hours entirely "
-                         f"(limit {MAX_HOURS_LOST})")
-        for name in blanked[:10]:
-            print(f"  all hours lost: {name}")
-
-        stripped = [old[k]["name"] for k in shared
-                    if (old[k].get("facilities") or [])
-                    and not (new[k].get("facilities") or [])]
-        if len(stripped) > MAX_FACILITIES_LOST:
-            fails.append(f"{len(stripped)} venues lost every facility "
-                         f"(limit {MAX_FACILITIES_LOST})")
-        for name in stripped[:10]:
-            print(f"  all facilities lost: {name}")
-
-        unmaintained = [old[k]["name"] for k in shared
-                        if (old[k].get("maintenance") or [])
-                        and not (new[k].get("maintenance") or [])]
-        if len(unmaintained) > MAX_MAINTENANCE_LOST:
-            fails.append(f"{len(unmaintained)} venues lost their annual "
-                         f"maintenance (limit {MAX_MAINTENANCE_LOST})")
-        for name in unmaintained[:10]:
-            print(f"  maintenance lost: {name}")
+        for field in MUST_STAY_POPULATED:
+            emptied = [old[k]["name"] for k in shared
+                       if (old[k].get(field) or []) and not (new[k].get(field) or [])]
+            if emptied:
+                fails.append(f"{len(emptied)} venues lost their {field}")
+            for name in emptied[:6]:
+                print(f"  {field} lost: {name}")
 
         lost = [old[k]["name"] for k in shared
                 if old[k].get("cleansing_weekday") is not None
