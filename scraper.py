@@ -33,7 +33,6 @@ except ImportError:
 
 DATASET = "https://www.lcsd.gov.hk/datagovhk/facility/facility-swimming-pools.json"
 POOL_PAGE = "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId={}"
-DISTRICT_PAGE = "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?dist=loc{}"
 UA = {"User-Agent": "hkpools/1.0 (personal project; contact: you@example.com)"}
 THROTTLE = 1.0          # seconds between pool-page requests — be polite
 
@@ -447,45 +446,6 @@ def facility_lines(cell) -> list[str]:
             out.append(line)
     return out
 
-def page_venue_name(soup) -> str:
-    """The venue name a page gives itself, in its panel heading."""
-    node = soup.find(class_="panel-heading")
-    return re.sub(r"\s+", " ", node.get_text(" ", strip=True)) if node else ""
-
-
-def norm_name(s: str) -> str:
-    """Comparable form of a venue name: case, spacing and punctuation ignored."""
-    return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
-
-
-def harvest_district_ids(verbose=False, max_loc=20) -> dict:
-    """name -> swpId, from LCSD's own district listings.
-
-    The data.gov.hk directory leaves the link field empty for at least one
-    venue, which published it with no hours, no facilities and no closures.
-    Guessing an unclaimed id does not work — the site answers 200 with a blank
-    page for any id — but its district pages list every pool as a link
-    carrying the swpId, so the venue can be looked up by name.
-    """
-    found = {}
-    for loc in range(1, max_loc + 1):
-        try:
-            r = requests.get(DISTRICT_PAGE.format(loc), headers=UA, timeout=30)
-        except Exception:                            # noqa: BLE001
-            continue
-        time.sleep(THROTTLE)
-        if r.status_code != 200:
-            continue
-        for a in BeautifulSoup(r.text, "lxml").find_all("a", href=True):
-            m = re.search(r"swpId=(\d+)", a["href"])
-            label = re.sub(r"\s+", " ", a.get_text(" ", strip=True))
-            if m and label:
-                found.setdefault(norm_name(label), (int(m.group(1)), label))
-    if verbose:
-        print(f"  district listings: {len(found)} pools with an id")
-    return found
-
-
 def scrape_pool(swp_id: int, verbose=False) -> dict | None:
     url = POOL_PAGE.format(swp_id)
     r = requests.get(url, headers=UA, timeout=30)
@@ -580,23 +540,14 @@ def scrape_all(verbose=False) -> dict:
 
     # venues the directory gave no link for: find the page by name, or record
     # the gap honestly rather than publishing a venue with nothing in it
-    listing = harvest_district_ids(verbose) if gaps else {}
+    # Venues the directory gave no link for. Two ways of finding the page were
+    # tried and neither works: unclaimed swpIds all answer 200 with a blank
+    # page, and the district listings (Swimming.do?dist=locN) carry no swpId
+    # anchors — every link on them is site navigation. The gap is recorded
+    # rather than guessed at, so the venue shows as having no published hours
+    # instead of another pool's.
     for base in gaps:
-        hit = listing.get(norm_name(base["name"]))
         detail = None
-        if hit:
-            swp, label = hit
-            if verbose:
-                print(f"  [{swp}] {base['name']} found in the district listing "
-                      f"as {label!r}")
-            detail = scrape_pool(swp, verbose)
-            if detail:
-                seen.add(swp)
-                base["swp_id"] = swp
-        elif verbose and listing:
-            print(f"  !! {base['name']} is in no district listing; "
-                  f"nearest names: "
-                  f"{sorted(l for _, l in listing.values())[:3]}")
         if detail:
             detail.pop("name", None)                 # dataset name is canonical
             base.update(detail)
@@ -880,39 +831,6 @@ def selftest():
     assert rows[0]["start"] == "2026-09-06T07:00" and rows[0]["end"] == "2026-09-06T22:00"
     assert rows[0]["facilities"] == "Main Pool" and rows[0]["reason"] == "Competition"
     assert rows[1]["facilities"].startswith("Teaching Pool (1)"), rows[1]
-
-    # --- finding a venue whose directory entry has no swpId ---------------
-    # accepting an id only when the page names itself the same venue is what
-    # keeps a renumbering from silently attaching another pool's hours
-    heading = BeautifulSoup(
-        '<div class="panel panel-primary"><div class="panel-heading">'
-        'Tung Cheong Street Swimming Pool</div></div>', "html.parser")
-    assert page_venue_name(heading) == "Tung Cheong Street Swimming Pool"
-    assert page_venue_name(BeautifulSoup("<div>nothing</div>", "html.parser")) == ""
-    assert norm_name("Tung Cheong Street Swimming Pool") == \
-           norm_name("tung cheong street  swimming-pool")
-    assert norm_name("Tung Cheong Street") != norm_name("Tung Chung Street")
-
-    # --- reading swpIds out of a district listing -------------------------
-    # the shape harvest_district_ids relies on: pool names as links carrying
-    # the id, which is how a venue the dataset cannot place is found
-    listing = BeautifulSoup(
-        '<ul>'
-        '<li><a href="/clpss/en/webApp/Swimming.do?swpId=45">'
-        'Tung Cheong Street Swimming Pool</a></li>'
-        '<li><a href="/clpss/en/webApp/Swimming.do?swpId=20">'
-        'Tai Po Swimming Pool</a></li>'
-        '<li><a href="/en/beach/swim-intro/swimlocation.html">Back</a></li>'
-        '</ul>', "html.parser")
-    ids = {}
-    for a in listing.find_all("a", href=True):
-        m = re.search(r"swpId=(\d+)", a["href"])
-        label = re.sub(r"\s+", " ", a.get_text(" ", strip=True))
-        if m and label:
-            ids.setdefault(norm_name(label), (int(m.group(1)), label))
-    assert ids[norm_name("Tung Cheong Street Swimming Pool")][0] == 45, ids
-    assert ids[norm_name("Tai Po Swimming Pool")][0] == 20, ids
-    assert len(ids) == 2, ids          # the non-pool link carries no id
 
     # weekend-only facility (Ma On Shan giant water slides)
     assert parse_weekend_only(

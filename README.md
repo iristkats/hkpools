@@ -35,6 +35,19 @@ Services Department.
 | `widget-preview.js` | runs the widget outside Scriptable, so you can see it without an iPhone; also checks every row was set at one font size |
 | `setup-github.sh` | publishes this folder as a repo and starts the first scrape |
 
+## Known gap
+
+**Tung Cheong Street Swimming Pool** (Tai Po) publishes no hours here. It has
+an LCSD page, but the data.gov.hk directory leaves its link field empty, so
+the scraper has no id to fetch. Two ways of finding one were tried and
+neither works: unclaimed `swpId`s all answer HTTP 200 with a blank page, and
+the district listings (`Swimming.do?dist=locN`) carry no `swpId` anchors —
+every link on them is site navigation.
+
+The venue therefore carries `data_gap` in `pools.json` and shows as having no
+published hours, rather than being given another pool's. Fixing it needs the
+venue's own `swpId`, from its page URL.
+
 ## Working on it
 
 ```sh
