@@ -446,14 +446,20 @@ def facility_lines(cell) -> list[str]:
             out.append(line)
     return out
 
-# Venues the data.gov.hk directory gives no swpId for, so the scraper cannot
-# find their page. Transcribed by hand from the LCSD page, dated so the
-# staleness is visible, and used only when the directory still has no link.
-# Live data always wins: delete an entry the moment its swpId appears.
+# swpIds the data.gov.hk directory omits, taken from the venue's own page URL.
+# Nothing could have found these: 250 is nowhere near the 1-44 the directory
+# does supply, and the site answers 200 with a blank page for any id in
+# between, so neither scanning nor the district listings could reach it.
 #
-# The cost of an entry here is that its closures never update. The scraper
-# cannot see the venue's closure table, so a notice posted against it will not
-# reach the widget. Everything else changes rarely.
+# Each is checked against the page's own heading before use, so a renumbering
+# shows up as a warning rather than as another pool's hours.
+SWP_ID_BY_NAME = {
+    "Tung Cheong Street Swimming Pool": 250,
+}
+
+# Fallback for a venue with neither a directory link nor an id above:
+# transcribed by hand, dated, and used only when the page cannot be fetched.
+# Live data always wins.
 MANUAL = {
     "Tung Cheong Street Swimming Pool": dict(
         transcribed="2026-08-30",
@@ -473,6 +479,17 @@ MANUAL = {
         url="https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?dist=loc16",
     ),
 }
+
+
+def page_venue_name(soup) -> str:
+    """The venue name a page gives itself, in its panel heading."""
+    node = soup.find(class_="panel-heading")
+    return re.sub(r"\s+", " ", node.get_text(" ", strip=True)) if node else ""
+
+
+def norm_name(s: str) -> str:
+    """Comparable form of a venue name: case, spacing and punctuation ignored."""
+    return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
 
 
 def scrape_pool(swp_id: int, verbose=False) -> dict | None:
@@ -523,7 +540,7 @@ def scrape_pool(swp_id: int, verbose=False) -> dict | None:
         print(f"  [{swp_id}] {name}: {len(sessions)} sessions, cleansing={cwd}, "
               f"{len(maintenance)} maint, {len(closures)} closures, {len(facilities)} facilities")
 
-    return dict(swp_id=swp_id, name=name, phone=phone_m.group(1) if phone_m else "",
+    return dict(swp_id=swp_id, name=name, page_name=page_venue_name(soup), phone=phone_m.group(1) if phone_m else "",
                 type=ptype, sessions=sessions, cleansing_weekday=cwd,
                 cleansing_note=cnote, facilities=facilities,
                 maintenance=maintenance, closures=closures, url=url)
@@ -563,6 +580,7 @@ def scrape_all(verbose=False) -> dict:
             detail = None
         if detail:
             detail.pop("name", None)                 # dataset name is canonical
+            detail.pop("page_name", None)
             base.update(detail)
         pools.append(base)
         time.sleep(THROTTLE)
@@ -577,6 +595,28 @@ def scrape_all(verbose=False) -> dict:
     # instead of another pool's.
     for base in gaps:
         detail = None
+
+        swp = SWP_ID_BY_NAME.get(base["name"])
+        if swp:
+            try:
+                detail = scrape_pool(swp, verbose)
+            except Exception as e:                    # noqa: BLE001
+                print(f"  !! swpId={swp} failed: {e}", file=sys.stderr)
+            # the id is written down here, not discovered, so confirm the page
+            # is the venue we think before trusting a word of it
+            page = (detail or {}).pop("page_name", "")
+            if detail and norm_name(page) != norm_name(base["name"]):
+                print(f'  !! swpId={swp} is "{page}", not "{base["name"]}" — '
+                      "ignoring it; review SWP_ID_BY_NAME", file=sys.stderr)
+                detail = None
+            if detail:
+                seen.add(swp)
+                detail.pop("name", None)              # dataset name is canonical
+                base.update(detail)
+                base["swp_id"] = swp
+                pools.append(base)
+                continue
+
         manual = MANUAL.get(base["name"])
         if manual:
             base.update(swp_id=None, **manual)

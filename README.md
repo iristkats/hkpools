@@ -35,23 +35,22 @@ Services Department.
 | `widget-preview.js` | runs the widget outside Scriptable, so you can see it without an iPhone; also checks every row was set at one font size |
 | `setup-github.sh` | publishes this folder as a repo and starts the first scrape |
 
-## Known gap
+## The directory's missing links
 
-**Tung Cheong Street Swimming Pool** (Tai Po) is not scraped. It has an LCSD
-page, but the data.gov.hk directory leaves its link field empty, so there is
-no `swpId` to fetch. Two ways of finding one were tried and neither works:
-unclaimed ids all answer HTTP 200 with a blank page, and the district listings
-(`Swimming.do?dist=locN`) carry no `swpId` anchors — every link on them is site
-navigation.
+The data.gov.hk directory supplies a `Swimming.do?swpId=N` link for 44 of the
+45 venues. **Tung Cheong Street** (Tai Po) has none, and its id is **250** —
+nowhere near the 1-44 the directory does supply. Nothing could have found it:
+the site answers HTTP 200 with a blank page for any id in between, and the
+district listings (`Swimming.do?dist=locN`) carry no `swpId` anchors at all.
 
-Its hours, facilities, cleansing day and maintenance window are therefore
-transcribed by hand in `scraper.MANUAL`, dated, and reapplied on every
-refresh. **The cost is that its closures never update**: the scraper cannot
-read a closure table it cannot reach, so a notice posted against this venue
-will not reach the widget. Everything else about it changes rarely.
+Its id is therefore written down in `scraper.SWP_ID_BY_NAME`, taken from the
+venue's own page URL, and checked against the page's own heading before use —
+so a renumbering shows up as a warning rather than as another pool's hours.
+It is scraped live like every other venue, closures included.
 
-Delete the entry the moment the directory carries its link, or the venue's own
-`swpId=NN` URL turns up — live data always wins.
+`scraper.MANUAL` remains as a fallback for a venue with neither a directory
+link nor a known id: hand-transcribed and dated, used only when no page can be
+fetched.
 
 ## Working on it
 
