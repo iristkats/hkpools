@@ -293,24 +293,33 @@ function detailFor(st, tight, max) {
   return clip(bits.join(" · "), max);
 }
 
-/* The single-pool small widget has room to breathe, so it spends it on
-   unabbreviated times and puts the next session on its own line. */
-function stateLines(st) {
-  if (st.code === "priv") return ["group training only", ""];
-  if (st.code === "unk") return ["hours not published", ""];
+/* The headline layout's two blocks: the muted lines saying what is true now,
+   and the accent line saying when swimming next resumes. Kept apart because
+   they are drawn in different colours; packed so neither wraps mid-segment.
+   The small tile says "next 6:30am" where the medium has room for the word
+   session — at 129 points wide, the label is what has to give, not the time. */
+function stateLines(st, width, big) {
+  if (st.code === "priv") return { info: ["group training only"], next: "" };
+  if (st.code === "unk") return { info: ["hours not published"], next: "" };
 
+  const bits = [];
+  let next = "";
+  if (st.openN > 0) {
+    bits.push("until " + fmt(st.until));
+    if (st.resumeRaw) next = fmt(st.resumeRaw);
+    else if (st.reopen) next = WD[st.reopen.wd] + " " + fmt(st.reopen.at);
+  } else {
+    bits.push(st.nextRaw ? "Opens " + fmt(st.nextRaw)
+            : st.reopen ? "Opens " + WD[st.reopen.wd] + " " + fmt(st.reopen.at)
+            : "closed today");
+  }
   const why = reason(st, false);
-  const tail = why ? " · " + why : "";
-  if (st.openN > 0)
-    return ["until " + fmt(st.until) + tail,
-            st.resumeRaw ? "next session " + fmt(st.resumeRaw)
-          : st.reopen ? "next session " + WD[st.reopen.wd] + " " +
-                          fmt(st.reopen.at) : ""];
+  if (why) bits.push(why);
 
-  const when = st.nextRaw ? "Opens " + fmt(st.nextRaw)
-             : st.reopen ? "Opens " + WD[st.reopen.wd] + " " + fmt(st.reopen.at)
-             : "closed today";
-  return [when + tail, ""];
+  return {
+    info: packLines(bits, width, 2),
+    next: next ? clip((big ? "next session " : "next ") + next, width) : "",
+  };
 }
 
 /* Why it looks the way it does — the half of the line that isn't a clock. */
@@ -389,13 +398,14 @@ const CHAR_W = 0.53;
 const MIN_NAME = 11.5;
 const MIN_DETAIL = 9.5;
 
-/* The status line split across the lines a roomy row can afford. Segments are
-   assigned whole, so a line never breaks mid-segment and never ends on a
-   dangling separator — which is what iOS would do left to its own wrapping. */
-function detailRows(st, tight, width, lines) {
+/* Segments packed into at most `lines` lines of `width` characters. Each one
+   is placed whole, so a line never breaks mid-segment and never ends on a
+   dangling separator — which is what iOS would do left to its own wrapping.
+   Segments that don't fit are dropped from the end, as detailBits orders them. */
+function packLines(bits, width, lines) {
   const out = [];
   let cur = "";
-  detailBits(st, tight).forEach(function (b) {
+  bits.forEach(function (b) {
     if (out.length >= lines) return;                  // nothing left to fill
     const join = cur ? cur + " · " + b : b;
     if (join.length <= width || !cur) { cur = join; return; }
@@ -405,6 +415,9 @@ function detailRows(st, tight, width, lines) {
   if (cur && out.length < lines) out.push(cur);
   return out.map((l) => clip(l, width));
 }
+
+const detailRows = (st, tight, width, lines) =>
+  packLines(detailBits(st, tight), width, lines);
 
 /* Sizing and trimming argue in a circle: the size decides how much text fits,
    and the text decides the size. Settle it by fitting the whole line, dropping
@@ -507,24 +520,31 @@ function oneWidget(w, row, now, stale, warnings, notes, big) {
   head.minimumScaleFactor = 0.6;
   head.lineLimit = 1;
 
-  const lines = stateLines(st);
-  w.addSpacer(big ? 5 : 3);
-  const detail = w.addText(lines[0]);
-  detail.font = Font.systemFont(big ? 14 : 10);
-  detail.textColor = DIM;
-  detail.minimumScaleFactor = 0.7;
-  detail.lineLimit = 2;
+  // 155pt tile less 13pt padding a side, or 329 for the medium
+  const size = big ? 14 : 11.5;
+  const lines = stateLines(st, budget(big ? 303 : 129, size), big);
 
-  if (lines[1]) {
+  // the headline sits under the name; the times drop to the foot of the tile,
+  // so the slack ends up between them rather than banked below everything
+  w.addSpacer(big ? 5 : 3);
+  w.addSpacer();
+  lines.info.forEach(function (line) {
+    const detail = w.addText(line);
+    detail.font = Font.systemFont(size);
+    detail.textColor = DIM;
+    detail.minimumScaleFactor = 0.8;
+    detail.lineLimit = 1;
+  });
+
+  if (lines.next) {
     w.addSpacer(big ? 4 : 2);
-    const next = w.addText(lines[1]);
-    next.font = Font.systemFont(big ? 14 : 10);
+    const next = w.addText(lines.next);
+    next.font = Font.systemFont(size);
     next.textColor = st.code === "open" ? COLORS.part : DIM;
-    next.minimumScaleFactor = 0.7;
+    next.minimumScaleFactor = 0.8;
     next.lineLimit = 1;
   }
 
-  w.addSpacer();
   footerRow(w, warnings, notes, !big);
 }
 
@@ -571,11 +591,10 @@ function stackedRows(w, rows, now, stale, warnings, notes, big) {
       detail.minimumScaleFactor = 1;
     });
 
-    if (cramped) w.addSpacer(5);
-    else w.addSpacer();                // share the slack row by row
+    w.addSpacer(3);                    // a gap the rows always get
+    w.addSpacer();                     // and the slack, shared between them
   });
 
-  if (cramped) w.addSpacer();
   footerRow(w, warnings, notes, !big);
 }
 
@@ -618,6 +637,7 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
     detail.lineLimit = 1;
     detail.minimumScaleFactor = 1;
     detail.rightAlignText();
+    w.addSpacer(3);
     w.addSpacer();                     // three rows still leave slack to share
   });
 
