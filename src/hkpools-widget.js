@@ -259,6 +259,8 @@ function detailBits(st, tight) {
   const bits = [];
   if (st.openN > 0) {
     bits.push("until " + compact(st.until));
+    // only today's gap: a row has no room for "next Mon 6:30am" without
+    // eating the name beside it, and the single-pool layout says it instead
     if (st.resumeRaw) bits.push("next " + compact(st.resumeRaw));
   } else {
     bits.push(st.nextRaw ? "Opens " + compact(st.nextRaw)
@@ -293,7 +295,9 @@ function stateLines(st) {
   const tail = why ? " · " + why : "";
   if (st.openN > 0)
     return ["until " + fmt(st.until) + tail,
-            st.resumeRaw ? "next session " + fmt(st.resumeRaw) : ""];
+            st.resumeRaw ? "next session " + fmt(st.resumeRaw)
+          : st.reopen ? "next session " + WD[st.reopen.wd] + " " +
+                          fmt(st.reopen.at) : ""];
 
   const when = st.nextRaw ? "Opens " + fmt(st.nextRaw)
              : st.reopen ? "Opens " + WD[st.reopen.wd] + " " + fmt(st.reopen.at)

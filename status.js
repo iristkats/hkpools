@@ -152,6 +152,9 @@ function facilityStatus(p, f, now){
       if(mins(s.from)>=mins(cur.to) &&
          (!out.afterRaw || mins(s.from)<mins(out.afterRaw))) out.afterRaw=s.from;
     });
+    // on the last session of the day the gap runs to tomorrow, and saying so
+    // beats saying nothing: "until 10pm" alone reads as if more might follow
+    if(!out.afterRaw) out.reopen=nextOpening(p,f,now);
     return out;
   }
   var next=live.filter(function(s){ return mins(s.from)>nowM; })[0];
@@ -200,15 +203,18 @@ function venueStatus(p, now){
 
   var cleansing=facs.some(function(x){ return x.s.cleansing; });
 
-  // shut for the rest of today: the soonest any facility is back
+  /* The soonest a facility is back on a later day. Shut for the rest of
+     today, that is the whole answer; open on the last session of the day, it
+     is what follows "next", standing in for a resume time there isn't one. */
+  var back = openN===0 ? (nextRaw ? [] : facs)
+                       : (resumeRaw ? [] : open);
   var reopen=null;
-  if(openN===0 && !nextRaw)
-    facs.forEach(function(x){
-      var r=x.s.reopen;
-      if(!r) return;
-      if(!reopen || r.days<reopen.days ||
-         (r.days===reopen.days && mins(r.at)<mins(reopen.at))) reopen=r;
-    });
+  back.forEach(function(x){
+    var r=x.s.reopen;
+    if(!r) return;
+    if(!reopen || r.days<reopen.days ||
+       (r.days===reopen.days && mins(r.at)<mins(reopen.at))) reopen=r;
+  });
 
   var code, label;
   if(openN===0){

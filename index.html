@@ -286,6 +286,9 @@ function facilityStatus(p, f, now){
       if(mins(s.from)>=mins(cur.to) &&
          (!out.afterRaw || mins(s.from)<mins(out.afterRaw))) out.afterRaw=s.from;
     });
+    // on the last session of the day the gap runs to tomorrow, and saying so
+    // beats saying nothing: "until 10pm" alone reads as if more might follow
+    if(!out.afterRaw) out.reopen=nextOpening(p,f,now);
     return out;
   }
   var next=live.filter(function(s){ return mins(s.from)>nowM; })[0];
@@ -334,15 +337,18 @@ function venueStatus(p, now){
 
   var cleansing=facs.some(function(x){ return x.s.cleansing; });
 
-  // shut for the rest of today: the soonest any facility is back
+  /* The soonest a facility is back on a later day. Shut for the rest of
+     today, that is the whole answer; open on the last session of the day, it
+     is what follows "next", standing in for a resume time there isn't one. */
+  var back = openN===0 ? (nextRaw ? [] : facs)
+                       : (resumeRaw ? [] : open);
   var reopen=null;
-  if(openN===0 && !nextRaw)
-    facs.forEach(function(x){
-      var r=x.s.reopen;
-      if(!r) return;
-      if(!reopen || r.days<reopen.days ||
-         (r.days===reopen.days && mins(r.at)<mins(reopen.at))) reopen=r;
-    });
+  back.forEach(function(x){
+    var r=x.s.reopen;
+    if(!r) return;
+    if(!reopen || r.days<reopen.days ||
+       (r.days===reopen.days && mins(r.at)<mins(reopen.at))) reopen=r;
+  });
 
   var code, label;
   if(openN===0){
@@ -490,20 +496,24 @@ if (typeof module !== "undefined" && module.exports)
   function stateLines(p, st){
     if(st.code === "priv") return ["Groups only", "no public swimming"];
     if(st.code === "unk")  return ["No hours", "not published"];
+    var WD = ["Monday","Tuesday","Wednesday","Thursday","Friday",
+              "Saturday","Sunday"];
+    var day = function(r){
+      return fmt(r.at) + (r.days === 1 ? " tomorrow" : " " + WD[r.wd]);
+    };
     if(st.openN > 0){
       var bits = ["until " + fmt(st.until)];
       // the gap matters most on a cleansing day, when it can be eight hours
       if(st.resumeRaw) bits.push("next session " + fmt(st.resumeRaw));
+      // the last session of the day: the gap runs to tomorrow morning
+      else if(st.reopen) bits.push("next session " + day(st.reopen));
       bits.push(st.vague && st.vague.length ? "see notice"
               : st.openN === st.total ? "all pools open"
               : st.openN + " of " + st.total + " pools");
       return ["Open", bits.join(" · ")];
     }
-    var WD = ["Monday","Tuesday","Wednesday","Thursday","Friday",
-              "Saturday","Sunday"];
     var when = st.nextRaw ? "Opens " + fmt(st.nextRaw)
-             : st.reopen ? "Opens " + fmt(st.reopen.at) +
-                 (st.reopen.days === 1 ? " tomorrow" : " " + WD[st.reopen.wd])
+             : st.reopen ? "Opens " + day(st.reopen)
              : "Closed";
     // cleansing explains a gap in today's timetable, not an empty evening
     var why = st.cleansing && st.nextRaw ? "weekly cleansing" : closedReason(st);

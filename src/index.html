@@ -258,20 +258,24 @@
   function stateLines(p, st){
     if(st.code === "priv") return ["Groups only", "no public swimming"];
     if(st.code === "unk")  return ["No hours", "not published"];
+    var WD = ["Monday","Tuesday","Wednesday","Thursday","Friday",
+              "Saturday","Sunday"];
+    var day = function(r){
+      return fmt(r.at) + (r.days === 1 ? " tomorrow" : " " + WD[r.wd]);
+    };
     if(st.openN > 0){
       var bits = ["until " + fmt(st.until)];
       // the gap matters most on a cleansing day, when it can be eight hours
       if(st.resumeRaw) bits.push("next session " + fmt(st.resumeRaw));
+      // the last session of the day: the gap runs to tomorrow morning
+      else if(st.reopen) bits.push("next session " + day(st.reopen));
       bits.push(st.vague && st.vague.length ? "see notice"
               : st.openN === st.total ? "all pools open"
               : st.openN + " of " + st.total + " pools");
       return ["Open", bits.join(" · ")];
     }
-    var WD = ["Monday","Tuesday","Wednesday","Thursday","Friday",
-              "Saturday","Sunday"];
     var when = st.nextRaw ? "Opens " + fmt(st.nextRaw)
-             : st.reopen ? "Opens " + fmt(st.reopen.at) +
-                 (st.reopen.days === 1 ? " tomorrow" : " " + WD[st.reopen.wd])
+             : st.reopen ? "Opens " + day(st.reopen)
              : "Closed";
     // cleansing explains a gap in today's timetable, not an empty evening
     var why = st.cleansing && st.nextRaw ? "weekly cleansing" : closedReason(st);
