@@ -677,7 +677,19 @@
      ]
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-08-30T19:00",
+     "end": "2026-08-30T22:00",
+     "facilities": "Teaching Pool , Outdoor Training Pool, Leisure Pool, Jacuzzi",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "jacuzzi",
+      "leisure-pool",
+      "teaching-pool"
+     ]
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=43",
    "id": "tuen-mun-north-west-swimming-pool",
    "session_days": null,
@@ -2384,6 +2396,16 @@
     }
    ],
    "closures": [
+    {
+     "start": "2026-08-30T21:00",
+     "end": "2026-08-30T22:00",
+     "facilities": "Leisure Pool (Deep Water Zone)",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "leisure-pool",
+      "leisure-pool-2"
+     ]
+    },
     {
      "start": "2026-08-30T13:00",
      "end": "2026-08-30T15:00",
@@ -4350,7 +4372,17 @@
      "targets": null
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-08-30T19:45",
+     "end": "2026-08-30T22:00",
+     "facilities": "Teaching Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "teaching-pool"
+     ]
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=23",
    "id": "tin-shui-wai-swimming-pool",
    "session_days": null,
@@ -5160,15 +5192,6 @@
      "targets": [
       "leisure-pool-2"
      ]
-    },
-    {
-     "start": "2026-08-30T15:40",
-     "end": "2026-08-30T18:40",
-     "facilities": "Leisure Pool No.3",
-     "reason": "Contamination of Pool Water",
-     "targets": [
-      "leisure-pool-3"
-     ]
     }
    ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=16",
@@ -5838,7 +5861,26 @@
      ]
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-08-30T18:00",
+     "end": "2026-08-31T09:00",
+     "facilities": "Leisure Pool (4)",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "leisure-pool-4"
+     ]
+    },
+    {
+     "start": "2026-08-30T21:00",
+     "end": "2026-08-30T22:00",
+     "facilities": "Leisure Pool (3)",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "leisure-pool-3"
+     ]
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=13",
    "id": "ho-man-tin-swimming-pool",
    "session_days": null,
