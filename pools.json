@@ -387,7 +387,7 @@
    ],
    "maintenance": [
     {
-     "label": "Main pool: From 11 September to 31 October Training pool: From 1 November to 15 April of the following year",
+     "label": "Main pool: From 11 September to 31 October",
      "range": [
       [
        9,
@@ -400,7 +400,23 @@
      ],
      "scope": "partial",
      "targets": [
-      "main-pool",
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Training pool: From 1 November to 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
       "training-pool"
      ]
     }
@@ -623,7 +639,7 @@
    ],
    "maintenance": [
     {
-     "label": "Outdoor pools (Main pool, Training pool, Teaching pool) : From 1 November to 15 April of the following year Maintenance of indoor training pool, leisure pool and jacuzzi: 1 September to 21 October",
+     "label": "Outdoor pools (Main pool, Training pool, Teaching pool) : From 1 November to 15 April",
      "range": [
       [
        11,
@@ -636,25 +652,32 @@
      ],
      "scope": "partial",
      "targets": [
-      "jacuzzi",
-      "leisure-pool",
       "main-pool",
       "teaching-pool",
       "training-pool-1"
      ]
-    }
-   ],
-   "closures": [
+    },
     {
-     "start": "2026-08-30T17:00",
-     "end": "2026-08-30T18:00",
-     "facilities": "Leisure Pool",
-     "reason": "Insufficient Lifeguard",
+     "label": "of the following year Maintenance of indoor training pool, leisure pool and jacuzzi: 1 September to 21 October",
+     "range": [
+      [
+       9,
+       1
+      ],
+      [
+       10,
+       21
+      ]
+     ],
+     "scope": "partial",
      "targets": [
-      "leisure-pool"
+      "jacuzzi",
+      "leisure-pool",
+      "training-pool-1"
      ]
     }
    ],
+   "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=43",
    "id": "tuen-mun-north-west-swimming-pool",
    "session_days": null,
@@ -1062,7 +1085,7 @@
    ],
    "maintenance": [
     {
-     "label": "Outdoor pools : From 1 November to 15 April of the following year Indoor pools : From 2 January to 21 February",
+     "label": "Outdoor pools : From 1 November to 15 April",
      "range": [
       [
        11,
@@ -1078,6 +1101,24 @@
       "public-coaching-area-training-pool",
       "secondary-pool",
       "teaching-pool-1-2"
+     ]
+    },
+    {
+     "label": "of the following year Indoor pools : From 2 January to 21 February",
+     "range": [
+      [
+       1,
+       2
+      ],
+      [
+       2,
+       21
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool",
+      "training-pool"
      ]
     }
    ],
@@ -1355,7 +1396,7 @@
    ],
    "maintenance": [
     {
-     "label": "Main Pool : From 4 May to 23 June Training pool, Teaching pools, Diving pool, Toddlers' pool, Leisure pools : From 1 November to 15 April of the following year",
+     "label": "Main Pool : From 4 May to 23 June",
      "range": [
       [
        5,
@@ -1368,9 +1409,25 @@
      ],
      "scope": "partial",
      "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Training pool, Teaching pools, Diving pool, Toddlers' pool, Leisure pools : From 1 November to 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
       "diving-pool",
       "leisure-pool-1",
-      "main-pool",
       "teaching-pool-1",
       "toddlers-pool",
       "training-pool"
@@ -1532,7 +1589,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -1768,7 +1825,7 @@
    ],
    "maintenance": [
     {
-     "label": "Main pool : From 16 April to 5 June Secondary pool, Children's pool , Toddlers' Pool, Training pool, Teaching pools : From 1 November to 15 April of the following year Diving pool : From 1 November to 5 June of the following year",
+     "label": "Main pool : From 16 April to 5 June",
      "range": [
       [
        4,
@@ -1781,11 +1838,43 @@
      ],
      "scope": "partial",
      "targets": [
-      "diving-pool",
-      "main-pool",
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Secondary pool, Children's pool , Toddlers' Pool, Training pool, Teaching pools : From 1 November to 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
       "secondary-pool",
       "teaching-pool-1",
       "training-pool"
+     ]
+    },
+    {
+     "label": "of the following year Diving pool : From 1 November to 5 June",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool"
      ]
     }
    ],
@@ -2049,7 +2138,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -2257,7 +2346,7 @@
    ],
    "maintenance": [
     {
-     "label": "Indoor pools (Main pool ,Jacuzzi pool ): From 11 September to 31 October Outdoor pools (Training pool, Leisure pool ): From 1 November to 15 April of the following year",
+     "label": "Indoor pools (Main pool ,Jacuzzi pool ): From 11 September to 31 October",
      "range": [
       [
        9,
@@ -2271,9 +2360,25 @@
      "scope": "partial",
      "targets": [
       "jacuzzi-pool",
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Outdoor pools (Training pool, Leisure pool ): From 1 November to 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
       "leisure-pool",
       "leisure-pool-2",
-      "main-pool",
       "training-pool"
      ]
     }
@@ -2460,7 +2565,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -2563,7 +2668,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -2692,7 +2797,7 @@
    ],
    "maintenance": [
     {
-     "label": "Main pool: From 16 April to 5 June Secondary pool, Training pool, Toddlers' pool : From 1 November to 15 April of the following year",
+     "label": "Main pool: From 16 April to 5 June",
      "range": [
       [
        4,
@@ -2705,7 +2810,23 @@
      ],
      "scope": "partial",
      "targets": [
-      "main-pool",
+      "main-pool"
+     ]
+    },
+    {
+     "label": "Secondary pool, Training pool, Toddlers' pool : From 1 November to 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
       "secondary-pool",
       "toddlers-pool",
       "training-pool"
@@ -2876,7 +2997,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -2892,15 +3013,6 @@
     }
    ],
    "closures": [
-    {
-     "start": "2026-08-30T14:30",
-     "end": "2026-08-30T18:00",
-     "facilities": "Leisure Pool 2",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "leisure-pool-2"
-     ]
-    },
     {
      "start": "2026-08-30T19:00",
      "end": "2026-08-30T22:00",
@@ -3102,7 +3214,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -3118,17 +3230,6 @@
     }
    ],
    "closures": [
-    {
-     "start": "2026-08-30T17:30",
-     "end": "2026-08-30T18:00",
-     "facilities": "Teaching Pool (1), Teaching Pool (2), Diving Pool",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "diving-pool",
-      "teaching-pool-1",
-      "teaching-pool-2"
-     ]
-    },
     {
      "start": "2026-08-30T19:00",
      "end": "2026-08-30T22:00",
@@ -3349,7 +3450,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -3480,7 +3581,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -3666,7 +3767,7 @@
    ],
    "maintenance": [
     {
-     "label": "Outdoor training pool, teaching pool, leisure pools : From 1 November to 15 April of the following year Indoor main pool : From 1 May to 30 June",
+     "label": "Outdoor training pool, teaching pool, leisure pools : From 1 November to 15 April",
      "range": [
       [
        11,
@@ -3680,10 +3781,26 @@
      "scope": "partial",
      "targets": [
       "leisure-pool-1",
-      "main-pool",
-      "main-pool-2",
       "teaching-pool",
       "training-pool"
+     ]
+    },
+    {
+     "label": "of the following year Indoor main pool : From 1 May to 30 June",
+     "range": [
+      [
+       5,
+       1
+      ],
+      [
+       6,
+       30
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool",
+      "main-pool-2"
      ]
     }
    ],
@@ -3954,7 +4071,7 @@
    ],
    "maintenance": [
     {
-     "label": "Secondary pool, Training pool, Diving pool, Toddlers' Pool : From 1 November to 15 April of the following year Main pool : From 16 April to 5 June",
+     "label": "Secondary pool, Training pool, Diving pool, Toddlers' Pool : From 1 November to 15 April",
      "range": [
       [
        11,
@@ -3968,9 +4085,25 @@
      "scope": "partial",
      "targets": [
       "diving-pool",
-      "main-pool",
       "secondary-pool",
       "training-pool"
+     ]
+    },
+    {
+     "label": "of the following year Main pool : From 16 April to 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool"
      ]
     }
    ],
@@ -4202,7 +4335,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -4295,7 +4428,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -4462,7 +4595,7 @@
    ],
    "maintenance": [
     {
-     "label": "Outdoor pools (Training pool, Teaching pool, Leisure pool and Diving pool): From 1 November 2026 to 15 April of the following year Indoor pools (Main pool and Training pool): From 16 April 2027 to 5 Jun 2027",
+     "label": "Outdoor pools (Training pool, Teaching pool, Leisure pool and Diving pool): From 1 November 2026 to 15 April",
      "range": [
       [
        4,
@@ -4477,8 +4610,25 @@
      "targets": [
       "diving-pool",
       "leisure-pool",
-      "main-pool",
       "teaching-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "label": "of the following year Indoor pools (Main pool and Training pool): From 16 April 2027 to 5 Jun",
+     "range": [
+      [
+       6,
+       27
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool",
       "training-pool"
      ]
     }
@@ -4518,6 +4668,15 @@
      "reason": "Competition",
      "targets": [
       "main-pool"
+     ]
+    },
+    {
+     "start": "2026-08-30T18:00",
+     "end": "2026-08-30T20:00",
+     "facilities": "Diving Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "diving-pool"
      ]
     }
    ],
@@ -4579,7 +4738,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -4730,7 +4889,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -4954,7 +5113,7 @@
    ],
    "maintenance": [
     {
-     "label": "Outdoor pools : From 1 November to 15 April of the following year Indoor pools : From 11 May to 30 June",
+     "label": "Outdoor pools : From 1 November to 15 April",
      "range": [
       [
        11,
@@ -4971,6 +5130,24 @@
       "leisure-pool-3",
       "participatory-fountain",
       "toddlers-pool"
+     ]
+    },
+    {
+     "label": "of the following year Indoor pools : From 11 May to 30 June",
+     "range": [
+      [
+       5,
+       11
+      ],
+      [
+       6,
+       30
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-1",
+      "training-pool"
      ]
     }
    ],
@@ -5164,7 +5341,7 @@
    ],
    "maintenance": [
     {
-     "label": "Outdoor Pools: From 1 November to 15 April of the following year Indoor Secondary Pool: From 16 April to 5 June",
+     "label": "Outdoor Pools: From 1 November to 15 April",
      "range": [
       [
        11,
@@ -5173,6 +5350,29 @@
       [
        4,
        15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "children-s-pool-with-play-equipment",
+      "diving-pool",
+      "main-pool",
+      "secondary-pool",
+      "teaching-pool-1",
+      "teaching-pool-2",
+      "teaching-pool-3"
+     ]
+    },
+    {
+     "label": "of the following year Indoor Secondary Pool: From 16 April to 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
       ]
      ],
      "scope": "partial",
@@ -5333,7 +5533,7 @@
    ],
    "maintenance": [
     {
-     "label": "Indoor Main Pool: From 16 April to 5 June (Starting from 2027) Outdoor Pools : From 1 November to 15 April of the following year",
+     "label": "Indoor Main Pool: From 16 April to 5 June",
      "range": [
       [
        4,
@@ -5347,6 +5547,24 @@
      "scope": "partial",
      "targets": [
       "main-pool"
+     ]
+    },
+    {
+     "label": "(Starting from 2027) Outdoor Pools : From 1 November to 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool",
+      "training-pool"
      ]
     }
    ],
@@ -5584,7 +5802,7 @@
    ],
    "maintenance": [
     {
-     "label": "Indoor Pools : From 11 September to 31 October Outdoor Pools : From 11 September to 15 April of the following year",
+     "label": "Indoor Pools : From 11 September to 31 October",
      "range": [
       [
        9,
@@ -5599,6 +5817,24 @@
      "targets": [
       "leisure-pool-1",
       "leisure-pool-2"
+     ]
+    },
+    {
+     "label": "Outdoor Pools : From 11 September to 15 April",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-3",
+      "leisure-pool-4"
      ]
     }
    ],
@@ -5792,7 +6028,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -6116,7 +6352,7 @@
    ],
    "maintenance": [
     {
-     "label": "Indoor Pools : From 16 April to 5 June Outdoor Pools : From 1 November to 15 April of the following year",
+     "label": "Indoor Pools : From 16 April to 5 June",
      "range": [
       [
        4,
@@ -6133,9 +6369,41 @@
       "indoor-l2-training-pool",
       "main-pool"
      ]
+    },
+    {
+     "label": "Outdoor Pools : From 1 November to 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool",
+      "leisure-pool-no-1",
+      "leisure-pool-no-2",
+      "leisure-pool-no-3",
+      "toddlers-pool"
+     ]
     }
    ],
    "closures": [
+    {
+     "start": "2026-08-30T18:00",
+     "end": "2026-08-30T22:00",
+     "facilities": "Leisure Pool No. 1, Leisure Pool No. 2",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "leisure-pool-no-1",
+      "leisure-pool-no-2",
+      "leisure-pool-no-3"
+     ]
+    },
     {
      "start": "2026-09-05T12:00",
      "end": "2026-09-05T22:00",
@@ -6394,7 +6662,7 @@
    ],
    "maintenance": [
     {
-     "label": "Whole complex: From 24 February to 15 April Other pools except main pool: From 1 November to 23 February of the following year",
+     "label": "Whole complex: From 24 February to 15 April",
      "range": [
       [
        2,
@@ -6407,6 +6675,23 @@
      ],
      "scope": "venue",
      "targets": null
+    },
+    {
+     "label": "Other pools except main pool: From 1 November to 23 February",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       2,
+       23
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool"
+     ]
     }
    ],
    "closures": [
@@ -6697,7 +6982,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
@@ -6921,7 +7206,7 @@
    ],
    "maintenance": [
     {
-     "label": "Diving pool, Training pool, Teaching pools and Toddlers' pool: From 1 November to 15 April of the following year Main pool, Secondary pool, Diving pool: From 16 April to 5 June",
+     "label": "Diving pool, Training pool, Teaching pools and Toddlers' pool: From 1 November to 15 April",
      "range": [
       [
        11,
@@ -6935,11 +7220,28 @@
      "scope": "partial",
      "targets": [
       "diving-pool",
-      "main-pool",
-      "secondary-pool",
       "teaching-pool-1",
       "toddlers-pool",
       "training-pool"
+     ]
+    },
+    {
+     "label": "of the following year Main pool, Secondary pool, Diving pool: From 16 April to 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool",
+      "main-pool",
+      "secondary-pool"
      ]
     }
    ],
@@ -7368,7 +7670,7 @@
    ],
    "maintenance": [
     {
-     "label": "Whole pool complex: From 1 November to 31 March of the following year",
+     "label": "Whole pool complex: From 1 November to 31 March",
      "range": [
       [
        11,
@@ -7442,7 +7744,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 December to 20 January of the following year",
+     "label": "From 1 December to 20 January",
      "range": [
       [
        12,
@@ -7595,7 +7897,7 @@
    ],
    "maintenance": [
     {
-     "label": "Indoor main pool and training pool: From 11 May to 30 June Outdoor teaching pool and toddler's pool: From 1 November to 15 April of the following year",
+     "label": "Indoor main pool and training pool: From 11 May to 30 June",
      "range": [
       [
        5,
@@ -7609,9 +7911,25 @@
      "scope": "partial",
      "targets": [
       "main-pool",
-      "teaching-pool",
-      "toddlers-pool",
       "training-pool"
+     ]
+    },
+    {
+     "label": "Outdoor teaching pool and toddler's pool: From 1 November to 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "teaching-pool",
+      "toddlers-pool"
      ]
     }
    ],
@@ -7965,7 +8283,7 @@
    ],
    "maintenance": [
     {
-     "label": "Indoor pools : From 11 September to 31 October Outdoor pools : From 1 November to 15 April of the following year",
+     "label": "Indoor pools : From 11 September to 31 October",
      "range": [
       [
        9,
@@ -7982,6 +8300,24 @@
       "secondary-pool",
       "secondary-pool-2",
       "training-pool"
+     ]
+    },
+    {
+     "label": "Outdoor pools : From 1 November to 15 April",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool",
+      "public-coaching-area-training-pool"
      ]
     }
    ],
@@ -8185,7 +8521,7 @@
    ],
    "maintenance": [
     {
-     "label": "From 1 November to 31 March of the following year",
+     "label": "From 1 November to 31 March",
      "range": [
       [
        11,
