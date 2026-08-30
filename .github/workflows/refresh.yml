@@ -60,7 +60,3 @@ jobs:
           git diff --staged --quiet && echo "no change" && exit 0
           git commit -m "data: refresh $(date -u +%Y-%m-%d\ %H:%M)Z"
           git push
-
-      # TEMPORARY — swpId=250 parses no facilities; delete with debug_one.py
-      - name: Why does 250 yield no facilities
-        run: python debug_one.py

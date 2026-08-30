@@ -429,8 +429,16 @@ def facility_lines(cell) -> list[str]:
     joined with nothing between them rather than the usual space.
     """
     BREAK = "\x00"
-    for br in cell.find_all("br"):
-        br.replace_with(BREAK)
+    for node in cell.find_all(["br", "div", "p", "li"]):
+        if node.name == "br":
+            node.replace_with(BREAK)
+        else:
+            # Some venues put each facility in its own block element rather
+            # than separating them with <br>. Joined with nothing between
+            # them, as the spans require, the whole list became one string
+            # too long to pass for a facility — Tung Cheong Street scraped
+            # none at all. A block starts a new entry.
+            node.insert_before(BREAK)
     text = cell.get_text("")
     # venues with both list them under "Indoor Facilities :" / "Outdoor
     # Facilities :" headings that do not always sit on their own line, so the
@@ -722,6 +730,23 @@ MAINTENANCE_COLUMN = """
 """
 
 
+# Tung Cheong Street (swpId=250): one <div> per facility instead of <br>
+# separators, and the markers on the names as usual.
+DIV_FACILITIES = """
+<table><tr><td class="info"><b>Facilities</b></td><td>
+  <div>Indoor facilities:</div>
+  <div>^Training pool (Length 25m x Width 25m, Depth: 1.2m-1.4m)</div>
+  <div>^Teaching pool (Length 25m x Width 10m, Depth: 0.7m-0.9m)</div>
+  <div>^Jacuzzi (Depth: 0.85m)</div>
+  <div>Family changing room</div>
+  <div>Barrier Free Facilities: Barrier Free Access, Accessible Lifting
+    Platform, Ramp (Teaching Pool), Accessible Toilet, Accessible Services
+    Counter, Visual Fire Alarm System, Tactile Guide Path, Braille Directory
+    Map and Floor Plan</div>
+</td></tr></table>
+"""
+
+
 # Kennedy Town (swpId=2): indoor and outdoor sections, and the ^ and * footnote
 # markers that were ending up inside the facility names.
 SECTIONED_FACILITIES = """
@@ -849,6 +874,14 @@ def selftest():
     assert any(f.startswith("Secondary pool (Length 50m x Width 25m") for f in facs), facs
     assert not any("Facilities :" in f for f in facs), facs
     assert not any(f.startswith(("*", "^")) for f in facs), facs
+
+    divs = BeautifulSoup(DIV_FACILITIES, "html.parser")
+    facs = facility_lines(labelled_cell(divs, r"^Facilities$", "Facilit"))
+    assert facs == [
+        "Training pool (Length 25m x Width 25m, Depth: 1.2m-1.4m)",
+        "Teaching pool (Length 25m x Width 10m, Depth: 0.7m-0.9m)",
+        "Jacuzzi (Depth: 0.85m)",
+    ], facs
 
     # --- schedule grid, cleansing day and closures, from real markup -------
     sched = BeautifulSoup(SCHEDULE_PAGE, "html.parser")
