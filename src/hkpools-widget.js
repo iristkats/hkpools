@@ -259,16 +259,24 @@ function detailBits(st, tight) {
   const bits = [];
   if (st.openN > 0) {
     bits.push("until " + compact(st.until));
-    // only today's gap: a row has no room for "next Mon 6:30am" without
-    // eating the name beside it, and the single-pool layout says it instead
     if (st.resumeRaw) bits.push("next " + compact(st.resumeRaw));
   } else {
     bits.push(st.nextRaw ? "Opens " + compact(st.nextRaw)
             : st.reopen ? "Opens " + reopenAt(st.reopen)
             : "closed today");
   }
+  // the last session of the day: the gap runs to tomorrow morning
+  const later = st.openN > 0 && !st.resumeRaw && st.reopen
+              ? "next " + reopenAt(st.reopen) : "";
   const why = reason(st, tight);
+
+  // Tomorrow is both the longest segment and the least urgent, so on a
+  // cramped row it goes last and is dropped first: the pool count, which the
+  // tile has no other way of saying, outlives it. Given room it reads better
+  // beside the other clock time, before the count.
+  if (later && !tight) bits.push(later);
   if (why) bits.push(why);
+  if (later && tight) bits.push(later);
   return bits;
 }
 
@@ -381,6 +389,21 @@ const CHAR_W = 0.53;
 const MIN_NAME = 11.5;
 const MIN_DETAIL = 9.5;
 
+/* Sizing and trimming argue in a circle: the size decides how much text fits,
+   and the text decides the size. Settle it by fitting the whole line, dropping
+   whatever that size cannot hold, then fitting again to what survived — so a
+   segment that was never going to be drawn can't shrink the row it was cut
+   from. One extra pass is enough: dropping text only ever raises the size,
+   and a raised size never drops more. */
+function fitDetails(rows, tight, width, max, min) {
+  const at = (size) =>
+    rows.map((r) => detailFor(r.st, tight, budget(width, size)));
+  const first = fitSize(rows.map((r) => detailLine(r.st, tight)),
+                        width, max, min);
+  const size = fitSize(at(first), width, max, min);
+  return { size: size, lines: at(size) };
+}
+
 /* The largest size in [min,max] at which every label fits `width`. */
 function fitSize(labels, width, max, min) {
   const longest = labels.reduce((n, s) => Math.max(n, s.length), 0);
@@ -440,66 +463,82 @@ function message(w, now, lines) {
   return w;
 }
 
-/* One pool named: spend the whole tile on it. */
-function smallOne(w, row, now, stale, warnings, notes) {
+/* Every layout below sizes its type against the text it is actually going to
+   draw, not the text it started with: a detail segment that will be dropped
+   for want of room must not shrink the row that outlives it. */
+
+/* One pool: spend the whole tile on it. `big` is the medium tile, where the
+   same shape has twice the room and can afford twice the headline. */
+function oneWidget(w, row, now, stale, warnings, notes, big) {
   const st = row.st;
   header(w, now, stale);
-  w.addSpacer(6);
+  w.addSpacer(big ? 8 : 6);
 
   const name = w.addText(rowLabel(row));
-  name.font = Font.semiboldSystemFont(13);
+  name.font = Font.semiboldSystemFont(big ? 17 : 13);
   name.textColor = INK;
   name.minimumScaleFactor = 0.7;
   name.lineLimit = 2;
 
-  w.addSpacer(4);
+  w.addSpacer(big ? 6 : 4);
   const head = w.addText(HEADLINE[st.code] || "—");
-  head.font = Font.boldSystemFont(20);
+  head.font = Font.boldSystemFont(big ? 30 : 20);
   head.textColor = COLORS[st.code] || COLORS.unk;
   head.minimumScaleFactor = 0.6;
   head.lineLimit = 1;
 
   const lines = stateLines(st);
-  w.addSpacer(3);
+  w.addSpacer(big ? 5 : 3);
   const detail = w.addText(lines[0]);
-  detail.font = Font.systemFont(10);
+  detail.font = Font.systemFont(big ? 14 : 10);
   detail.textColor = DIM;
   detail.minimumScaleFactor = 0.7;
   detail.lineLimit = 2;
 
   if (lines[1]) {
-    w.addSpacer(2);
+    w.addSpacer(big ? 4 : 2);
     const next = w.addText(lines[1]);
-    next.font = Font.systemFont(10);
+    next.font = Font.systemFont(big ? 14 : 10);
     next.textColor = st.code === "open" ? COLORS.part : DIM;
     next.minimumScaleFactor = 0.7;
     next.lineLimit = 1;
   }
 
   w.addSpacer();
-  footerRow(w, warnings, notes, true);
+  footerRow(w, warnings, notes, !big);
 }
 
-/* Two or three named: a stacked row each — name, then its line beneath, so
-   the detail gets the full tile width rather than a narrow right-hand column. */
-function smallMany(w, rows, now, stale, warnings, notes) {
+/* Two or three pools: a stacked row each — name, then its line beneath, so
+   the detail gets the full tile width rather than a narrow right-hand column.
+
+   Three on the small tile is the cramped case, and the only one: it keeps the
+   detail to a single abbreviated line. Two pools leave a third of the tile
+   empty, so they get larger type, a detail free to wrap, and the slack shared
+   out between the rows instead of pooled under the last one. */
+function stackedRows(w, rows, now, stale, warnings, notes, big) {
   header(w, now, stale);
   w.addSpacer(4);
 
-  // 155pt tile, 13pt padding each side; the dot and its gap cost 14 more
-  const NAME_W = 115, DET_W = 116;
+  // small: a 155pt tile less 13pt padding a side; the dot and gap cost 14 more
+  const NAME_W = big ? 288 : 115, DET_W = big ? 289 : 116;
+  const cramped = !big && rows.length >= 3;
+  const detLines = cramped || big ? 1 : 2;
+
   const labels = rows.map(rowLabel);
-  const details = rows.map((r) => detailLine(r.st, true));
-  const nameSize = fitSize(labels, NAME_W, 13, MIN_NAME);
-  const detSize = fitSize(details, DET_W, nameSize - 2, MIN_DETAIL);
-  const detBudget = budget(DET_W, detSize);
+  const nameSize = fitSize(labels, NAME_W, big ? 18 : cramped ? 13 : 15,
+                           MIN_NAME);
+  // a detail free to wrap has two lines' worth of width to play with
+  const det = fitDetails(rows, !big, DET_W * detLines, nameSize - 2,
+                         MIN_DETAIL);
+  const details = det.lines, detSize = det.size;
+  const nameBudget = budget(NAME_W, nameSize);
 
   rows.forEach(function (row, i) {
     const head = w.addStack();
     head.centerAlignContent();
     dot(head, row.st.code);
     head.addSpacer(4);
-    const name = head.addText(fitLabel(row, budget(NAME_W, nameSize)));
+    const name = head.addText(fitLabel(row, nameBudget));
     name.font = Font.mediumSystemFont(nameSize);
     name.textColor = INK;
     name.lineLimit = 1;
@@ -507,31 +546,39 @@ function smallMany(w, rows, now, stale, warnings, notes) {
 
     const under = w.addStack();
     under.addSpacer(13);               // clear the dot
-    const detail = under.addText(detailFor(row.st, true, detBudget));
+    const detail = under.addText(details[i]);
     detail.font = Font.systemFont(detSize);
     detail.textColor = DIM;
-    detail.lineLimit = 1;
+    detail.lineLimit = detLines;
     detail.minimumScaleFactor = 1;
 
-    w.addSpacer(5);
+    if (cramped) w.addSpacer(5);
+    else w.addSpacer();                // share the slack row by row
   });
 
-  w.addSpacer();
-  footerRow(w, warnings, notes, true);
+  if (cramped) w.addSpacer();
+  footerRow(w, warnings, notes, !big);
 }
 
+/* Three pools on the medium tile: name and detail share one line, so they are
+   fitted against their combined length and share a size — the weight is what
+   separates them. */
 function mediumWidget(w, rows, now, stale, warnings, notes) {
   header(w, now, stale);
   w.addSpacer(5);
 
-  // name and detail share one line, so they are fitted against their combined
-  // length and share a size — the weight is what separates them
   const ROW_W = 288;
   const labels = rows.map(rowLabel);
-  const details = rows.map((r) => detailLine(r.st, false));
-  const size = fitSize(labels.map((l, i) => l + details[i]), ROW_W, 12, MIN_NAME);
+  // the row holds a name and a detail, so each is fitted against the pair;
+  // as in fitDetails, a second pass re-fits to whatever survived the first
+  const combined = (d) => fitSize(labels.map((l, i) => l + d[i]), ROW_W, 14,
+                                  MIN_NAME);
+  const trim = (size) => rows.map((r, i) =>
+    detailFor(r.st, false, Math.max(12, budget(ROW_W, size) - labels[i].length)));
+  let details = trim(combined(rows.map((r) => detailLine(r.st, false))));
+  const size = combined(details);
+  details = trim(size);
   const nameBudget = budget(ROW_W, size);
-  const detBudget = Math.max(12, nameBudget - 14);   // leave room for a name
 
   rows.forEach(function (r, i) {
     const row = w.addStack();
@@ -546,16 +593,15 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
     name.minimumScaleFactor = 1;
 
     row.addSpacer();
-    const detail = row.addText(detailFor(r.st, false, detBudget));
+    const detail = row.addText(details[i]);
     detail.font = Font.systemFont(size);
     detail.textColor = DIM;
     detail.lineLimit = 1;
     detail.minimumScaleFactor = 1;
     detail.rightAlignText();
-    w.addSpacer(5);
+    w.addSpacer();                     // three rows still leave slack to share
   });
 
-  w.addSpacer();
   footerRow(w, warnings, notes, false);
 }
 
@@ -614,10 +660,14 @@ async function build() {
   const warnings = rows.some((r) => hasOutdoor(r.p)) ? await loadWarnings() : [];
 
   // the medium tile always lists them; only the small one has to choose
-  if (family !== "small") mediumWidget(w, rows, now, stale, warnings, notes);
-  else if (opts.single || rows.length === 1)
-    smallOne(w, rows[0], now, stale, warnings, notes);
-  else smallMany(w, rows, now, stale, warnings, notes);
+  // one pool has the roomiest layout, two the next roomiest; only three on
+  // the small tile is genuinely cramped, and only it gets the cramped shape
+  const alone = rows.length === 1 || (family === "small" && opts.single);
+  const big = family !== "small";
+  if (alone) oneWidget(w, rows[0], now, stale, warnings, notes, big);
+  else if (big && rows.length > 2)
+    mediumWidget(w, rows, now, stale, warnings, notes);
+  else stackedRows(w, rows, now, stale, warnings, notes, big);
 
   w.refreshAfterDate = new Date(Date.now() + 15 * 60 * 1000);
   return w;
