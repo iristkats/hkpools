@@ -51,6 +51,36 @@ jobs:
       - name: Status-engine parity on the new data
         run: node parity.js
 
+      # runs only when a venue is still unplaced, and prints at the end of the
+      # log where it can actually be read. Delete with the gap it explains.
+      - name: Explain any unresolved venue
+        run: |
+          python - <<'PY'
+          import json, requests
+          from bs4 import BeautifulSoup
+          import scraper
+
+          gaps = [p for p in json.load(open("pools.json"))["pools"] if p.get("data_gap")]
+          if not gaps:
+              print("every venue resolved"); raise SystemExit
+          print("unresolved: " + ", ".join(p["name"] for p in gaps))
+
+          harvested = scraper.harvest_district_ids(verbose=True)
+          print(f"harvest returned {len(harvested)} names")
+          for key in sorted(harvested)[:5]:
+              print("   sample:", harvested[key])
+
+          r = requests.get(scraper.DISTRICT_PAGE.format(16), headers=scraper.UA, timeout=30)
+          print(f"dist=loc16 -> HTTP {r.status_code}, {len(r.text)} chars")
+          soup = BeautifulSoup(r.text, "lxml")
+          anchors = soup.find_all("a", href=True)
+          print(f"  {len(anchors)} anchors total")
+          for a in anchors:
+              txt = a.get_text(" ", strip=True)
+              if "pool" in txt.lower() or "swp" in a["href"].lower():
+                  print(f"     {txt[:50]!r} -> {a['href'][:70]}")
+          PY
+
       - name: Commit if changed
         run: |
           git config user.name  "hkpools bot"
