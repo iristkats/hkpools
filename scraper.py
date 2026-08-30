@@ -292,7 +292,11 @@ def section_text(soup, *heading_keywords) -> str:
         parent = block.find_parent(["tr", "div", "table"])
         if len(chunk) < 10 and parent:
             chunk = parent.get_text(" ", strip=True)
-        if chunk:
+        # A field is a phrase, not a page. Walking up to a parent can swallow
+        # the whole document — Tung Cheong Street published its address, its
+        # facilities and its entire schedule as one "annual maintenance"
+        # label. Better to report nothing than something that long.
+        if chunk and len(chunk) <= 400:
             return chunk
     return ""
 

@@ -26,11 +26,21 @@ MAX_CLEANSING_LOST = 3
 # losing every session is not a change of hours, it is a failure to read them,
 # and a venue with no hours shows as "Hours unknown" — worse than yesterday's
 MAX_HOURS_LOST = 0
+# a venue with sessions but no facilities shows as "Hours unknown" in both
+# consumers, whatever its sessions say, so it is a loss like any other
+MAX_FACILITIES_LOST = 0
 
 
 def load(path):
+    """Keyed by name, not swpId.
+
+    An id can appear, change or go missing — Tung Cheong Street's went from
+    null to 250 the moment its page was found — and a venue keyed by one then
+    drops out of the comparison entirely, taking its regressions with it. The
+    dataset's name is the stable handle.
+    """
     with open(path) as fh:
-        return {p["swp_id"]: p for p in json.load(fh)["pools"]}
+        return {p["name"]: p for p in json.load(fh)["pools"]}
 
 
 def main():
@@ -72,6 +82,15 @@ def main():
                          f"(limit {MAX_HOURS_LOST})")
         for name in blanked[:10]:
             print(f"  all hours lost: {name}")
+
+        stripped = [old[k]["name"] for k in shared
+                    if (old[k].get("facilities") or [])
+                    and not (new[k].get("facilities") or [])]
+        if len(stripped) > MAX_FACILITIES_LOST:
+            fails.append(f"{len(stripped)} venues lost every facility "
+                         f"(limit {MAX_FACILITIES_LOST})")
+        for name in stripped[:10]:
+            print(f"  all facilities lost: {name}")
 
         lost = [old[k]["name"] for k in shared
                 if old[k].get("cleansing_weekday") is not None
