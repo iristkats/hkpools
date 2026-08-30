@@ -180,6 +180,7 @@ function print(widget, family) {
   }
   console.log("+" + "-".repeat(width) + "+");
   reportSizes(items);
+  reportHeight(items, family);
   return drawn;
 }
 
@@ -217,6 +218,52 @@ function reportSizes(items) {
   console.log("  fonts: " + line +
     (shrinkers.length ? "   <-- AUTO-SHRINKS: " + shrinkers.join(" | ") : ""));
   if (n.length > 1 || d.length > 1 || shrinkers.length) process.exitCode = 1;
+}
+
+/* A tile is 155 points tall whatever it draws; content past that is squeezed
+   or dropped by iOS, silently. Estimate the height the widget asked for and
+   fail if it overran — the same character-width estimate the widget itself
+   fits with, so this checks the layout's arithmetic on its own terms.
+
+   Text is measured at the lines it would actually take, capped by its
+   lineLimit. Flexible spacers absorb what is left over and so contribute
+   nothing; a tile that overflows has none left to absorb anything. */
+const TILE_H = 155, PAD_V = 24;
+const CHAR_W = 0.53, LINE_H = 1.2;
+
+function naturalHeight(items, width) {
+  let h = 0;
+  for (const item of items) {
+    if (item.row) {
+      // a row is as tall as its tallest label; a leading indent narrows it
+      const indent = "spacer" in item.row[0] ? item.row[0].spacer || 0 : 0;
+      const dot = item.row.some((x) => x.text === "●") ? 17 : 0;
+      const inner = width - indent - dot;
+      h += Math.max(0, ...item.row.filter((x) => x.text !== undefined)
+        .map((x) => textHeight(x, inner)));
+      continue;
+    }
+    if (item.text !== undefined) { h += textHeight(item, width); continue; }
+    if ("spacer" in item) h += item.spacer || 0;      // flexible ones are free
+  }
+  return h;
+}
+
+function textHeight(x, width) {
+  const size = x.size || 11;
+  const fits = Math.max(1, Math.floor(width / (size * CHAR_W)));
+  const need = Math.ceil(x.text.length / fits);
+  const cap = x.limit || 1;                          // 0 means "no limit"
+  return Math.min(need, x.limit === 0 ? need : cap) * size * LINE_H;
+}
+
+function reportHeight(items, family) {
+  const h = naturalHeight(items, family === "small" ? 129 : 303);
+  const room = TILE_H - PAD_V;
+  const over = h > room;
+  console.log("  height: " + Math.round(h) + " / " + room +
+    (over ? "   <-- OVERFLOWS THE TILE" : ""));
+  if (over) process.exitCode = 1;
 }
 
 const clip = (s, width) => (s.length > width ? s.slice(0, width - 1) + "…" : s);

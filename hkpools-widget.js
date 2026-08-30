@@ -808,15 +808,24 @@ function stackedRows(w, rows, now, stale, warnings, notes, big) {
   const det = fitDetails(rows, !big, DET_W, detLines, nameSize - 2, MIN_DETAIL);
   const nameBudget = budget(NAME_W, nameSize);
 
+  /* A name is better wrapped than cut — "Sun Yat Sen / Memorial Park" still
+     names the pool, where "Sun Yat Sen Memori…" makes you guess. Each wrapped
+     name costs its row a line, though: two pools have room for both, three on
+     the small tile have one line to spare — and none at all once a weather
+     warning is taking a line of its own at the foot. */
+  const slack = !cramped ? 2 : hasFooter(warnings, notes) ? 0 : 1;
+  const over = labels.filter((l) => l.length > nameBudget).length;
+  const nameLines = over <= slack ? 2 : 1;
+
   rows.forEach(function (row, i) {
     const head = w.addStack();
     head.centerAlignContent();
     dot(head, row.st.code);
     head.addSpacer(4);
-    const name = head.addText(fitLabel(row, nameBudget));
+    const name = head.addText(fitLabel(row, nameBudget * nameLines));
     name.font = Font.mediumSystemFont(nameSize);
     name.textColor = INK;
-    name.lineLimit = 1;
+    name.lineLimit = nameLines;
     name.minimumScaleFactor = 1;      // sized above; never shrink alone
 
     det.rows[i].forEach(function (line) {
@@ -870,16 +879,23 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
   const nameBudget = budget(ROW_W, size);
   const details = trim(size);
 
+  // A wrapped name makes its row a line taller. Three tall rows overrun the
+  // tile, so wrapping is offered only while the height holds: one row over
+  // on a three-pool tile, two on a two-pool one.
+  const over = labels.filter((l, i) => l.length > nameBudget - details[i].length);
+  const nameLines = over.length <= 2 ? 2 : 1;
+
   rows.forEach(function (r, i) {
     const row = w.addStack();
     row.centerAlignContent();
     dot(row, r.st.code);
     row.addSpacer(5);
 
-    const name = row.addText(fitLabel(r, nameBudget - details[i].length));
+    const room = nameBudget - details[i].length;
+    const name = row.addText(fitLabel(r, room * nameLines));
     name.font = Font.mediumSystemFont(size);
     name.textColor = INK;
-    name.lineLimit = 1;
+    name.lineLimit = nameLines;
     name.minimumScaleFactor = 1;
 
     row.addSpacer();
@@ -895,6 +911,10 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
 
   footerRow(w, warnings, notes, false);
 }
+
+/* Whether footerRow will draw anything — the tile's height depends on it. */
+const hasFooter = (warnings, notes) =>
+  !!(warnings.length || notes.guessed.length || notes.missing.length);
 
 /* The last line carries whichever matters more: a weather signal that could
    shut the pools, or — failing that — a name from the Parameter that matched
