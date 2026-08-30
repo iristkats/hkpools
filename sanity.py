@@ -29,6 +29,9 @@ MAX_HOURS_LOST = 0
 # a venue with sessions but no facilities shows as "Hours unknown" in both
 # consumers, whatever its sessions say, so it is a loss like any other
 MAX_FACILITIES_LOST = 0
+# annual maintenance is what keeps a venue from showing open through the
+# months it is shut, so losing it is a correctness failure, not a data change
+MAX_MAINTENANCE_LOST = 0
 
 
 def load(path):
@@ -91,6 +94,15 @@ def main():
                          f"(limit {MAX_FACILITIES_LOST})")
         for name in stripped[:10]:
             print(f"  all facilities lost: {name}")
+
+        unmaintained = [old[k]["name"] for k in shared
+                        if (old[k].get("maintenance") or [])
+                        and not (new[k].get("maintenance") or [])]
+        if len(unmaintained) > MAX_MAINTENANCE_LOST:
+            fails.append(f"{len(unmaintained)} venues lost their annual "
+                         f"maintenance (limit {MAX_MAINTENANCE_LOST})")
+        for name in unmaintained[:10]:
+            print(f"  maintenance lost: {name}")
 
         lost = [old[k]["name"] for k in shared
                 if old[k].get("cleansing_weekday") is not None

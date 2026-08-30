@@ -188,6 +188,26 @@ def parse_weekend_only(text):
         re.search(r"saturday|sunday|public holiday", t, re.I))
 
 
+def maintenance_entries(text: str) -> list[dict]:
+    """One entry per stated window, labelled with what precedes it.
+
+    Venues with indoor and outdoor pools state two, and they do not always
+    arrive on separate lines: Sha Tin runs them into one sentence — "Main pool
+    : From 16 April to 5 June Secondary pool, … : From 1 November to 15 April".
+    Splitting on punctuation cannot see that boundary, so the dates are found
+    first and each takes the text since the previous one as its label, which
+    is exactly the facilities it applies to.
+    """
+    out, pos = [], 0
+    for m in RANGE_RE.finditer(text or ""):
+        label = text[pos:m.end()].strip(" .;:\u00a0\n\t")
+        if len(label) > 6:
+            out.append(dict(label=label, range=parse_month_range(label),
+                            scope=maintenance_scope(label)))
+        pos = m.end()
+    return out
+
+
 def maintenance_scope(label: str) -> str:
     prefix = label.lower().split(":")[0]
     return "venue" if not any(h in prefix for h in SUBSET_HINTS) else "partial"
@@ -533,12 +553,7 @@ def scrape_pool(swp_id: int, verbose=False) -> dict | None:
     cwd, cnote = parse_cleansing(cleansing_text(soup))
 
     maint_txt = section_text(soup, "Annual Maintenance", "Maintenance Period")
-    maintenance = []
-    for part in re.split(r"[;\n]|(?<=\d)\s{2,}", maint_txt):
-        part = part.strip(" .;")
-        if len(part) > 6 and RANGE_RE.search(part):
-            maintenance.append(dict(label=part, range=parse_month_range(part),
-                                    scope=maintenance_scope(part)))
+    maintenance = maintenance_entries(maint_txt)
 
     closures = []
     table = closure_table(soup)
@@ -895,6 +910,22 @@ def selftest():
     assert any(f.startswith("Secondary pool (Length 50m x Width 25m") for f in facs), facs
     assert not any("Facilities :" in f for f in facs), facs
     assert not any(f.startswith(("*", "^")) for f in facs), facs
+
+    # two windows in one sentence, which is how a venue with indoor and
+    # outdoor pools states them; one merged entry loses the second date range
+    # entirely, and with it the months those pools are shut
+    both = ("Main pool : From 16 April to 5 June Secondary pool, Children's "
+            "pool , Toddlers' Pool, Training pool, Teaching pools : From 1 "
+            "November to 15 April of the following year")
+    ents = maintenance_entries(both)
+    assert len(ents) == 2, ents
+    assert ents[0]["range"] == [[4, 16], [6, 5]], ents[0]
+    assert ents[1]["range"] == [[11, 1], [4, 15]], ents[1]
+    assert ents[0]["scope"] == "partial" and ents[1]["scope"] == "partial", ents
+    # and a single whole-venue window stays one entry
+    solo = maintenance_entries("From 11 September to 31 October")
+    assert len(solo) == 1 and solo[0]["scope"] == "venue", solo
+    assert solo[0]["range"] == [[9, 11], [10, 31]], solo
 
     head_row = BeautifulSoup(HEADING_ROW_FIELD, "html.parser")
     got = section_text(head_row, "Annual Maintenance", "Maintenance Period")
