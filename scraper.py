@@ -446,6 +446,35 @@ def facility_lines(cell) -> list[str]:
             out.append(line)
     return out
 
+# Venues the data.gov.hk directory gives no swpId for, so the scraper cannot
+# find their page. Transcribed by hand from the LCSD page, dated so the
+# staleness is visible, and used only when the directory still has no link.
+# Live data always wins: delete an entry the moment its swpId appears.
+#
+# The cost of an entry here is that its closures never update. The scraper
+# cannot see the venue's closure table, so a notice posted against it will not
+# reach the widget. Everything else changes rarely.
+MANUAL = {
+    "Tung Cheong Street Swimming Pool": dict(
+        transcribed="2026-08-30",
+        phone="2691 2428",
+        type="indoor",
+        sessions=[["06:30", "12:00"], ["13:00", "18:00"], ["19:00", "22:00"]],
+        cleansing_weekday=3,                          # Thursday (Friday if PH)
+        cleansing_note="Friday if public holiday",
+        facilities=[
+            "Training pool (Length 25m x Width 25m, Depth: 1.2m-1.4m)",
+            "Teaching pool (Length 25m x Width 10m, Depth: 0.7m-0.9m)",
+            "Jacuzzi (Depth: 0.85m)",
+            "Family changing room",
+        ],
+        maintenance=["From 11 September to 31 October"],
+        closures=[],
+        url="https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?dist=loc16",
+    ),
+}
+
+
 def scrape_pool(swp_id: int, verbose=False) -> dict | None:
     url = POOL_PAGE.format(swp_id)
     r = requests.get(url, headers=UA, timeout=30)
@@ -548,6 +577,14 @@ def scrape_all(verbose=False) -> dict:
     # instead of another pool's.
     for base in gaps:
         detail = None
+        manual = MANUAL.get(base["name"])
+        if manual:
+            base.update(swp_id=None, **manual)
+            base["data_source"] = (
+                f"Transcribed by hand from the LCSD page on {manual['transcribed']}; "
+                "the directory carries no swpId, so closures do not update.")
+            pools.append(base)
+            continue
         if detail:
             detail.pop("name", None)                 # dataset name is canonical
             base.update(detail)

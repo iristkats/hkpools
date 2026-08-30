@@ -37,16 +37,21 @@ Services Department.
 
 ## Known gap
 
-**Tung Cheong Street Swimming Pool** (Tai Po) publishes no hours here. It has
-an LCSD page, but the data.gov.hk directory leaves its link field empty, so
-the scraper has no id to fetch. Two ways of finding one were tried and
-neither works: unclaimed `swpId`s all answer HTTP 200 with a blank page, and
-the district listings (`Swimming.do?dist=locN`) carry no `swpId` anchors —
-every link on them is site navigation.
+**Tung Cheong Street Swimming Pool** (Tai Po) is not scraped. It has an LCSD
+page, but the data.gov.hk directory leaves its link field empty, so there is
+no `swpId` to fetch. Two ways of finding one were tried and neither works:
+unclaimed ids all answer HTTP 200 with a blank page, and the district listings
+(`Swimming.do?dist=locN`) carry no `swpId` anchors — every link on them is site
+navigation.
 
-The venue therefore carries `data_gap` in `pools.json` and shows as having no
-published hours, rather than being given another pool's. Fixing it needs the
-venue's own `swpId`, from its page URL.
+Its hours, facilities, cleansing day and maintenance window are therefore
+transcribed by hand in `scraper.MANUAL`, dated, and reapplied on every
+refresh. **The cost is that its closures never update**: the scraper cannot
+read a closure table it cannot reach, so a notice posted against this venue
+will not reach the widget. Everything else about it changes rarely.
+
+Delete the entry the moment the directory carries its link, or the venue's own
+`swpId=NN` URL turns up — live data always wins.
 
 ## Working on it
 

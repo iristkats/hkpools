@@ -1761,9 +1761,9 @@
      "maintenance": []
     },
     {
-     "id": "toddlers-pool-irregular-shape",
-     "name": "Toddlers' pool (Irregular shape,",
-     "spec": "Depth: 0.3m-0.4m) is open from June to August free of charge",
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "Irregular shape, (Depth: 0.3m-0.4m) is open from June to August free of charge",
      "kind": "toddlers",
      "location": "outdoor",
      "location_inferred": true,
@@ -1799,6 +1799,7 @@
       "main-pool",
       "secondary-pool",
       "teaching-pool-1",
+      "toddlers-pool",
       "training-pool"
      ]
     }
@@ -1878,8 +1879,7 @@
      "facilities": "Toddlers' Pool",
      "reason": "Urgent Repairs",
      "targets": [
-      "children-pool",
-      "toddlers-pool-irregular-shape"
+      "toddlers-pool"
      ]
     }
    ],
@@ -3097,9 +3097,9 @@
      "maintenance": []
     },
     {
-     "id": "toddlers-pool-irregular-shape",
-     "name": "Toddlers' pool (Irregular shape,",
-     "spec": "Depth: 0.32m) is open from June to August free of charge",
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "Irregular shape, (Depth: 0.32m) is open from June to August free of charge",
      "kind": "toddlers",
      "location": "outdoor",
      "location_inferred": false,
@@ -3134,7 +3134,8 @@
       "diving-pool",
       "main-pool",
       "teaching-pool-1",
-      "teaching-pool-2"
+      "teaching-pool-2",
+      "toddlers-pool"
      ]
     }
    ],
@@ -3317,9 +3318,9 @@
      "maintenance": []
     },
     {
-     "id": "toddlers-pool-1-irregular-shape",
-     "name": "Toddlers' pool(1) (Irregular shape,",
-     "spec": "Depth: 0.43m-0.5m) is open from June to August free of charge",
+     "id": "toddlers-pool",
+     "name": "Toddlers' pool",
+     "spec": "1) (Irregular shape, (Depth: 0.43m-0.5m) is open from June to August free of charge",
      "kind": "toddlers",
      "location": "outdoor",
      "location_inferred": false,
@@ -3336,9 +3337,9 @@
      "maintenance": []
     },
     {
-     "id": "toddlers-pool-2-irregular-shape",
-     "name": "Toddlers' pool(2) (Irregular shape,",
-     "spec": "Depth: 0.46m-0.5m) is open from June to August free of charge",
+     "id": "toddlers-pool-2",
+     "name": "Toddlers' pool",
+     "spec": "2) (Irregular shape, (Depth: 0.46m-0.5m) is open from June to August free of charge",
      "kind": "toddlers",
      "location": "outdoor",
      "location_inferred": false,
@@ -3377,8 +3378,8 @@
       "teaching-pool",
       "teaching-pool-2",
       "teaching-pool-3",
-      "toddlers-pool-1-irregular-shape",
-      "toddlers-pool-2-irregular-shape"
+      "toddlers-pool",
+      "toddlers-pool-2"
      ]
     }
    ],
@@ -3389,8 +3390,8 @@
      "facilities": "Toddlers' Pool(1), Toddlers' Pool(2)",
      "reason": "Insufficient Lifeguard",
      "targets": [
-      "toddlers-pool-1-irregular-shape",
-      "toddlers-pool-2-irregular-shape"
+      "toddlers-pool",
+      "toddlers-pool-2"
      ]
     },
     {
@@ -3942,9 +3943,9 @@
      "maintenance": []
     },
     {
-     "id": "toddlers-pool-irregular-shape",
-     "name": "Toddlers' Pool (Irregular shape,",
-     "spec": "Depth: 0.18m-0.3m) is open from June to August free of charge",
+     "id": "toddlers-pool",
+     "name": "Toddlers' Pool",
+     "spec": "Irregular shape, (Depth: 0.18m-0.3m) is open from June to August free of charge",
      "kind": "toddlers",
      "location": "outdoor",
      "location_inferred": true,
@@ -3999,7 +4000,7 @@
       "main-pool",
       "public-coaching-area-secondary-pool",
       "secondary-pool",
-      "toddlers-pool-irregular-shape",
+      "toddlers-pool",
       "training-pool"
      ]
     }
@@ -4011,7 +4012,7 @@
      "facilities": "Toddlers' Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
-      "toddlers-pool-irregular-shape"
+      "toddlers-pool"
      ]
     },
     {
@@ -8331,22 +8332,112 @@
    "lat": 22.44978638,
    "lon": 114.1701758,
    "swp_id": null,
-   "phone": "",
+   "phone": "2691 2428",
    "type": "indoor",
-   "sessions": [],
-   "cleansing_weekday": null,
-   "cleansing_note": "",
-   "facilities": [],
-   "maintenance": [],
+   "sessions": [
+    [
+     "06:30",
+     "12:00"
+    ],
+    [
+     "13:00",
+     "18:00"
+    ],
+    [
+     "19:00",
+     "22:00"
+    ]
+   ],
+   "cleansing_weekday": 3,
+   "cleansing_note": "Friday if public holiday",
+   "facilities": [
+    {
+     "id": "training-pool",
+     "name": "Training pool",
+     "spec": "Length 25m x Width 25m, Depth: 1.2m-1.4m",
+     "kind": "training",
+     "location": "unknown",
+     "location_inferred": false,
+     "lap": true,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "teaching-pool",
+     "name": "Teaching pool",
+     "spec": "Length 25m x Width 10m, Depth: 0.7m-0.9m",
+     "kind": "teaching",
+     "location": "unknown",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    },
+    {
+     "id": "jacuzzi",
+     "name": "Jacuzzi",
+     "spec": "Depth: 0.85m",
+     "kind": "jacuzzi",
+     "location": "unknown",
+     "location_inferred": false,
+     "lap": false,
+     "public": true,
+     "access_note": "",
+     "sessions": null,
+     "session_days": null,
+     "days": null,
+     "months": null,
+     "weekday_sessions": null,
+     "note": "",
+     "closures": [],
+     "maintenance": []
+    }
+   ],
+   "maintenance": [
+    {
+     "label": "From 11 September to 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
-   "url": "https://www.lcsd.gov.hk/en/beach/swim-intro/swimlocation.html",
-   "data_gap": "No LCSD detail page published for this venue yet.",
+   "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?dist=loc16",
    "id": "tung-cheong-street-swimming-pool",
    "session_days": null,
    "cleansing_window": null,
    "public": true,
    "access_note": "",
-   "amenities": []
+   "amenities": [
+    "Family changing room"
+   ],
+   "transcribed": "2026-08-30",
+   "data_source": "Transcribed by hand from the LCSD page on 2026-08-30; the directory carries no swpId, so closures do not update."
   }
  ]
 }
