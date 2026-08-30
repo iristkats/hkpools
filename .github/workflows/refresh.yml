@@ -51,6 +51,16 @@ jobs:
       - name: Status-engine parity on the new data
         run: node parity.js
 
+      - name: Commit if changed
+        run: |
+          git config user.name  "hkpools bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f published.json
+          git add pools.json
+          git diff --staged --quiet && echo "no change" && exit 0
+          git commit -m "data: refresh $(date -u +%Y-%m-%d\ %H:%M)Z"
+          git push
+
       # runs only when a venue is still unplaced, and prints at the end of the
       # log where it can actually be read. Delete with the gap it explains.
       - name: Explain any unresolved venue
@@ -65,9 +75,9 @@ jobs:
               print("every venue resolved"); raise SystemExit
           print("unresolved: " + ", ".join(p["name"] for p in gaps))
 
-          harvested = scraper.harvest_district_ids(verbose=True)
+          harvested = scraper.harvest_district_ids()
           print(f"harvest returned {len(harvested)} names")
-          for key in sorted(harvested)[:5]:
+          for key in sorted(harvested)[:3]:
               print("   sample:", harvested[key])
 
           r = requests.get(scraper.DISTRICT_PAGE.format(16), headers=scraper.UA, timeout=30)
@@ -75,18 +85,10 @@ jobs:
           soup = BeautifulSoup(r.text, "lxml")
           anchors = soup.find_all("a", href=True)
           print(f"  {len(anchors)} anchors total")
-          for a in anchors:
-              txt = a.get_text(" ", strip=True)
-              if "pool" in txt.lower() or "swp" in a["href"].lower():
-                  print(f"     {txt[:50]!r} -> {a['href'][:70]}")
+          hits = [a for a in anchors
+                  if "pool" in a.get_text(" ", strip=True).lower()
+                  or "swp" in a["href"].lower()]
+          print(f"  {len(hits)} pool-looking links")
+          for a in hits[:10]:
+              print(f"     {a.get_text(' ', strip=True)[:46]!r} -> {a['href'][:60]}")
           PY
-
-      - name: Commit if changed
-        run: |
-          git config user.name  "hkpools bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          rm -f published.json
-          git add pools.json
-          git diff --staged --quiet && echo "no change" && exit 0
-          git commit -m "data: refresh $(date -u +%Y-%m-%d\ %H:%M)Z"
-          git push
