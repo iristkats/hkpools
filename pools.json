@@ -101,27 +101,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Victoria Park Swimming Pool Address 1 Hing Fat Street, Causeway Bay, Hong Kong Location Phone No. 2570 8347 Facilities Indoor facilities: ^*Main pool (Length 50m x Width 25m, Depth: 1.2m-2m) ^*Multi-purpose pool (Length 33m x Width 25m, Depth: 1.2m) Spectator stand (2,500 seats), Electronic scoreboard, Family changing room, Babycare room Barrier free Facilities: Barrier Free access(es) facilitating entrance to the pool deck area, Mobile Pool lift (Main pool and Multi-purpose pool), Shower room(s), Toilet(s) (including accessible toilet), Accessible Lift (With Assistive Listening System), Tactile Guide Path, Visual Fire Alarm System, Braille Directory Map / Floor Plan Public Coaching Area: Main Pool Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct Maintenance: 1.4.2026 – 21.4.2026 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Temporary Closure for Annual Maintenance From 20 February to 21 April Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Monday (Friday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/31 18:00 - 2026/08/31 22:00 Multi-purpose Pool Training Function : SS Squard Training(6-8pm) & Water Polo Training(8-10pm) Organization : Hong Kong China Swimming Association 2026/09/02 18:00 - 2026/09/02 22:00 Multi-purpose Pool Training Function : SS Squard Training(6-8pm) & Water Polo Training(8-10pm) Organization : Hong Kong China Swimming Association 2026/09/04 07:30 - 2026/09/04 14:00 Main Pool , Multi-purpose Pool School Swimming Gala Organization : Hotung Secondary School 2026/09/07 18:00 - 2026/09/07 22:00 Multi-purpose Pool Training Function : SS Squard Training(6-8pm) & Water Polo Training(8-10pm) Organization : Hong Kong China Swimming Association 2026/09/09 18:00 - 2026/09/09 22:00 Multi-purpose Pool Training Function : SS Squard Training(6-8pm) & Water Polo Training(8-10pm) Organization : Hong Kong China Swimming Association 2026/09/10 07:30 - 2026/09/10 15:00 Main Pool , Multi-purpose Pool School Swimming Gala Organization : St. Paul's Co-Educational College 2026/09/11 07:30 - 2026/09/11 15:00 Main Pool , Multi-purpose Pool School Swimming Gala Organization : Pun U Association Wah Yan Primary School 2026/09/13 06:30 - 2026/09/13 22:00 Main Pool , Multi-purpose Pool Competition Function : Wan Chai District Age Group Swimming Competition Organization : Leisure & Cultural Services Department 2026/09/14 18:00 - 2026/09/14 22:00 Multi-purpose Pool Training Function : SS Squard Training(6-8pm) & Water Polo Training(8-10pm) Organization : Hong Kong China Swimming Association 2026/09/16 18:00 - 2026/09/16 22:00 Multi-purpose Pool Training Function : SS Squard Training(6-8pm) & Water Polo Training(8-10pm) Organization : Hong Kong China Swimming Association 2026/09/17 07:30 - 2026/09/17 15:00 Main Pool , Multi-purpose Pool School Swimming Gala Remarks : St. Stephen's Girls' College 2026/09/18 07:30 - 2026/09/18 17:00 Main Pool , Multi-purpose Pool School Swimming Gala Organization : Tang Shiu Kin Victoria Government Secondary School 2026/09/19 07:30 - 2026/09/19 14:00 Main Pool , Multi-purpose Pool School Swimming Gala Organization : Sacred Heart Canossian College 2026/09/20 06:30 - 2026/09/20 22:00 Main Pool , Multi-purpose Pool Competition Function : Wan Chai District Age Group Swimming Competition (Fallback day) Organization : Leisure & Cultural Services Department 2026/09/21 18:00 - 2026/09/21 22:00 Multi-purpose Pool Training Function : SS Squard Training(6-8pm) & Water Polo Training(8-10pm) Organization : Hong Kong China Swimming Association 2026/09/23 18:00 - 2026/09/23 22:00 Multi-purpose Pool Training Function : SS Squard Training(6-8pm) & Water Polo Training(8-10pm) Organization : Hong Kong China Swimming Association 2026/09/24 07:30 - 2026/09/24 17:00 Main Pool , Multi-purpose Pool School Swimming Gala Organization : St. Paul's College 2026/09/25 07:30 - 2026/09/25 20:00 Main Pool , Multi-purpose Pool School Swimming Gala Function : Inter-School Swimming Competitions 2026/09/28 18:00 - 2026/09/28 22:00 Multi-purpose Pool Training Function : SS Squard Training(6-8pm) & Water Polo Training(8-10pm) Organization : Hong Kong China Swimming Association 2026/09/30 18:00 - 2026/09/30 22:00 Multi-purpose Pool Training Function : SS Squard Training(6-8pm) & Water Polo Training(8-10pm) Organization : Hong Kong China Swimming Association Photo",
-     "range": [
-      [
-       2,
-       20
-      ],
-      [
-       4,
-       21
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "main-pool",
-      "multi-purpose-pool",
-      "public-coaching-area-main-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-31T18:00",
@@ -389,26 +369,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Tung Chung Swimming Pool Address 5 Tat Tung Road, Tung Chung, N.T. Location Phone No. 2109 9107, 2109 0147 Facilities Indoor facilities: * ^Main pool (Length 50m x Width 25m, Depth: 1.4m-1.9m) Spectator stand (1,000 seats), Electronic scoreboard, Family changing room Outdoor facilities: * Training pool (Length 25m x Width 25m, Depth: 0.9m-1.2m) Barrier Free Facilities: Pool lift (main pool and training pool), Slipway (training pool), Shower room(s), Accessible toilet, Accessible lift (with assistive listening system), Tactile guide path, Braille and tactile floor plan, Visual fire alarm system Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Indoor main pool only (Maintenance of outdoor training pool : 1.4.2026 - 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Outdoor training pool only (Maintenance of indoor main pool: 11.9.2026 - 31.10.2026) Temporary Closure for Annual Maintenance Main pool: From 11 September to 31 October Training pool: From 1 November to 15 April of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Tuesday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/01 06:30 - 2026/08/31 12:00 Training Pool Others Reason: Insufficient Lifeguard (Every Monday, Wednesday to Sunday) 2026/08/01 13:00 - 2026/08/31 18:00 Training Pool Others Reason: Insufficient Lifeguard (Every Monday, Wednesday to Sunday) 2026/08/01 19:00 - 2026/08/31 22:00 Training Pool Others Reason: Insufficient Lifeguard (Every Thursday , 9/8/2026 and 26/8/2026) 2026/08/01 19:00 - 2026/08/31 20:00 Training Pool Others Reason: Insufficient Lifeguard Photo",
-     "range": [
-      [
-       9,
-       11
-      ],
-      [
-       10,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "main-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-01T06:30",
@@ -625,29 +586,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "- 21.10.2026) Temporary Closure for Annual Maintenance Outdoor pools (Main pool, Training pool, Teaching pool) : From 1 November to 15 April of the following year Maintenance of indoor training pool, leisure pool and jacuzzi: 1 September to 21 October Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Wednesday (Monday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 17:00 - 2026/08/30 18:00 Leisure Pool Insufficient Lifeguard N/A Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       4,
-       15
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "jacuzzi",
-      "leisure-pool",
-      "main-pool",
-      "teaching-pool",
-      "training-pool-1"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T17:00",
@@ -715,25 +654,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Tsing Yi Southwest Swimming Pool Address 70 Chung Mei Road, Tsing Yi Location Phone No. 2715 4202 Facilities *^Indoor training pool (Length 25m x Width 15m, Depth: 0.9m-1.2m) Men's and ladies' changing rooms and toilets, Family changing rooms Barrier Free Facilities: Accessible toilet, Tactile guide path, Braille and tactile floor plan, Visual fire alarm system Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Maintenance 11.9.2026 - 31.10.2026 Temporary Closure for Annual Maintenance From 11 September to 31 October Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Tuesday (Monday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       9,
-       11
-      ],
-      [
-       10,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "indoor-training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=44",
    "id": "tsing-yi-southwest-swimming-pool",
@@ -827,27 +748,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Siu Sai Wan Swimming Pool Address 1/F., Siu Sai Wan Complex, 15 Siu Sai Wan Road, HK Location Phone No. 3427 3341 Facilities Indoor facilities : *^Training Pool 1 (Length 25m x Width 25m, Depth: 1.4m) *^Training Pool 2 (Length 25m x Width 10m, Depth: 0.9m-1.2m) Family changing room (2) Barrier Free Facilities : Barrier free access(es) facilitating entrance to the pool deck area, Accessible lifting platform (Training pool), Ramp(Training pool), Accessible toilets and shower compartments, Accessible lift (with assistive listening system), Tactile guide path, Visual fire alarm system, Braille floor map Public Coaching Area: Training pool Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Maintenance 2.5.2026 - 26.7.2026 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Temporary Closure for Annual Maintenance From 2 May to 26 July Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Thursday (Monday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       5,
-       2
-      ],
-      [
-       7,
-       26
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "public-coaching-area-training-pool",
-      "training-pool-1",
-      "training-pool-2"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=39",
    "id": "siu-sai-wan-swimming-pool",
@@ -922,26 +823,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Lam Tin Swimming Pool Address 1/F Lam Tin Complex, 1 Hing Tin Street, Lam Tin, Kowloon Location Phone No. 2205 6535, 2205 6711 Facilities Indoor facilities : *^Training pool (Length 25m x Width 25m, Depth: 1.2m-1.4m) *^Teaching pool (Length 25m x Width 10m, Depth: 0.7m-0.9m) Family changing room Outdoor facilities: Sun bathing area Barrier free facilities: Barrier free access(es) facilitating entrance to the pool deck area, Pool lift (Training pool and Teaching pool), Shower room(s), Accessible toilet, Accessible lift (with Assistive listening system), Tactile guide path, Visual fire alarm system, Braille directory map/floor plan, Assistive listening system Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn -1:00 pm & 6:00 - 7:00 pm) Maintenance: 16.4.2026 - 5.6.2026 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 16 April to 5 June Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Thursday (Monday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       4,
-       16
-      ],
-      [
-       6,
-       5
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "teaching-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=42",
    "id": "lam-tin-swimming-pool",
@@ -1073,29 +955,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Kwun Tong Swimming Pool Address 2 Tsui Ping Road, Kwun Tong, Kowloon Location Phone No. 2717 9022，2347 8140 Facilities Indoor facilities : *^Main pool (Length 50.03m x Width 25m, Depth: 1.4m-1.9m) ^Training pool (Length 25m x Width 30m, Depth: 1.2m) Spectator stand (1492 seats), Electronic scoreboard, Family changing room Outdoor facilities: Secondary pool (Length 50m x Width 21m, Depth: 1.1m-1.4m) Teaching pool 1&2 (Length 25m x Width 12.5m, Depth: 0.7m-0.9m) Sun bathing area Barrier free facilities: Barrier free access(es) facilitating entrance to the pool deck area, Pool lift (Main pool), Ramp to pool water with handrail(s) (Training pool, Secondary pool and Teaching pools), Shower room(s), Accessible toilet, Accessible lift (with Assistive listening system), Tactile guide path, Visual fire alarm system, Braille directory map/floor plan, Assistive listening system Public Coaching Area: Training pool Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Indoor pools only (Maintenance of outdoor pools: 1.4.2026 - 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance Outdoor pools : From 1 November to 15 April of the following year Indoor pools : From 2 January to 21 February Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Wednesday (Friday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/09/11 07:30 - 2026/09/11 16:00 Main pool School Swimming Gala Function : School Swimming Gala Organization : Diocesan Girls' School 2026/09/12 07:30 - 2026/09/12 15:00 Main pool Competition Function : Competition Organization : Immigration Department 2026/09/15 07:30 - 2026/09/15 15:00 Main pool School Swimming Gala Function : School Swimming Gala Organization : Diocesan Boys' School 2026/09/18 07:30 - 2026/09/18 15:00 Main pool School Swimming Gala Function : School Swimming Gala Organization : Wah Yan College Kowloon 2026/09/19 07:30 - 2026/09/19 15:00 Main pool Competition Function : Competition Organization : Immigration Department (Fallback) 2026/09/22 07:30 - 2026/09/22 15:00 Main pool School Swimming Gala Function : School Swimming Gala Organization : Diocesan Boys' School Primary Division 2026/09/25 07:30 - 2026/09/25 16:00 Main pool School Swimming Gala Function : School Swimming Gala Organization : Shun Lee Catholic Secondary School 2026/09/28 07:30 - 2026/09/28 16:00 Main pool School Swimming Gala Function : School Swimming Gala Organization : Ying Wa College 2026/09/29 07:30 - 2026/09/29 14:00 Main pool School Swimming Gala Function : School Swimming Gala Organization : Po Leung Kuk No.1 W.H. Cheung College Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       4,
-       15
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "main-pool",
-      "public-coaching-area-training-pool",
-      "secondary-pool",
-      "teaching-pool-1-2",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-09-11T07:30",
@@ -1368,32 +1228,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Tseung Kwan O Swimming Pool Address 9 Wan Lung Road, Tseung Kwan O, NT Location Phone No. 2706 7646, 2706 6767 Facilities *^Main pool (Length 50m x Width 25m, Depth: 2m-2.2m) *Training pool (Length 25m x Width 12m, Depth: 0.9m-1.2m) Teaching pool 1 (Length 20m x Width 12m, Depth: 0.85m-1.1m) Teaching pool 2 (Length 20m x Width 12m, Depth: 0.85m-1.1m) Diving pool (Length 12m x Width 11m, Depth: 4.4m-4.5m) Toddlers' pool (Irregular shape, Depth: 0.1m-0.3m) Leisure pool 1 (Irregular shape, Depth: 0 m-0.95m) Leisure pool 2 (water slides) (Irregular shape, Depth: 0.9m-1.1m) Sun bathing area Spectator stand (1136 seats), Electronic scoreboard, Family changing room, Babycare roomBarrier Free Facilities: Accessible toilets and shower compartments, accessible lifting platform (main pool and training pool), ramp(s)(teaching pool(s)), tactile guide path, visual fire alarm system, Braille and tactile floor plan, accessible car parking space (1 designated car parking space) Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Main pool only (Maintenance of other pools: 1.4.2026 - 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) All pools open except main pool (Maintenance of main pool: 4.5.2026 - 23.6.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance Main Pool : From 4 May to 23 June Training pool, Teaching pools, Diving pool, Toddlers' pool, Leisure pools : From 1 November to 15 April of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Monday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 14:15 - 2026/08/30 22:00 Diving Pool , Leisure Pool 2 (Water Slides) Insufficient Lifeguard N/A 2026/09/18 07:30 - 2026/09/18 17:00 Main Pool , Spectator Stand School Swimming Gala Function : School Swimming Gala Organization : Creative Secondary School 2026/09/20 08:00 - 2026/09/20 20:00 Main Pool , Teaching Pool 1, Diving Pool , Spectator Stand Competition Function : Sai Kung District Age Group Swimming Competition 2026-27 Organization : Sai Kung District Leisure Services Office 2026/09/25 07:30 - 2026/09/25 15:00 Main Pool , Spectator Stand School Swimming Gala Function : School Swimming Gala Organization : C & MA Sun Kei Secondary School 2026/09/27 08:00 - 2026/09/27 20:00 Main Pool , Teaching Pool 1, Diving Pool , Spectator Stand Competition Function : Sai Kung District Age Group Swimming Competition 2026-27(Fallback Day) Organization : Sai Kung District Leisure Services Office 2026/09/30 07:30 - 2026/09/30 15:00 Main Pool , Spectator Stand School Swimming Gala Function : School Swimming Gala Organization : King Ling College Photo",
-     "range": [
-      [
-       5,
-       4
-      ],
-      [
-       6,
-       23
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "diving-pool",
-      "leisure-pool-1",
-      "leisure-pool-2",
-      "main-pool",
-      "teaching-pool-1",
-      "teaching-pool-2",
-      "toddlers-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T14:15",
@@ -1547,27 +1382,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Sai Kung Swimming Pool Address Wai Man Road, Sai Kung, NT Location Phone No. 2792 7285 Facilities Main pool (Length 50m x Width 15m, Depth: 1.4m-1.93m) Teaching pool (Length 20m x Width 13.5m, Depth: 0.85m-1.1m) Leisure pool ( Irregular shape, Depth: 0.1m-1.1m) Spectator stand (380 seats), Family changing room, Babycare room Barrier Free Facilities: Accessible toilets and shower compartments, accessible lifting platform, ramp(s)(teaching pool and leisure pool), tactile guide path, visual fire alarm system, Braille and tactile floor plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Wednesday (Thursday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 13:00 - 2026/08/30 20:00 Leisure Pool 2 (Water Slides) Insufficient Lifeguard N/A Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "leisure-pool",
-      "main-pool",
-      "teaching-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T13:00",
@@ -1768,29 +1583,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "- 15.4.2026) Toddlers' pool only opens from June to August 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) All pools except main pool and diving pool (Maintenance of main pool and diving pool: 16.4.2026 - 5.6.2026) Toddlers' pool only opens from June to August 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Toddlers’ pool only opens from June to August Temporary Closure for Annual Maintenance Main pool : From 16 April to 5 June Secondary pool, Children's pool , Toddlers' Pool, Training pool, Teaching pools : From 1 November to 15 April of the following year Diving pool : From 1 November to 5 June of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Friday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/09/05 07:00 - 2026/09/05 19:00 Main Pool , Spectator Stand Swimming Gala 2026/09/13 07:00 - 2026/09/13 22:00 Main Pool , Training Pool, Spectator Stand Competition 2026/09/27 08:00 - 2026/09/27 19:00 Main Pool , Training Pool, Spectator Stand Competition 2026/09/30 07:00 - 2026/09/30 15:00 Main Pool , Training Pool, Spectator Stand School Swimming Gala 2026/10/04 09:00 - 2026/10/04 20:00 Main Pool , Diving Pool , Spectator Stand Competition 2026/10/07 07:00 - 2026/10/07 16:00 Main Pool , Training Pool, Spectator Stand School Swimming Gala 2026/10/08 07:00 - 2026/10/08 13:00 Main Pool , Spectator Stand School Swimming Gala 2026/06/01 06:30 - 2026/08/31 22:00 Toddlers' Pool Urgent Repairs N/A Photo",
-     "range": [
-      [
-       4,
-       16
-      ],
-      [
-       6,
-       5
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "diving-pool",
-      "main-pool",
-      "secondary-pool",
-      "teaching-pool-1",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-09-05T07:00",
@@ -2049,31 +1842,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Ma On Shan Swimming Pool Address 33 On Chun Street, Ma On Shan, Sha Tin. Location Phone No. 2641 0776 Facilities *Main pool (Length 50m x Width 25m, Depth: 2m) Training pool (Length 25m x Width 11m, Depth: 0.9m-1.2m) Teaching pool 1 (Length 20m x Width 12m, Depth: 0.9m-1.1m) Teaching pool 2 (Length 20m x Width 12m, Depth: 0.9m-1.1m) Toddlers’ pool (Irregular shape, Depth: 0.3m) Giant water slides (Irregular shape, Depth: 1.1m) Round stepping pool (Irregular shape, Depth: 1.1m) Spectator stand (1200 seats), Electronic scoreboard, Family changing room Barrier Free Facilities: Barrier Free Entrance, Accessible Toilet, Accessible Services Counter, Tactile Guide Path, Visual Fire Alarm System, Braille Directory Map/Floor Plan, Slipway (Teaching Pool), Accessible Parking Space (1 Designated Disable Parking Space), Pool Lift, Shower Room Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Tuesday (Monday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/01 06:30 - Until further notice Training Pool, Round Stepping Pool Insufficient Lifeguard N/A 2026/08/01 06:30 - Until further notice Giant Water Slides Others Reason for Closure : insufficient Lifeguard Open on Saturday, Sunday and Public Holiday, 2nd Session(1:00pm-6:00pm)",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "giant-water-slides",
-      "main-pool",
-      "round-stepping-pool",
-      "teaching-pool-1",
-      "teaching-pool-2",
-      "toddlers-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-01T06:30",
@@ -2265,23 +2034,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "- 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Outdoor leisure pool and training pool only (Maintenance of indoor main pool and jacuzzi:11.9.2026 - 31.10.2026) Temporary Closure for Annual Maintenance Indoor pools (Main pool ,Jacuzzi pool ): From 11 September to 31 October Outdoor pools (Training pool, Leisure pool ): From 1 November to 15 April of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Thursday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 13:00 - 2026/08/30 15:00 Leisure Pool (Deep Water Zone) Insufficient Lifeguard N/A Photo",
-     "range": [
-      [
-       9,
-       11
-      ],
-      [
-       10,
-       31
-      ]
-     ],
-     "scope": "venue",
-     "targets": null
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T13:00",
@@ -2462,31 +2215,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Tai Po Swimming Pool Address 11 Ting Tai Road Location Phone No. 2661 2244, 2665 5058 Facilities Main pool (Length 50m x Width 25m, Depth: 1.4m-1.93m) Teaching pool 1 (Length 20m x Width 12m, Depth: 0.7m-0.95m) Teaching pool 2 (Length 20m x Width 12m, Depth: 0.85m-1.1m) Diving pool (Length 12m x Width 11m, Depth: 4.5m) Children's pool ( Irregular shape, Depth: 0.15m-0.3m) Leisure pool 1 ( Irregular shape, Depth: 0 m-1.35m) Leisure pool 2 ( Irregular shape, Depth: 1m) Spectator stand (800 seats), Electronic scoreboard, Family changing room Barrier Free Facilities: Barrier Free Entrance, Accessible Toilet, Accessible Services Counter, Tactile Guide Path, Visual Fire Alarm System, Braille Directory Map/Floor Plan. Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Monday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/07/22 18:00 - Until further notice Diving Pool Others The Diving Pool of Tai Po Swimming Pool are temporarily closed for repair urgent. Other facilities of this swimming pool remain open as usual. Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "children-s-pool",
-      "diving-pool",
-      "leisure-pool-1",
-      "leisure-pool-2",
-      "main-pool",
-      "teaching-pool-1",
-      "teaching-pool-2"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-07-22T18:00",
@@ -2573,26 +2302,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Sheung Shui Swimming Pool Address 38 Tin Ping Road, Sheung Shui Location Phone No. 2679 4844 Facilities Leisure pool ( Irregular shape, Depth: 0.1m-1.6m) Jacuzzi  (Circular, Depth: 0.4m-0.45m) Family changing room Barrier Free Facilities: Barrier free access(es) facilitating entrance to the pool deck area, Pool lift (Leisure pool), Shower room(s), Accessible toilets, Tactile guide path, Visual fire alarm system, Braille directory map/floor plan and 1 Accessible parking space Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Thursday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "jacuzzi",
-      "leisure-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=30",
    "id": "sheung-shui-swimming-pool",
@@ -2705,23 +2415,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "- 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 -7:00 pm) All pools except main pool (Maintenance of main pool: 16.4.2026 - 5.6.2026) 1st Session: 6:30 am- 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn- 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance Main pool: From 16 April to 5 June Secondary pool, Training pool, Toddlers' pool : From 1 November to 15 April of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Tuesday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/04/16 06:30 - Until further notice Toddlers' Pool Urgent Repairs N/A Photo",
-     "range": [
-      [
-       4,
-       16
-      ],
-      [
-       6,
-       5
-      ]
-     ],
-     "scope": "venue",
-     "targets": null
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-04-16T06:30",
@@ -2884,30 +2578,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Tsing Yi Swimming Pool Address 51 Tsing King Road, Tsing Yi Location Phone No. 2435 6407 Facilities Main pool (Length 50m x Width 25m, Depth: 1.4m-1.93m) Teaching pool (Length 20m x Width 12m, Depth: 0.9m-1.1m) Leisure pool 1 (Irregular shape, Depth: 0.3m) Leisure pool 2 (Irregular shape, Depth: 0.9m) Giant water slides (Irregular shape, Depth: 1.1m) Toddlers' pool (Round shape, Depth: 0.1m-0.3m) Spectator stand (974 seats), Electronic scoreboard,  Men's and ladies' changing rooms and toilets, Family changing room Barrier Free Facilities: Accessible toilet, Tactile guide path, Braille and tactile floor plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Thursday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 14:30 - 2026/08/30 18:00 Leisure Pool 2 Insufficient Lifeguard N/A 2026/08/30 19:00 - 2026/08/30 22:00 Toddlers' Pool, Leisure Pool 2 Insufficient Lifeguard N/A 2026/09/06 06:30 - 2026/09/06 21:00 Main Pool , Teaching Pool Swimming Gala Function : Tsuen Wan District Age Group Swimming Competition 2026-27 Organization : Tsuen Wan District Leisure Services Office Remarks : Fallback Day: 27 September 2026 2026/10/02 07:00 - 2026/10/02 14:00 Main Pool School Swimming Gala Function : Swimming Competition Organization : Lai King Catholic Secondary School 2026/10/05 07:00 - 2026/10/05 17:00 Main Pool Swimming Gala Function : Inter-Secondary School (NT) Swimming Competition 2026/27 Organization : The Schools Sports Federation of Hong Kong, China 2026/10/06 09:00 - 2026/10/06 17:00 Main Pool Swimming Gala Function : Inter-Secondary School (NT) Swimming Competition 2026/27 Organization : The Schools Sports Federation of Hong Kong, China 2026/10/16 07:00 - 2026/10/16 15:00 Main Pool School Swimming Gala Function : Swimming Competition Organization : Yan Chai Hospital Lim Por Yen Secondary School 2026/10/25 06:30 - 2026/10/25 21:00 Main Pool , Teaching Pool Swimming Gala Function : Kwai Tsing District Age Group Swimming Competition 2026-27 Organization : Kwai Tsing District Leisure Services Office Remarks : Fallback Day: 31 October 2026 Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "giant-water-slides",
-      "leisure-pool-1",
-      "leisure-pool-2",
-      "main-pool",
-      "teaching-pool",
-      "toddlers-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T14:30",
@@ -3117,28 +2788,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "North Kwai Chung Jockey Club Swimming Pool Address 290 Wo Yi Hop Road, Kwai Chung Location Phone No. 2422 1779 Facilities Main pool (Length 50m x Width 25m, Depth: 1.4m-1.9m) Teaching pool 1 (Length 25m x Width 11m, Depth: 0.9m-1.2m) Teaching pool 2 (Length 12m x Width 9m, Depth: 0.9m-1.2m) Diving pool (Length 11.75m x Width 11.3m, Depth: 4.4m-4.6m) Toddlers' pool ( Irregular shape, Depth: 0.32m) is open from June to August free of charge Men's and ladies' changing rooms and toilets, Family changing room Barrier Free Facilities: Accessible toilet, Tactile guide path, Braille and tactile floor plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Toddlers’ pool only opens from June to August Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Wednesday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 17:30 - 2026/08/30 18:00 Teaching Pool (1), Teaching Pool (2), Diving Pool Insufficient Lifeguard N/A 2026/08/30 19:00 - 2026/08/30 22:00 Teaching Pool (1), Teaching Pool (2), Diving Pool Insufficient Lifeguard N/A Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "diving-pool",
-      "main-pool",
-      "teaching-pool-1",
-      "teaching-pool-2"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T17:30",
@@ -3369,33 +3019,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Kwai Shing Swimming Pool Address 306 Kwai Shing Circuit, Kwai Chung Location Phone No. 2426 2081 Facilities Main pool (Length 50m x Width 21m, Depth: 1.37m-1.93m) Secondary pool (Length 50m x Width 21m, Depth: 1.07m-1.37m) Teaching pool(1) (Length 18m x Width 12m, Depth: 0.84m-1.07m) Teaching pool(2) (Length18m x Width 12m, Depth: 0.84m-1.07m) Teaching pool(3) (Length 18m x Width 12m, Depth: 0.69m-0.91m) Diving pool (Length 10.7m x Width 10.7m, Depth: 3.5m) Children's pool (Irregular shape, Depth: 0.15m-0.47m) Toddlers' pool(1) (Irregular shape, Depth: 0.43m-0.5m) is open from June to August free of charge. Toddlers' pool(2) (Irregular shape, Depth: 0.46m-0.5m) is open from June to August free of charge. Spectator stand (700 seats), Men's and ladies' changing rooms and toilets, Family changing room Barrier Free Facilities: Accessible toilet, Tactile guide path, Braille and tactile floor plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Toddlers’ pool only opens from June to August Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Friday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/25 06:30 - Until further notice Toddlers' Pool(1), Toddlers' Pool(2) Insufficient Lifeguard N/A 2026/08/30 15:00 - 2026/08/30 22:00 Main Pool , Diving Pool Insufficient Lifeguard N/A Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "children-s-pool",
-      "diving-pool",
-      "main-pool",
-      "secondary-pool",
-      "teaching-pool",
-      "teaching-pool-2",
-      "teaching-pool-3",
-      "toddlers-pool-1-irregular-shape",
-      "toddlers-pool-2-irregular-shape"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-25T06:30",
@@ -3510,27 +3134,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Tsuen King Circuit Wu Chung Swimming Pool Address 178 Tsuen King Circuit, Tsuen Wan Location Phone No. 2413 5523 Facilities Training pool (Length 25m x Width 11.6m, Depth: 0.95m-1.25m) Children's pool (Irregular shape, Depth: 0.47m ) Leisure pool (Irregular shape, Depth: 1m-1.2m ) Family changing room Barrier Free Facilities: Accessible toilet, Tactile guide path, Braille and tactile floor plan , Assistive listening system, Visual fire alarm system. Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Tuesday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "children-s-pool",
-      "leisure-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=24",
    "id": "tsuen-king-circuit-wu-chung-swimming-pool",
@@ -3700,23 +3304,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "- 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) All pools except main pool (Maintenance of main pool: 1.5.2026 - 30.6.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance Outdoor training pool, teaching pool, leisure pools : From 1 November to 15 April of the following year Indoor main pool : From 1 May to 30 June Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Monday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/09/10 07:30 - 2026/09/10 16:00 All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand) School Swimming Gala Function : Ju Ching Chu Secondary School (Kwai Chung) Swimming Gala Organization : Ju Ching Chu Secondary School (Kwai Chung) 2026/09/13 07:30 - 2026/09/13 22:00 All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand) Competition Function : Short Course Masters Swimming Competition _Part I Organization : Jointly presented by LCSD & HKGSA 2026/09/17 07:30 - 2026/09/17 16:00 All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand) School Swimming Gala Function : S.K.H Ma On Shan Holy Spirit Primary School Swimminig Gala Organization : S.K.H Ma On Shan Holy Spirit Primary School 2026/09/22 07:30 - 2026/09/22 16:00 All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand) School Swimming Gala Function : Carmel Alison Lam Foundation Secondary school Swimming Gala Organization : Carmel Alison Lam Foundation Secondary school Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       4,
-       15
-      ]
-     ],
-     "scope": "venue",
-     "targets": null
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-09-10T07:30",
@@ -3815,25 +3403,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Ping Shan Tin Shui Wai Swimming Pool Address 1 Tsui Sing Road, Tin Shui Wai, Yuen Long Location Phone No. 2856 2244, 2856 1739 Facilities ^Indoor Training pool  (Length 25m x Width 25m, Depth: 1.2m) Family Changing Room , Babycare Room Barrier Free Facilities: Pool lift (Training Pool), Accessible Toilet & Changing Room, Tactile Guide Path, Visual Fire Alarm System, Braille Directory Map/Floor Plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Maintenance 11.9.2026 - 31.10.2026 Temporary Closure for Annual Maintenance From 11 September to 31 October Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Monday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       9,
-       11
-      ],
-      [
-       10,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "indoor-training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=41",
    "id": "ping-shan-tin-shui-wai-swimming-pool",
@@ -3984,30 +3554,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Yuen Long Swimming Pool Address 10 Tai Yuk Road, Yuen Long Location Phone No. 2475 0184, 2449 3506 Facilities ^Main Pool (Length 50m x Width 21m, Depth: 1.4m-1.9m) Secondary Pool (Length 50m x Width 21m, Depth: 1.1m-1.4m) Training Pool (Length 25m x Width 11m, Depth: 0.9m-1.2m) Diving Pool (Length 11.75m x Width 11m, Depth: 4.5m-4.6m) Toddlers' Pool (Irregular shape, Depth: 0.18m-0.3m) is open from June to August free of charge Spectator Stand (700 seats), Family Changing Room Barrier Free Facilities: Accessible Toilet, Tactile Guide Path, 1 Fee-charging Car Park (including 1 Accessible Parking Space), Visual Fire Alarm System, Braille Directory Map/Floor Plan Public Coaching Area: Secondary pool Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Main pool only (Maintenance of other pools: 1.4.2026 - 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) All pools open except main pool (Maintenance of main pool: 16.4.2026 - 5.6.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Toddlers’ pool only opens from June to August Temporary Closure for Annual Maintenance Secondary pool, Training pool, Diving pool, Toddlers' Pool : From 1 November to 15 April of the following year Main pool : From 16 April to 5 June Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Wednesday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 06:30 - 2026/08/30 22:00 Toddlers' Pool Insufficient Lifeguard N/A 2026/08/30 06:30 - 2026/08/30 22:00 Diving Pool Insufficient Lifeguard N/A 2026/08/31 17:00 - 2026/08/31 21:00 Diving Pool Others Training Lesson 2026/09/02 19:00 - 2026/09/02 21:00 Diving Pool Others Training Lesson 2026/09/04 17:00 - 2026/09/04 21:00 Diving Pool Others Training Lesson 2026/09/05 10:00 - 2026/09/05 12:00 Diving Pool Others Training Lesson 2026/09/05 07:30 - 2026/09/05 14:00 Training Pool Swimming Gala Organization : The Motive Association Limited 2026/09/12 09:30 - 2026/09/12 14:00 Training Pool Swimming Gala Organization : Hoi Ngai Sports Association 2026/09/19 09:30 - 2026/09/19 14:00 Training Pool Swimming Gala Organization : Hoi Ngai Sports Association 2026/09/24 07:00 - 2026/09/24 15:00 Main Pool , Training Pool School Swimming Gala Organization : NTHYK Yuen Long Dist. Secondary School 2026/09/25 07:00 - 2026/09/25 15:00 Main Pool , Training Pool School Swimming Gala Organization : NTHYK Yuen Long Dist. Secondary School 2026/09/26 07:30 - 2026/09/26 14:00 Training Pool Swimming Gala Organization : Candy Row Swimming Club 2026/09/28 07:00 - 2026/09/28 15:00 Main Pool , Training Pool School Swimming Gala Organization : Yuen Long Chiu Lut Sau Memorial Secondary School 2026/09/29 07:00 - 2026/09/29 15:00 Main Pool , Training Pool School Swimming Gala Organization : Yuen Long Chiu Lut Sau Memorial Secondary School Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       4,
-       15
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "diving-pool",
-      "main-pool",
-      "public-coaching-area-secondary-pool",
-      "secondary-pool",
-      "toddlers-pool-irregular-shape",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T06:30",
@@ -4234,27 +3781,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Tin Shui Wai Swimming Pool Address No. 1 Tin Pak Road, Tin Shui Wai Location Phone No. 2446 9057, 2446 1103 Facilities Training Pool (Length 25m x Width 22m, Depth: 0.93m-1.22m) Teaching Pool (Length 20m x Width 12m, Depth: 0.7m-0.93m) Leisure Pool ( Irregular shape, Depth: 0.43m-1.1m) Giant Water Slides, Family Changing Room Barrier Free Facilities : Slipway (Teaching Pool), Accessible Toilet & Changing Room, Tactile Guide Path, 1 Fee-charging Car Park (including 1 Accessible Parking Space) , Visual Fire Alarm System, Braille Directory Map/Floor Plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Thursday (Friday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "leisure-pool",
-      "teaching-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=23",
    "id": "tin-shui-wai-swimming-pool",
@@ -4331,26 +3858,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "The Jockey Club Yan Oi Tong Swimming Pool Address Tsing Chung Koon Road, Tuen Mun Location Phone No. 2464 7149, 2464 6561 Facilities Leisure pool 1 ( Irregular shape, Depth: 0.8m) Leisure pool 2 ( Irregular shape, Depth: 0m-1.3m) Barrier Free Facilities: Accessible Toilet, Tactile Guide Path, Visual Fire Alarm System and Braille Directory Map / Floor Plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Tuesday (Monday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 13:00 - 2026/08/30 18:00 Leisure Pool (1) Others Summer Splash Fun Day cum Carnival Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "leisure-pool-1",
-      "leisure-pool-2"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T13:00",
@@ -4511,30 +4019,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Tuen Mun Swimming Pool Address 50 Lung Mun Road, Tuen Mun, N.T. Location Phone No. 2404 1918, 2458 8022 Facilities Indoor Facilities : ^Main pool (Length 50m x Width 25m, Depth: 1.4m-1.9m) ^Training pool Length 25m x Width 15m, Depth: 1.2m-1.4m) Spectator stand (1200 seats), Electronic Scoreboard, Family changing rooms, Babycare room Outdoor Facilities : Training pool 2(Length 25m x Width 30m, Depth: 1.1m-1.4m) Teaching pool (Length 25m x Width 12.5m, Depth: 0.7m-0.9m) Leisure pool (Irregular shape, Depth: 0.1 m-0.5m) Diving pool (Length 11.75m x Width 11m, Depth: 4.4m-4.6m) Barrier Free Facilities: Pool Lift (Indoor Main Pool, Indoor Training Pool), Ramp (Outdoor Training Pool), Accessible/Universal Changing Rooms and Toilets, Accessible Lift, Tactile Guide Path, Visual Fire Alarm System, Braille and tactile Floor Plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) (Indoor main pool and training pool only) [Maintenance of all pools except indoor main pool and training pool: 1.4.2026 – 15.4.2026] 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance Outdoor pools (Training pool, Teaching pool, Leisure pool and Diving pool): From 1 November 2026 to 15 April of the following year Indoor pools (Main pool and Training pool): From 16 April 2027 to 5 Jun 2027 Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Thursday (Friday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 06:30 - 2026/08/30 22:00 Main Pool Competition Function : Tuen Mun District Age Group Swimming Competition 2026/09/15 07:30 - 2026/09/15 18:00 Main Pool School Swimming Gala Organization : STFA Lee Shau Kee College 2026/09/28 06:30 - 2026/09/28 18:00 Main Pool Competition Organization : The Hong Kong Schools Sports Federation (Tuen Mun Area Secondary School) 2026/09/29 06:30 - 2026/09/29 18:00 Main Pool Competition Organization : The Hong Kong Schools Sports Federation (Tuen Mun Area Secondary School) Photo",
-     "range": [
-      [
-       4,
-       26
-      ],
-      [
-       4,
-       15
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "diving-pool",
-      "leisure-pool",
-      "main-pool",
-      "teaching-pool",
-      "training-pool",
-      "training-pool-2"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T06:30",
@@ -4629,25 +4114,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Mui Wo Swimming Pool Address 5 Ngan Shek Street, Mui Wo, Lantau Location Phone No. 2984 2496, 2984 2573 Facilities Training pool (Length 25m x 11m, Depth: 0.93m-1.25m) Spectator stand (120 seats), Family changing room, Changing room s and toilet s Barrier Free Facilities: Accessible toilet, Tactile guide path, Braille and tactile floor plan, Visual fire alarm system. Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct Mondays to Thursdays and Saturdays, Sundays and public holidays 1st Session: 8:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm (Session breaks: 12:00 nn - 1:00 pm ) Fridays (Friday is the weekly cleansing operation day. If Friday falls on a public holiday, the following arrangements will be changed to Thursday.) First session: temporarily closed Second session: temporarily closed Third session: from 7:00 pm to 10:00 pm Mondays, Tuesdays, Wednesdays and Sundays First session: from 8:30 am to 12:00 noon Second session: from 1:00 pm to 6:00 pm Third session: temporarily closed Thursdays and Saturdays First session: from 8:30 am to 12:00 noon Second session: from 1:00 pm to 6:00 pm Third session: from 7:00 pm to 10:00 pm Fridays (Weekly cleansing operation is carried out every Friday. In case of public holidays, it will be rescheduled to Thursday.) First session: temporarily closed Second session: temporarily closed Third session: from 7:00 pm to 10:00 pm Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Friday (Thursday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=19",
    "id": "mui-wo-swimming-pool",
@@ -4782,28 +4249,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Jordan Valley Swimming Pool Address 6 Choi Ha Road, Ngau Tau Kok, Kowloon Location Phone No. 2305 5919, 2305 5920 Facilities *Training pool (Length 25m x Width 11m, Depth: 1m-1.4m) (Irregular shape, Depth: 0.8) Leisure pool 1 ( Irregular shape, Depth: 0.6m) Leisure pool 2&3 ( Irregular shape, Depth: 0.2m-0.6m) Leisure pool 4 ( Irregular shape, Depth: 0.2m-0.3m) Family changing room Barrier free facilities: Barrier free access(es) facilitating entrance to the pool deck area, Pool lift (Training pool), Shower room(s), Accessible toilet, Tactile guide path, Visual fire alarm system, Braille directory map/floor plan and 1 Designated disable parking space (including assessable parking space) Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Tuesday (Thursday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/01 06:30 - 2026/08/31 12:00 Leisure Pool (2), Leisure Pool (3) Others Due to insufficient lifeguards, arrangement of swimming pool facilities from 1 to 31 August is shown as below: 1 st Session (06:30 – 09:00): Open – Training Pool, Leisure Pool 1 & 4 Closed – Leisure Pool 2 & 3 (09:00 – 12:00): All facilities will be opened *Remarks: Except Weekly Cleansing Operation on Tuesday. Please call Jordan Valley Swimming Pool for the latest information (Tel: 2305 5919). 2026/08/01 13:00 - 2026/08/31 18:00 Training Pool, Leisure Pool (2), Leisure Pool (3) Others Due to insufficient lifeguards, arrangement of swimming pool facilities from 1 to 31 August is shown as below: 2 nd Session (13:00-15:00): Monday to Saturday Open – Training Pool, Leisure Pool 1 & 4 Closed – Leisure Pool 2 & 3 Sunday (2, 9, 16, 23 and 30 August) : Open – Leisure Pool 1, 2, 3 and 4 Closed - Training Pool (15:00-18:00): All facilities will be opened *Remarks: Except Weekly Cleansing Operation on Tuesday. Please call Jordan Valley Swimming Pool for the latest information (Tel: 2305 5919). 2026/08/01 19:00 - 2026/08/31 22:00 Leisure Pool (2), Leisure Pool (3) Others Due to insufficient lifeguards, arrangement of swimming pool facilities from 1 to 31 August is shown as below: 3 rd Session (19:00-22:00): Open – Training Pool, Leisure Pool 1 & 4 Closed – Leisure Pool 2 & 3 Please call Jordan Valley Swimming Pool for the latest information (Tel: 2305 5919). 2026/09/01 06:30 - 2026/09/30 12:00 Leisure Pool (2), Leisure Pool (3) Others Due to insufficient lifeguards, arrangement of swimming pool facilities from 1 to 30 September is shown as below: 1st Session (06:30 – 12:00): Monday to Friday: Open – Training Pool, Leisure Pool 1 & 4 Closed – Leisure Pool 2 & 3 (06:30 – 07:00): Saturday and Sunday (5, 6, 12, 13, 19, 20, 26 and 27 September): Open – Training Pool, Leisure Pool 1 & 4 Closed – Leisure Pool 2 & 3 (07:00 – 12:00): Saturday and Sunday (5, 6, 12, 13, 19, 20, 26 and 27 September): All facilities will be opened *Remarks: Except Weekly Cleansing Operation on Tuesday. Please call Jordan Valley Swimming Pool for the latest information (Tel: 2305 5919). 2026/09/01 13:00 - 2026/09/30 18:00 Training Pool, Leisure Pool (2), Leisure Pool (3) Others Due to insufficient lifeguards, arrangement of swimming pool facilities from 1 to 30 September is shown as below: 2nd Session (13:00 – 18:00): Monday to Friday: Open – Training Pool, Leisure Pool 1 & 4 Closed – Leisure Pool 2 & 3 (13:00 – 15:00): Saturday (5, 12, 19 and 26 September): Open – Training Pool, Leisure Pool 1 & 4 Closed – Leisure Pool 2 & 3 (13:00 – 15:00): Sunday (6, 13, 20 and 27 September): Open – Leisure Pool 1, 2, 3 and 4 Closed – Training Pool (15:00-18:00): Saturday and Sunday (5, 6, 12, 13, 19, 20, 26 and 27 September): All facilities will be opened *Remarks: Except Weekly Cleansing Operation on Tuesday. Please call Jordan Valley Swimming Pool for the latest information (Tel: 2305 5919). 2026/09/01 19:00 - 2026/09/30 22:00 Leisure Pool (2), Leisure Pool (3) Others Due to insufficient lifeguards, arrangement of swimming pool facilities from 1 to 30 September is shown as below: 3rd Session (19:00-22:00): Open – Training Pool, Leisure Pool 1 & 4 Closed – Leisure Pool 2 & 3 Please call Jordan Valley Swimming Pool for the latest information (Tel: 2305 5919). Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "leisure-pool-1",
-      "leisure-pool-2-3",
-      "leisure-pool-4",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-01T06:30",
@@ -5011,30 +4457,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Hammer Hill Road Swimming Pool Address 30 Lung Cheung Road, Wong Tai Sin, Kowloon Location Phone No. 2350 6173, 2350 6062 Facilities Indoor facilities : *^Training pool (Length 25m x Width 11m, Depth: 1m-1.4m) ^Leisure pool 1 ( Irregular shape, Depth: 0.4m) Family changing room Outdoor facilities: Toddlers' pool ( Irregular shape, Depth: 0.3m) Leisure pool 2 ( Irregular shape, Depth: 0.6m) Leisure pool 3 ( Irregular shape, Depth: 0.4m) Participatory fountain Barrier free facilities : Barrier free access(es) facilitating entrance to the pool deck area, Pool lift (Training pool), Shower room(s), Toilet(s) (including accessible toilet) and 1 Designated disable parking space (including assessable parking space), Tactile guide path,Visual fire alarm system and Braille directory map/floor plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Indoor pools only (Maintenance of outdoor pools: 1.4.2026 - 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Outdoor pools only (Maintenance of indoor pools: 11.5.2026 - 30.6.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Temporary Closure for Annual Maintenance Outdoor pools : From 1 November to 15 April of the following year Indoor pools : From 11 May to 30 June Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Monday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/07/01 14:30 - Until further notice Leisure Pool No.2 Insufficient Lifeguard N/A 2026/08/30 15:40 - 2026/08/30 18:40 Leisure Pool No.3 Contamination of Pool Water Object Found :",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       4,
-       15
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "leisure-pool-1",
-      "leisure-pool-2",
-      "leisure-pool-3",
-      "participatory-fountain",
-      "toddlers-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-07-01T14:30",
@@ -5223,31 +4646,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Morse Park Swimming Pool Address 80 Fung Mo Street, Wong Tai Sin, Kowloon Location Phone No. 2320 2023, 2324 1795 Facilities Indoor facilities: *^ Secondary Pool (Length 50m X Width 21m, Depth:1.1m-1.4m) Family changing room Outdoor facilities: Main pool (Length 50m x Width 21m, Depth: 1.37m-1.9m) Teaching pool 1 (Length 18m x Width 12m, Depth: 0.84m-1.07m) Teaching pool 2 (Length 18m x Width 12m, Depth: 0.69m-0.9m) Teaching pool 3 (Length 18m x Width 12m, Depth: 0.69m-0.9m) Children’s Pool with play equipment (Irregular shape, Depth: 0.1m-0.4m) Diving pool (Only for group training purpose) (Length 12m x Width 11.25m, Depth: 3.5m-3.61m) Spectator stand (800 seats), Electronic scoreboard, Babycare room Barrier free facilities: Barrier free access(es) facilitating entrance to the pool deck area, Pool lift (Secondary pool, Teaching pool 3), Shower room(s), Toilet(s) (including accessible toilet), Accessible lift, 1 Designated disable parking space (including assessable parking space), Tactile guide path, Visual fire alarm system and Braille directory map/floor plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Indoor pool only (Maintenance of outdoor pools: 1.4.2026 - 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Outdoor pools only (Maintenance of indoor pool: 16.4.2026 - 5.6.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Temporary Closure for Annual Maintenance Outdoor Pools: From 1 November to 15 April of the following year Indoor Secondary Pool: From 16 April to 5 June Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Friday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 06:30 - 2026/08/30 07:30 Children's Pool Insufficient Lifeguard N/A 2026/08/30 21:00 - 2026/08/30 22:00 Children's Pool Insufficient Lifeguard N/A 2026/09/17 06:30 - 2026/09/17 15:00 Main Pool , Spectator Stand School Swimming Gala Function : School Swimming Gala Organization : CHOI HUNG ESTATE CATHOLIC SECONDARY SCHOOL 2026/09/27 06:30 - 2026/09/27 22:00 Main Pool , Spectator Stand Competition Function : Wong Tai Sin District Age Group Swimming Competition 2026-27 Organization : Leisure and Cultural Services Department 2026/10/04 06:30 - 2026/10/04 22:00 Main Pool , Spectator Stand Competition Function : Wong Tai Sin District Age Group Swimming Competition 2026-27 (Fall Back) Organization : Leisure and Cultural Services Department 2026/10/15 06:30 - 2026/10/15 15:00 Main Pool , Spectator Stand School Swimming Gala Function : School Swimming Gala Organization : Kit Sam Lam Bing Yim Secondary School Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       4,
-       15
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "children-s-pool-with-play-equipment",
-      "diving-pool",
-      "main-pool",
-      "secondary-pool",
-      "teaching-pool-1",
-      "teaching-pool-2",
-      "teaching-pool-3"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T06:30",
@@ -5398,27 +4797,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Kowloon Tsai Swimming Pool Address 13 Inverness Road, Kowloon City, Kowloon Location Phone No. 2336 5817, 2336 5790 Facilities Indoor Facilities: ^*Main pool (Length 50m x Width 25m, Depth: 1.4m-1.9m) Spectator stand (1200 seats), Electronic Scoreboard, Family Changing Rooms Outdoor facilities: Training Pool (Length 25m x Width 25m, Depth: 0.9-1.2m) Leisure pool (Irregular shape, Depth: 0.4m) Barrier free facilities: Barrier free access(es) facilitating entrance to the pool deck area, Mobile Pool Lift (Indoor Main Pool), Accessible/Family Changing Rooms and Toilets, Accessible Lift, Visual Fire Alarm System, Tactile Guide Path, Braille and Tactile Floor Plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Indoor main pool only 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Temporary Closure for Annual Maintenance Indoor Main Pool: From 16 April to 5 June (Starting from 2027) Outdoor Pools : From 1 November to 15 April of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Monday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 18:00 - 2026/08/30 22:00 Leisure Pool Insufficient Lifeguard N/A 2026/09/11 07:30 - 2026/09/11 16:00 Main Pool , Spectator Stand School Swimming Gala Function : Swimming Gala Organization : Tang King Po School 2026/09/15 07:30 - 2026/09/15 18:00 Main Pool , Spectator Stand School Swimming Gala Function : Swimming Gala Organization : Heep Yunn School 2026/09/20 07:30 - 2026/09/20 22:00 Main Pool , Spectator Stand Competition Function : Swimming Gala Organization : Hong Kong China Swimming Association 2026/09/23 07:30 - 2026/09/23 15:00 Main Pool , Spectator Stand School Swimming Gala Function : Swimming Gala Organization : Holy Family Canossian College 2026/09/25 07:30 - 2026/09/25 16:00 Main Pool , Spectator Stand School Swimming Gala Function : Swimming Gala Organization : Munsang College 2026/09/29 07:30 - 2026/09/29 16:00 Main Pool , Spectator Stand School Swimming Gala Function : Swimming Gala Organization : Munsang College Primary School 2026/10/03 07:30 - 2026/10/03 22:00 Main Pool , Spectator Stand Swimming Gala Function : Swimming Gala Organization : Hong Kong China Swimming Association 2026/10/06 07:30 - 2026/10/06 16:00 Main Pool , Spectator Stand School Swimming Gala Function : Swimming Gala Organization : Pooi To Middle School 2026/10/11 07:30 - 2026/10/11 22:00 Main Pool , Spectator Stand Competition Function : Swimming Gala Organization : LCSD 2026/10/14 07:30 - 2026/10/14 20:00 Main Pool , Spectator Stand Competition Function : Swimming Gala Organization : The Schools Sports Federation of Hong Kong, China 2026/10/17 07:30 - 2026/10/17 22:00 Main Pool , Spectator Stand Competition Function : Swimming Gala Organization : LCSD 2026/10/23 07:30 - 2026/10/23 20:00 Main Pool , Spectator Stand Competition Function : Swimming Gala Organization : The Schools Sports Federation of Hong Kong, China Photo",
-     "range": [
-      [
-       4,
-       16
-      ],
-      [
-       6,
-       5
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "leisure-pool",
-      "main-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T18:00",
@@ -5651,28 +5030,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Ho Man Tin Swimming Pool Address 1 Chung Yee Street, Ho Man Tin, Kowloon Location Phone No. 2715 0139 Facilities Indoor facilities : ^Leisure pool 1 ( Irregular shape, Depth: 0.9m-1.2m) ^Leisure pool 2 ( Irregular shape, Depth: 0.38m) Family changing room Outdoor facilities: Leisure pool 3 ( Irregular shape, Depth: 0.9m-1.2m) Leisure pool 4 ( Irregular shape, Depth: 0.38m) Barrier free facilities: Barrier free access(es) facilitating entrance to the pool deck area, Tactile guide path and Braille directory map/floor plan for major facilities of the building, Visual fire alarm system, Shower room(s), Toilet(s) (including accessible toilet) and 1 Designated disable parking space (including assessable parking space) Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Indoor pools only (Maintenance of outdoor pools : 1.4.2026 - 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Maintenance: 11.9.2026 - 31.10.2026 Temporary Closure for Annual Maintenance Indoor Pools : From 11 September to 31 October Outdoor Pools : From 11 September to 15 April of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Wednesday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       9,
-       11
-      ],
-      [
-       10,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "leisure-pool-1",
-      "leisure-pool-2",
-      "leisure-pool-3",
-      "leisure-pool-4"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=13",
    "id": "ho-man-tin-swimming-pool",
@@ -5861,23 +5219,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Tai Wan Shan Swimming Pool Address No.7 Wan Hoi Street, Hung Hom, Kowloon Location Phone No. 2333 1335, 2334 1570 Facilities Main pool (Length 50m x Width 21m, Depth: 1.4m-1.93m) *Secondary pool (Length 50m x Width 21m, Depth: 1.1m-1.43m) Teaching pool 1 (Length 18.3m x Width 12.2m, Depth: 0.84m-1.06m) Teaching pool 2 (Length 18.3m x Width 12.2m, Depth: 0.84m-1.06m) Teaching pool 3 (Length 18.3m x Width 12.2m, Depth: 0.68m-0.91m) Diving pool (Length 11.75m x Width 11.75m, Depth: 4.38m-4.5m) Leisure pool 1 (Irregular shape, Depth: 0.13m-0.29m) Leisure pool 2&3 (Irregular shape, Depth: 0.14m-0.45m) Spectator stand (800 seats), Electronic Scoreboard, Family changing room Barrier free facilities: Barrier free access(es) facilitating entrance to the pool deck area, Pool lift , Tactile guide path , Visual fire alarm system, Shower room(s), Toilet(s) (including accessible toilet), Braille directory map/floor plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Thursday (Friday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/04/01 06:30 - Until further notice Diving Pool Insufficient Lifeguard N/A 2026/04/01 06:30 - Until further notice Secondary Pool Insufficient Lifeguard N/A 2026/06/06 06:30 - Until further notice Not applicable Others Due to insufficient of lifeguards, the facilities are opened as follows : 1st Session (06:30am - 12:00nn) : Main pool, Training Pools (1)(2)(3) and Leisure Pool (1) are opened. 2nd Session (1:00 - 5:00pm) : i) Monday to Friday : Main pool, Training Pools (1)(2)(3) and Leisure Pool (1) are opened",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "advisory",
-     "targets": null
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-04-01T06:30",
@@ -5980,26 +5322,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Tai Kok Tsui Swimming Pool Address 4/F,Tai Kok Tsui Municipal Services Building, 63 Fuk Tsun Street, Tai Kok Tsui, Kowloon Location Phone No. 2393 1237 Facilities Indoor facilities: *^Training pool (Length 25m x Width 14m, Depth: 1.2m-1.5m) ^Leisure pool ( Irregular shape, Depth: 0.4m) Family changing room Barrier Free Facilities: Barrier free access(es) facilitating entrance to the pool deck area, Accessible lifting platform (Training pool), Accessible Toilet and shower compartments, Accessible Lift (with Assistive Listening System), Tactile Guide Path & Braille Directory Map/Floor Plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Maintenance: 11.9.2026 - 31.10.2026 Temporary Closure for Annual Maintenance From 11 September to 31 October Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Monday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       9,
-       11
-      ],
-      [
-       10,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "leisure-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=37",
    "id": "tai-kok-tsui-swimming-pool",
@@ -6150,30 +5473,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Kowloon Park Swimming Pool Address 22 Austin Road, Tsim Sha Tsui, Kowloon, Hong Kong Location Phone No. 2724 3577 Facilities Indoor facilities: ^Main pool (Length 50m x Width 25m, Depth: 1.2m-2.5m) ^Indoor L1 Training pool (Length 25m x Width 10m, Depth: 1.2m) *^Indoor L2 Training pool (Length 25m x Width 12.5m, Depth: 1.2m) ^Diving pool (Length 21m x Width 15m, Depth: 5m) Spectator stand (1689 seats), Electronic scoreboard, Family changing room, Babycare room Outdoor facilities: Toddlers' pool (Irregular shape, Depth: 0.6m) Leisure pool No.1 (Irregular shape, Depth: 0m-1.4m) Leisure pool No.2 (Irregular shape, Depth: 0m-1.5m) Leisure pool No.3 (Irregular shape, Depth: 0m-1.1m) Barrier Free Facilities: Barrier free access(es) facilitating entrance to the pool deck area, Pool lift (Indoor L2 Training pool), Accessible Toilet, Accessible Lifting Platform (with Assistive Listening System), Tactile Guide Path, Braille Directory Map/Floor Plan and Assessable Car Parking Space (2 Designated Car Parking Spaces) Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Indoor pools only (Maintenance of outdoor pools: 1.4.2026 - 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Outdoor pools only (Maintenance of indoor pools : 16.4.2026 - 5.6.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Temporary Closure for Annual Maintenance Indoor Pools : From 16 April to 5 June Outdoor Pools : From 1 November to 15 April of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Tuesday (Thursday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/09/05 12:00 - 2026/09/05 22:00 Main Pool , Diving Pool , Indoor L1 Training Pool Competition Function : Division I (Part 3) LC Competition Organization : Hong Kong China Swimming Association 2026/09/06 08:00 - 2026/09/06 22:00 Main Pool , Diving Pool , Indoor L1 Training Pool Competition Function : Division I (Part 3) LC Competition Organization : Hong Kong China Swimming Association 2026/09/09 08:00 - 2026/09/09 19:00 Main Pool , Diving Pool , Indoor L1 Training Pool School Swimming Gala Function : Swimming gala Organization : Pui Ching Middle School 2026/09/16 08:00 - 2026/09/16 19:00 Main Pool , Diving Pool , Indoor L1 Training Pool School Swimming Gala Function : Swimming gala Organization : King George V School 2026/09/23 08:00 - 2026/09/23 16:00 Main Pool , Diving Pool , Indoor L1 Training Pool School Swimming Gala Function : Swimming gala Organization : Good Hope School 2026/09/28 08:00 - 2026/09/28 20:00 Main Pool , Diving Pool , Indoor L1 Training Pool Competition Function : HK & KLN Secondary School Swimming Competition Organization : The Schools Sports Federation of Hong Kong, China Photo",
-     "range": [
-      [
-       4,
-       16
-      ],
-      [
-       6,
-       5
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "indoor-l2-training-pool",
-      "leisure-pool-no-1",
-      "leisure-pool-no-2",
-      "leisure-pool-no-3",
-      "main-pool",
-      "toddlers-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-09-05T12:00",
@@ -6419,14 +5719,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Sham Shui Po Park Swimming Pool Address 733 Lai Chi Kok Road, Sham Shui Po, Kowloon. Location Phone No. 2360 2329，2708 7514 Facilities ^Main pool (Length 50m x Width 25m, Depth: 1.4m-1.93m) Secondary pool (Length 50m x Width 21m, Depth: 1.1m-1.4m) Training pool (Length 25m x Width 11m, Depth: 0.9m-1.2m) Teaching pool 1(Length 20m x Width 12m, Depth: 0.8m-1m) Teaching pool 2 (Length 20m x Width 12m, Depth: 0.8m-1m) Diving pool (Length 11.75m x Width 11m, Depth: 4.4m-4.6m) Children's pool (Circular, Depth: 0.3m) Toddlers' pool (Irregular shape, Depth: 0.1m-0.37m) Spectator stand (750 seats), Family changing room Barrier Free Facilities: Barrier free access(es) facilitating entrance to the pool deck area, Accessible toilets and shower compartments, Braille and tactile floor plan, Tactile Guide Path, Visual Fire Alarm System Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct Maintenance: 1.4.2026 - 15.4.2026 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm*) Remarks:  Under the trail scheme of extension of session break, 6 swimming lanes of the main pool in this swimming complex is now reserved for eligible groups only, from Monday to Friday 5 pm to 6 pm (excluding Public Holidays) .  Members of the public may use the other 4 swimming lanes (including 1 lap swimming lane) of the main pool. Temporary Closure for Annual Maintenance Whole complex: From 24 February to 15 April Other pools except main pool: From 1 November to 23 February of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Friday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/06/06 06:30 - Until further notice Not applicable Others Due to insufficient lifeguard, the facilities opened are reshuffled and arranged a Trial Scheme as below: 1st Session (06:30am - 12:00nn) & 2nd Session (1:00 - 6:00pm): Main Pool, Training Pool & Teaching Pools are opened. 3rd Session (7:00 - 10:00pm): i) On Monday to Friday, Sunday & Public Holiday: Main Pool, Training Pool & Teaching Pools are opened. ii) On Saturday: Secondary Pool, Training Pool & Teaching Pools are opened. 2026/09/30 07:00 - 2026/09/30 15:00 Main Pool , Spectator Stand School Swimming Gala Function : Competition Organization : Cheung Sha Wan Catholic Primary School Photo",
-     "range": null,
-     "scope": "advisory",
-     "targets": null
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-06-06T06:30",
@@ -6713,23 +6006,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Lei Cheng Uk Swimming Pool Address 25 Kwong Lee Road, Kowloon, Hong Kong Location Phone No. 2387 4224，2708 1204 Facilities Main pool (Length 50m x Width 21m, Depth: 1.37m-1.93m) Secondary pool (Length 50m x Width 20m, Depth: 1.07m-1.37m) *Teaching pool 1 (Length 18.2m x Width 12.1m, Depth: 0.84m-1.07m) Teaching pool 2 (Length 18.2m x Width 12.1m, Depth: 0.69m-0.91m) Teaching pool 3 (Length 18.2m x Width 12.1m, Depth: 0.69m-0.91m) Diving pool (Length 10.6m x Width 10.6m, Depth: 3.5m-3.61m) Children's pool (Irregular shape, Depth: 0.28m-0.33m) Spectator stand (700 seats), Family changing room Barrier Free Facilities: Barrier free access(es) facilitating entrance to the pool deck area, Accessible toilets and shower compartments, Accessible lifting platform (Teaching pool), Braille and tactile floor plan, Tactile Guide Path, Visual Fire Alarm System Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Thursday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/06/06 06:30 - Until further notice Not applicable Others Due to insufficient lifeguard, the facilities opened are reshuffled and arranged a Trial Scheme as below: 1st Session (06:30am - 12:00nn): Main Pool & Secondary Pool are opened. 2nd Session (1:00 - 6:00pm): Secondary Pool & Teaching Pools are opened. 3rd Session (7:00 - 10:00pm): i) On Monday to Friday: Secondary Pool & Teaching Pools are opened. ii) On Saturday: Main Pool & Teaching Pools are opened. iii) On Sunday & Public Holiday: Secondary Pool & Children’s Pool are opened. 2026/06/06 06:30 - Until further notice Diving Pool Insufficient Lifeguard N/A Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "advisory",
-     "targets": null
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-06-06T06:30",
@@ -6937,32 +6214,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Lai Chi Kok Park Swimming Pool Address No.1 Lai Wan Road, Lai Chi Kok, Kowloon Location Phone No. 2745 5234，2742 8387 Facilities Outdoor facilities : ^Main pool (Length 50m x Width 25m, Depth: 1.4m-1.93m) Training pool (Length 25m x Width 11m, Depth: 0.91m-1.22m) *Teaching pool 1 (Length 20m x Width 12m, Depth: 0.83m-0.89m) Teaching pool 2 (Length 20m x Width 12m, Depth: 0.68m-0.73m) Diving pool (Length 11.75m x Width 11m, Depth: 4.4m-4.6m) Toddlers' pool ( Irregular shape, Depth: 0.1m-0.37m ) Indoor facilities : ^Secondary pool (Length 50m x Width 21m, Depth: 1.1m-1.4m) Spectator stand (800 seats), Electronic Scoreboard, Family changing room Barrier Free Facilities: Barrier free access(es) facilitating entrance to the pool deck area, Pool lift (Teaching pool), Shower room(s), Accessible toilet(s) and shower compartments, Braille and tactile floor Plan, Tactile guide path, Visual fire alarm system Public Coaching Area: Secondary pool and Teaching pool 2 Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am -12:00 nn 2nd Session: 1:00 -6:00 pm 3rd Session: 7:00 -10:00 pm (Sessionbreaks: 12:00 nn -1:00 pm & 6:00 -7:00 pm) Main pool and secondary pool only (Maintenance of diving pool, training pool, teaching pools and toddlers’ pool: 1.4.2026 - 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) T raining pool, teaching pools and toddlers' pool only (Maintenance of main pool, secondary pool and diving pool : 16.4.2026 - 5.6.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance Diving pool, Training pool, Teaching pools and Toddlers' pool: From 1 November to 15 April of the following year Main pool, Secondary pool, Diving pool: From 16 April to 5 June Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Wednesday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/06/21 06:30 - Until further notice Diving Pool , Toddlers' Pool Insufficient Lifeguard N/A 2026/09/24 07:00 - 2026/09/24 17:00 Main Pool School Swimming Gala Function : Competition Organization : Cheung Sha Wan Catholic Secondary School 2026/09/24 10:00 - 2026/09/24 16:00 Training Pool School Swimming Gala Function : Competition Organization : Cheung Sha Wan Catholic Secondary School 2026/10/04 06:30 - 2026/10/04 22:00 Main Pool , Training Pool Swimming Gala Function : Sham Shui Po District Swimming Competition 2026 Organization : Sham Shui Po District Leisure Services Office 2026/10/10 06:30 - 2026/10/10 22:00 Main Pool , Training Pool Swimming Gala Function : Sham Shui Po District Swimming Competition 2026 Organization : Sham Shui Po District Leisure Services Office Remarks : Fallback Day 2026/10/19 07:00 - 2026/10/19 18:00 Main Pool Swimming Gala Function : Competition Organization : White Dolphin Sport Association 2026/10/23 07:00 - 2026/10/23 14:00 Main Pool School Swimming Gala Function : Competition Organization : Buddhist Tai Hung College 2026/10/23 08:00 - 2026/10/23 13:00 Training Pool School Swimming Gala Function : Competition Organization : Buddhist Tai Hung College 2026/10/30 13:00 - 2026/10/30 18:00 Main Pool School Swimming Gala Function : Competition Organization : Delia Memorial School (Broadway) Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       4,
-       15
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "diving-pool",
-      "main-pool",
-      "public-coaching-area-secondary-pool-and-teaching-pool-2",
-      "secondary-pool",
-      "teaching-pool-1",
-      "teaching-pool-2",
-      "toddlers-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-06-21T06:30",
@@ -7162,28 +6414,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Island East Swimming Pool Address 52, Lei King Road, Sai Wan Ho, Hong Kong Location Phone No. 2151 4082 Facilities Indoor facilities : ^*Training pool (Length 25m x Width 10m, Depth: 0.9m-1.2m) ^Toddlers' pool (Circular, Depth: 0m-0.15m) ^Leisure pool (Irregular shape, Depth: 0.3m-0.45m) Family changing room Barrier Free Facilities : Barrier free access(es) facilitating entrance to the pool deck area, Accessible lifting platform (Training pool), Accessible toilets and shower compartments, Assessible parking spaces (2 designated car parking spaces), Accessible lift (with assistive listening system), Tactile guide path, Visual fire alarm system, Braille floor map Public Coaching Area: Training pool (Saturday, Sunday and Public Holiday Only) Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Maintenance: 11.9.2026 - 31.10.2026 Temporary Closure for Annual Maintenance From 11 September to 31 October Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Wednesday (Friday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       9,
-       11
-      ],
-      [
-       10,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "leisure-pool",
-      "public-coaching-area-training-pool",
-      "toddlers-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=6",
    "id": "island-east-swimming-pool",
@@ -7391,23 +6622,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Chai Wan Swimming Pool Address 345 San Ha Street, Chai Wan, Hong Kong Location Phone No. 2558 3538 Facilities Main pool (Length 50m x Width 21m, Depth: 1.4m-1.9m) Secondary pool (Length 50m x Width 21m, Depth: 1.1m-1.4m) Training pool (Length 25m x Width 11m, Depth: 0.9m-1.2m) *Teaching pool 1 (Length 21m x Width 12m, Depth: 0.83m-1.05m) Teaching pool 2 (Length 21m x Width 12m, Depth: 0.68m-0.9m) Diving pool (Length 11m x Width 11.75m, Depth: 4.4m-4.6m) Leisure pool 1 (Irregular shape, Depth: 0.39m-0.5m) Leisure pool 2 (Irregular shape, Depth: 0.39m-0.45m) Leisure pool 3 (Irregular shape) Spectator stand (800 seats), Family changing room Barrier Free Facilities: Barrier free access(es) facilitating entrance to the pool deck area, Accessible lifting platform (Teaching pool), Accessible toilets and shower compartments, Tactile guide path, Visual fire alarm system, Braille floor map Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Temporary Closure for Annual Maintenance Whole pool complex: From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Tuesday (Wednesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/07/20 06:30 - Until further notice Not applicable Others The following facilities will be opened as below First session (Excluding Saturday & Sunday & Public Holiday & Cleansing Day) (06:30 – 09:00) : Secondary Pool, Teaching Pool 1 & 2, Training Pool (09:00 – 12:00) : Main Pool ,Secondary Pool, Teaching Pool 1 & 2, Training Pool, Second session (13:00 – 17:00) : Main Pool, Teaching Pool 1 & 2, Training Pool, Leisure pool 1,2 Third session (18:00 – 22:00) : Main Pool, Teaching Pool 1 & 2, Training Pool First session (Public Holiday & Cleansing Day) (06:30 – 09:00) : Secondary Pool, Teaching Pool 1 & 2, Training Pool (09:00 – 12:00) : Secondary Pool, Teaching Pool 1 & 2, Training Pool, Leisure pool 1,2 (09:00 – 10:00) : Secondary Pool, Teaching Pool 1 & 2, Training Pool, Leisure pool 2(Cleansing Day) Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "advisory",
-     "targets": null
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-07-20T06:30",
@@ -7465,25 +6680,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Wan Chai Swimming Pool (Only for group training purpose) Address 27 Harbour Road, Wan Chai, Hong Kong Location Phone No. 2827 5240 Facilities ^Main pool (Length 50m x Width 25m, Depth: 2m) Spectator stand (105 seats), Babycare room Barrier Free Facilities: Barrier free access(es) facilitating entrance to the pool deck area, Accessible lifting platform (Main pool), Accessible toilets, Accessible toilet and shower compartment, Accessible lift (with assistive listening system), Tactile guide path, Visual fire alarm system, Braille directory map/floor Plan, Assistive listening system Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 7:00 am - 10:00 pm Temporary Closure for Annual Maintenance From 1 December to 20 January of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Friday (10:00 am - 4:00 pm) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       12,
-       1
-      ],
-      [
-       1,
-       20
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "main-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=3",
    "id": "wan-chai-swimming-pool",
@@ -7620,29 +6817,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Morrison Hill Swimming Pool Address 7 Oi Kwan Road, Wan Chai, Hong Kong Location Phone No. 2575 3028 / 2891 7335 Facilities Indoor facilities: ^*Main pool (Length 50m x Width 21m, Depth: 1.4m-1.9m) ^Training pool (Length 25m x Width 12m, Depth: 0.84m-1.07m) Spectator stand (204 seats), Electronic scoreboard, Family changing room Outdoor facilities: Teaching pool (Length 18m x Width 12m, Depth: 0.8m-1.4m) Toddlers' pool (Length 18m x Width 6m, Depth: 0.46m) Barrier Free Facilities: Barrier free access(es) facilitating entrance to the pool deck area, Accessible lifting platform(Main pool), Accessible toilet, Accessible toilet and changing room, Accessible lift, Tactile guide path, Visual fire alarm system, Braille directory map/floor plan Public Coaching Area: Main Pool Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Indoor pools only (Maintenance of outdoor pools: 1.4.2026 - 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Outdoor pools only (Maintenance of indoor pools: 11.5.2026 - 30.6.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Temporary Closure for Annual Maintenance Indoor main pool and training pool: From 11 May to 30 June Outdoor teaching pool and toddler's pool: From 1 November to 15 April of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Wednesday (Tuesday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 18:00 - 2026/08/30 22:00 Main Pool Others Trail scheme: Priority to opening the shallow water facility (i.e. the training pool or the teaching pool). Photo",
-     "range": [
-      [
-       5,
-       11
-      ],
-      [
-       6,
-       30
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "main-pool",
-      "public-coaching-area-main-pool",
-      "teaching-pool",
-      "toddlers-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T18:00",
@@ -7751,26 +6926,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Sun Yat Sen Memorial Park Swimming Pool Address 16 Eastern Street North, Sai Ying Pun, Hong Kong Location Phone No. 2540 6708, 2547 3982 Facilities Indoor Facilities: *^Main pool (Length 50m x Width 25m, Depth: 1.4m-1.9m) *^Training pool (Length 25m x Width 12.5m, Depth: 0.9m-1.2m) Spectator stand (1000 seats), Electronic scoreboard, Family changing room Barrier Free Facilities: Barrier free access(es) facilitating entrance to the pool deck area, accessible lifting platform (Main pool and Training pool), accessible toilet(s) and changing room(s), accessible car parking space (1 designated car parking space), accessible lift (with assistive listening system), tactile guide path, visual fire alarm system, braille and tactile floor plan, assistive listening system. Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Remarks: The 2nd session break of main pool will be extended from 5:00 – 7:00 pm on Mon to Fri, except public holidays under the trial scheme of extension of session break Maintenance 16.4.2026 - 5.6.2026 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Remarks: The 2nd session break of main pool will be extended from 5:00 – 7:00 pm on Mon to Fri, except public holidays under the trial scheme of extension of session break Temporary Closure for Annual Maintenance From 16 April to 5 June Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Tuesday (Friday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/09/11 07:30 - 2026/09/11 16:00 Main Pool , Training Pool , Spectator Stand School Swimming Gala Function : School Swimming Gala Organization : St. Louis School 2026/09/13 07:30 - 2026/09/13 22:00 Main Pool , Training Pool , Spectator Stand Swimming Gala Function : Swimming Gala Organization : Hong Kong China Swimming Association 2026/09/18 07:30 - 2026/09/18 19:00 Main Pool , Training Pool , Spectator Stand School Swimming Gala Function : School Swimming Gala Organization : Wah Yan College, Hong Kong 2026/09/19 07:30 - 2026/09/19 22:00 Main Pool , Training Pool , Spectator Stand Swimming Gala Function : Swimming Gala Organization : Hong Kong China Swimming Association 2026/09/25 07:30 - 2026/09/25 15:00 Main Pool , Training Pool , Spectator Stand School Swimming Gala Function : School Swimming Gala Organization : St. Joseph's College 2026/09/27 07:30 - 2026/09/27 20:00 Main Pool , Training Pool , Spectator Stand Competition Function : Swimming Gala Organization : Happy Valley Athletic Asociation 2026/09/28 07:30 - 2026/09/28 17:00 Main Pool , Training Pool , Spectator Stand School Swimming Gala Function : School Swimming Gala Organization : ST. JOSEPH'S PRIMARY SCHOOL Photo",
-     "range": [
-      [
-       4,
-       16
-      ],
-      [
-       6,
-       5
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "main-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-09-11T07:30",
@@ -7994,30 +7150,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Kennedy Town Swimming Pool Address 2 Sai Cheung Street North, Kennedy Town Location Phone No. 2817 7973, 2817 4504 Facilities Indoor Facilities : *^Secondary pool (Length 50m x Width 15m, Depth: 1.2m-1.4m) *^Training pool (Length 25m x Width 12.5m, Depth: 0.9m-1.2m) *^Jacuzzi ( Depth: 0.85m ) Family changing room Outdoor Facilities : *Secondary pool (Length 50m x Width 25m, Depth: 1.1m-1.4m) Leisure pool  ( Irregular shape, Depth: 0m-0.85m ) Barrier Free Facilities: Barrier free access(es) facilitating entrance to the pool deck area, Accessible lifting platform(s) (Secondary pool, Training pool and Jacuzzi), Accessible Toilet(s) & Changing Room(s), Accessible Lift (with Assistive Listening System), Tactile Guide Path, Visual Fire Alarm System, Braille and tactile floor plan, Assistive Listening System. Public Coaching Area: Training pool (Available from 16/4-10/9 when indoor and outdoor pools are opened only) Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm& 5:00 - 6:00 pm) Indoor pools only (Maintenance of outdoor pools: 1.4.2026 - 15.4.2026) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 5:00 pm 3rd Session: 6:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 5:00 - 6:00 pm) Outdoor pools only (Maintenance of indoor pools: 11.9.2026 - 31.10.2026) Temporary Closure for Annual Maintenance Indoor pools : From 11 September to 31 October Outdoor pools : From 1 November to 15 April of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Wednesday (Thursday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/08/30 21:00 - 2026/08/30 22:00 Leisure Pool Insufficient Lifeguard N/A Photo",
-     "range": [
-      [
-       9,
-       11
-      ],
-      [
-       10,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "jacuzzi",
-      "leisure-pool",
-      "public-coaching-area-training-pool",
-      "secondary-pool",
-      "secondary-pool-2",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-08-30T21:00",
@@ -8216,32 +7349,7 @@
      "maintenance": []
     }
    ],
-   "maintenance": [
-    {
-     "label": "Pao Yue Kong Swimming Pool Address 2 Shum Wan Road, Wong Chuk Hang, Hong Kong Location Phone No. 2553 3617 Facilities Main pool (Length 50m x Width 21m, Depth: 1.4m-1.9 m ) Secondary pool (Length 50m x Width 21m, Depth: 1.1m-1.4m) *Training pool (Length 25m x 9m, Depth: 0.9m - 1.2m) Teaching pool1 (Length 18m x Width 12m, Depth: 0.6m-0.9m) Teaching pool2 (Length18m x Width 12m, Depth: 0.8m-1.0m) Diving pool (Length 11.7m x Width 11m, Depth: 4.5m) Children's pool (Irregular shape, Depth: 0.3m) Toddlers' pool (Irregular shape, Depth: 0.3m) Spectator stand (600 seats), Electronic scoreboard, Family changing room Barrier Free Facilities: A Barrier free access (es) facilitating entrance to the pool deck area, Accessible lifting platform (Training pool), Accessible toilets and shower compartments, Tactile guide path, Visual fire alarm system Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks:12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Temporary Closure for Annual Maintenance From 1 November to 31 March of the following year Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Tuesday (Monday ※) The weekly cleansing operation on 7 April 2026 will be rescheduled and postponed to 8 April 2026 (Wednesday) due to public holidays. Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks 2026/09/06 07:00 - 2026/09/06 22:00 Main Pool Competition Function : Southern District Swimming Competition Organization : Leisure & Cultural Services Department 2026/10/09 07:00 - 2026/10/09 15:00 Main Pool School Swimming Gala Function : Swimming Gala Organization : Singapore International School (Hong Kong) 2026/10/16 07:00 - 2026/10/16 15:00 Main Pool School Swimming Gala Function : Swimming Gala Organization : Aberdeen Technical School 2026/10/23 07:00 - 2026/10/23 15:00 Main Pool School Swimming Gala Function : Swimming Gala Organization : SWCH Chan Pak Sha School 2026/10/30 07:00 - 2026/10/30 15:00 Main Pool School Swimming Gala Function : Swimming Gala Organization : Singapore International School (Hong Kong) Primary 2026/08/30 06:30 - 2026/08/30 20:00 Teaching Pool (1), Training Pool, Diving Pool , Teaching Pool (2) Insufficient Lifeguard N/A 2026/08/30 20:00 - 2026/08/30 22:00 Diving Pool Insufficient Lifeguard N/A Photo",
-     "range": [
-      [
-       11,
-       1
-      ],
-      [
-       3,
-       31
-      ]
-     ],
-     "scope": "partial",
-     "targets": [
-      "children-s-pool",
-      "diving-pool",
-      "main-pool",
-      "secondary-pool",
-      "teaching-pool1",
-      "teaching-pool2",
-      "toddlers-pool",
-      "training-pool"
-     ]
-    }
-   ],
+   "maintenance": [],
    "closures": [
     {
      "start": "2026-09-06T07:00",
@@ -8344,23 +7452,7 @@
    "cleansing_weekday": 3,
    "cleansing_note": "Friday if public holiday",
    "facilities": [],
-   "maintenance": [
-    {
-     "label": "Tung Cheong Street Swimming Pool Address 1/F, Tai Po Tung Cheong Street Leisure Building Location Phone No. 2691 2428, 2691 2433 Facilities Indoor facilities: ^Training pool (Length 25m x Width 25m, Depth: 1.2m-1.4m) ^Teaching pool (Length 25m x Width 10m, Depth: 0.7m-0.9m) ^Jacuzzi (Depth: 0.85m) Family changing room Barrier Free Facilities: Barrier Free Access, Accessible Lifting Platform, Ramp (Teaching Pool), Accessible Toilet, Accessible Services Counter, Visual Fire Alarm System, Tactile Guide Path, Braille Directory Map and Floor Plan Summer Opening Schedule Information Apr May Jun Jul Aug Sep Oct 1st Session: 6:30 am - 12:00 nn 2nd Session: 1:00 - 6:00 pm 3rd Session: 7:00 - 10:00 pm (Session breaks: 12:00 nn - 1:00 pm & 6:00 - 7:00 pm) Maintenance 11.9.2026 - 31.10.2026 Temporary Closure for Annual Maintenance From 11 September to 31 October Weekly Cleansing Operation The weekly cleansing operation is carried out at public swimming pools managed by the LCSD from 10:00 a.m. to the end of the second session. The pools will resume service at the third session on the same day. ※ If the cleansing day falls on a public holiday, the swimming pool will open as usual and the weekly cleansing operation will be rescheduled for another weekday (as shown in the bracket) of the same week. Every Thursday (Friday ※) Notice of Temporary Closure Details of the temporary partial closure of facilities at swimming pools: Please contact the officers-in-charge of the respective swimming pools on the phone number(s) listed above for details of the latest arrangements. Date & Time Facilities Reason Remarks No related notice Photo",
-     "range": [
-      [
-       9,
-       11
-      ],
-      [
-       10,
-       31
-      ]
-     ],
-     "scope": "advisory",
-     "targets": null
-    }
-   ],
+   "maintenance": [],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=250",
    "id": "tung-cheong-street-swimming-pool",
