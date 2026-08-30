@@ -355,12 +355,28 @@ function relevantWarnings(raw) {
    offers plenty of other plausible separators — including the full-width
    punctuation a Chinese keyboard produces. No LCSD pool name or district
    contains any of these, so splitting on all of them is free. */
-const SEPARATORS = /[,;/|\n\t\u3001\uFF0C\uFF1B\uFF5C]+/;
+const SEPARATORS = /[,;/\n\t\u3001\uFF0C\uFF1B]+/;
+
+/* Everything after a pipe is settings rather than pool names:
+   "Kowloon Park, Victoria Park, Morrison Hill | one". */
+const OPTION_MARK = /[|\uFF5C]/;
 
 /* A colon narrows a venue to one of its pools: "victoria park: main" is the
    main pool alone, not the whole venue. Half a venue being open tells you
    little when it is the 50m lap pool you came for. */
 const FACILITY_MARK = /[:\uFF1A]/;
+
+/* Splits the Parameter into the pools and the settings after the pipe.
+   `one` shows a single pool on the small tile however many are named, which is
+   the roomiest it gets; `all` lists them, and is what happens by default. */
+function readParam(param) {
+  const parts = String(param || DEFAULT_POOLS).split(OPTION_MARK);
+  const opts = (parts[1] || "").trim().toLowerCase();
+  return {
+    pools: parts[0],
+    single: /\b(one|1|single|first)\b/.test(opts),
+  };
+}
 
 /* "victoria park; mui wo: main" -> the pools they name, in the order given.
    Case-insensitive substring, so nobody has to type "Swimming Pool".
@@ -590,8 +606,8 @@ const CHAR_W = 0.53;
    size you can read beats the whole name at one you cannot. Three pools at
    11pt still fit the small tile's height — the pressure is on width, and
    width is what truncation answers. */
-const MIN_NAME = 10.5;
-const MIN_DETAIL = 9;
+const MIN_NAME = 11.5;
+const MIN_DETAIL = 9.5;
 
 /* The largest size in [min,max] at which every label fits `width`. */
 function fitSize(labels, width, max, min) {
@@ -702,8 +718,8 @@ function smallMany(w, rows, now, stale, warnings, notes) {
   const NAME_W = 115, DET_W = 116;
   const labels = rows.map(rowLabel);
   const details = rows.map((r) => detailLine(r.st, true));
-  const nameSize = fitSize(labels, NAME_W, 11.5, MIN_NAME);
-  const detSize = fitSize(details, DET_W, nameSize - 1.5, MIN_DETAIL);
+  const nameSize = fitSize(labels, NAME_W, 13, MIN_NAME);
+  const detSize = fitSize(details, DET_W, nameSize - 2, MIN_DETAIL);
   const detBudget = budget(DET_W, detSize);
 
   rows.forEach(function (row, i) {
@@ -809,7 +825,8 @@ async function build() {
   if (!data)
     return message(w, now, ["No data yet — open the script once while online."]);
 
-  const { picked, missing, guessed } = pickPools(data.pools, args.widgetParameter);
+  const opts = readParam(args.widgetParameter);
+  const { picked, missing, guessed } = pickPools(data.pools, opts.pools);
   if (!picked.length)
     return message(w, now, ["No pool matched “" + missing.join(", ") + "”.",
                             "Check the widget Parameter."]);
@@ -824,8 +841,9 @@ async function build() {
   // only worth a row if a warning is up AND one of these pools is outdoors
   const warnings = rows.some((r) => hasOutdoor(r.p)) ? await loadWarnings() : [];
 
+  // the medium tile always lists them; only the small one has to choose
   if (family !== "small") mediumWidget(w, rows, now, stale, warnings, notes);
-  else if (rows.length === 1)
+  else if (opts.single || rows.length === 1)
     smallOne(w, rows[0], now, stale, warnings, notes);
   else smallMany(w, rows, now, stale, warnings, notes);
 

@@ -109,8 +109,9 @@ at `https://YOURNAME.github.io/hkpools/`. `setup-github.sh` prints the link.
 6. **Long-press the new widget → Edit Widget**:
    - **Script**: `HK Pools`
    - **Parameter**: your pools, comma-separated —
-     `Kowloon Park, Victoria Park, Morrison Hill`. Up to three are shown, on
-     either size; a single name gives the small widget its large layout.
+     `Kowloon Park, Victoria Park, Morrison Hill`. Up to three are shown.
+     Add `| one` to keep the small widget on a single pool while the medium
+     one lists them.
    - **When Interacting**: `Run Script` (or `Open URL` if you'd rather it opened
      something else)
 
@@ -119,8 +120,19 @@ Partial names are fine and case doesn't matter: `kowloon park` finds
 and `mai wo` both land. So does a district name, if you only know roughly
 where you are going.
 
-Commas are the tidy separator, but `;` `/` `|` and the full-width `，` `、`
-`；` all work, since no pool name contains any of them.
+Commas are the tidy separator, but `;` `/` and the full-width `，` `、` `；`
+all work, since no pool name contains any of them.
+
+**A pipe ends the pool list and starts the settings.** Add `| one` and the
+small widget shows a single pool — the roomiest layout it has — while the
+medium one still lists them all:
+
+```
+Kowloon Park, Victoria Park, Morrison Hill | one
+```
+
+`| all` lists them on both, which is what happens if you leave the setting
+off. Naming a single pool gives you the large layout either way.
 
 **A colon narrows a venue to one of its pools**, which matters when a venue
 has eight and only one of them is the 50m you came for:
@@ -229,9 +241,10 @@ session times stay correct — only closures could be out of date.
   `status.js` only — never in the built files; `build.py --check` fails the
   build if you do.
 - **Names are cut before type is shrunk.** Rows are set no smaller than
-  10.5pt, and a label that will not fit at that size is truncated rather than
-  scaled down further — "Sun Yat Sen Memor… · Main" at a size you can read
-  beats the whole name at one you cannot. A status line drops whole segments
+  11.5pt, and a label that will not fit at that size is truncated rather than
+  scaled down further — "Sun Yat Sen Memo…" at a size you can read beats the
+  whole name at one you cannot. Short names get 13pt; if that still reads
+  small, `| one` gives the single-pool layout at 20pt. A status line drops whole segments
   rather than cutting through one, so the pool count goes before the times do.
 - **Every row in a widget is set at one size.** Scriptable's own
   `minimumScaleFactor` shrinks each label independently, so a long venue name
