@@ -101,7 +101,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 20 February to 21 April",
+     "range": [
+      [
+       2,
+       20
+      ],
+      [
+       4,
+       21
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-31T18:00",
@@ -369,7 +385,26 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Main pool: From 11 September to 31 October Training pool: From 1 November to 15 April of the following year",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-01T06:30",
@@ -586,7 +621,29 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Outdoor pools (Main pool, Training pool, Teaching pool) : From 1 November to 15 April of the following year Maintenance of indoor training pool, leisure pool and jacuzzi: 1 September to 21 October",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "jacuzzi",
+      "leisure-pool",
+      "main-pool",
+      "teaching-pool",
+      "training-pool-1"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T17:00",
@@ -654,7 +711,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 11 September to 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=44",
    "id": "tsing-yi-southwest-swimming-pool",
@@ -748,7 +821,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 2 May to 26 July",
+     "range": [
+      [
+       5,
+       2
+      ],
+      [
+       7,
+       26
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=39",
    "id": "siu-sai-wan-swimming-pool",
@@ -823,7 +912,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 16 April to 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=42",
    "id": "lam-tin-swimming-pool",
@@ -955,7 +1060,27 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Outdoor pools : From 1 November to 15 April of the following year Indoor pools : From 2 January to 21 February",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "public-coaching-area-training-pool",
+      "secondary-pool",
+      "teaching-pool-1-2"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-09-11T07:30",
@@ -1228,7 +1353,30 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Main Pool : From 4 May to 23 June Training pool, Teaching pools, Diving pool, Toddlers' pool, Leisure pools : From 1 November to 15 April of the following year",
+     "range": [
+      [
+       5,
+       4
+      ],
+      [
+       6,
+       23
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool",
+      "leisure-pool-1",
+      "main-pool",
+      "teaching-pool-1",
+      "toddlers-pool",
+      "training-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T14:15",
@@ -1382,7 +1530,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T13:00",
@@ -1602,7 +1766,29 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Main pool : From 16 April to 5 June Secondary pool, Children's pool , Toddlers' Pool, Training pool, Teaching pools : From 1 November to 15 April of the following year Diving pool : From 1 November to 5 June of the following year",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool",
+      "main-pool",
+      "secondary-pool",
+      "teaching-pool-1",
+      "training-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-09-05T07:00",
@@ -1861,7 +2047,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-01T06:30",
@@ -2053,7 +2255,29 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Indoor pools (Main pool ,Jacuzzi pool ): From 11 September to 31 October Outdoor pools (Training pool, Leisure pool ): From 1 November to 15 April of the following year",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "jacuzzi-pool",
+      "leisure-pool",
+      "leisure-pool-2",
+      "main-pool",
+      "training-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T13:00",
@@ -2234,7 +2458,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-07-22T18:00",
@@ -2321,7 +2561,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=30",
    "id": "sheung-shui-swimming-pool",
@@ -2434,7 +2690,28 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Main pool: From 16 April to 5 June Secondary pool, Training pool, Toddlers' pool : From 1 November to 15 April of the following year",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool",
+      "secondary-pool",
+      "toddlers-pool",
+      "training-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-04-16T06:30",
@@ -2597,7 +2874,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T14:30",
@@ -2807,7 +3100,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T17:30",
@@ -3038,7 +3347,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-25T06:30",
@@ -3153,7 +3478,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=24",
    "id": "tsuen-king-circuit-wu-chung-swimming-pool",
@@ -3323,7 +3664,29 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Outdoor training pool, teaching pool, leisure pools : From 1 November to 15 April of the following year Indoor main pool : From 1 May to 30 June",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-1",
+      "main-pool",
+      "main-pool-2",
+      "teaching-pool",
+      "training-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-09-10T07:30",
@@ -3422,7 +3785,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 11 September to 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=41",
    "id": "ping-shan-tin-shui-wai-swimming-pool",
@@ -3573,7 +3952,28 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Secondary pool, Training pool, Diving pool, Toddlers' Pool : From 1 November to 15 April of the following year Main pool : From 16 April to 5 June",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool",
+      "main-pool",
+      "secondary-pool",
+      "training-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T06:30",
@@ -3800,7 +4200,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=23",
    "id": "tin-shui-wai-swimming-pool",
@@ -3877,18 +4293,24 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
-   "closures": [
+   "maintenance": [
     {
-     "start": "2026-08-30T13:00",
-     "end": "2026-08-30T18:00",
-     "facilities": "Leisure Pool (1)",
-     "reason": "Others",
-     "targets": [
-      "leisure-pool-1"
-     ]
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
     }
    ],
+   "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=21",
    "id": "the-jockey-club-yan-oi-tong-swimming-pool",
    "session_days": null,
@@ -4038,7 +4460,29 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Outdoor pools (Training pool, Teaching pool, Leisure pool and Diving pool): From 1 November 2026 to 15 April of the following year Indoor pools (Main pool and Training pool): From 16 April 2027 to 5 Jun 2027",
+     "range": [
+      [
+       4,
+       26
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool",
+      "leisure-pool",
+      "main-pool",
+      "teaching-pool",
+      "training-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T06:30",
@@ -4133,7 +4577,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=19",
    "id": "mui-wo-swimming-pool",
@@ -4268,7 +4728,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-01T06:30",
@@ -4476,7 +4952,28 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Outdoor pools : From 1 November to 15 April of the following year Indoor pools : From 11 May to 30 June",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-2",
+      "leisure-pool-3",
+      "participatory-fountain",
+      "toddlers-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-07-01T14:30",
@@ -4665,7 +5162,25 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Outdoor Pools: From 1 November to 15 April of the following year Indoor Secondary Pool: From 16 April to 5 June",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "secondary-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T06:30",
@@ -4816,7 +5331,25 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Indoor Main Pool: From 16 April to 5 June (Starting from 2027) Outdoor Pools : From 1 November to 15 April of the following year",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T18:00",
@@ -5049,7 +5582,26 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Indoor Pools : From 11 September to 31 October Outdoor Pools : From 11 September to 15 April of the following year",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "leisure-pool-1",
+      "leisure-pool-2"
+     ]
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=13",
    "id": "ho-man-tin-swimming-pool",
@@ -5238,7 +5790,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-04-01T06:30",
@@ -5341,7 +5909,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 11 September to 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=37",
    "id": "tai-kok-tsui-swimming-pool",
@@ -5530,7 +6114,27 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Indoor Pools : From 16 April to 5 June Outdoor Pools : From 1 November to 15 April of the following year",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "indoor-l1-training-pool",
+      "indoor-l2-training-pool",
+      "main-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-09-05T12:00",
@@ -5788,7 +6392,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Whole complex: From 24 February to 15 April Other pools except main pool: From 1 November to 23 February of the following year",
+     "range": [
+      [
+       2,
+       24
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-06-06T06:30",
@@ -6075,7 +6695,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-06-06T06:30",
@@ -6283,7 +6919,30 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Diving pool, Training pool, Teaching pools and Toddlers' pool: From 1 November to 15 April of the following year Main pool, Secondary pool, Diving pool: From 16 April to 5 June",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       4,
+       15
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "diving-pool",
+      "main-pool",
+      "secondary-pool",
+      "teaching-pool-1",
+      "toddlers-pool",
+      "training-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-06-21T06:30",
@@ -6483,7 +7142,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 11 September to 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=6",
    "id": "island-east-swimming-pool",
@@ -6691,7 +7366,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Whole pool complex: From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-07-20T06:30",
@@ -6749,7 +7440,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 December to 20 January of the following year",
+     "range": [
+      [
+       12,
+       1
+      ],
+      [
+       1,
+       20
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=3",
    "id": "wan-chai-swimming-pool",
@@ -6886,7 +7593,28 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Indoor main pool and training pool: From 11 May to 30 June Outdoor teaching pool and toddler's pool: From 1 November to 15 April of the following year",
+     "range": [
+      [
+       5,
+       11
+      ],
+      [
+       6,
+       30
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "main-pool",
+      "teaching-pool",
+      "toddlers-pool",
+      "training-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T18:00",
@@ -6995,7 +7723,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 16 April to 5 June",
+     "range": [
+      [
+       4,
+       16
+      ],
+      [
+       6,
+       5
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-09-11T07:30",
@@ -7219,7 +7963,28 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "Indoor pools : From 11 September to 31 October Outdoor pools : From 1 November to 15 April of the following year",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "partial",
+     "targets": [
+      "jacuzzi",
+      "secondary-pool",
+      "secondary-pool-2",
+      "training-pool"
+     ]
+    }
+   ],
    "closures": [
     {
      "start": "2026-08-30T21:00",
@@ -7418,7 +8183,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 1 November to 31 March of the following year",
+     "range": [
+      [
+       11,
+       1
+      ],
+      [
+       3,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [
     {
      "start": "2026-09-06T07:00",
@@ -7579,7 +8360,23 @@
      "maintenance": []
     }
    ],
-   "maintenance": [],
+   "maintenance": [
+    {
+     "label": "From 11 September to 31 October",
+     "range": [
+      [
+       9,
+       11
+      ],
+      [
+       10,
+       31
+      ]
+     ],
+     "scope": "venue",
+     "targets": null
+    }
+   ],
    "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=250",
    "id": "tung-cheong-street-swimming-pool",
