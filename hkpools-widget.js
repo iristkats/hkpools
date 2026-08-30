@@ -627,19 +627,39 @@ const CHAR_W = 0.53;
 const MIN_NAME = 11.5;
 const MIN_DETAIL = 9.5;
 
+/* The status line split across the lines a roomy row can afford. Segments are
+   assigned whole, so a line never breaks mid-segment and never ends on a
+   dangling separator — which is what iOS would do left to its own wrapping. */
+function detailRows(st, tight, width, lines) {
+  const out = [];
+  let cur = "";
+  detailBits(st, tight).forEach(function (b) {
+    if (out.length >= lines) return;                  // nothing left to fill
+    const join = cur ? cur + " · " + b : b;
+    if (join.length <= width || !cur) { cur = join; return; }
+    out.push(cur);
+    cur = b;
+  });
+  if (cur && out.length < lines) out.push(cur);
+  return out.map((l) => clip(l, width));
+}
+
 /* Sizing and trimming argue in a circle: the size decides how much text fits,
    and the text decides the size. Settle it by fitting the whole line, dropping
    whatever that size cannot hold, then fitting again to what survived — so a
    segment that was never going to be drawn can't shrink the row it was cut
    from. One extra pass is enough: dropping text only ever raises the size,
    and a raised size never drops more. */
-function fitDetails(rows, tight, width, max, min) {
+function fitDetails(rows, tight, width, lines, max, min) {
   const at = (size) =>
-    rows.map((r) => detailFor(r.st, tight, budget(width, size)));
+    rows.map((r) => detailRows(r.st, tight, budget(width, size), lines));
+  // the whole line has every line's width to spread over; each one, only its own
+  const longest = (ls) =>
+    ls.map((l) => l.reduce((a, b) => (a.length > b.length ? a : b), ""));
   const first = fitSize(rows.map((r) => detailLine(r.st, tight)),
-                        width, max, min);
-  const size = fitSize(at(first), width, max, min);
-  return { size: size, lines: at(size) };
+                        width * lines, max, min);
+  const size = fitSize(longest(at(first)), width, max, min);
+  return { size: size, rows: at(size) };
 }
 
 /* The largest size in [min,max] at which every label fits `width`. */
@@ -765,10 +785,7 @@ function stackedRows(w, rows, now, stale, warnings, notes, big) {
   const labels = rows.map(rowLabel);
   const nameSize = fitSize(labels, NAME_W, big ? 18 : cramped ? 13 : 15,
                            MIN_NAME);
-  // a detail free to wrap has two lines' worth of width to play with
-  const det = fitDetails(rows, !big, DET_W * detLines, nameSize - 2,
-                         MIN_DETAIL);
-  const details = det.lines, detSize = det.size;
+  const det = fitDetails(rows, !big, DET_W, detLines, nameSize - 2, MIN_DETAIL);
   const nameBudget = budget(NAME_W, nameSize);
 
   rows.forEach(function (row, i) {
@@ -782,13 +799,15 @@ function stackedRows(w, rows, now, stale, warnings, notes, big) {
     name.lineLimit = 1;
     name.minimumScaleFactor = 1;      // sized above; never shrink alone
 
-    const under = w.addStack();
-    under.addSpacer(13);               // clear the dot
-    const detail = under.addText(details[i]);
-    detail.font = Font.systemFont(detSize);
-    detail.textColor = DIM;
-    detail.lineLimit = detLines;
-    detail.minimumScaleFactor = 1;
+    det.rows[i].forEach(function (line) {
+      const under = w.addStack();
+      under.addSpacer(13);             // clear the dot
+      const detail = under.addText(line);
+      detail.font = Font.systemFont(det.size);
+      detail.textColor = DIM;
+      detail.lineLimit = 1;
+      detail.minimumScaleFactor = 1;
+    });
 
     if (cramped) w.addSpacer(5);
     else w.addSpacer();                // share the slack row by row
