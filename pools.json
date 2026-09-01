@@ -1400,19 +1400,8 @@
    ],
    "closures": [
     {
-     "start": "2026-09-01T06:30",
-     "end": "2026-09-01T14:15",
-     "facilities": "Diving Pool , Toddlers' Pool, Leisure Pool 1",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "diving-pool",
-      "leisure-pool-1",
-      "toddlers-pool"
-     ]
-    },
-    {
-     "start": "2026-09-01T06:30",
-     "end": "2026-09-01T14:15",
+     "start": "2026-09-01T14:15",
+     "end": "2026-09-01T22:00",
      "facilities": "Diving Pool , Toddlers' Pool, Leisure Pool 1",
      "reason": "Insufficient Lifeguard",
      "targets": [
@@ -1582,12 +1571,13 @@
    ],
    "closures": [
     {
-     "start": "2026-09-01T06:30",
-     "end": "2026-09-01T12:00",
-     "facilities": "Leisure Pool 1, Leisure Pool 2 (Water Slides)",
+     "start": "2026-09-01T19:00",
+     "end": "2026-09-01T22:00",
+     "facilities": "Teaching Pool , Leisure Pool 1, Leisure Pool 2 (Water Slides)",
      "reason": "Insufficient Lifeguard",
      "targets": [
-      "leisure-pool"
+      "leisure-pool",
+      "teaching-pool"
      ]
     }
    ],
@@ -2349,7 +2339,49 @@
      ]
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-09-01T10:00",
+     "end": "2026-09-01T14:30",
+     "facilities": "Leisure Pool (Deep Water Zone)",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "leisure-pool",
+      "leisure-pool-2"
+     ]
+    },
+    {
+     "start": "2026-09-01T13:00",
+     "end": "2026-09-01T14:30",
+     "facilities": "Leisure Pool (Deep Water Zone), Giant Water Slides",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "giant-water-slides",
+      "leisure-pool",
+      "leisure-pool-2"
+     ]
+    },
+    {
+     "start": "2026-09-01T14:30",
+     "end": "2026-09-01T22:00",
+     "facilities": "Leisure Pool (Deep Water Zone), Giant Water Slides",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "giant-water-slides",
+      "leisure-pool",
+      "leisure-pool-2"
+     ]
+    },
+    {
+     "start": "2026-09-02T19:00",
+     "end": "2026-09-03T10:00",
+     "facilities": "Giant Water Slides",
+     "reason": "Urgent Repairs",
+     "targets": [
+      "giant-water-slides"
+     ]
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=33",
    "id": "hin-tin-swimming-pool",
    "session_days": null,
@@ -2669,6 +2701,15 @@
     {
      "start": "2026-09-01T19:00",
      "end": "2026-09-01T22:00",
+     "facilities": "Leisure Pool (1)",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "leisure-pool"
+     ]
+    },
+    {
+     "start": "2026-09-02T06:30",
+     "end": "2026-09-02T14:30",
      "facilities": "Leisure Pool (1)",
      "reason": "Insufficient Lifeguard",
      "targets": [
@@ -3006,11 +3047,12 @@
    ],
    "closures": [
     {
-     "start": "2026-09-01T06:30",
-     "end": "2026-09-01T14:30",
-     "facilities": "Toddlers' Pool, Leisure Pool 2",
+     "start": "2026-09-01T14:30",
+     "end": "2026-09-01T22:00",
+     "facilities": "Toddlers' Pool, Leisure Pool 2, Giant Water Slides",
      "reason": "Insufficient Lifeguard",
      "targets": [
+      "giant-water-slides",
       "leisure-pool-2",
       "toddlers-pool"
      ]
@@ -3221,7 +3263,17 @@
      "targets": null
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-09-01T14:15",
+     "end": "2026-09-01T22:00",
+     "facilities": "Diving Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "diving-pool"
+     ]
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=27",
    "id": "north-kwai-chung-jockey-club-swimming-pool",
    "session_days": null,
@@ -3447,24 +3499,13 @@
    ],
    "closures": [
     {
-     "start": "2026-09-01T07:00",
-     "end": "2026-09-01T10:00",
-     "facilities": "Secondary Pool, Diving Pool",
+     "start": "2026-09-01T19:00",
+     "end": "2026-09-01T22:00",
+     "facilities": "Main Pool , Diving Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
       "diving-pool",
-      "secondary-pool"
-     ]
-    },
-    {
-     "start": "2026-09-01T10:00",
-     "end": "2026-09-01T12:00",
-     "facilities": "Secondary Pool, Diving Pool , Children's Pool",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "children-s-pool",
-      "diving-pool",
-      "secondary-pool"
+      "main-pool"
      ]
     }
    ],
@@ -3787,15 +3828,11 @@
    ],
    "closures": [
     {
-     "start": "2026-09-01T09:00",
+     "start": "2026-09-01T14:15",
      "end": null,
-     "facilities": "Training Pool , Leisure Pool 2, Leisure Pool 3",
+     "facilities": "Landing Pool with water slides",
      "reason": "Insufficient Lifeguard",
-     "targets": [
-      "leisure-pool-2",
-      "leisure-pool-3",
-      "training-pool"
-     ]
+     "targets": null
     },
     {
      "start": "2026-09-10T07:30",
@@ -4419,11 +4456,13 @@
    ],
    "closures": [
     {
-     "start": "2026-09-01T06:30",
-     "end": null,
-     "facilities": "Water Slides",
+     "start": "2026-09-01T19:00",
+     "end": "2026-09-01T22:00",
+     "facilities": "Leisure Pool (1), Water Slides",
      "reason": "Insufficient Lifeguard",
-     "targets": null
+     "targets": [
+      "leisure-pool-1"
+     ]
     }
    ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=21",
@@ -4641,6 +4680,15 @@
      "reason": "Competition",
      "targets": [
       "main-pool"
+     ]
+    },
+    {
+     "start": "2026-09-01T16:54",
+     "end": "2026-09-01T19:30",
+     "facilities": "Outdoor Training Pool",
+     "reason": "Contamination of Pool Water",
+     "targets": [
+      "training-pool"
      ]
     }
    ],
@@ -4879,15 +4927,6 @@
      ]
     },
     {
-     "start": "2026-09-01T06:30",
-     "end": "2026-09-01T10:00",
-     "facilities": "Leisure Pool (4)",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "leisure-pool-4"
-     ]
-    },
-    {
      "start": "2026-09-01T13:00",
      "end": "2026-09-30T18:00",
      "facilities": "Training Pool, Leisure Pool (2), Leisure Pool (3)",
@@ -5104,6 +5143,16 @@
      "reason": "Insufficient Lifeguard",
      "targets": [
       "leisure-pool-2"
+     ]
+    },
+    {
+     "start": "2026-09-01T14:15",
+     "end": "2026-09-01T22:00",
+     "facilities": "Toddlers' Pool, Participatory Fountain",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "participatory-fountain",
+      "toddlers-pool"
      ]
     }
    ],
@@ -5328,6 +5377,15 @@
      ]
     },
     {
+     "start": "2026-09-01T14:15",
+     "end": "2026-09-01T22:00",
+     "facilities": "Children's Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "children-s-pool-with-play-equipment"
+     ]
+    },
+    {
      "start": "2026-09-17T06:30",
      "end": "2026-09-17T15:00",
      "facilities": "Main Pool , Spectator Stand",
@@ -5497,13 +5555,21 @@
    ],
    "closures": [
     {
-     "start": "2026-09-01T08:30",
-     "end": "2026-09-01T12:00",
-     "facilities": "Training Pool, Leisure Pool",
+     "start": "2026-09-01T13:00",
+     "end": "2026-09-01T22:00",
+     "facilities": "Training Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
-      "leisure-pool",
       "training-pool"
+     ]
+    },
+    {
+     "start": "2026-09-01T14:15",
+     "end": "2026-09-01T22:00",
+     "facilities": "Leisure Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "leisure-pool"
      ]
     },
     {
@@ -5774,6 +5840,15 @@
      "reason": "Insufficient Lifeguard",
      "targets": [
       "leisure-pool-4"
+     ]
+    },
+    {
+     "start": "2026-09-01T13:00",
+     "end": "2026-09-01T22:00",
+     "facilities": "Leisure Pool (3)",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "leisure-pool-3"
      ]
     }
    ],
@@ -6332,9 +6407,9 @@
    ],
    "closures": [
     {
-     "start": "2026-09-01T06:30",
-     "end": "2026-09-01T10:00",
-     "facilities": "Leisure Pool No. 1, Leisure Pool No. 2",
+     "start": "2026-09-01T18:00",
+     "end": "2026-09-01T22:00",
+     "facilities": "Leisure Pool No. 2, Leisure Pool No. 3, Leisure Pool No. 1B",
      "reason": "Insufficient Lifeguard",
      "targets": [
       "leisure-pool-no-1",
