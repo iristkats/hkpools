@@ -810,22 +810,25 @@ function stackedRows(w, rows, now, stale, warnings, notes, big) {
 
   /* A name is better wrapped than cut — "Sun Yat Sen / Memorial Park" still
      names the pool, where "Sun Yat Sen Memori…" makes you guess. Each wrapped
-     name costs its row a line, though: two pools have room for both, three on
-     the small tile have one line to spare — and none at all once a weather
-     warning is taking a line of its own at the foot. */
-  const slack = !cramped ? 2 : hasFooter(warnings, notes) ? 0 : 1;
-  const over = labels.filter((l) => l.length > nameBudget).length;
-  const nameLines = over <= slack ? 2 : 1;
+     name costs its row a line, so the tile grants them while the height lasts
+     and cuts once it doesn't. A cut name is strictly worse than a wrapped one,
+     so a row that can't have the line still gets the best of what's left,
+     rather than every row being cut because the last one couldn't wrap. */
+  const used = rows.reduce((h, r, i) =>
+    h + nameSize * LINE + det.rows[i].length * det.size * LINE + 3, 0);
+  let grow = growRoom(used, nameSize * LINE, hasFooter(warnings, notes));
 
   rows.forEach(function (row, i) {
     const head = w.addStack();
     head.centerAlignContent();
     dot(head, row.st.code);
     head.addSpacer(4);
-    const name = head.addText(fitLabel(row, nameBudget * nameLines));
+    const wraps = labels[i].length > nameBudget && grow > 0;
+    if (wraps) grow--;
+    const name = head.addText(fitLabel(row, nameBudget * (wraps ? 2 : 1)));
     name.font = Font.mediumSystemFont(nameSize);
     name.textColor = INK;
-    name.lineLimit = nameLines;
+    name.lineLimit = wraps ? 2 : 1;
     name.minimumScaleFactor = 1;      // sized above; never shrink alone
 
     det.rows[i].forEach(function (line) {
@@ -879,11 +882,9 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
   const nameBudget = budget(ROW_W, size);
   const details = trim(size);
 
-  // A wrapped name makes its row a line taller. Three tall rows overrun the
-  // tile, so wrapping is offered only while the height holds: one row over
-  // on a three-pool tile, two on a two-pool one.
-  const over = labels.filter((l, i) => l.length > nameBudget - details[i].length);
-  const nameLines = over.length <= 2 ? 2 : 1;
+  // A wrapped name makes its row a line taller, granted while the height lasts
+  const used = rows.length * (size * LINE + 3);
+  let grow = growRoom(used, size * LINE, hasFooter(warnings, notes));
 
   rows.forEach(function (r, i) {
     const row = w.addStack();
@@ -892,10 +893,12 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
     row.addSpacer(5);
 
     const room = nameBudget - details[i].length;
-    const name = row.addText(fitLabel(r, room * nameLines));
+    const wraps = labels[i].length > room && grow > 0;
+    if (wraps) grow--;
+    const name = row.addText(fitLabel(r, room * (wraps ? 2 : 1)));
     name.font = Font.mediumSystemFont(size);
     name.textColor = INK;
-    name.lineLimit = nameLines;
+    name.lineLimit = wraps ? 2 : 1;
     name.minimumScaleFactor = 1;
 
     row.addSpacer();
@@ -910,6 +913,21 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
   });
 
   footerRow(w, warnings, notes, false);
+}
+
+/* A tile is 155 points tall whatever it draws, and iOS squeezes anything past
+   that without saying so — so a layout that can grow has to know its own
+   height. These are what the fixed furniture costs, in points. */
+const TILE_H = 128;            // 155 less the 12pt padding, and 3pt of margin
+const LINE = 1.2;              // a label's line box, as a multiple of its size
+const HEADER_H = 15;           // "HK POOLS" and the clock, plus the gap under
+const FOOTER_H = 11;           // the warning line, on the tiles that have one
+
+/* How many rows can afford a second line of `extra` points before the tile
+   overruns, given the `used` points the rows already take. */
+function growRoom(used, extra, footer) {
+  const left = TILE_H - HEADER_H - (footer ? FOOTER_H : 0) - used;
+  return Math.max(0, Math.floor(left / extra));
 }
 
 /* Whether footerRow will draw anything — the tile's height depends on it. */
