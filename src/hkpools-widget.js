@@ -504,6 +504,7 @@ function message(w, now, lines) {
    same shape has twice the room and can afford twice the headline. */
 function oneWidget(w, row, now, stale, warnings, notes, big) {
   const st = row.st;
+  if (row.p.url) w.url = row.p.url;   // tap the tile → the venue's LCSD page
   header(w, now, stale);
   w.addSpacer(big ? 8 : 6);
 
@@ -583,6 +584,7 @@ function stackedRows(w, rows, now, stale, warnings, notes, big) {
   rows.forEach(function (row, i) {
     const head = w.addStack();
     head.centerAlignContent();
+    if (row.p.url) head.url = row.p.url;   // tap the name → LCSD page (medium+)
     dot(head, row.st.code);
     head.addSpacer(4);
     const wraps = labels[i].length > nameBudget && grow > 0;
@@ -595,6 +597,7 @@ function stackedRows(w, rows, now, stale, warnings, notes, big) {
 
     det.rows[i].forEach(function (line) {
       const under = w.addStack();
+      if (row.p.url) under.url = row.p.url;   // detail line taps through too
       under.addSpacer(13);             // clear the dot
       const detail = under.addText(line);
       detail.font = Font.systemFont(det.size);
@@ -651,6 +654,7 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
   rows.forEach(function (r, i) {
     const row = w.addStack();
     row.centerAlignContent();
+    if (r.p.url) row.url = r.p.url;   // tap the row → the venue's LCSD page
     dot(row, r.st.code);
     row.addSpacer(5);
 

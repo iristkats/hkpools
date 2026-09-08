@@ -319,11 +319,34 @@ async function main() {
     }
     console.log(`\n${family}${at ? "  @ " + at.toISOString().slice(0, 16) : ""}`);
     drawn += print(seen.widget, family);
+    checkTaps(seen.widget, family);
   }
 
   if (!drawn) {
     console.error("widget produced no content");
     process.exit(1);
+  }
+}
+
+/* Every pool a widget draws should be tappable — on medium/large each row
+   carries its own venue URL; on the single-pool layout the whole tile does.
+   A row that draws a pool but wires no LCSD link is the regression to catch. */
+function checkTaps(widget, family) {
+  const urls = [];
+  (function walk(n) {
+    if (n && typeof n.url === "string" && /Swimming\.do\?swpId=/.test(n.url))
+      urls.push(n.url);
+    for (const k of (n && n._kids) || []) walk(k);
+  })(widget);
+  // small multi-pool tiles can't do per-row taps — Scriptable only honours a
+  // whole-widget url there, which would send every tap to the wrong pool, so
+  // that one case is deliberately left untapped and isn't asserted.
+  const perRowAllowed = family !== "small";
+  if (perRowAllowed && !urls.length) {
+    console.error(`  no LCSD tap-through wired in ${family}`);
+    process.exitCode = 1;
+  } else {
+    console.log(`  taps: ${urls.length} LCSD link${urls.length === 1 ? "" : "s"}`);
   }
 }
 
