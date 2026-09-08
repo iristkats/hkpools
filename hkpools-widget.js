@@ -5,8 +5,9 @@
 /* =====================================================================
    HK Pools — iOS home-screen widget (Scriptable)
 
-   Small  : one pool, large.
+   Small  : one to three pools, stacked.
    Medium : up to three, one line each, plus a weather row when it matters.
+   Large  : not supported — shows a note pointing to the small/medium sizes.
 
    DATA_URL below already points at this repo's published pools.json, so the
    script works as pasted — change it only if you forked or renamed the repo.
@@ -976,6 +977,12 @@ async function build() {
   if (!DATA_URL || DATA_URL === "SET_ME")
     return message(w, now, ["Set DATA_URL at the top of the script."]);
 
+  // The large tile has no layout of its own — it would only stretch the medium
+  // one into empty space. Steer the reader to the two sizes that are designed.
+  if (family === "large")
+    return message(w, now, ["The large widget isn't supported.",
+                            "Use the small or medium size."]);
+
   const { data, stale } = await loadData();
   if (!data)
     return message(w, now, ["No data yet — open the script once while online."]);
@@ -1013,5 +1020,6 @@ async function build() {
 const widget = await build();
 if (config.runsInWidget) Script.setWidget(widget);
 else if (config.widgetFamily === "small") await widget.presentSmall();
+else if (config.widgetFamily === "large") await widget.presentLarge();
 else await widget.presentMedium();
 Script.complete();

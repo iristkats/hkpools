@@ -132,7 +132,7 @@ Kowloon Park, Victoria Park, Morrison Hill | one
 ```
 
 `| all` lists them on both, which is what happens if you leave the setting
-off. Naming a single pool gives you the large layout either way.
+off. Naming a single pool gives you the roomiest layout either way.
 
 **A colon narrows a venue to one of its pools**, which matters when a venue
 has eight and only one of them is the 50m you came for:

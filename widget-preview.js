@@ -35,7 +35,7 @@ for (let i = 0; i < argv.length; i++) {
   else if (argv[i] === "--warn") warn = true;   // pretend HKO has a signal up
   else rest.push(argv[i]);
 }
-const sizes = ["small", "medium"].includes(rest[0]) ? [rest.shift()]
+const sizes = ["small", "medium", "large"].includes(rest[0]) ? [rest.shift()]
                                                     : ["small", "medium"];
 const param = rest.join(" ") || null;
 if (at && isNaN(at)) {
@@ -340,8 +340,9 @@ function checkTaps(widget, family) {
   })(widget);
   // small multi-pool tiles can't do per-row taps — Scriptable only honours a
   // whole-widget url there, which would send every tap to the wrong pool, so
-  // that one case is deliberately left untapped and isn't asserted.
-  const perRowAllowed = family !== "small";
+  // that one case is deliberately left untapped and isn't asserted. The large
+  // tile is unsupported and draws only a note, so it has no pools to tap.
+  const perRowAllowed = family === "medium";
   if (perRowAllowed && !urls.length) {
     console.error(`  no LCSD tap-through wired in ${family}`);
     process.exitCode = 1;
