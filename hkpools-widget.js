@@ -811,11 +811,10 @@ function stackedRows(w, rows, now, stale, warnings, notes, big) {
 
   /* A name is shown in full, wrapping to a second line rather than being cut:
      "Sun Yat Sen / Memorial Park" still names the pool, where "Sun Yat Sen
-     Memori…" makes you guess. The two-line budget only bites on names too long
-     even for two lines — a rare, genuinely huge name — so short names stay one
-     line and long ones wrap whole. The three-on-a-small-tile case is the one
-     that can't spare the height, so there names keep to a single fitted line. */
-  const wrapLines = cramped ? 1 : 2;
+     Memori…" makes you guess. Short names stay one line; only long ones wrap,
+     and they wrap whole. This holds on the small three-pool tile too — there
+     is height to spare for the odd wrapped name, as the loose layout shows. */
+  const wrapLines = 2;
 
   // The rows are compact and equal-spaced; the leftover height sits above and
   // below the block, so it reads centred rather than pinned under the header
