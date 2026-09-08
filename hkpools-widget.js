@@ -796,7 +796,6 @@ function oneWidget(w, row, now, stale, warnings, notes, big) {
    out between the rows instead of pooled under the last one. */
 function stackedRows(w, rows, now, stale, warnings, notes, big) {
   header(w, now, stale);
-  w.addSpacer(4);
 
   // small: a 155pt tile less 13pt padding a side; the dot and gap cost 14 more
   const NAME_W = big ? 288 : 115, DET_W = big ? 289 : 116;
@@ -809,28 +808,31 @@ function stackedRows(w, rows, now, stale, warnings, notes, big) {
   const det = fitDetails(rows, !big, DET_W, detLines, nameSize - 2, MIN_DETAIL);
   const nameBudget = budget(NAME_W, nameSize);
 
-  /* A name is better wrapped than cut — "Sun Yat Sen / Memorial Park" still
-     names the pool, where "Sun Yat Sen Memori…" makes you guess. Each wrapped
-     name costs its row a line, so the tile grants them while the height lasts
-     and cuts once it doesn't. A cut name is strictly worse than a wrapped one,
-     so a row that can't have the line still gets the best of what's left,
-     rather than every row being cut because the last one couldn't wrap. */
-  const used = rows.reduce((h, r, i) =>
-    h + nameSize * LINE + det.rows[i].length * det.size * LINE + 3, 0);
-  let grow = growRoom(used, nameSize * LINE, hasFooter(warnings, notes));
+  /* A name is shown in full, wrapping to a second line rather than being cut:
+     "Sun Yat Sen / Memorial Park" still names the pool, where "Sun Yat Sen
+     Memori…" makes you guess. The two-line budget only bites on names too long
+     even for two lines — a rare, genuinely huge name — so short names stay one
+     line and long ones wrap whole. The three-on-a-small-tile case is the one
+     that can't spare the height, so there names keep to a single fitted line. */
+  const wrapLines = cramped ? 1 : 2;
+
+  // The rows are compact and equal-spaced; the leftover height sits above and
+  // below the block, so it reads centred rather than pinned under the header
+  // (which is what "the first line is too close to the top" was).
+  w.addSpacer();
 
   rows.forEach(function (row, i) {
+    if (i > 0) w.addSpacer(big ? 7 : 5);   // a small, even gap between pools
+
     const head = w.addStack();
-    head.centerAlignContent();
+    head.topAlignContent();
     if (row.p.url) head.url = row.p.url;   // tap the name → LCSD page (medium+)
     dot(head, row.st.code);
     head.addSpacer(4);
-    const wraps = labels[i].length > nameBudget && grow > 0;
-    if (wraps) grow--;
-    const name = head.addText(fitLabel(row, nameBudget * (wraps ? 2 : 1)));
+    const name = head.addText(fitLabel(row, nameBudget * wrapLines));
     name.font = Font.mediumSystemFont(nameSize);
     name.textColor = INK;
-    name.lineLimit = wraps ? 2 : 1;
+    name.lineLimit = wrapLines;
     name.minimumScaleFactor = 1;      // sized above; never shrink alone
 
     det.rows[i].forEach(function (line) {
@@ -843,11 +845,9 @@ function stackedRows(w, rows, now, stale, warnings, notes, big) {
       detail.lineLimit = 1;
       detail.minimumScaleFactor = 1;
     });
-
-    w.addSpacer(3);                    // a gap the rows always get
-    w.addSpacer();                     // and the slack, shared between them
   });
 
+  w.addSpacer();                       // balancing slack below the block
   footerRow(w, warnings, notes, !big);
 }
 
@@ -856,7 +856,6 @@ function stackedRows(w, rows, now, stale, warnings, notes, big) {
    separates them. */
 function mediumWidget(w, rows, now, stale, warnings, notes) {
   header(w, now, stale);
-  w.addSpacer(5);
 
   const ROW_W = 288;
   const labels = rows.map(rowLabel);
@@ -889,9 +888,15 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
   const used = rows.length * (size * LINE + 3);
   let grow = growRoom(used, size * LINE, hasFooter(warnings, notes));
 
+  // leftover height sits above and below the block, so the first row isn't
+  // pinned tight under the header
+  w.addSpacer();
+
   rows.forEach(function (r, i) {
+    if (i > 0) w.addSpacer(6);         // a small, even gap between pools
+
     const row = w.addStack();
-    row.centerAlignContent();
+    row.topAlignContent();
     if (r.p.url) row.url = r.p.url;   // tap the row → the venue's LCSD page
     dot(row, r.st.code);
     row.addSpacer(5);
@@ -912,10 +917,9 @@ function mediumWidget(w, rows, now, stale, warnings, notes) {
     detail.lineLimit = 1;
     detail.minimumScaleFactor = 1;
     detail.rightAlignText();
-    w.addSpacer(3);
-    w.addSpacer();                     // three rows still leave slack to share
   });
 
+  w.addSpacer();                       // balancing slack below the block
   footerRow(w, warnings, notes, false);
 }
 
