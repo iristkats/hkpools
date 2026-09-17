@@ -1294,13 +1294,14 @@
    ],
    "closures": [
     {
-     "start": "2026-09-17T14:15",
-     "end": "2026-09-17T22:00",
-     "facilities": "Diving Pool , Leisure Pool 1",
+     "start": "2026-09-18T06:30",
+     "end": "2026-09-18T14:15",
+     "facilities": "Training Pool , Diving Pool , Leisure Pool 2 (Water Slides)",
      "reason": "Insufficient Lifeguard",
      "targets": [
       "diving-pool",
-      "leisure-pool-1"
+      "leisure-pool-2",
+      "training-pool"
      ]
     },
     {
@@ -1516,15 +1517,6 @@
      "reason": "School Swimming Gala",
      "targets": [
       "main-pool"
-     ]
-    },
-    {
-     "start": "2026-09-17T14:30",
-     "end": null,
-     "facilities": "Leisure Pool 1",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "leisure-pool"
      ]
     }
    ],
@@ -2058,15 +2050,6 @@
      ]
     },
     {
-     "start": "2026-09-17T07:30",
-     "end": "2026-09-17T18:00",
-     "facilities": "Main Pool , Spectator Stand",
-     "reason": "School Swimming Gala",
-     "targets": [
-      "main-pool"
-     ]
-    },
-    {
      "start": "2026-09-21T07:30",
      "end": "2026-09-21T18:00",
      "facilities": "Main Pool , Spectator Stand",
@@ -2109,6 +2092,111 @@
      "reason": "School Swimming Gala",
      "targets": [
       "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-05T07:30",
+     "end": "2026-10-05T14:00",
+     "facilities": "Main Pool , Spectator Stand",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-10T07:30",
+     "end": "2026-10-10T14:00",
+     "facilities": "Main Pool , Spectator Stand",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-12T07:30",
+     "end": "2026-10-12T19:00",
+     "facilities": "Main Pool , Teaching Pool (2), Spectator Stand",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool",
+      "teaching-pool-2"
+     ]
+    },
+    {
+     "start": "2026-10-14T07:30",
+     "end": "2026-10-14T14:00",
+     "facilities": "Main Pool , Spectator Stand",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-15T07:30",
+     "end": "2026-10-15T19:00",
+     "facilities": "Main Pool , Teaching Pool (2), Spectator Stand",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool",
+      "teaching-pool-2"
+     ]
+    },
+    {
+     "start": "2026-10-21T07:30",
+     "end": "2026-10-21T19:00",
+     "facilities": "Main Pool , Teaching Pool (2), Spectator Stand",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool",
+      "teaching-pool-2"
+     ]
+    },
+    {
+     "start": "2026-10-22T07:30",
+     "end": "2026-10-22T19:00",
+     "facilities": "Main Pool , Teaching Pool (2), Spectator Stand",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool",
+      "teaching-pool-2"
+     ]
+    },
+    {
+     "start": "2026-10-25T07:30",
+     "end": "2026-10-25T19:00",
+     "facilities": "Main Pool , Teaching Pool (2), Spectator Stand",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "teaching-pool-2"
+     ]
+    },
+    {
+     "start": "2026-10-28T07:30",
+     "end": "2026-10-28T14:00",
+     "facilities": "Main Pool , Spectator Stand",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-29T07:30",
+     "end": "2026-10-29T15:00",
+     "facilities": "Main Pool , Spectator Stand",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-31T07:30",
+     "end": "2026-10-31T19:00",
+     "facilities": "Main Pool , Teaching Pool (2), Spectator Stand",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "teaching-pool-2"
      ]
     }
    ],
@@ -2518,22 +2606,6 @@
      ]
     },
     {
-     "start": "2026-09-17T06:30",
-     "end": null,
-     "facilities": "sliding Pool",
-     "reason": "Insufficient Lifeguard",
-     "targets": null
-    },
-    {
-     "start": "2026-09-17T14:30",
-     "end": null,
-     "facilities": "Children's Pool",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "children-s-pool"
-     ]
-    },
-    {
      "start": "2026-09-20T06:30",
      "end": "2026-09-20T21:00",
      "facilities": "Main Pool , Teaching Pool (1), Teaching Pool (2)",
@@ -2644,15 +2716,6 @@
      "facilities": "Landing Pool",
      "reason": "Insufficient Lifeguard",
      "targets": null
-    },
-    {
-     "start": "2026-09-17T19:00",
-     "end": "2026-09-17T22:00",
-     "facilities": "Leisure Pool (1)",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "leisure-pool"
-     ]
     },
     {
      "start": "2026-09-18T13:00",
@@ -2814,15 +2877,6 @@
     }
    ],
    "closures": [
-    {
-     "start": "2026-09-17T19:00",
-     "end": "2026-09-17T22:00",
-     "facilities": "Main Pool",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "main-pool"
-     ]
-    },
     {
      "start": "2026-09-18T14:15",
      "end": "2026-09-18T22:00",
@@ -3003,25 +3057,12 @@
    ],
    "closures": [
     {
-     "start": "2026-09-17T19:00",
-     "end": "2026-09-17T22:00",
-     "facilities": "Leisure Pool 1, Toddlers' Pool, Leisure Pool 2, Giant Water Slides",
+     "start": "2026-09-18T06:30",
+     "end": "2026-09-18T14:30",
+     "facilities": "Toddlers' Pool, Leisure Pool 2, Giant Water Slides",
      "reason": "Insufficient Lifeguard",
      "targets": [
       "giant-water-slides",
-      "leisure-pool-1",
-      "leisure-pool-2",
-      "toddlers-pool"
-     ]
-    },
-    {
-     "start": "2026-09-17T19:00",
-     "end": "2026-09-17T22:00",
-     "facilities": "Leisure Pool 1, Toddlers' Pool, Leisure Pool 2, Giant Water Slides",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "giant-water-slides",
-      "leisure-pool-1",
       "leisure-pool-2",
       "toddlers-pool"
      ]
@@ -3224,8 +3265,8 @@
    ],
    "closures": [
     {
-     "start": "2026-09-17T19:00",
-     "end": "2026-09-17T22:00",
+     "start": "2026-09-18T06:30",
+     "end": "2026-09-18T14:15",
      "facilities": "Diving Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
@@ -3458,13 +3499,16 @@
    ],
    "closures": [
     {
-     "start": "2026-09-17T19:00",
-     "end": "2026-09-17T22:00",
-     "facilities": "Main Pool , Diving Pool",
+     "start": "2026-09-18T06:30",
+     "end": "2026-09-18T10:00",
+     "facilities": "Secondary Pool, Teaching Pool (1), Teaching Pool (2), Teaching Pool (3), Diving Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
       "diving-pool",
-      "main-pool"
+      "secondary-pool",
+      "teaching-pool",
+      "teaching-pool-2",
+      "teaching-pool-3"
      ]
     }
    ],
@@ -3787,7 +3831,7 @@
    ],
    "closures": [
     {
-     "start": "2026-09-17T19:00",
+     "start": "2026-09-18T06:30",
      "end": null,
      "facilities": "Training Pool , Landing Pool with water slides",
      "reason": "Insufficient Lifeguard",
@@ -4099,17 +4143,27 @@
    ],
    "closures": [
     {
-     "start": "2026-09-17T15:00",
-     "end": "2026-09-17T22:00",
-     "facilities": "Diving Pool",
+     "start": "2026-09-18T06:30",
+     "end": "2026-09-18T08:00",
+     "facilities": "Main Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
-      "diving-pool"
+      "main-pool"
      ]
     },
     {
-     "start": "2026-09-17T15:00",
-     "end": "2026-09-17T22:00",
+     "start": "2026-09-18T08:00",
+     "end": "2026-09-18T14:15",
+     "facilities": "Training Pool , Diving Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "diving-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-09-18T14:15",
+     "end": "2026-09-18T17:30",
      "facilities": "Training Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
@@ -4123,6 +4177,15 @@
      "reason": "Others",
      "targets": [
       "diving-pool"
+     ]
+    },
+    {
+     "start": "2026-09-18T17:30",
+     "end": "2026-09-18T22:00",
+     "facilities": "Main Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "main-pool"
      ]
     },
     {
@@ -4453,7 +4516,14 @@
    ],
    "closures": [
     {
-     "start": "2026-09-17T06:30",
+     "start": "2026-09-18T06:30",
+     "end": null,
+     "facilities": "Water Slides",
+     "reason": "Insufficient Lifeguard",
+     "targets": null
+    },
+    {
+     "start": "2026-09-18T06:30",
      "end": null,
      "facilities": "Water Slides",
      "reason": "Insufficient Lifeguard",
@@ -5123,11 +5193,12 @@
      ]
     },
     {
-     "start": "2026-09-17T14:15",
-     "end": "2026-09-17T22:00",
-     "facilities": "Toddlers' Pool, Participatory Fountain",
+     "start": "2026-09-18T06:30",
+     "end": "2026-09-18T10:00",
+     "facilities": "Leisure Pool No.3, Toddlers' Pool, Participatory Fountain",
      "reason": "Insufficient Lifeguard",
      "targets": [
+      "leisure-pool-3",
       "participatory-fountain",
       "toddlers-pool"
      ]
@@ -5504,15 +5575,6 @@
     }
    ],
    "closures": [
-    {
-     "start": "2026-09-17T06:30",
-     "end": "2026-09-17T22:00",
-     "facilities": "Leisure Pool",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "leisure-pool"
-     ]
-    },
     {
      "start": "2026-09-20T07:30",
      "end": "2026-09-20T22:00",
@@ -6313,8 +6375,8 @@
    ],
    "closures": [
     {
-     "start": "2026-09-17T18:00",
-     "end": "2026-09-17T22:00",
+     "start": "2026-09-18T06:30",
+     "end": "2026-09-18T10:00",
      "facilities": "Leisure Pool No. 1, Leisure Pool No. 2, Toddlers' Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
@@ -8589,14 +8651,23 @@
      ]
     },
     {
-     "start": "2026-09-17T06:30",
-     "end": "2026-09-17T22:00",
+     "start": "2026-09-18T06:30",
+     "end": "2026-09-18T14:15",
      "facilities": "Diving Pool , Children's Pool, Toddlers' Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
       "children-s-pool",
       "diving-pool",
       "toddlers-pool"
+     ]
+    },
+    {
+     "start": "2026-09-18T14:15",
+     "end": "2026-09-18T22:00",
+     "facilities": "Diving Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "diving-pool"
      ]
     }
    ],
