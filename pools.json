@@ -1,5 +1,5 @@
 {
- "snapshot_date": "2026-10-01",
+ "snapshot_date": "2026-10-02",
  "source": "LCSD Swimming.do pages + data.gov.hk facility-swimming-pools.json",
  "season": {
   "summer": "April - October",
@@ -1366,14 +1366,14 @@
    ],
    "closures": [
     {
-     "start": "2026-10-01T14:15",
-     "end": "2026-10-01T22:00",
-     "facilities": "Training Pool , Diving Pool , Leisure Pool 2 (Water Slides)",
+     "start": "2026-10-02T06:30",
+     "end": "2026-10-02T14:15",
+     "facilities": "Diving Pool , Toddlers' Pool, Leisure Pool 1",
      "reason": "Insufficient Lifeguard",
      "targets": [
       "diving-pool",
-      "leisure-pool-2",
-      "training-pool"
+      "leisure-pool-1",
+      "toddlers-pool"
      ]
     },
     {
@@ -1540,6 +1540,15 @@
      "reason": "School Swimming Gala",
      "targets": [
       "main-pool"
+     ]
+    },
+    {
+     "start": "2026-10-02T13:00",
+     "end": null,
+     "facilities": "Leisure Pool 1",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "leisure-pool"
      ]
     }
    ],
@@ -2553,7 +2562,18 @@
      "targets": null
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-10-02T06:30",
+     "end": null,
+     "facilities": "Diving Pool , Children's Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "children-s-pool",
+      "diving-pool"
+     ]
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=31",
    "id": "tai-po-swimming-pool",
    "session_days": null,
@@ -2646,7 +2666,15 @@
      "targets": null
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-10-02T13:00",
+     "end": "2026-10-11T22:00",
+     "facilities": "Landing Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": null
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=30",
    "id": "sheung-shui-swimming-pool",
    "session_days": null,
@@ -2988,14 +3016,12 @@
    ],
    "closures": [
     {
-     "start": "2026-10-01T14:30",
-     "end": "2026-10-01T22:00",
-     "facilities": "Toddlers' Pool, Leisure Pool 2, Giant Water Slides",
+     "start": "2026-10-02T08:00",
+     "end": "2026-10-02T14:30",
+     "facilities": "Leisure Pool 2",
      "reason": "Insufficient Lifeguard",
      "targets": [
-      "giant-water-slides",
-      "leisure-pool-2",
-      "toddlers-pool"
+      "leisure-pool-2"
      ]
     },
     {
@@ -3196,8 +3222,8 @@
    ],
    "closures": [
     {
-     "start": "2026-10-01T19:00",
-     "end": "2026-10-01T22:00",
+     "start": "2026-10-02T13:00",
+     "end": "2026-10-02T14:15",
      "facilities": "Diving Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
@@ -3430,12 +3456,14 @@
    ],
    "closures": [
     {
-     "start": "2026-10-01T15:00",
-     "end": "2026-10-01T22:00",
-     "facilities": "Main Pool",
+     "start": "2026-10-02T08:30",
+     "end": "2026-10-02T10:00",
+     "facilities": "Secondary Pool, Diving Pool , Children's Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
-      "main-pool"
+      "children-s-pool",
+      "diving-pool",
+      "secondary-pool"
      ]
     }
    ],
@@ -3758,7 +3786,7 @@
    ],
    "closures": [
     {
-     "start": "2026-10-01T19:00",
+     "start": "2026-10-02T06:30",
      "end": null,
      "facilities": "Training Pool , Landing Pool with water slides",
      "reason": "Insufficient Lifeguard",
@@ -4060,12 +4088,21 @@
    ],
    "closures": [
     {
-     "start": "2026-10-01T14:15",
-     "end": "2026-10-01T22:00",
+     "start": "2026-10-02T06:30",
+     "end": "2026-10-02T22:00",
      "facilities": "Training Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
       "training-pool"
+     ]
+    },
+    {
+     "start": "2026-10-02T07:00",
+     "end": "2026-10-02T15:00",
+     "facilities": "Main Pool",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool"
      ]
     },
     {
@@ -4078,21 +4115,21 @@
      ]
     },
     {
+     "start": "2026-10-02T19:00",
+     "end": "2026-10-02T22:00",
+     "facilities": "Diving Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "diving-pool"
+     ]
+    },
+    {
      "start": "2026-10-03T10:00",
      "end": "2026-10-03T13:00",
      "facilities": "Diving Pool",
      "reason": "Others",
      "targets": [
       "diving-pool"
-     ]
-    },
-    {
-     "start": "2026-10-02T07:00",
-     "end": "2026-10-02T15:00",
-     "facilities": "Main Pool",
-     "reason": "School Swimming Gala",
-     "targets": [
-      "main-pool"
      ]
     },
     {
@@ -4281,15 +4318,8 @@
    ],
    "closures": [
     {
-     "start": "2026-10-01T19:00",
-     "end": "2026-10-01T22:00",
-     "facilities": "Giant Water Slides",
-     "reason": "Insufficient Lifeguard",
-     "targets": null
-    },
-    {
-     "start": "2026-10-01T20:00",
-     "end": "2026-10-01T22:00",
+     "start": "2026-10-02T06:30",
+     "end": "2026-10-02T10:00",
      "facilities": "Teaching Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
@@ -4389,22 +4419,7 @@
      "targets": null
     }
    ],
-   "closures": [
-    {
-     "start": "2026-10-01T21:00",
-     "end": "2026-10-01T22:00",
-     "facilities": "Water Slides",
-     "reason": "Insufficient Lifeguard",
-     "targets": null
-    },
-    {
-     "start": "2026-10-01T21:00",
-     "end": "2026-10-01T22:00",
-     "facilities": "Water Slides",
-     "reason": "Insufficient Lifeguard",
-     "targets": null
-    }
-   ],
+   "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=21",
    "id": "the-jockey-club-yan-oi-tong-swimming-pool",
    "session_days": null,
@@ -4605,7 +4620,7 @@
      ]
     },
     {
-     "start": "2026-10-01T14:15",
+     "start": "2026-10-02T06:30",
      "end": null,
      "facilities": "Diving Pool",
      "reason": "Insufficient Lifeguard",
@@ -5066,6 +5081,16 @@
      "targets": [
       "leisure-pool-2"
      ]
+    },
+    {
+     "start": "2026-10-02T06:30",
+     "end": "2026-10-02T14:15",
+     "facilities": "Toddlers' Pool, Participatory Fountain",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "participatory-fountain",
+      "toddlers-pool"
+     ]
     }
    ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=16",
@@ -5280,8 +5305,8 @@
    ],
    "closures": [
     {
-     "start": "2026-10-01T21:00",
-     "end": "2026-10-01T22:00",
+     "start": "2026-10-02T06:30",
+     "end": "2026-10-02T10:00",
      "facilities": "Children's Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
@@ -5430,6 +5455,34 @@
     }
    ],
    "closures": [
+    {
+     "start": "2026-10-02T06:30",
+     "end": "2026-10-02T10:00",
+     "facilities": "Leisure Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "leisure-pool"
+     ]
+    },
+    {
+     "start": "2026-10-02T10:00",
+     "end": "2026-10-02T12:00",
+     "facilities": "Training Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-10-02T13:00",
+     "end": "2026-10-02T14:15",
+     "facilities": "Training Pool, Leisure Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "leisure-pool",
+      "training-pool"
+     ]
+    },
     {
      "start": "2026-10-06T07:30",
      "end": "2026-10-06T16:00",
@@ -6203,8 +6256,8 @@
    ],
    "closures": [
     {
-     "start": "2026-10-01T14:15",
-     "end": "2026-10-01T22:00",
+     "start": "2026-10-02T07:00",
+     "end": "2026-10-02T12:00",
      "facilities": "Leisure Pool No. 1",
      "reason": "Insufficient Lifeguard",
      "targets": [
@@ -7644,6 +7697,15 @@
      "facilities": "Not applicable",
      "reason": "Others",
      "targets": null
+    },
+    {
+     "start": "2026-10-02T09:00",
+     "end": "2026-10-02T13:00",
+     "facilities": "Main Pool",
+     "reason": "Contamination of Pool Water",
+     "targets": [
+      "main-pool"
+     ]
     }
    ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=7",
@@ -7887,27 +7949,8 @@
    ],
    "closures": [
     {
-     "start": "2026-10-01T06:30",
-     "end": "2026-10-01T10:00",
-     "facilities": "Training Pool, Toddlers' Pool",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "toddlers-pool",
-      "training-pool"
-     ]
-    },
-    {
-     "start": "2026-10-01T10:00",
-     "end": "2026-10-01T12:00",
-     "facilities": "Toddlers' Pool",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "toddlers-pool"
-     ]
-    },
-    {
-     "start": "2026-10-01T13:00",
-     "end": "2026-10-01T22:00",
+     "start": "2026-10-02T06:30",
+     "end": null,
      "facilities": "Training Pool, Toddlers' Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
@@ -7917,13 +7960,20 @@
     },
     {
      "start": "2026-10-02T06:30",
-     "end": null,
-     "facilities": "Training Pool, Teaching Pool, Toddlers' Pool",
+     "end": "2026-10-02T15:00",
+     "facilities": "Teaching Pool",
      "reason": "Insufficient Lifeguard",
      "targets": [
-      "teaching-pool",
-      "toddlers-pool",
-      "training-pool"
+      "teaching-pool"
+     ]
+    },
+    {
+     "start": "2026-10-02T18:00",
+     "end": "2026-10-02T22:00",
+     "facilities": "Teaching Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "teaching-pool"
      ]
     }
    ],
@@ -8520,6 +8570,26 @@
     }
    ],
    "closures": [
+    {
+     "start": "2026-10-02T06:30",
+     "end": "2026-10-02T14:15",
+     "facilities": "Diving Pool , Children's Pool, Toddlers' Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "children-s-pool",
+      "diving-pool",
+      "toddlers-pool"
+     ]
+    },
+    {
+     "start": "2026-10-02T14:15",
+     "end": "2026-10-02T22:00",
+     "facilities": "Diving Pool",
+     "reason": "Insufficient Lifeguard",
+     "targets": [
+      "diving-pool"
+     ]
+    },
     {
      "start": "2026-10-09T07:00",
      "end": "2026-10-09T15:00",
