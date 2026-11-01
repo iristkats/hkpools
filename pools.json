@@ -3415,16 +3415,6 @@
    ],
    "closures": [
     {
-     "start": "2026-10-31T14:15",
-     "end": null,
-     "facilities": "Training Pool , Teaching Pool, Landing Pool with water slides",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "teaching-pool",
-      "training-pool"
-     ]
-    },
-    {
      "start": "2026-11-06T07:30",
      "end": "2026-11-06T19:00",
      "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
