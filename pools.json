@@ -1,5 +1,5 @@
 {
- "snapshot_date": "2026-11-01",
+ "snapshot_date": "2026-11-02",
  "source": "LCSD Swimming.do pages + data.gov.hk facility-swimming-pools.json",
  "season": {
   "summer": "April - October",
@@ -3453,6 +3453,36 @@
       "main-pool",
       "main-pool-2"
      ]
+    },
+    {
+     "start": "2026-12-02T07:30",
+     "end": "2026-12-02T16:00",
+     "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
+    },
+    {
+     "start": "2026-12-05T07:30",
+     "end": "2026-12-05T21:30",
+     "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
+    },
+    {
+     "start": "2026-12-06T07:30",
+     "end": "2026-12-06T21:30",
+     "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "main-pool-2"
+     ]
     }
    ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=25",
@@ -5569,17 +5599,6 @@
     }
    ],
    "closures": [
-    {
-     "start": "2026-11-01T08:00",
-     "end": "2026-11-01T22:00",
-     "facilities": "Main Pool , Diving Pool , Indoor L1 Training Pool",
-     "reason": "Competition",
-     "targets": [
-      "diving-pool",
-      "indoor-l1-training-pool",
-      "main-pool"
-     ]
-    },
     {
      "start": "2026-11-04T08:00",
      "end": "2026-11-04T21:00",
