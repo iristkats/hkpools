@@ -120,16 +120,6 @@
    ],
    "closures": [
     {
-     "start": "2026-11-05T07:30",
-     "end": "2026-11-05T16:00",
-     "facilities": "Main Pool , Multi-purpose Pool",
-     "reason": "School Swimming Gala",
-     "targets": [
-      "main-pool",
-      "multi-purpose-pool"
-     ]
-    },
-    {
      "start": "2026-11-06T07:30",
      "end": "2026-11-06T20:00",
      "facilities": "Main Pool , Multi-purpose Pool",
