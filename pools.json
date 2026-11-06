@@ -120,16 +120,6 @@
    ],
    "closures": [
     {
-     "start": "2026-11-06T07:30",
-     "end": "2026-11-06T20:00",
-     "facilities": "Main Pool , Multi-purpose Pool",
-     "reason": "Competition",
-     "targets": [
-      "main-pool",
-      "multi-purpose-pool"
-     ]
-    },
-    {
      "start": "2026-11-09T18:00",
      "end": "2026-11-09T22:00",
      "facilities": "Multi-purpose Pool",
@@ -1040,15 +1030,6 @@
    ],
    "closures": [
     {
-     "start": "2026-11-06T07:30",
-     "end": "2026-11-06T15:00",
-     "facilities": "Main pool",
-     "reason": "School Swimming Gala",
-     "targets": [
-      "main-pool"
-     ]
-    },
-    {
      "start": "2026-11-13T07:30",
      "end": "2026-11-13T15:00",
      "facilities": "Main pool",
@@ -1305,17 +1286,7 @@
      ]
     }
    ],
-   "closures": [
-    {
-     "start": "2026-11-06T07:30",
-     "end": "2026-11-06T14:00",
-     "facilities": "Main Pool , Spectator Stand",
-     "reason": "School Swimming Gala",
-     "targets": [
-      "main-pool"
-     ]
-    }
-   ],
+   "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=35",
    "id": "tseung-kwan-o-swimming-pool",
    "session_days": null,
@@ -3387,16 +3358,6 @@
    ],
    "closures": [
     {
-     "start": "2026-11-06T07:30",
-     "end": "2026-11-06T19:00",
-     "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
-     "reason": "Competition",
-     "targets": [
-      "main-pool",
-      "main-pool-2"
-     ]
-    },
-    {
      "start": "2026-11-11T07:30",
      "end": "2026-11-11T16:00",
      "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
@@ -4872,15 +4833,6 @@
     }
    ],
    "closures": [
-    {
-     "start": "2026-11-06T07:30",
-     "end": "2026-11-06T19:00",
-     "facilities": "Main Pool",
-     "reason": "School Swimming Gala",
-     "targets": [
-      "main-pool"
-     ]
-    },
     {
      "start": "2026-11-20T07:30",
      "end": "2026-11-20T15:00",
