@@ -355,7 +355,17 @@
      ]
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-11-10T19:10",
+     "end": "2026-11-11T06:30",
+     "facilities": "Main Pool",
+     "reason": "Contamination of Pool Water",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=38",
    "id": "tung-chung-swimming-pool",
    "session_days": null,
