@@ -1,5 +1,5 @@
 {
- "snapshot_date": "2026-11-11",
+ "snapshot_date": "2026-11-12",
  "source": "LCSD Swimming.do pages + data.gov.hk facility-swimming-pools.json",
  "season": {
   "summer": "April - October",
@@ -119,15 +119,6 @@
     }
    ],
    "closures": [
-    {
-     "start": "2026-11-11T18:00",
-     "end": "2026-11-11T22:00",
-     "facilities": "Multi-purpose Pool",
-     "reason": "Training",
-     "targets": [
-      "multi-purpose-pool"
-     ]
-    },
     {
      "start": "2026-11-12T07:30",
      "end": "2026-11-12T14:00",
@@ -3508,17 +3499,7 @@
      "targets": null
     }
    ],
-   "closures": [
-    {
-     "start": "2026-11-11T19:00",
-     "end": "2026-11-12T06:30",
-     "facilities": "Training Pool",
-     "reason": "Contamination of Pool Water",
-     "targets": [
-      "indoor-training-pool"
-     ]
-    }
-   ],
+   "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=41",
    "id": "ping-shan-tin-shui-wai-swimming-pool",
    "session_days": null,
