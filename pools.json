@@ -1,5 +1,5 @@
 {
- "snapshot_date": "2026-11-13",
+ "snapshot_date": "2026-11-14",
  "source": "LCSD Swimming.do pages + data.gov.hk facility-swimming-pools.json",
  "season": {
   "summer": "April - October",
@@ -7103,16 +7103,6 @@
     }
    ],
    "closures": [
-    {
-     "start": "2026-11-13T07:30",
-     "end": "2026-11-13T16:00",
-     "facilities": "Main Pool , Training Pool , Spectator Stand",
-     "reason": "School Swimming Gala",
-     "targets": [
-      "main-pool",
-      "training-pool"
-     ]
-    },
     {
      "start": "2026-11-19T07:30",
      "end": "2026-11-19T15:00",
