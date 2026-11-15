@@ -2474,17 +2474,7 @@
      ]
     }
    ],
-   "closures": [
-    {
-     "start": "2026-11-15T07:25",
-     "end": "2026-11-15T12:00",
-     "facilities": "Main Pool",
-     "reason": "Contamination of Pool Water",
-     "targets": [
-      "main-pool"
-     ]
-    }
-   ],
+   "closures": [],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=29",
    "id": "fanling-swimming-pool",
    "session_days": null,
