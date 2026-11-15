@@ -1,5 +1,5 @@
 {
- "snapshot_date": "2026-11-14",
+ "snapshot_date": "2026-11-15",
  "source": "LCSD Swimming.do pages + data.gov.hk facility-swimming-pools.json",
  "season": {
   "summer": "April - October",
@@ -103,15 +103,15 @@
    ],
    "maintenance": [
     {
-     "label": "From 20 February to 21 April",
+     "label": "From 13 February 2027 to 14 April",
      "range": [
       [
-       2,
-       20
+       4,
+       27
       ],
       [
        4,
-       21
+       14
       ]
      ],
      "scope": "venue",
@@ -2474,7 +2474,17 @@
      ]
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-11-15T07:25",
+     "end": "2026-11-15T12:00",
+     "facilities": "Main Pool",
+     "reason": "Contamination of Pool Water",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=29",
    "id": "fanling-swimming-pool",
    "session_days": null,
