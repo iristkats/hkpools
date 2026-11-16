@@ -120,15 +120,6 @@
    ],
    "closures": [
     {
-     "start": "2026-11-16T18:00",
-     "end": "2026-11-16T22:00",
-     "facilities": "Multi-purpose Pool",
-     "reason": "Training",
-     "targets": [
-      "multi-purpose-pool"
-     ]
-    },
-    {
      "start": "2026-11-18T18:00",
      "end": "2026-11-18T22:00",
      "facilities": "Multi-purpose Pool",
@@ -5493,17 +5484,6 @@
    ],
    "closures": [
     {
-     "start": "2026-11-16T08:00",
-     "end": "2026-11-16T14:00",
-     "facilities": "Main Pool , Diving Pool , Indoor L1 Training Pool",
-     "reason": "School Swimming Gala",
-     "targets": [
-      "diving-pool",
-      "indoor-l1-training-pool",
-      "main-pool"
-     ]
-    },
-    {
      "start": "2026-11-19T08:00",
      "end": "2026-11-19T14:00",
      "facilities": "Main Pool , Diving Pool , Indoor L1 Training Pool",
@@ -7126,6 +7106,16 @@
     {
      "start": "2026-11-29T07:30",
      "end": "2026-11-29T22:00",
+     "facilities": "Main Pool , Training Pool , Spectator Stand",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "training-pool"
+     ]
+    },
+    {
+     "start": "2026-12-13T07:30",
+     "end": "2026-12-13T20:00",
      "facilities": "Main Pool , Training Pool , Spectator Stand",
      "reason": "Competition",
      "targets": [
