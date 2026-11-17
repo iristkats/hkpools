@@ -4034,7 +4034,17 @@
      ]
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-11-17T19:30",
+     "end": "2026-11-17T21:30",
+     "facilities": "Indoor Training Pool",
+     "reason": "Contamination of Pool Water",
+     "targets": [
+      "training-pool"
+     ]
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=20",
    "id": "tuen-mun-swimming-pool",
    "session_days": null,
