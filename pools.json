@@ -1,5 +1,5 @@
 {
- "snapshot_date": "2026-11-17",
+ "snapshot_date": "2026-11-18",
  "source": "LCSD Swimming.do pages + data.gov.hk facility-swimming-pools.json",
  "season": {
   "summer": "April - October",
@@ -4037,7 +4037,7 @@
    "closures": [
     {
      "start": "2026-11-17T19:30",
-     "end": "2026-11-17T21:30",
+     "end": null,
      "facilities": "Indoor Training Pool",
      "reason": "Contamination of Pool Water",
      "targets": [
