@@ -3300,16 +3300,6 @@
    ],
    "closures": [
     {
-     "start": "2026-11-22T07:30",
-     "end": "2026-11-22T21:30",
-     "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
-     "reason": "Competition",
-     "targets": [
-      "main-pool",
-      "main-pool-2"
-     ]
-    },
-    {
      "start": "2026-11-25T07:30",
      "end": "2026-11-25T16:00",
      "facilities": "All Indoor Facilities (including Main Pool (1.2M), Main Pool (2M), Spectator stand)",
@@ -7024,15 +7014,6 @@
     }
    ],
    "closures": [
-    {
-     "start": "2026-11-22T06:30",
-     "end": "2026-11-22T08:30",
-     "facilities": "Training Pool",
-     "reason": "Insufficient Lifeguard",
-     "targets": [
-      "training-pool"
-     ]
-    },
     {
      "start": "2026-11-27T07:30",
      "end": "2026-11-27T16:00",
