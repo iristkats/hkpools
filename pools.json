@@ -120,15 +120,6 @@
    ],
    "closures": [
     {
-     "start": "2026-11-23T18:00",
-     "end": "2026-11-23T22:00",
-     "facilities": "Multi-purpose Pool",
-     "reason": "Training",
-     "targets": [
-      "multi-purpose-pool"
-     ]
-    },
-    {
      "start": "2026-11-25T18:00",
      "end": "2026-11-25T22:00",
      "facilities": "Multi-purpose Pool",
@@ -691,7 +682,17 @@
      "targets": null
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-11-23T18:00",
+     "end": "2026-11-24T06:15",
+     "facilities": "Training Pool (1)",
+     "reason": "Contamination of Pool Water",
+     "targets": [
+      "training-pool-1"
+     ]
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=39",
    "id": "siu-sai-wan-swimming-pool",
    "session_days": null,
@@ -3601,7 +3602,17 @@
      ]
     }
    ],
-   "closures": [],
+   "closures": [
+    {
+     "start": "2026-11-23T20:10",
+     "end": "2026-11-24T06:30",
+     "facilities": "Main Pool",
+     "reason": "Contamination of Pool Water",
+     "targets": [
+      "main-pool"
+     ]
+    }
+   ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=22",
    "id": "yuen-long-swimming-pool",
    "session_days": null,
