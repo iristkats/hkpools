@@ -166,6 +166,177 @@
      "targets": [
       "multi-purpose-pool"
      ]
+    },
+    {
+     "start": "2026-12-02T18:00",
+     "end": "2026-12-02T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-04T07:30",
+     "end": "2026-12-04T15:00",
+     "facilities": "Main Pool , Multi-purpose Pool",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool",
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-06T06:30",
+     "end": "2026-12-06T22:00",
+     "facilities": "Main Pool , Multi-purpose Pool",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-07T18:00",
+     "end": "2026-12-07T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-09T18:00",
+     "end": "2026-12-09T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-10T07:30",
+     "end": "2026-12-10T14:00",
+     "facilities": "Main Pool , Multi-purpose Pool",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool",
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-11T07:30",
+     "end": "2026-12-11T15:00",
+     "facilities": "Main Pool , Multi-purpose Pool",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool",
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-13T06:30",
+     "end": "2026-12-13T22:00",
+     "facilities": "Main Pool , Multi-purpose Pool",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-14T18:00",
+     "end": "2026-12-14T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-16T18:00",
+     "end": "2026-12-16T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-17T07:30",
+     "end": "2026-12-17T17:00",
+     "facilities": "Main Pool , Multi-purpose Pool",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool",
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-18T07:30",
+     "end": "2026-12-18T17:00",
+     "facilities": "Main Pool , Multi-purpose Pool",
+     "reason": "School Swimming Gala",
+     "targets": [
+      "main-pool",
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-19T11:00",
+     "end": "2026-12-19T22:00",
+     "facilities": "Main Pool , Multi-purpose Pool",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-20T06:30",
+     "end": "2026-12-20T22:00",
+     "facilities": "Main Pool , Multi-purpose Pool",
+     "reason": "Competition",
+     "targets": [
+      "main-pool",
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-21T18:00",
+     "end": "2026-12-21T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-23T18:00",
+     "end": "2026-12-23T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-28T20:00",
+     "end": "2026-12-28T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
+    },
+    {
+     "start": "2026-12-30T18:00",
+     "end": "2026-12-30T22:00",
+     "facilities": "Multi-purpose Pool",
+     "reason": "Training",
+     "targets": [
+      "multi-purpose-pool"
+     ]
     }
    ],
    "url": "https://www.lcsd.gov.hk/clpss/en/webApp/Swimming.do?swpId=5",
