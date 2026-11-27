@@ -120,16 +120,6 @@
    ],
    "closures": [
     {
-     "start": "2026-11-27T07:30",
-     "end": "2026-11-27T17:00",
-     "facilities": "Main Pool , Multi-purpose Pool",
-     "reason": "School Swimming Gala",
-     "targets": [
-      "main-pool",
-      "multi-purpose-pool"
-     ]
-    },
-    {
      "start": "2026-11-28T07:30",
      "end": "2026-11-28T14:00",
      "facilities": "Main Pool , Multi-purpose Pool",
@@ -1096,15 +1086,6 @@
     }
    ],
    "closures": [
-    {
-     "start": "2026-11-27T07:30",
-     "end": "2026-11-27T14:00",
-     "facilities": "Main pool",
-     "reason": "School Swimming Gala",
-     "targets": [
-      "main-pool"
-     ]
-    },
     {
      "start": "2026-12-06T07:30",
      "end": "2026-12-06T21:00",
@@ -7136,16 +7117,6 @@
     }
    ],
    "closures": [
-    {
-     "start": "2026-11-27T07:30",
-     "end": "2026-11-27T16:00",
-     "facilities": "Main Pool , Training Pool , Spectator Stand",
-     "reason": "School Swimming Gala",
-     "targets": [
-      "main-pool",
-      "training-pool"
-     ]
-    },
     {
      "start": "2026-11-29T07:30",
      "end": "2026-11-29T22:00",
